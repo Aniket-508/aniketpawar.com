@@ -6,12 +6,12 @@ export const getExperiences = function (): ExperienceItemProps[] {
       experienceTitle: "SDE-2",
       experienceDescription: [
         "Developed the new website entirely from scratch using NextJS with SSG in record time.",
-        "Implemented in-house component design system, reducing loading & build time by 70%.",
         "Developed various features for internal CMS tool to automate creation of assessments.",
         "Integrated Strapi CMS for rapid, performant static page generation by business/content teams aiding SEO.",
-        "Developed a microservice for on-demand generation and delivery of candidate reports in PDF format,, allowing them to be sent as a single file or in bulk.",
-        "Built React Native app for the assessment dashboard that runs on iOS, Android, and the web, achieving an 85% concurrency of the codebase.",
-        "Contributed to two successful ProductHunt launches: EasySource (#5 Product of the Day) and JD Generator (#1 Product of the Day).",
+        "Implemented various optimization techniques in EasyAccess dashboard, reducing loading & build time by 70%.",
+        "Developed a microservice for on-demand generation and delivery of candidate reports in PDF format, allowing them to be sent as a single file or in bulk.",
+        "Built React Native app for EasyAccess that runs on iOS, Android, and the web, achieving an 85% concurrency of the codebase.",
+        "Contributed to two successful ProductHunt launches: <u>EasySource</u> (#5 Product of the Day) and <u>JD Generator</u> (#1 Product of the Day).",
       ],
       experienceOrg: {
         name: "HireQuotient",
@@ -46,10 +46,10 @@ export const getExperiences = function (): ExperienceItemProps[] {
     {
       experienceTitle: "Software Engineer Intern",
       experienceDescription: [
-        "Developed financial calculators module from scratch for SEO purposes.",
-        "Developed the Company Financials Component for US Stocks Detail page.",
-        "Built the Fixed Deposit Purchase Flow on Web handling KYC and Non-KYCed users.",
-        "Implemented Family Account Invite Flow on Web from scratch.",
+        "Engineered financial calculators module from scratch for SEO purposes.",
+        "Developed the Company Financials Component for US Stocks detail page.",
+        "Built the Fixed Deposit Purchase Flow on web, catering to both KYC and non-KYC users.",
+        "Implemented Family Account Invite Flow on web from scratch.",
       ],
       experienceOrg: {
         name: "INDmoney",
@@ -74,9 +74,8 @@ export const getExperiences = function (): ExperienceItemProps[] {
     {
       experienceTitle: "Web Development Intern",
       experienceDescription: [
-        "Started contributing as a design contributor and contributed to AsyncAPI website project using ReactJS and TailwindCSS.",
-        "Working on auditing existing components created using TailwindCSS support; Fixed UX for components, improved layouts for upcoming features.",
-        "Tools I work with during contribution: Figma, Git/GitHub, Slack, Netlify, Storybook, React, TailwindCSS, NextJS, Javascript.",
+        "Revamped existing and engineered new UI components.",
+        "Bridged frontend and backend via API integrations.",
       ],
       experienceOrg: {
         name: "Youniv",
@@ -92,8 +91,8 @@ export const getExperiences = function (): ExperienceItemProps[] {
     {
       experienceTitle: "Web Development Intern",
       experienceDescription: [
-        "Designed and developed various responsive UI components for company's website named 'KritikalHire' from scratch.",
-        "Designed and developed company’s another website named 'ServingNotice' completely from scratch.",
+        "Designed and developed various responsive UI components for company's website named <u>KritikalHire</u> from scratch.",
+        "Designed and developed company’s another website named <u>ServingNotice</u> completely from scratch.",
         "Built a blog site along with an admin panel having CRUD functionalities.",
       ],
       experienceOrg: {

@@ -83,11 +83,10 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
       <ul className="mt-4 flex flex-col items-start justify-start gap-2 pl-3">
         {experienceDescription?.map((descriptionItem, descriptionIndex) => (
           <li
-            className="font-normal text-zinc-500 text-sm list-disc list-outside"
             key={descriptionIndex}
-          >
-            {descriptionItem}
-          </li>
+            className="font-normal text-zinc-500 text-sm list-disc list-outside"
+            dangerouslySetInnerHTML={{ __html: descriptionItem }}
+          />
         ))}
       </ul>
       {experienceTech?.length && (
