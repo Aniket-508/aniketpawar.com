@@ -8,7 +8,7 @@ import ProjectSection from "@/components/main/ProjectSection";
 const MainView: React.FunctionComponent = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Container className="grid grid-cols-1 items-start justify-start gap-12">
         <HeroSection />
         <ExperienceSection />

@@ -11,19 +11,19 @@ export const getPathMap = function (): PathMapProps[] {
     {
       pathType: "internal",
       title: "works",
-      link: "#works",
+      link: "/works",
       isAvailable: true,
     },
     {
       pathType: "internal",
       title: "projects",
-      link: "#projects",
+      link: "/projects",
       isAvailable: true,
     },
     {
       pathType: "internal",
       title: "socials",
-      link: "#socials",
+      link: "/socials",
       isAvailable: true,
     },
     {
