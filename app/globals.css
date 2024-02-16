@@ -4,7 +4,7 @@
 
 html,
 body {
-  @apply bg-white mb-6;
+  @apply bg-white mb-12;
 }
 
 @layer utilities {
