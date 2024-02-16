@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description:
       "Hey! I'm Aniket Pawar. A passionate student developer who enjoys making impactful projects on the web, mobile and in real life.",
     images:
-      "https://ik.imagekit.io/2oajjadqkz/Frame%201.png?updatedAt=1679493727587&tr=w-1200%2Ch-630%2Cfo-auto",
+      "https://ik.imagekit.io/2oajjadqkz/portfolio-image.png?updatedAt=1708077902850",
   },
   twitter: {
     card: "summary",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description:
       "Hey! I'm Aniket Pawar. A passionate student developer who enjoys making impactful projects on the web, mobile and in real life.",
     images:
-      "https://ik.imagekit.io/2oajjadqkz/Frame%201.png?updatedAt=1679493727587&tr=w-1200%2Ch-630%2Cfo-auto",
+      "https://ik.imagekit.io/2oajjadqkz/portfolio-image.png?updatedAt=1708077902850",
   },
 };
 
