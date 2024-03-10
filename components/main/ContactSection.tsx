@@ -34,7 +34,7 @@ const ContactItem: React.FunctionComponent<ContactItemProps> = ({
 }) => {
   return (
     <div className={"flex flex-row items-center justify-start gap-4"} {...attr}>
-      <span className="font-normal text-sm">{title}</span>
+      <span className="font-normal text-sm min-w-16">{title}</span>
       <span>
         {link?.url && (
           <LinkText
