@@ -3,6 +3,26 @@ import { ExperienceItemProps } from "@/components/main/ExperienceSection";
 export const getExperiences = function (): ExperienceItemProps[] {
   return [
     {
+      experienceTitle: "Frontend Engineer",
+      experienceDescription: ["🏗️ Work in progress"],
+      experienceOrg: {
+        name: "Harmoney",
+        link: "https://www.harmoney.in/",
+        websiteDisplayName: "harmoney.in",
+      },
+      experienceStatus: {
+        startAt: "March, 2024",
+        endAt: "Present",
+      },
+      experienceTech: [
+        "Nuxt.js",
+        "Vue.js",
+        "TypeScript",
+        "JavaScript",
+        "Tailwind CSS",
+      ],
+    },
+    {
       experienceTitle: "SDE-2",
       experienceDescription: [
         "Developed the new website entirely from scratch using NextJS with SSG in record time.",
@@ -20,7 +40,7 @@ export const getExperiences = function (): ExperienceItemProps[] {
       },
       experienceStatus: {
         startAt: "Jun, 2022",
-        endAt: "Present",
+        endAt: "Feb, 2024",
       },
       experienceTech: [
         "HTML5",

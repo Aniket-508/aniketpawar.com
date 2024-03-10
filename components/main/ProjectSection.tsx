@@ -28,6 +28,23 @@ interface ProjectItemProps extends React.HTMLAttributes<HTMLDivElement> {
   status?: "Ongoing" | "Open Source" | "Maintained";
 }
 
+const parseProjectStatus = ({
+  status = "Maintained",
+}: {
+  status: "Ongoing" | "Open Source" | "Maintained";
+}): string => {
+  switch (status) {
+    case "Ongoing":
+      return "🏗️ Ongoing";
+    case "Open Source":
+      return "✨ Open Source";
+    case "Maintained":
+      return "👍🏽 Maintained";
+    default:
+      return "";
+  }
+};
+
 const ProjectSection: React.FunctionComponent = () => {
   return (
     <Section className="grid grid-cols-1 justify-start gap-4" id="projects">
@@ -55,23 +72,6 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
   className,
   ...attr
 }) => {
-  const parseProjectStatus = ({
-    status = "Maintained",
-  }: {
-    status: "Ongoing" | "Open Source" | "Maintained";
-  }): string => {
-    switch (status) {
-      case "Ongoing":
-        return "🏗️ Ongoing";
-      case "Open Source":
-        return "✨ Open Source";
-      case "Maintained":
-        return "👍🏽 Maintained";
-      default:
-        return "";
-    }
-  };
-
   return (
     <div
       className={cn(

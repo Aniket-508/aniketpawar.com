@@ -7,7 +7,7 @@ import LinkText from "../ui/LinkText";
 
 interface ExperienceItemProps extends React.HTMLAttributes<HTMLDivElement> {
   experienceTitle: React.ReactNode | string;
-  experienceDescription: string[];
+  experienceDescription?: string[];
   experienceOrg: {
     name: React.ReactNode | string;
     link: React.ReactNode | string;
@@ -80,16 +80,18 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
           {experienceStatus?.startAt + " - " + experienceStatus?.endAt}
         </p>
       </div>
-      <ul className="mt-4 flex flex-col items-start justify-start gap-2 pl-3">
-        {experienceDescription?.map((descriptionItem, descriptionIndex) => (
-          <li
-            key={descriptionIndex}
-            className="font-normal text-zinc-500 text-sm list-disc list-outside"
-            dangerouslySetInnerHTML={{ __html: descriptionItem }}
-          />
-        ))}
-      </ul>
-      {experienceTech?.length && (
+      {experienceDescription?.length ? (
+        <ul className="mt-4 flex flex-col items-start justify-start gap-2 pl-3">
+          {experienceDescription.map((descriptionItem, index) => (
+            <li
+              key={index}
+              className="font-normal text-zinc-500 text-sm list-disc list-outside"
+              dangerouslySetInnerHTML={{ __html: descriptionItem }}
+            />
+          ))}
+        </ul>
+      ) : null}
+      {experienceTech?.length ? (
         <div className="mt-3 flex gap-2">
           <p className="font-normal text-zinc-500 text-sm">tech:</p>
           <div className="flex flex-wrap gap-1">
@@ -105,7 +107,7 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
             ))}
           </div>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

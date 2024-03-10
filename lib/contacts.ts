@@ -3,6 +3,13 @@ import { ContactItemProps } from "@/components/main/ContactSection";
 export const getContacts = function (): ContactItemProps[] {
   return [
     {
+      title: "Topmate",
+      link: {
+        display: "@aniket_pawar",
+        url: "https://topmate.io/aniket_pawar",
+      },
+    },
+    {
       title: "GitHub",
       link: {
         display: "@Aniket-508",

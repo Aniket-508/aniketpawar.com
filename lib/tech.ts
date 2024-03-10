@@ -24,4 +24,6 @@ export const techLinks = {
   Firebase: "https://firebase.google.com/",
   AWS: "https://aws.amazon.com/",
   GCP: "https://cloud.google.com/",
+  "Nuxt.js": "https://nuxt.com/",
+  "Vue.js": "https://vuejs.org/",
 };
