@@ -4,6 +4,7 @@ import { techLinks } from "@/lib/tech";
 import { cn } from "@/utils/helper";
 import Section from "../layout/Section";
 import LinkText from "../ui/LinkText";
+import Title from "../ui/Title";
 
 interface ExperienceItemProps extends React.HTMLAttributes<HTMLDivElement> {
   experienceTitle: React.ReactNode | string;
@@ -23,9 +24,7 @@ interface ExperienceItemProps extends React.HTMLAttributes<HTMLDivElement> {
 const ExperienceSection: React.FunctionComponent = () => {
   return (
     <Section className=" grid grid-cols-1 justify-start gap-4" id="experience">
-      <h2 className="leading-snug font-medium text-base text-zinc-900">
-        {"worked as."}
-      </h2>
+      <Title>{"worked as."}</Title>
       <Section className="mt-4 grid grid-cols-1 justify-start gap-8">
         {getExperiences()?.map(
           (experience: ExperienceItemProps, experienceIndex: number) => (

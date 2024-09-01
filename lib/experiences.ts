@@ -4,7 +4,12 @@ export const getExperiences = function (): ExperienceItemProps[] {
   return [
     {
       experienceTitle: "Frontend Engineer",
-      experienceDescription: ["🏗️ Work in progress"],
+      experienceDescription: [
+        "Revamped Live Market on the DART dashboard using Golden Layout, making it more intuitive & thereby simplifying the trading flow.",
+        "Built Bonds Search & Detailed pages using Golden Layout, driving the development of the <u>FinD</u> dashboard.",
+        "Led the migration of the DART dashboard from Nuxt2 & BootstrapVue to Nuxt3 & PrimeVue for improved functionality",
+        "Enhanced web performance on the DART dashboard by resolving critical issues.",
+      ],
       experienceOrg: {
         name: "Harmoney",
         link: "https://www.harmoney.in/",
@@ -20,6 +25,12 @@ export const getExperiences = function (): ExperienceItemProps[] {
         "TypeScript",
         "JavaScript",
         "Tailwind CSS",
+        "BootstrapVue",
+        "PrimeVue",
+        "Pinia",
+        "GoldenLayout",
+        "NuxtAuth",
+        "FormKit",
       ],
     },
     {
@@ -30,7 +41,7 @@ export const getExperiences = function (): ExperienceItemProps[] {
         "Integrated Strapi CMS for rapid, performant static page generation by business/content teams aiding SEO.",
         "Implemented various optimization techniques in EasyAccess dashboard, reducing loading & build time by 70%.",
         "Developed a microservice for on-demand generation and delivery of candidate reports in PDF format, allowing them to be sent as a single file or in bulk.",
-        "Built React Native app for EasyAccess that runs on iOS, Android, and the web, achieving an 85% concurrency of the codebase.",
+        "Built React Native app for EasyAccess that runs on iOS, Android, and the Web, achieving an 85% concurrency of the codebase.",
         "Contributed to two successful ProductHunt launches: <u>EasySource</u> (#5 Product of the Day) and <u>JD Generator</u> (#1 Product of the Day).",
       ],
       experienceOrg: {

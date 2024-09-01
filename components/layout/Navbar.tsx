@@ -19,7 +19,7 @@ const Navbar: React.FunctionComponent = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="py-4 sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
+    <nav className="font-sans py-4 sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
       <Container>
         <ul className="flex flex-row items-center justify-end gap-3">
           {getPathMap()?.map(

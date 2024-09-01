@@ -3,6 +3,7 @@
 import Section from "../layout/Section";
 import Button from "../ui/Button";
 import LinkText from "../ui/LinkText";
+import Title from "../ui/Title";
 import Callout from "./Callout";
 import Header from "./Header";
 
@@ -11,9 +12,7 @@ const HeroSection: React.FunctionComponent = () => {
     <main id="hero">
       <Header />
       <Section>
-        <h2 className="leading-snug font-medium text-base text-zinc-900">
-          {"about me."}
-        </h2>
+        <Title>{"about me."}</Title>
         <div className="leading-6 text-sm font-normal text-zinc-500 mt-4">
           <p>
             {`Hey there! I’m a software engineer who’s really into new tech and creating user experiences that make people go "WwOOOwW". I love diving deep into complex problems and sharing what I learn. I’m all about taking charge of the nitty-gritty details and being involved in every step of the way, from the first idea to the final product.`}

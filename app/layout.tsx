@@ -1,8 +1,20 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
+const instrument_serif = Instrument_Serif({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"],
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
+});
 
 export const metadata: Metadata = {
   title: "Aniket Pawar",
@@ -34,7 +46,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.variable} ${instrument_serif.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }

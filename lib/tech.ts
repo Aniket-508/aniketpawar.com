@@ -26,4 +26,10 @@ export const techLinks = {
   GCP: "https://cloud.google.com/",
   "Nuxt.js": "https://nuxt.com/",
   "Vue.js": "https://vuejs.org/",
+  BootstrapVue: "https://bootstrap-vue.org/",
+  PrimeVue: "https://primevue.org/",
+  Pinia: "https://pinia.vuejs.org/",
+  GoldenLayout: "https://golden-layout.com/",
+  NuxtAuth: "https://auth.sidebase.io/",
+  FormKit: "https://formkit.com/",
 };

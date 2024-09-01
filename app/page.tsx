@@ -9,7 +9,7 @@ const MainView: React.FunctionComponent = () => {
   return (
     <>
       {/* <Navbar /> */}
-      <Container className="grid grid-cols-1 items-start justify-start gap-12">
+      <Container className="grid grid-cols-1 items-start justify-start gap-12 font-sans">
         <HeroSection />
         <ExperienceSection />
         <ProjectSection />

@@ -3,6 +3,7 @@ import { getProjects } from "@/lib/projects";
 import { cn } from "@/utils/helper";
 import Section from "../layout/Section";
 import LinkText from "../ui/LinkText";
+import Title from "../ui/Title";
 
 interface ProjectItemProps extends React.HTMLAttributes<HTMLDivElement> {
   projectTitle?: string;
@@ -48,9 +49,7 @@ const parseProjectStatus = ({
 const ProjectSection: React.FunctionComponent = () => {
   return (
     <Section className="grid grid-cols-1 justify-start gap-4" id="projects">
-      <h2 className="leading-snug font-medium text-base text-zinc-900">
-        {"projects."}
-      </h2>
+      <Title>{"projects."}</Title>
       <Section className="mt-4 grid grid-cols-1 justify-start gap-8">
         {getProjects()?.map(
           (project: ProjectItemProps, projectIndex: number) => (

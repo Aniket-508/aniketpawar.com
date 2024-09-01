@@ -2,8 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
+html {
   @apply bg-white mb-12;
 }
 
