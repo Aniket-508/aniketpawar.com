@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Section from "../layout/Section";
 import LinkText from "../ui/LinkText";
 import { getContacts } from "@/lib/contacts";
@@ -35,7 +36,7 @@ const ContactItem: React.FunctionComponent<ContactItemProps> = ({
 }) => {
   return (
     <div className={"flex flex-row items-center justify-start gap-4"} {...attr}>
-      <img src={icon} alt={title} className="w-4 h-4" />
+      {icon && title && <Image src={icon} alt={title} width={16} height={16} />}
       <span>
         {link?.url && (
           <LinkText
