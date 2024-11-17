@@ -3,22 +3,12 @@ import { ProjectItemProps } from "@/components/main/ProjectSection";
 export const getProjects = function (): ProjectItemProps[] {
   let projects: ProjectItemProps[] = [
     {
-      projectTitle: "Patang Abhidani",
+      projectTitle: "Indian Quotes API",
       projectData: {
-        githubURL: "https://github.com/Aniket-508/PatangAbhidani",
+        githubURL: "https://github.com/Aniket-508/indian-quotes-api",
+        liveURL: "https://indian-quotes-api.vercel.app/",
       },
-      description: [
-        "First of a kind website for everything related to Skipper butterflies along with a pinch of integrated ML.",
-      ],
-      category: ["full-stack"],
-    },
-    {
-      projectTitle: "Airbnb Clone",
-      projectData: {
-        githubURL: "https://github.com/Aniket-508/Airbnb-clone",
-        liveURL: "http://airbnb-clone-sable-xi.vercel.app/",
-      },
-      category: ["ui/ux"],
+      category: ["ui/ux", "full-stack"],
     },
     {
       projectTitle: "Typeform Clone",
@@ -29,20 +19,12 @@ export const getProjects = function (): ProjectItemProps[] {
       category: ["ui/ux"],
     },
     {
-      projectTitle: "Google Docs Clone",
+      projectTitle: "Airbnb Clone",
       projectData: {
-        githubURL: "https://github.com/Aniket-508/Google-Docs-Clone",
-        liveURL: "https://google-docs-clone-aniket-508.vercel.app/",
+        githubURL: "https://github.com/Aniket-508/Airbnb-clone",
+        liveURL: "http://airbnb-clone-sable-xi.vercel.app/",
       },
-      category: ["ui/ux", "full-stack"],
-    },
-    {
-      projectTitle: "LinkedIn Clone",
-      projectData: {
-        githubURL: "https://github.com/Aniket-508/LinkedIn-clone",
-        liveURL: "https://linkedinclone-21c16.web.app/",
-      },
-      category: ["ui/ux", "full-stack"],
+      category: ["ui/ux"],
     },
   ];
 
