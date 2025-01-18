@@ -76,6 +76,7 @@ const HeroSection: React.FunctionComponent = () => {
             <LinkText
               href={"/resume.pdf"}
               className="text-zinc-600 font-medium text-sm"
+              preview={false}
             >
               {"Resume"}
             </LinkText>
