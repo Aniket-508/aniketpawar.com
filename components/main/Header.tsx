@@ -29,14 +29,13 @@ const Header: React.FunctionComponent = () => {
         </motion.div>
       </motion.div>
       <div>
-        <h1 className="leading-snug font-semibold text-2xl text-zinc-900">
-          👋{" "}
-          <span className="font-instrument-serif italic">Hi, I am Aniket</span>
+        <h1 className="leading-snug font-semibold text-2xl tracking-tighter text-zinc-900">
+          👋 Hi, I am Aniket
         </h1>
-        <div className="leading-snug font-normal text-base text-zinc-500 mt-2">
+        <div className="leading-snug font-normal text-base text-zinc-500 mt-1">
           <p>
             {
-              "A half software engineer, full-time chai enthusiast from India📍."
+              "A half software engineer, full-time startup enthusiast from India📍."
             }
           </p>
           <p>{new Date().getFullYear() - 2000 + ", he/him"}</p>

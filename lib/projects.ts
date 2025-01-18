@@ -11,6 +11,14 @@ export const getProjects = function (): ProjectItemProps[] {
       category: ["ui/ux", "full-stack"],
     },
     {
+      projectTitle: "Instagram Posts Generator",
+      projectData: {
+        githubURL: "https://github.com/Aniket-508/instagram-posts-generator",
+        liveURL: "https://instagram-posts-generator.vercel.app/",
+      },
+      category: ["ui/ux"],
+    },
+    {
       projectTitle: "Typeform Clone",
       projectData: {
         githubURL: "https://github.com/Aniket-508/Typeform-Clone",
@@ -19,10 +27,10 @@ export const getProjects = function (): ProjectItemProps[] {
       category: ["ui/ux"],
     },
     {
-      projectTitle: "Airbnb Clone",
+      projectTitle: "GitHub Business Card",
       projectData: {
-        githubURL: "https://github.com/Aniket-508/Airbnb-clone",
-        liveURL: "http://airbnb-clone-sable-xi.vercel.app/",
+        githubURL: "https://github.com/Aniket-508/github-business-card",
+        liveURL: "https://gh-business-card.vercel.app/",
       },
       category: ["ui/ux"],
     },

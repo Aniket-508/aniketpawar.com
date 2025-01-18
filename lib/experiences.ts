@@ -5,7 +5,7 @@ export const getExperiences = function (): ExperienceItemProps[] {
     {
       experienceTitle: "Frontend Engineer",
       experienceDescription: [
-        "Revamped Live Market on the DART dashboard using Golden Layout, making it more intuitive & thereby simplifying the trading flow.",
+        "Revamped Live Market on the <u>DART</u> dashboard using Golden Layout, making it more intuitive & thereby simplifying the trading flow.",
         "Built Bonds Search & Detailed pages using Golden Layout, driving the development of the <u>FinD</u> dashboard.",
         "Led the migration of the DART dashboard from Nuxt2 & BootstrapVue to Nuxt3 & PrimeVue for improved functionality",
         "Enhanced web performance on the DART dashboard by resolving critical issues.",

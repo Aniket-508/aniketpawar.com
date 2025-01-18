@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import { MAIN_METADATA } from "@/lib/meta";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,25 +18,21 @@ const instrument_serif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Aniket Pawar",
-  description:
-    "Hey! I'm Aniket Pawar. A passionate student developer who enjoys making impactful projects on the web, mobile and in real life.",
+  title: MAIN_METADATA.TITLE,
+  description: MAIN_METADATA.DESCRIPTION,
   openGraph: {
     type: "website",
-    url: "https://aniket-pawar.vercel.app/",
-    title: "Aniket Pawar",
-    description:
-      "Hey! I'm Aniket Pawar. A passionate student developer who enjoys making impactful projects on the web, mobile and in real life.",
-    images:
-      "https://ik.imagekit.io/2oajjadqkz/portfolio-image.png?updatedAt=1708090929752",
+    siteName: MAIN_METADATA.SITE_NAME,
+    url: MAIN_METADATA.URL,
+    title: MAIN_METADATA.TITLE,
+    description: MAIN_METADATA.DESCRIPTION,
+    images: MAIN_METADATA.IMAGE,
   },
   twitter: {
     card: "summary",
-    title: "Aniket Pawar",
-    description:
-      "Hey! I'm Aniket Pawar. A passionate student developer who enjoys making impactful projects on the web, mobile and in real life.",
-    images:
-      "https://ik.imagekit.io/2oajjadqkz/portfolio-image.png?updatedAt=1708090929752",
+    title: MAIN_METADATA.TITLE,
+    description: MAIN_METADATA.DESCRIPTION,
+    images: MAIN_METADATA.IMAGE,
   },
 };
 

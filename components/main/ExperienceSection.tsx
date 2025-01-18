@@ -58,7 +58,7 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
           <h3 className="font-normal text-zinc-900 w-[50ch] max-md:w-[30ch]">
             {experienceTitle + ", " + experienceOrg?.name}
           </h3>
-          <p className="text-sm flex flex-row items-center justify-start gap-1.5">
+          <div className="text-sm flex flex-row items-center justify-start gap-1.5">
             {"at, "}
             {typeof experienceOrg?.link === "string" ? (
               <LinkText
@@ -73,7 +73,7 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
                 {experienceOrg?.websiteDisplayName}
               </span>
             )}
-          </p>
+          </div>
         </span>
         <p className="font-normal text-zinc-500 text-sm">
           {experienceStatus?.startAt + " - " + experienceStatus?.endAt}
