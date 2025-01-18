@@ -37,7 +37,7 @@ const LinkText: React.FunctionComponent<LinkTextProps> = ({
         <ArrowUpRight className="w-4" />
       </HoverCardTrigger>
       {preview && (
-        <HoverCardContent>
+        <HoverCardContent side="right">
           <Image
             src={src}
             priority
