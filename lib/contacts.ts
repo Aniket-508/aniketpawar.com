@@ -1,45 +1,46 @@
+import { Icons } from "@/components/Icons";
 import { ContactItemProps } from "@/components/main/ContactSection";
 
 export const getContacts = function (): ContactItemProps[] {
   return [
     {
-      title: "Topmate",
-      icon: "topmate.svg",
-      link: {
-        display: "@aniket_pawar",
-        url: "https://topmate.io/aniket_pawar",
-      },
-    },
-    {
       title: "GitHub",
-      icon: "github.svg",
+      icon: Icons.github,
       link: {
         display: "@Aniket-508",
         url: "https://github.com/Aniket-508",
       },
     },
     {
+      title: "LinkedIn",
+      icon: Icons.linkedin,
+      link: {
+        display: "@aniket-pawar-4960911b8",
+        url: "https://linkedin.com/in/aniket-pawar-4960911b8/",
+      },
+    },
+    {
       title: "Twitter",
-      icon: "twitter.svg",
+      icon: Icons.x,
       link: {
         display: "@alaymanguy",
         url: "https://twitter.com/alaymanguy",
       },
     },
     {
-      title: "Peerlist",
-      icon: "peerlist.svg",
+      title: "Topmate",
+      icon: Icons.topmate,
       link: {
         display: "@aniket_pawar",
-        url: "https://peerlist.io/aniket_pawar",
+        url: "https://topmate.io/aniket_pawar",
       },
     },
     {
-      title: "LinkedIn",
-      icon: "linkedin.svg",
+      title: "Peerlist",
+      icon: Icons.peerlist,
       link: {
-        display: "@aniket-pawar-4960911b8",
-        url: "https://www.linkedin.com/in/aniket-pawar-4960911b8/",
+        display: "@aniket_pawar",
+        url: "https://peerlist.io/aniket_pawar",
       },
     },
   ];

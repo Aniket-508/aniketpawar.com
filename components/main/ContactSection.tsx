@@ -1,13 +1,13 @@
 import React from "react";
-import Image from "next/image";
 import Section from "../layout/Section";
 import LinkText from "../ui/LinkText";
 import { getContacts } from "@/lib/contacts";
 import Title from "../ui/Title";
+import { IconProps } from "../Icons";
 
 interface ContactItemProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
-  icon?: string;
+  icon?: (props: IconProps) => JSX.Element;
   link?: {
     display?: string;
     url?: string;
@@ -16,7 +16,10 @@ interface ContactItemProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const ContactSection: React.FunctionComponent = () => {
   return (
-    <Section className="grid grid-cols-1 justify-start gap-4" id="socials">
+    <Section
+      className="grid grid-cols-1 justify-start gap-4 pb-12"
+      id="socials"
+    >
       <Title>{"socials."}</Title>
       <Section className="mt-4 grid grid-cols-1 justify-start gap-4">
         {getContacts()?.map((contact, contactIndex) => (
@@ -36,7 +39,7 @@ const ContactItem: React.FunctionComponent<ContactItemProps> = ({
 }) => {
   return (
     <div className={"flex flex-row items-center justify-start gap-4"} {...attr}>
-      {icon && title && <Image src={icon} alt={title} width={16} height={16} />}
+      {icon && title && icon({ className: "size-4" })}
       <span>
         {link?.url && (
           <LinkText
