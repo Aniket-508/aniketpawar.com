@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  @apply bg-white mb-12;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
