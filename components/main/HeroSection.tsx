@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import Section from "../layout/Section";
-import Button from "../ui/Button";
 import LinkText from "../ui/LinkText";
 import Title from "../ui/Title";
 import Callout from "./Callout";
 import Header from "./Header";
+import { Button } from "../ui/Button";
 
 const HeroSection: React.FunctionComponent = () => {
   return (
@@ -14,7 +14,7 @@ const HeroSection: React.FunctionComponent = () => {
       <Header />
       <Section>
         <Title>{"about me."}</Title>
-        <div className="prose leading-6 text-sm font-normal text-zinc-500 mt-4 max-w-full">
+        <div className="prose leading-6 text-sm font-normal text-muted-foreground dark:prose-invert mt-4 max-w-full">
           <p>
             Hey there! I&apos;m a software professional who is passionate about
             building customer-focused, design-centric products that prioritize
@@ -70,12 +70,14 @@ const HeroSection: React.FunctionComponent = () => {
             {"Interested in working together? Feel free to schedule a meet!"}
           </p>
           <div className="flex flex-row items-center justify-start gap-4">
-            <Button onClick={() => window.open("https://cal.com/aniket-pawar")}>
-              {"Schedule a meet / cal.com"}
+            <Button asChild>
+              <Link href="https://cal.com/aniket-pawar" target="_blank">
+                Schedule a meet / cal.com
+              </Link>
             </Button>
             <LinkText
               href={"/resume.pdf"}
-              className="text-zinc-600 font-medium text-sm"
+              className="text-muted-foreground font-medium text-sm"
               preview={false}
             >
               {"Resume"}

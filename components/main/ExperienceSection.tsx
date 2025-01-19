@@ -55,7 +55,7 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
     >
       <div className="flex flex-row items-start justify-between max-md:flex-col max-md:justify-start max-md:gap-2 max-sm:w-[320px]">
         <span>
-          <h3 className="font-normal text-zinc-900 w-[50ch] max-md:w-[30ch]">
+          <h3 className="font-normal text-primary w-[50ch] max-md:w-[30ch]">
             {experienceTitle + ", " + experienceOrg?.name}
           </h3>
           <div className="text-sm flex flex-row items-center justify-start gap-1.5">
@@ -75,7 +75,7 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
             )}
           </div>
         </span>
-        <p className="font-normal text-zinc-500 text-sm">
+        <p className="font-normal text-muted-foreground text-sm">
           {experienceStatus?.startAt + " - " + experienceStatus?.endAt}
         </p>
       </div>
@@ -84,7 +84,7 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
           {experienceDescription.map((descriptionItem, index) => (
             <li
               key={index}
-              className="font-normal text-zinc-500 text-sm list-disc list-outside"
+              className="font-normal text-muted-foreground text-sm list-disc list-outside"
               dangerouslySetInnerHTML={{ __html: descriptionItem }}
             />
           ))}
@@ -92,14 +92,14 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
       ) : null}
       {experienceTech?.length ? (
         <div className="mt-3 flex gap-2">
-          <p className="font-normal text-zinc-500 text-sm">tech:</p>
+          <p className="font-normal text-muted-foreground text-sm">tech:</p>
           <div className="flex flex-wrap gap-1">
             {experienceTech.map((tech) => (
               <Link
                 key={tech}
                 href={techLinks[tech as keyof typeof techLinks]}
                 target="_blank"
-                className="text-xs cursor-pointer rounded px-2 py-1 bg-zinc-200 w-fit text-zinc-500 hover:bg-zinc-800 hover:text-gray-100"
+                className="text-xs cursor-pointer rounded px-2 py-1 bg-muted w-fit text-muted-foreground hover:bg-primary hover:text-primary-foreground"
               >
                 {tech}
               </Link>

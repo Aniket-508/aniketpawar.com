@@ -29,7 +29,7 @@ const Navbar: React.FunctionComponent = () => {
                   <li
                     key={pathMapIndex}
                     className={cn(
-                      "text-base text-zinc-500 hover:text-zinc-600",
+                      "text-base text-muted-foreground hover:text-primary",
                       pathname === pathMapItem?.link &&
                         "underline underline-offset-1"
                     )}
@@ -52,7 +52,7 @@ const Navbar: React.FunctionComponent = () => {
               } else {
                 return (
                   <li
-                    className="cursor-not-allowed text-base text-zinc-400"
+                    className="cursor-not-allowed text-base text-muted-foreground"
                     key={pathMapIndex}
                   >
                     {pathMapItem?.title}

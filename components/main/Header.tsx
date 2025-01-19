@@ -29,10 +29,10 @@ const Header: React.FunctionComponent = () => {
         </motion.div>
       </motion.div>
       <div>
-        <h1 className="leading-snug font-semibold text-2xl tracking-tighter text-zinc-900">
+        <h1 className="leading-snug font-semibold text-2xl tracking-tighter text-primary">
           👋 Hi, I am Aniket
         </h1>
-        <div className="leading-snug font-normal text-base text-zinc-500 mt-1">
+        <div className="leading-snug font-normal text-base text-muted-foreground mt-1">
           <p>
             {
               "A half software engineer, full-time startup enthusiast from India📍."

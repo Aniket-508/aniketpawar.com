@@ -81,13 +81,13 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
     >
       <div className="flex flex-row items-start justify-between max-md:flex-col max-md:justify-start max-md:gap-2 max-sm:w-[320px]">
         <span>
-          <h3 className="font-normal text-zinc-900 capitalize w-[46ch] max-md:w-[30ch]">
+          <h3 className="font-normal text-primary capitalize w-[46ch] max-md:w-[30ch]">
             {projectTitle}
           </h3>
           <div className="text-sm flex flex-row items-center justify-start gap-1.5">
             {projectData?.liveURL && (
               <LinkText
-                className="text-xs font-normal text-zinc-500"
+                className="text-xs font-normal text-muted-foreground"
                 href={projectData?.liveURL}
                 target={"_blank"}
               >
@@ -96,7 +96,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
             )}
             {projectData?.githubURL && (
               <LinkText
-                className="text-xs font-normal text-zinc-500"
+                className="text-xs font-normal text-muted-foreground"
                 href={projectData?.githubURL}
                 target={"_blank"}
               >
@@ -114,7 +114,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
                 if (relatedLinkItem?.link) {
                   return (
                     <LinkText
-                      className="text-xs font-normal text-zinc-500"
+                      className="text-xs font-normal text-muted-foreground"
                       href={relatedLinkItem?.link}
                       target={"_blank"}
                       key={relatedLinkIndex}
@@ -130,7 +130,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
       </div>
       <div>
         {status && (
-          <p className="my-2 text-xs rounded px-2 py-1 bg-zinc-200 w-fit text-zinc-500 hover:bg-zinc-800 hover:text-gray-100">
+          <p className="my-2 text-xs rounded px-2 py-1 bg-muted w-fit text-muted-foreground hover:bg-primary hover:text-primary-foreground">
             {parseProjectStatus({
               status,
             })}
@@ -141,7 +141,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
             {description.map((descriptionItem, descriptionIndex) => (
               <li
                 key={descriptionIndex}
-                className="font-normal text-zinc-500 text-sm list-disc list-outside"
+                className="font-normal text-muted-foreground text-sm list-disc list-outside"
               >
                 {descriptionItem}
               </li>
@@ -149,7 +149,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
           </ul>
         )}
         <div className="mt-3">
-          <span className="text-sm text-gray-500">
+          <span className="text-sm text-muted-foreground">
             {"category: " + category}
           </span>
         </div>

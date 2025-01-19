@@ -40,7 +40,7 @@ const ContactItem: React.FunctionComponent<ContactItemProps> = ({
       <span>
         {link?.url && (
           <LinkText
-            className="text-sm font-normal text-zinc-500"
+            className="text-sm font-normal text-muted-foreground"
             href={link?.url}
             target="_blank"
           >
@@ -48,7 +48,7 @@ const ContactItem: React.FunctionComponent<ContactItemProps> = ({
           </LinkText>
         )}
         {!link?.url && (
-          <span className="text-sm font-normal text-zinc-500">
+          <span className="text-sm font-normal text-muted-foreground">
             {"link not found"}
           </span>
         )}
