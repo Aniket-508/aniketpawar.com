@@ -53,13 +53,9 @@ const ProjectSection: React.FunctionComponent = () => {
       id="projects"
     >
       <Title>{"projects."}</Title>
-      <Section className="grid grid-cols-1 p-0 justify-start gap-8">
-        {getProjects()?.map(
-          (project: ProjectItemProps, projectIndex: number) => (
-            <ProjectItem {...project} key={projectIndex} />
-          )
-        )}
-      </Section>
+      {getProjects()?.map((project: ProjectItemProps, projectIndex: number) => (
+        <ProjectItem {...project} key={projectIndex} />
+      ))}
     </Section>
   );
 };
@@ -75,7 +71,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
   ...attr
 }) => {
   return (
-    <div className={cn(className)} {...attr}>
+    <div className={cn("border p-4", className)} {...attr}>
       <div className="flex flex-row items-start justify-between max-md:flex-col max-md:justify-start max-md:gap-2 max-sm:w-[320px]">
         <span>
           <h3 className="font-normal text-primary capitalize w-[46ch] max-md:w-[30ch]">

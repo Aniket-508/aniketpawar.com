@@ -28,13 +28,11 @@ const ExperienceSection: React.FunctionComponent = () => {
       id="experience"
     >
       <Title>{"worked as."}</Title>
-      <Section className="grid grid-cols-1 justify-start p-0 gap-8">
-        {getExperiences()?.map(
-          (experience: ExperienceItemProps, experienceIndex: number) => (
-            <ExperienceItem {...experience} key={experienceIndex} />
-          )
-        )}
-      </Section>
+      {getExperiences()?.map(
+        (experience: ExperienceItemProps, experienceIndex: number) => (
+          <ExperienceItem {...experience} key={experienceIndex} />
+        )
+      )}
     </Section>
   );
 };
@@ -49,7 +47,7 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
   ...attr
 }) => {
   return (
-    <div className={cn(className)} {...attr}>
+    <div className={cn("border p-4", className)} {...attr}>
       <div className="flex flex-row items-start justify-between max-md:flex-col max-md:justify-start max-md:gap-2 max-sm:w-[320px]">
         <span>
           <h3 className="font-normal text-primary w-[50ch] max-md:w-[30ch]">

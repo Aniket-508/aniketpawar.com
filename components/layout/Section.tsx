@@ -6,7 +6,7 @@ const Section: React.FunctionComponent<HTMLAttributes<HTMLDivElement>> = ({
   ...attr
 }) => {
   return (
-    <section className={cn("p-6", className)} {...attr}>
+    <section className={cn("p-4", className)} {...attr}>
       {attr?.children}
     </section>
   );
