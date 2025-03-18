@@ -1,6 +1,6 @@
 import React from "react";
 import { getProjects } from "@/lib/projects";
-import { cn } from "@/utils/helper";
+import { cn } from "@/lib/utils";
 import Section from "../layout/Section";
 import LinkText from "../ui/LinkText";
 import Title from "../ui/Title";
@@ -48,9 +48,12 @@ const parseProjectStatus = ({
 
 const ProjectSection: React.FunctionComponent = () => {
   return (
-    <Section className="grid grid-cols-1 justify-start gap-4" id="projects">
+    <Section
+      className="grid grid-cols-1 border-b justify-start gap-4"
+      id="projects"
+    >
       <Title>{"projects."}</Title>
-      <Section className="mt-4 grid grid-cols-1 justify-start gap-8">
+      <Section className="grid grid-cols-1 p-0 justify-start gap-8">
         {getProjects()?.map(
           (project: ProjectItemProps, projectIndex: number) => (
             <ProjectItem {...project} key={projectIndex} />
@@ -72,13 +75,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
   ...attr
 }) => {
   return (
-    <div
-      className={cn(
-        "border-l-2 pl-4 hover:border-blue-400 cursor-default transition-all",
-        className
-      )}
-      {...attr}
-    >
+    <div className={cn(className)} {...attr}>
       <div className="flex flex-row items-start justify-between max-md:flex-col max-md:justify-start max-md:gap-2 max-sm:w-[320px]">
         <span>
           <h3 className="font-normal text-primary capitalize w-[46ch] max-md:w-[30ch]">
@@ -148,7 +145,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
             ))}
           </ul>
         )}
-        <div className="mt-3">
+        <div className="mt-1">
           <span className="text-sm text-muted-foreground">
             {"category: " + category}
           </span>

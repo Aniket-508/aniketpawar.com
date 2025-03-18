@@ -1,10 +1,12 @@
+import { cn } from "@/lib/utils";
 import { HTMLAttributes } from "react";
 
 const Section: React.FunctionComponent<HTMLAttributes<HTMLDivElement>> = ({
+  className,
   ...attr
 }) => {
   return (
-    <section className="my-6 py-2" {...attr}>
+    <section className={cn("p-6", className)} {...attr}>
       {attr?.children}
     </section>
   );

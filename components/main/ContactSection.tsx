@@ -21,7 +21,7 @@ const ContactSection: React.FunctionComponent = () => {
       id="socials"
     >
       <Title>{"socials."}</Title>
-      <Section className="mt-4 grid grid-cols-1 justify-start gap-4">
+      <Section className="grid grid-cols-1 justify-start gap-4 p-0">
         {getContacts()?.map((contact, contactIndex) => (
           <ContactItem {...contact} key={contactIndex} />
         ))}

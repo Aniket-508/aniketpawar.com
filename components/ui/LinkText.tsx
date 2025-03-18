@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { cn } from "@/utils/helper";
+import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 import { HoverCard, HoverCardTrigger, HoverCardContent } from "./HoverCard";
 import { HoverCardTriggerProps } from "@radix-ui/react-hover-card";

@@ -3,6 +3,13 @@ import { ProjectItemProps } from "@/components/main/ProjectSection";
 export const getProjects = function (): ProjectItemProps[] {
   let projects: ProjectItemProps[] = [
     {
+      projectTitle: "Peerlist Publish",
+      projectData: {
+        liveURL: "https://www.peerlistpubli.sh/",
+      },
+      category: ["ui/ux", "full-stack"],
+    },
+    {
       projectTitle: "Indian Quotes API",
       projectData: {
         githubURL: "https://github.com/Aniket-508/indian-quotes-api",
@@ -23,14 +30,6 @@ export const getProjects = function (): ProjectItemProps[] {
       projectData: {
         githubURL: "https://github.com/Aniket-508/Typeform-Clone",
         liveURL: "https://typeform-clone-aniket-508.vercel.app/",
-      },
-      category: ["ui/ux"],
-    },
-    {
-      projectTitle: "GitHub Business Card",
-      projectData: {
-        githubURL: "https://github.com/Aniket-508/github-business-card",
-        liveURL: "https://gh-business-card.vercel.app/",
       },
       category: ["ui/ux"],
     },

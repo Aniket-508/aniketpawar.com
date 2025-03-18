@@ -1,4 +1,4 @@
-import { cn } from "@/utils/helper";
+import { cn } from "@/lib/utils";
 
 const Callout: React.FunctionComponent<
   React.HTMLAttributes<HTMLDivElement>

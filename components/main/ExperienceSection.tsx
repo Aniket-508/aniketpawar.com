@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getExperiences } from "@/lib/experiences";
 import { techLinks } from "@/lib/tech";
-import { cn } from "@/utils/helper";
+import { cn } from "@/lib/utils";
 import Section from "../layout/Section";
 import LinkText from "../ui/LinkText";
 import Title from "../ui/Title";
@@ -23,9 +23,12 @@ interface ExperienceItemProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const ExperienceSection: React.FunctionComponent = () => {
   return (
-    <Section className=" grid grid-cols-1 justify-start gap-4" id="experience">
+    <Section
+      className="grid grid-cols-1 border-b justify-start gap-4"
+      id="experience"
+    >
       <Title>{"worked as."}</Title>
-      <Section className="mt-4 grid grid-cols-1 justify-start gap-8">
+      <Section className="grid grid-cols-1 justify-start p-0 gap-8">
         {getExperiences()?.map(
           (experience: ExperienceItemProps, experienceIndex: number) => (
             <ExperienceItem {...experience} key={experienceIndex} />
@@ -46,13 +49,7 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
   ...attr
 }) => {
   return (
-    <div
-      className={cn(
-        "border-l-2 pl-4 hover:border-blue-400 cursor-default transition-all",
-        className
-      )}
-      {...attr}
-    >
+    <div className={cn(className)} {...attr}>
       <div className="flex flex-row items-start justify-between max-md:flex-col max-md:justify-start max-md:gap-2 max-sm:w-[320px]">
         <span>
           <h3 className="font-normal text-primary w-[50ch] max-md:w-[30ch]">

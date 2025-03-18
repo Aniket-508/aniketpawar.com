@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const Header: React.FunctionComponent = () => {
   return (
-    <Section className="flex flex-row items-center justify-start gap-4 mt-12 max-sm:items-start max-md:items-start">
+    <Section className="flex flex-row items-center justify-start gap-4 pt-12 border-b max-sm:items-start">
       <motion.div
         className="profile-icon-wrapper relative w-fit h-fit"
         whileHover={{ scale: 1.1 }}

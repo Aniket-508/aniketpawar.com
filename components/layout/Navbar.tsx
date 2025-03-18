@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { getPathMap } from "@/lib/pathmap";
-import { cn } from "@/utils/helper";
+import { cn } from "@/lib/utils";
 import Container from "./Container";
 
 type PathType = "internal" | "external";
