@@ -1,14 +1,15 @@
-"use client";
+"use client"
 
-import Image from "next/image";
-import Section from "../layout/Section";
-import { motion } from "framer-motion";
+import Image from "next/image"
+import { motion } from "framer-motion"
+
+import Section from "../layout/Section"
 
 const Header: React.FunctionComponent = () => {
   return (
-    <Section className="flex flex-row items-center justify-start gap-4 py-6 border-b max-sm:items-start">
+    <Section className="flex flex-row items-center justify-start gap-4 border-b py-6 max-sm:items-start">
       <motion.div
-        className="relative w-fit h-fit flex-shrink-0"
+        className="relative h-fit w-fit flex-shrink-0"
         whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
       >
@@ -21,7 +22,7 @@ const Header: React.FunctionComponent = () => {
           priority
         />
         <motion.div
-          className="absolute px-2 py-1 bg-background shadow rounded-full text-sm left-14 bottom-0 cursor-default select-none"
+          className="absolute bottom-0 left-14 cursor-default select-none rounded-full bg-background px-2 py-1 text-sm shadow"
           whileHover={{ scale: 1.1 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
@@ -29,10 +30,10 @@ const Header: React.FunctionComponent = () => {
         </motion.div>
       </motion.div>
       <div>
-        <h1 className="leading-snug font-semibold text-2xl tracking-tighter text-primary">
+        <h1 className="text-2xl font-semibold leading-snug tracking-tighter text-primary">
           👋 Hi, I am Aniket
         </h1>
-        <div className="leading-snug font-normal text-base text-muted-foreground mt-1">
+        <div className="mt-1 text-base font-normal leading-snug text-muted-foreground">
           <p>
             {
               "A half software engineer, full-time startup enthusiast from India📍."
@@ -42,7 +43,7 @@ const Header: React.FunctionComponent = () => {
         </div>
       </div>
     </Section>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

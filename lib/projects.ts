@@ -1,4 +1,4 @@
-import { ProjectItemProps } from "@/components/main/ProjectSection";
+import { ProjectItemProps } from "@/components/main/ProjectSection"
 
 export const getProjects = function (): ProjectItemProps[] {
   let projects: ProjectItemProps[] = [
@@ -37,7 +37,7 @@ export const getProjects = function (): ProjectItemProps[] {
       category: ["ui/ux"],
       status: "Open Source",
     },
-  ];
+  ]
 
-  return projects;
-};
+  return projects
+}

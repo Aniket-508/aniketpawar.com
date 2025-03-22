@@ -1,4 +1,4 @@
-import { ExperienceItemProps } from "@/components/main/ExperienceSection";
+import { ExperienceItemProps } from "@/components/main/ExperienceSection"
 
 export const getExperiences = function (): ExperienceItemProps[] {
   return [
@@ -149,5 +149,5 @@ export const getExperiences = function (): ExperienceItemProps[] {
         "Mongoose",
       ],
     },
-  ];
-};
+  ]
+}

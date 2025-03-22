@@ -1,15 +1,18 @@
-import type { Metadata } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
-import { MAIN_METADATA } from "@/lib/meta";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import "./globals.css";
-import Script from "next/script";
+import type { Metadata } from "next"
+import { Instrument_Serif, Inter } from "next/font/google"
+
+import { MAIN_METADATA } from "@/lib/meta"
+import { ThemeProvider } from "@/components/ThemeProvider"
+
+import "./globals.css"
+
+import Script from "next/script"
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
-});
+})
 
 const instrument_serif = Instrument_Serif({
   subsets: ["latin"],
@@ -17,7 +20,7 @@ const instrument_serif = Instrument_Serif({
   weight: ["400"],
   style: ["normal", "italic"],
   variable: "--font-instrument-serif",
-});
+})
 
 export const metadata: Metadata = {
   title: MAIN_METADATA.TITLE,
@@ -36,12 +39,12 @@ export const metadata: Metadata = {
     description: MAIN_METADATA.DESCRIPTION,
     images: MAIN_METADATA.IMAGE,
   },
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -65,5 +68,5 @@ export default function RootLayout({
         </Script>
       </body>
     </html>
-  );
+  )
 }

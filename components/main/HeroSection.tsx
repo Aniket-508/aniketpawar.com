@@ -1,13 +1,14 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import Section from "../layout/Section";
-import LinkText from "../ui/LinkText";
-import Title from "../ui/Title";
-import Callout from "./Callout";
-import Header from "./Header";
-import { Button } from "../ui/Button";
-import { CalendarClockIcon } from "lucide-react";
+import Link from "next/link"
+import { CalendarClockIcon } from "lucide-react"
+
+import Section from "../layout/Section"
+import { Button } from "../ui/Button"
+import LinkText from "../ui/LinkText"
+import Title from "../ui/Title"
+import Callout from "./Callout"
+import Header from "./Header"
 
 const HeroSection: React.FunctionComponent = () => {
   return (
@@ -15,7 +16,7 @@ const HeroSection: React.FunctionComponent = () => {
       <Header />
       <Section className="border-b">
         <Title>{"about me."}</Title>
-        <div className="prose leading-6 text-sm font-normal text-muted-foreground dark:prose-invert mt-4 max-w-full">
+        <div className="prose mt-4 max-w-full text-sm font-normal leading-6 text-muted-foreground dark:prose-invert">
           <p>
             Hey there! I&apos;m a software professional who is passionate about
             building customer-focused, design-centric products that prioritize
@@ -80,7 +81,7 @@ const HeroSection: React.FunctionComponent = () => {
             </Button>
             <LinkText
               href={"/resume.pdf"}
-              className="text-muted-foreground font-medium text-sm"
+              className="text-sm font-medium text-muted-foreground"
               preview={false}
             >
               {"Resume"}
@@ -89,7 +90,7 @@ const HeroSection: React.FunctionComponent = () => {
         </Callout>
       </Section>
     </main>
-  );
-};
+  )
+}
 
-export default HeroSection;
+export default HeroSection

@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 const Container: React.FunctionComponent<
   React.HTMLAttributes<HTMLDivElement>
@@ -7,7 +7,7 @@ const Container: React.FunctionComponent<
     <div className={cn("view-container", className)} {...attr}>
       {attr?.children}
     </div>
-  );
-};
+  )
+}
 
-export default Container;
+export default Container

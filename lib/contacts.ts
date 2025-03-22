@@ -1,5 +1,5 @@
-import { Icons } from "@/components/Icons";
-import { ContactItemProps } from "@/components/main/ContactSection";
+import { Icons } from "@/components/Icons"
+import { ContactItemProps } from "@/components/main/ContactSection"
 
 export const getContacts = function (): ContactItemProps[] {
   return [
@@ -43,5 +43,5 @@ export const getContacts = function (): ContactItemProps[] {
         url: "https://peerlist.io/aniket_pawar",
       },
     },
-  ];
-};
+  ]
+}

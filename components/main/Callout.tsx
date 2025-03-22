@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 const Callout: React.FunctionComponent<
   React.HTMLAttributes<HTMLDivElement>
@@ -6,14 +6,14 @@ const Callout: React.FunctionComponent<
   return (
     <div
       className={cn(
-        "rounded-lg bg-accent text-accent-foreground text-sm font-normal p-4 leading-6",
+        "rounded-lg bg-accent p-4 text-sm font-normal leading-6 text-accent-foreground",
         className
       )}
       {...attr}
     >
       {attr?.children}
     </div>
-  );
-};
+  )
+}
 
-export default Callout;
+export default Callout

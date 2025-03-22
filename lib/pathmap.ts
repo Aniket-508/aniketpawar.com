@@ -1,4 +1,4 @@
-import { PathItem } from "@/components/layout/Navbar";
+import { PathItem } from "@/components/layout/Navbar"
 
 export const getPathMap = function (): PathItem[] {
   return [
@@ -32,5 +32,5 @@ export const getPathMap = function (): PathItem[] {
       link: "/resume.pdf",
       isAvailable: true,
     },
-  ];
-};
+  ]
+}

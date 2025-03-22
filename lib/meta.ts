@@ -6,4 +6,4 @@ export const MAIN_METADATA = {
   IMAGE:
     "https://ik.imagekit.io/2oajjadqkz/portfolio-image.png?updatedAt=1708090929752",
   URL: `https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}`,
-};
+}

@@ -1,23 +1,25 @@
-import React from "react";
-import { getProjects } from "@/lib/projects";
-import { cn } from "@/lib/utils";
-import Section from "../layout/Section";
-import LinkText from "../ui/LinkText";
-import Title from "../ui/Title";
-import Tag from "../ui/Tag";
+import React from "react"
+
+import { getProjects } from "@/lib/projects"
+import { cn } from "@/lib/utils"
+
+import Section from "../layout/Section"
+import LinkText from "../ui/LinkText"
+import Tag from "../ui/Tag"
+import Title from "../ui/Title"
 
 interface ProjectItemProps extends React.HTMLAttributes<HTMLDivElement> {
-  projectTitle?: string;
+  projectTitle?: string
   projectData?: {
-    liveURL?: string;
-    githubURL?: string;
+    liveURL?: string
+    githubURL?: string
     relatedLinks?: Array<{
-      label?: string | React.ReactNode;
-      link?: string;
-    }>;
-  };
-  description?: string[];
-  tech?: string[];
+      label?: string | React.ReactNode
+      link?: string
+    }>
+  }
+  description?: string[]
+  tech?: string[]
   category: Array<
     | "design"
     | "community"
@@ -26,31 +28,31 @@ interface ProjectItemProps extends React.HTMLAttributes<HTMLDivElement> {
     | "design-system"
     | "static-website"
     | "full-stack"
-  >;
-  status?: "Ongoing" | "Open Source" | "Maintained";
+  >
+  status?: "Ongoing" | "Open Source" | "Maintained"
 }
 
 const parseProjectStatus = ({
   status = "Maintained",
 }: {
-  status: "Ongoing" | "Open Source" | "Maintained";
+  status: "Ongoing" | "Open Source" | "Maintained"
 }): string => {
   switch (status) {
     case "Ongoing":
-      return "🏗️ Ongoing";
+      return "🏗️ Ongoing"
     case "Open Source":
-      return "✨ Open Source";
+      return "✨ Open Source"
     case "Maintained":
-      return "👍🏽 Maintained";
+      return "👍🏽 Maintained"
     default:
-      return "";
+      return ""
   }
-};
+}
 
 const ProjectSection: React.FunctionComponent = () => {
   return (
     <Section
-      className="grid grid-cols-1 border-b justify-start gap-4"
+      className="grid grid-cols-1 justify-start gap-4 border-b"
       id="projects"
     >
       <Title>{"projects."}</Title>
@@ -58,8 +60,8 @@ const ProjectSection: React.FunctionComponent = () => {
         <ProjectItem {...project} key={projectIndex} />
       ))}
     </Section>
-  );
-};
+  )
+}
 
 const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
   projectTitle,
@@ -72,11 +74,11 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
   ...attr
 }) => {
   return (
-    <div className={cn("rounded-lg border p-4 space-y-1", className)} {...attr}>
-      <div className="flex items-center flex-wrap">
-        <h3 className="font-normal text-primary capitalize">{projectTitle}</h3>
+    <div className={cn("space-y-1 rounded-lg border p-4", className)} {...attr}>
+      <div className="flex flex-wrap items-center">
+        <h3 className="font-normal capitalize text-primary">{projectTitle}</h3>
         {status && (
-          <Tag className="bg-inherit hover:text-muted-foreground hover:bg-inherit">
+          <Tag className="bg-inherit hover:bg-inherit hover:text-muted-foreground">
             [
             {parseProjectStatus({
               status,
@@ -85,7 +87,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
           </Tag>
         )}
       </div>
-      <div className="text-sm flex flex-row items-center justify-start gap-1.5">
+      <div className="flex flex-row items-center justify-start gap-1.5 text-sm">
         {projectData?.liveURL && (
           <LinkText
             className="text-xs font-normal text-muted-foreground"
@@ -107,8 +109,8 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
         {projectData?.relatedLinks?.map(
           (
             relatedLinkItem: {
-              label?: string | React.ReactNode;
-              link?: string;
+              label?: string | React.ReactNode
+              link?: string
             },
             relatedLinkIndex: number
           ) => {
@@ -122,7 +124,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
                 >
                   {relatedLinkItem?.label}
                 </LinkText>
-              );
+              )
             }
           }
         )}
@@ -132,7 +134,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
           {description.map((descriptionItem, descriptionIndex) => (
             <li
               key={descriptionIndex}
-              className="font-normal text-muted-foreground text-sm list-disc list-outside"
+              className="list-outside list-disc text-sm font-normal text-muted-foreground"
             >
               {descriptionItem}
             </li>
@@ -140,7 +142,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
         </ul>
       )}
       <div className="flex items-center gap-2">
-        <p className="text-muted-foreground text-sm">category:</p>
+        <p className="text-sm text-muted-foreground">category:</p>
         <div className="flex flex-wrap gap-1">
           {category.map((categoryItem, tagIndex) => (
             <Tag key={tagIndex} className="font-mono">
@@ -150,9 +152,9 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProjectSection;
+export default ProjectSection
 
-export type { ProjectItemProps };
+export type { ProjectItemProps }

@@ -1,16 +1,18 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
-import { ArrowUpRight } from "lucide-react";
-import { HoverCard, HoverCardTrigger, HoverCardContent } from "./HoverCard";
-import { HoverCardTriggerProps } from "@radix-ui/react-hover-card";
+import { useState } from "react"
+import Image from "next/image"
+import { HoverCardTriggerProps } from "@radix-ui/react-hover-card"
+import { ArrowUpRight } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "./HoverCard"
 
 interface LinkTextProps extends HoverCardTriggerProps {
-  children?: React.ReactNode;
-  className?: string;
-  preview?: boolean;
+  children?: React.ReactNode
+  className?: string
+  preview?: boolean
 }
 
 const LinkText: React.FunctionComponent<LinkTextProps> = ({
@@ -22,13 +24,13 @@ const LinkText: React.FunctionComponent<LinkTextProps> = ({
     attr.href
       ? `https://v1.opengraph.11ty.dev/${encodeURIComponent(attr.href)}/onerror`
       : ""
-  );
+  )
 
   return (
     <HoverCard openDelay={500}>
       <HoverCardTrigger
         className={cn(
-          "flex flex-row items-center justify-start gap-0.5 text-base font-medium transition-all hover:text-primary relative after:bg-primary after:absolute after:h-[1.5px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 hover:gap-1 active:text-primary",
+          "relative flex flex-row items-center justify-start gap-0.5 text-base font-medium transition-all after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:gap-1 hover:text-primary hover:after:w-full active:text-primary",
           className
         )}
         {...attr}
@@ -48,13 +50,13 @@ const LinkText: React.FunctionComponent<LinkTextProps> = ({
             style={{ width: "100%", height: "auto" }}
             alt={`${attr.href} preview`}
             onError={() => {
-              setSrc("https://placehold.co/1200x630?text=Preview+Not+Found");
+              setSrc("https://placehold.co/1200x630?text=Preview+Not+Found")
             }}
           />
         </HoverCardContent>
       )}
     </HoverCard>
-  );
-};
+  )
+}
 
-export default LinkText;
+export default LinkText
