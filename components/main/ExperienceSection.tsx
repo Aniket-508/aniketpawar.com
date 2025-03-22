@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Section from "../layout/Section";
 import LinkText from "../ui/LinkText";
 import Title from "../ui/Title";
+import Tag from "../ui/Tag";
 
 interface ExperienceItemProps extends React.HTMLAttributes<HTMLDivElement> {
   experienceTitle: React.ReactNode | string;
@@ -47,13 +48,13 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
   ...attr
 }) => {
   return (
-    <div className={cn("border p-4", className)} {...attr}>
-      <div className="flex flex-row items-start justify-between max-md:flex-col max-md:justify-start max-md:gap-2 max-sm:w-[320px]">
-        <span>
-          <h3 className="font-normal text-primary w-[50ch] max-md:w-[30ch]">
-            {experienceTitle + ", " + experienceOrg?.name}
+    <div className={cn("rounded-lg border p-4 space-y-4", className)} {...attr}>
+      <div className="flex items-start justify-between flex-wrap gap-2">
+        <div>
+          <h3 className="font-normal text-primary">
+            {`${experienceTitle}, ${experienceOrg?.name}`}
           </h3>
-          <div className="text-sm flex flex-row items-center justify-start gap-1.5">
+          <div className="text-sm flex items-center justify-start gap-1.5">
             {"at, "}
             {typeof experienceOrg?.link === "string" ? (
               <LinkText
@@ -69,13 +70,13 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
               </span>
             )}
           </div>
-        </span>
+        </div>
         <p className="font-normal text-muted-foreground text-sm">
           {experienceStatus?.startAt + " - " + experienceStatus?.endAt}
         </p>
       </div>
       {experienceDescription?.length ? (
-        <ul className="mt-4 flex flex-col items-start justify-start gap-2 pl-3">
+        <ul className="flex flex-col items-start justify-start gap-2 pl-3">
           {experienceDescription.map((descriptionItem, index) => (
             <li
               key={index}
@@ -86,7 +87,7 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
         </ul>
       ) : null}
       {experienceTech?.length ? (
-        <div className="mt-3 flex gap-2">
+        <div className="flex gap-2">
           <p className="font-normal text-muted-foreground text-sm">tech:</p>
           <div className="flex flex-wrap gap-1">
             {experienceTech.map((tech) => (
@@ -94,9 +95,8 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
                 key={tech}
                 href={techLinks[tech as keyof typeof techLinks]}
                 target="_blank"
-                className="text-xs cursor-pointer rounded px-2 py-1 bg-muted w-fit text-muted-foreground hover:bg-primary hover:text-primary-foreground"
               >
-                {tech}
+                <Tag className="font-mono cursor-pointer">{tech}</Tag>
               </Link>
             ))}
           </div>

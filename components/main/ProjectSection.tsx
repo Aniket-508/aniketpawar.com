@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import Section from "../layout/Section";
 import LinkText from "../ui/LinkText";
 import Title from "../ui/Title";
+import Tag from "../ui/Tag";
 
 interface ProjectItemProps extends React.HTMLAttributes<HTMLDivElement> {
   projectTitle?: string;
@@ -17,7 +18,7 @@ interface ProjectItemProps extends React.HTMLAttributes<HTMLDivElement> {
   };
   description?: string[];
   tech?: string[];
-  category?: Array<
+  category: Array<
     | "design"
     | "community"
     | "accessibilty"
@@ -71,80 +72,81 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
   ...attr
 }) => {
   return (
-    <div className={cn("border p-4", className)} {...attr}>
-      <div className="flex flex-row items-start justify-between max-md:flex-col max-md:justify-start max-md:gap-2 max-sm:w-[320px]">
-        <span>
-          <h3 className="font-normal text-primary capitalize w-[46ch] max-md:w-[30ch]">
-            {projectTitle}
-          </h3>
-          <div className="text-sm flex flex-row items-center justify-start gap-1.5">
-            {projectData?.liveURL && (
-              <LinkText
-                className="text-xs font-normal text-muted-foreground"
-                href={projectData?.liveURL}
-                target={"_blank"}
-              >
-                {"Live Preview"}
-              </LinkText>
-            )}
-            {projectData?.githubURL && (
-              <LinkText
-                className="text-xs font-normal text-muted-foreground"
-                href={projectData?.githubURL}
-                target={"_blank"}
-              >
-                {"GitHub"}
-              </LinkText>
-            )}
-            {projectData?.relatedLinks?.map(
-              (
-                relatedLinkItem: {
-                  label?: string | React.ReactNode;
-                  link?: string;
-                },
-                relatedLinkIndex: number
-              ) => {
-                if (relatedLinkItem?.link) {
-                  return (
-                    <LinkText
-                      className="text-xs font-normal text-muted-foreground"
-                      href={relatedLinkItem?.link}
-                      target={"_blank"}
-                      key={relatedLinkIndex}
-                    >
-                      {relatedLinkItem?.label}
-                    </LinkText>
-                  );
-                }
-              }
-            )}
-          </div>
-        </span>
-      </div>
-      <div>
+    <div className={cn("rounded-lg border p-4 space-y-1", className)} {...attr}>
+      <div className="flex items-center flex-wrap">
+        <h3 className="font-normal text-primary capitalize">{projectTitle}</h3>
         {status && (
-          <p className="my-2 text-xs rounded px-2 py-1 bg-muted w-fit text-muted-foreground hover:bg-primary hover:text-primary-foreground">
+          <Tag className="bg-inherit hover:text-muted-foreground hover:bg-inherit">
+            [
             {parseProjectStatus({
               status,
             })}
-          </p>
+            ]
+          </Tag>
         )}
-        {description?.length && (
-          <ul className="mt-3 flex flex-col items-start justify-start gap-2 pl-3">
-            {description.map((descriptionItem, descriptionIndex) => (
-              <li
-                key={descriptionIndex}
-                className="font-normal text-muted-foreground text-sm list-disc list-outside"
-              >
-                {descriptionItem}
-              </li>
-            ))}
-          </ul>
+      </div>
+      <div className="text-sm flex flex-row items-center justify-start gap-1.5">
+        {projectData?.liveURL && (
+          <LinkText
+            className="text-xs font-normal text-muted-foreground"
+            href={projectData?.liveURL}
+            target={"_blank"}
+          >
+            {"Live Preview"}
+          </LinkText>
         )}
-        <div className="mt-1">
-          <span className="text-sm text-muted-foreground">
-            {"category: " + category}
-          </span>
+        {projectData?.githubURL && (
+          <LinkText
+            className="text-xs font-normal text-muted-foreground"
+            href={projectData?.githubURL}
+            target={"_blank"}
+          >
+            {"GitHub"}
+          </LinkText>
+        )}
+        {projectData?.relatedLinks?.map(
+          (
+            relatedLinkItem: {
+              label?: string | React.ReactNode;
+              link?: string;
+            },
+            relatedLinkIndex: number
+          ) => {
+            if (relatedLinkItem?.link) {
+              return (
+                <LinkText
+                  className="text-xs font-normal text-muted-foreground"
+                  href={relatedLinkItem?.link}
+                  target={"_blank"}
+                  key={relatedLinkIndex}
+                >
+                  {relatedLinkItem?.label}
+                </LinkText>
+              );
+            }
+          }
+        )}
+      </div>
+      {description?.length && (
+        <ul className="mt-3 flex flex-col items-start justify-start gap-2 pl-3">
+          {description.map((descriptionItem, descriptionIndex) => (
+            <li
+              key={descriptionIndex}
+              className="font-normal text-muted-foreground text-sm list-disc list-outside"
+            >
+              {descriptionItem}
+            </li>
+          ))}
+        </ul>
+      )}
+      <div className="flex items-center gap-2">
+        <p className="text-muted-foreground text-sm">category:</p>
+        <div className="flex flex-wrap gap-1">
+          {category.map((categoryItem, tagIndex) => (
+            <Tag key={tagIndex} className="font-mono">
+              {categoryItem}
+            </Tag>
+          ))}
         </div>
       </div>
     </div>

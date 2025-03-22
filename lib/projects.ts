@@ -8,6 +8,7 @@ export const getProjects = function (): ProjectItemProps[] {
         liveURL: "https://www.peerlistpubli.sh/",
       },
       category: ["ui/ux", "full-stack"],
+      status: "Maintained",
     },
     {
       projectTitle: "Indian Quotes API",
@@ -16,14 +17,16 @@ export const getProjects = function (): ProjectItemProps[] {
         liveURL: "https://indian-quotes-api.vercel.app/",
       },
       category: ["ui/ux", "full-stack"],
+      status: "Open Source",
     },
     {
-      projectTitle: "Instagram Posts Generator",
+      projectTitle: "IG Posts Generator",
       projectData: {
         githubURL: "https://github.com/Aniket-508/instagram-posts-generator",
         liveURL: "https://instagram-posts-generator.vercel.app/",
       },
       category: ["ui/ux", "full-stack"],
+      status: "Open Source",
     },
     {
       projectTitle: "Typeform Clone",
@@ -32,6 +35,7 @@ export const getProjects = function (): ProjectItemProps[] {
         liveURL: "https://typeform-clone-aniket-508.vercel.app/",
       },
       category: ["ui/ux"],
+      status: "Open Source",
     },
   ];
 

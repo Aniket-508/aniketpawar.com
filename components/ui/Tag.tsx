@@ -6,7 +6,7 @@ const Tag: React.FunctionComponent<TagProps> = ({ className, ...attr }) => {
   return (
     <span
       className={cn(
-        "tag px-2 py-1 rounded bg-accent text-accent-foreground border border-transparent text-sm flex flex-row items-center justify-center gap-1 w-fit h-auto hover:bg-blue-200 cursor-default",
+        "px-2 py-1 rounded bg-muted text-muted-foreground border border-transparent text-xs flex items-center justify-center gap-1 w-fit cursor-default hover:bg-primary hover:text-primary-foreground",
         className
       )}
       {...attr}
