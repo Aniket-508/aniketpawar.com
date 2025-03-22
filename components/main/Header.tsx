@@ -7,7 +7,7 @@ import Section from "../layout/Section"
 
 const Header: React.FunctionComponent = () => {
   return (
-    <Section className="flex flex-row items-center justify-start gap-4 border-b py-6 max-sm:items-start">
+    <Section id="profile" className="flex flex-row items-center justify-start gap-4 border-b py-6 max-sm:items-start animation-delay-100">
       <motion.div
         className="relative h-fit w-fit flex-shrink-0"
         whileHover={{ scale: 1.1 }}

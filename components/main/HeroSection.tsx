@@ -14,7 +14,7 @@ const HeroSection: React.FunctionComponent = () => {
   return (
     <main id="hero">
       <Header />
-      <Section id="about" className="border-b">
+      <Section id="about" className="border-b animation-delay-300">
         <Title>{"about me."}</Title>
         <div className="prose mt-4 max-w-full text-sm font-normal leading-6 text-muted-foreground dark:prose-invert">
           <p>

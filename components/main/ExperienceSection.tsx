@@ -27,7 +27,7 @@ interface ExperienceItemProps extends React.HTMLAttributes<HTMLDivElement> {
 const ExperienceSection: React.FunctionComponent = () => {
   return (
     <Section
-      className="grid grid-cols-1 justify-start gap-4 border-b"
+      className="animation-delay-500 grid grid-cols-1 justify-start gap-4 border-b"
       id="experience"
     >
       <Title>{"worked as."}</Title>

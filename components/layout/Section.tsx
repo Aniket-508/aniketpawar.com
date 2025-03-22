@@ -7,7 +7,7 @@ const Section: React.FunctionComponent<HTMLAttributes<HTMLDivElement>> = ({
   ...attr
 }) => {
   return (
-    <section className={cn("p-4", className)} {...attr}>
+    <section className={cn("p-4 animate-in fade-in duration-1000 fill-mode-both", className)} {...attr}>
       {attr?.children}
     </section>
   )

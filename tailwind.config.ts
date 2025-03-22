@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss"
 
+const plugin = require("tailwindcss/plugin")
+
 const config: Config = {
   darkMode: ["class"],
   content: [
@@ -67,6 +69,23 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("tailwindcss-animate"),
+    plugin(({ matchUtilities, theme }) => {
+      matchUtilities(
+        {
+          "animation-delay": (value) => {
+            return {
+              "animation-delay": value,
+            }
+          },
+        },
+        {
+          values: theme("transitionDelay"),
+        }
+      )
+    }),
+  ],
 }
 export default config
