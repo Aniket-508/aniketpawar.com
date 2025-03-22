@@ -8,6 +8,7 @@ export const getExperiences = function (): ExperienceItemProps[] {
         "Revamped Live Market on the <u>DART</u> dashboard using Golden Layout, making it more intuitive & thereby simplifying the trading flow.",
         "Built Bonds Search & Detailed pages using Golden Layout, driving the development of the <u>FinD</u> dashboard.",
         "Led the migration of the DART dashboard from Nuxt2 & BootstrapVue to Nuxt3 & PrimeVue for improved functionality",
+        "Developed a <u>scalable design system</u> with PrimeVue 4 styled mode, collaborating closely with designers to ensure consistency, accessibility, and seamless user experience.",
         "Enhanced web performance on the DART dashboard by resolving critical issues.",
       ],
       experienceOrg: {
