@@ -1,4 +1,3 @@
-import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -48,9 +47,9 @@ function NavItem({ item }: Readonly<{ item: PathItem }>) {
 
 const Navbar: React.FunctionComponent = () => {
   return (
-    <nav className="view-container sticky top-0 z-10 flex items-center justify-between border-x border-b bg-background bg-opacity-30 px-4 py-2 backdrop-blur-lg backdrop-filter">
+    <nav className="view-container sticky top-0 z-10 flex items-center justify-between border-x border-b px-4 py-2 backdrop-blur-lg">
       <Link href="/">
-        <Image src="/icon.svg" width={20} height={20} alt="ap-logo" priority />
+        <Icons.logo className="h-5 w-5" />
       </Link>
       {/* <ul className="flex flex-row items-center justify-end gap-3">
         {getPathMap()?.map((pathMapItem: PathItem, pathMapIndex: number) => (
