@@ -17,7 +17,7 @@ interface ContactItemProps extends React.HTMLAttributes<HTMLDivElement> {
 const ContactSection: React.FunctionComponent = () => {
   return (
     <Section
-      className="grid grid-cols-1 justify-start gap-4 pb-12"
+      className="grid grid-cols-1 justify-start gap-4 pb-6"
       id="socials"
     >
       <Title>{"socials."}</Title>

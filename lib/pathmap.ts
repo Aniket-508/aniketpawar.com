@@ -1,6 +1,6 @@
-import { PathMapProps } from "@/components/layout/Navbar";
+import { PathItem } from "@/components/layout/Navbar";
 
-export const getPathMap = function (): PathMapProps[] {
+export const getPathMap = function (): PathItem[] {
   return [
     {
       pathType: "internal",

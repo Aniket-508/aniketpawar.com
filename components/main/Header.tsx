@@ -6,22 +6,22 @@ import { motion } from "framer-motion";
 
 const Header: React.FunctionComponent = () => {
   return (
-    <Section className="flex flex-row items-center justify-start gap-4 pt-12 border-b max-sm:items-start">
+    <Section className="flex flex-row items-center justify-start gap-4 py-6 border-b max-sm:items-start">
       <motion.div
-        className="profile-icon-wrapper relative w-fit h-fit"
+        className="relative w-fit h-fit flex-shrink-0"
         whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
       >
         <Image
           src={"/profile.jpg"}
           alt="aniket-profile"
-          width={"80"}
-          height={"80"}
+          width={80}
+          height={80}
           className="rounded-full transition-all hover:grayscale"
           priority
         />
         <motion.div
-          className="box icon-content-wrapper animation-delay absolute px-2 py-1 bg-background shadow rounded-full text-sm left-14 bottom-0 cursor-default select-none max-sm:left-8 max-sm:text-xs max-sm:px-1 max-sm:py-0.5"
+          className="absolute px-2 py-1 bg-background shadow rounded-full text-sm left-14 bottom-0 cursor-default select-none"
           whileHover={{ scale: 1.1 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >

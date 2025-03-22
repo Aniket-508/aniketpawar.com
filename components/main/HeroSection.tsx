@@ -7,6 +7,7 @@ import Title from "../ui/Title";
 import Callout from "./Callout";
 import Header from "./Header";
 import { Button } from "../ui/Button";
+import { CalendarClockIcon } from "lucide-react";
 
 const HeroSection: React.FunctionComponent = () => {
   return (
@@ -70,9 +71,11 @@ const HeroSection: React.FunctionComponent = () => {
             {"Interested in working together? Feel free to schedule a meet!"}
           </p>
           <div className="flex flex-row items-center justify-start gap-4">
-            <Button asChild>
+            <Button asChild className="gap-1">
               <Link href="https://cal.com/aniket-pawar" target="_blank">
-                Schedule a meet / cal.com
+                Schedule a meet /{" "}
+                <CalendarClockIcon className="inline sm:hidden" />
+                <span className="hidden sm:inline">cal.com</span>
               </Link>
             </Button>
             <LinkText
