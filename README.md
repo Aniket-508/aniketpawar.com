@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+
+[![Start](https://img.shields.io/github/stars/Aniket-508/aniketpawar.com?color=yellow&style=flat&label=%E2%AD%90%20stars)](https://github.com/Aniket-508/aniketpawar.com/stargazers)
+[![License](http://img.shields.io/:license-MIT-green.svg?style=flat)](https://github.com/Aniket-508/aniketpawar.com/blob/main/LICENSE)
+
+</div>
+
+[![Image](https://ik.imagekit.io/2oajjadqkz/portfolio-image.png?updatedAt=1708090929752 "Portfolio Front Page")](https://aniket-pawar.vercel.app/)
+
+## Features
+
+- Light & dark theme interface
+- Mobile-first responsive design
+- Server components architecture
+- Websites preview hover cards
+- CSS animations with slide/fade effects
+- Analytics by Microsoft Clarity
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js installed on your system.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   git clone https://github.com/Aniket-508/aniketpawar.com.git
+   ```
 
-## Learn More
+2. Navigate to the project directory:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   cd aniketpawar.com
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Install dependencies:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```bash
+   pnpm i
+   ```
 
-## Deploy on Vercel
+4. Start the server:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   pnpm dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+5. The server will start at `http://localhost:3000`.
+
+## Contribution
+
+Contributions are welcome! If you have suggestions or would like to add more quotes, feel free to submit a pull request.
+
+### Steps to Contribute
+
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature-branch-name
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Added new feature"
+   ```
+4. Push the branch:
+   ```bash
+   git push origin feature-branch-name
+   ```
+5. Open a pull request on GitHub.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+If you have any questions or feedback, feel free to contact me at:
+
+- **Email**: pawaraniket508@gmail.com
+- **GitHub**: [Aniket-508](https://github.com/Aniket-508)
