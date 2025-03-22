@@ -72,10 +72,10 @@ const config: Config = {
   plugins: [
     require("@tailwindcss/typography"),
     require("tailwindcss-animate"),
-    plugin(({ matchUtilities, theme }) => {
+    plugin(({ matchUtilities, theme }: any) => {
       matchUtilities(
         {
-          "animation-delay": (value) => {
+          "animation-delay": (value: string) => {
             return {
               "animation-delay": value,
             }
