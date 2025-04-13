@@ -17,7 +17,7 @@ const Header: React.FunctionComponent = () => {
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
       >
         <Image
-          src={"/profile.png"}
+          src={"/profile.jpg"}
           alt="aniket-profile"
           width={80}
           height={80}
