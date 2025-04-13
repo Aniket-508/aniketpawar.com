@@ -7,14 +7,17 @@ import Section from "../layout/Section"
 
 const Header: React.FunctionComponent = () => {
   return (
-    <Section id="profile" className="flex flex-row items-center justify-start gap-4 border-b py-6 max-sm:items-start animation-delay-100">
+    <Section
+      id="profile"
+      className="flex flex-row items-center justify-start gap-4 border-b py-6 animation-delay-100 max-sm:items-start"
+    >
       <motion.div
         className="relative h-fit w-fit flex-shrink-0"
         whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
       >
         <Image
-          src={"/profile.jpg"}
+          src={"/profile.png"}
           alt="aniket-profile"
           width={80}
           height={80}
