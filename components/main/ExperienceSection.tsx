@@ -4,6 +4,7 @@ import { getExperiences } from "@/lib/experiences"
 import { techLinks } from "@/lib/tech"
 import { cn } from "@/lib/utils"
 
+import { CopyLink } from "../CopyLink"
 import Section from "../layout/Section"
 import LinkText from "../ui/LinkText"
 import Tag from "../ui/Tag"
@@ -30,7 +31,13 @@ const ExperienceSection: React.FunctionComponent = () => {
       className="grid grid-cols-1 justify-start gap-4 border-b animation-delay-500"
       id="experience"
     >
-      <Title>{"worked as."}</Title>
+      <span className="group/experience flex items-center space-x-2">
+        <Title>{"worked as."}</Title>
+        <CopyLink
+          title={"Experience"}
+          className="hidden size-4 group-hover/experience:inline"
+        />
+      </span>
       {getExperiences()?.map(
         (experience: ExperienceItemProps, experienceIndex: number) => (
           <ExperienceItem {...experience} key={experienceIndex} />

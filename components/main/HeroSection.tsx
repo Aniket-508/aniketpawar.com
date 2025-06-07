@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { CalendarClockIcon } from "lucide-react"
 
+import { CopyLink } from "../CopyLink"
 import Section from "../layout/Section"
 import { Button } from "../ui/Button"
 import LinkText from "../ui/LinkText"
@@ -15,7 +16,13 @@ const HeroSection: React.FunctionComponent = () => {
     <main id="hero">
       <Header />
       <Section id="about" className="border-b animation-delay-300">
-        <Title>{"about me."}</Title>
+        <span className="group/about flex items-center space-x-2">
+          <Title>{"about me."}</Title>
+          <CopyLink
+            title={"About"}
+            className="hidden size-4 group-hover/about:inline"
+          />
+        </span>
         <div className="prose mt-4 max-w-full text-sm font-normal leading-6 text-muted-foreground dark:prose-invert">
           <p>
             Hey there! I&apos;m a software professional who is passionate about

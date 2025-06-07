@@ -3,6 +3,7 @@ import React from "react"
 import { getProjects } from "@/lib/projects"
 import { cn } from "@/lib/utils"
 
+import { CopyLink } from "../CopyLink"
 import Section from "../layout/Section"
 import LinkText from "../ui/LinkText"
 import Tag from "../ui/Tag"
@@ -55,7 +56,13 @@ const ProjectSection: React.FunctionComponent = () => {
       className="grid grid-cols-1 justify-start gap-4 border-b"
       id="projects"
     >
-      <Title>{"projects."}</Title>
+      <span className="group/projects flex items-center space-x-2">
+        <Title>{"projects."}</Title>
+        <CopyLink
+          title={"Projects"}
+          className="hidden size-4 group-hover/projects:inline"
+        />
+      </span>
       {getProjects()?.map((project: ProjectItemProps, projectIndex: number) => (
         <ProjectItem {...project} key={projectIndex} />
       ))}

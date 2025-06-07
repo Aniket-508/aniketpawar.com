@@ -2,6 +2,7 @@ import React from "react"
 
 import { getContacts } from "@/lib/contacts"
 
+import { CopyLink } from "../CopyLink"
 import { IconProps } from "../Icons"
 import Section from "../layout/Section"
 import LinkText from "../ui/LinkText"
@@ -19,7 +20,13 @@ interface ContactItemProps extends React.HTMLAttributes<HTMLDivElement> {
 const ContactSection: React.FunctionComponent = () => {
   return (
     <Section className="grid grid-cols-1 justify-start gap-4 pb-6" id="socials">
-      <Title>{"socials."}</Title>
+      <span className="group/social flex items-center space-x-2">
+        <Title>{"socials."}</Title>
+        <CopyLink
+          title={"Socials"}
+          className="hidden size-4 group-hover/social:inline"
+        />
+      </span>
       <Section className="grid grid-cols-1 justify-start gap-4 p-0">
         {getContacts()?.map((contact, contactIndex) => (
           <ContactItem {...contact} key={contactIndex} />
