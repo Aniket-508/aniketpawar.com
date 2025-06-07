@@ -8,8 +8,9 @@ export const getExperiences = function (): ExperienceItemProps[] {
         "Revamped Live Market on the <u>DART</u> dashboard using Golden Layout, making it more intuitive & thereby simplifying the trading flow.",
         "Built Bonds Search & Detailed pages using Golden Layout, driving the development of the <u>FinD</u> dashboard.",
         "Led the migration of the DART dashboard from Nuxt2 & BootstrapVue to Nuxt3 & PrimeVue for improved functionality",
-        "Developed a <u>scalable design system</u> with PrimeVue 4 styled mode, collaborating closely with designers to ensure consistency, accessibility, and seamless user experience.",
-        "Enhanced web performance on the DART dashboard by resolving critical issues.",
+        "Developed a scalable design system with PrimeVue 4 styled mode, collaborating closely with designers to ensure consistency, accessibility, and seamless user experience.",
+        "Developed a modularized chat app with Sendbird Chat SDK, enabling <u>AI-driven real-time quote detection.</u>",
+        "Implemented <u>AI-driven trade ticket generation</u> for direct client trades and complex broker workflows (single/double), enhancing order management to boost efficiency.",
       ],
       experienceOrg: {
         name: "Harmoney",
@@ -18,7 +19,7 @@ export const getExperiences = function (): ExperienceItemProps[] {
       },
       experienceStatus: {
         startAt: "March, 2024",
-        endAt: "Present",
+        endAt: "May, 2025",
       },
       experienceTech: [
         "Nuxt.js",
@@ -32,6 +33,7 @@ export const getExperiences = function (): ExperienceItemProps[] {
         "GoldenLayout",
         "NuxtAuth",
         "FormKit",
+        "Sendbird Chat SDK",
       ],
     },
     {

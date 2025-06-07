@@ -32,4 +32,6 @@ export const techLinks = {
   GoldenLayout: "https://golden-layout.com/",
   NuxtAuth: "https://auth.sidebase.io/",
   FormKit: "https://formkit.com/",
+  "Sendbird Chat SDK":
+    "https://sendbird.com/docs/chat/sdk/v4/javascript/overview",
 }
