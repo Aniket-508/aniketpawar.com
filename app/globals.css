@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.view-container {
-  @apply box-border mx-auto;
-  @apply w-[900px] max-2xl:w-[800px] max-xl:w-[720px] max-lg:w-[640px] max-md:w-[560px] max-sm:w-[340px];
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -64,7 +59,16 @@
 }
 
 @layer base {
-  body {
-    @apply bg-background text-foreground font-sans;
+  * {
+    @apply border-border;
   }
+
+  body {
+    @apply bg-background font-sans text-foreground;
+  }
+}
+
+.view-container {
+  @apply mx-auto box-border;
+  @apply w-[900px] max-2xl:w-[800px] max-xl:w-[720px] max-lg:w-[640px] max-md:w-[560px] max-sm:w-[340px];
 }
