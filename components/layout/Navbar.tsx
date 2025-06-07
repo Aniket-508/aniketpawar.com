@@ -3,8 +3,10 @@ import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 
+import { GitHubLink } from "../GithubLink"
 import { Icons } from "../Icons"
 import { ModeToggle } from "../ui/ModeToggle"
+import { Separator } from "../ui/Separator"
 
 type PathType = "internal" | "external"
 
@@ -51,18 +53,16 @@ const Navbar: React.FunctionComponent = () => {
       <Link href="/">
         <Icons.logo className="h-5 w-5" />
       </Link>
+
       {/* <ul className="flex flex-row items-center justify-end gap-3">
         {getPathMap()?.map((pathMapItem: PathItem, pathMapIndex: number) => (
           <NavItem key={pathMapIndex} item={pathMapItem} />
         ))}
       </ul> */}
-      <div className="flex items-center gap-4">
-        <Link
-          href={"https://github.com/Aniket-508/aniketpawar.com"}
-          target="_blank"
-        >
-          <Icons.github className="h-4 w-4" />
-        </Link>
+
+      <div className="flex items-center gap-2">
+        <GitHubLink />
+        <Separator orientation="vertical" className="!h-4" />
         <ModeToggle />
       </div>
     </nav>
