@@ -88,6 +88,7 @@ const HeroSection: React.FunctionComponent = () => {
             </Button>
             <LinkText
               href={"/resume.pdf"}
+              target="_blank"
               className="text-sm font-medium text-muted-foreground"
               preview={false}
             >
