@@ -3,7 +3,6 @@ import Link from "next/link"
 import { CopyLink } from "../CopyLink"
 import Section from "../layout/Section"
 import Title from "../ui/Title"
-import Header from "./Header"
 
 const HeroSection: React.FunctionComponent = () => {
   return (
