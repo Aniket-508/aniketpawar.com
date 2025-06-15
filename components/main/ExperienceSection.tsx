@@ -102,9 +102,8 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
       {experienceTech?.length ? (
         <div className="flex flex-wrap gap-1">
           {experienceTech.map((tech, index) => (
-            <div className="flex items-center gap-1">
+            <div key={tech} className="flex items-center gap-1">
               <Link
-                key={tech}
                 href={techLinks[tech as keyof typeof techLinks]}
                 target="_blank"
               >

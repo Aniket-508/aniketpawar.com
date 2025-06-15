@@ -153,10 +153,8 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
       )}
       <div className="flex flex-wrap gap-1">
         {category.map((categoryItem, tagIndex) => (
-          <div className="flex items-center gap-1">
-            <Tag key={tagIndex} className="font-mono">
-              {categoryItem}
-            </Tag>
+          <div key={tagIndex} className="flex items-center gap-1">
+            <Tag className="font-mono">{categoryItem}</Tag>
             <span className="text-xs text-secondary-foreground opacity-70">
               {tagIndex !== category.length - 1 && "/"}
             </span>
