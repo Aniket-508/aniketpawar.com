@@ -4,9 +4,9 @@ const Container: React.FunctionComponent<
   React.HTMLAttributes<HTMLDivElement>
 > = ({ className, ...attr }) => {
   return (
-    <div className={cn("view-container", className)} {...attr}>
+    <main className={cn("mx-auto w-full max-w-screen-sm", className)} {...attr}>
       {attr?.children}
-    </div>
+    </main>
   )
 }
 

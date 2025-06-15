@@ -49,7 +49,7 @@ function NavItem({ item }: Readonly<{ item: PathItem }>) {
 
 const Navbar: React.FunctionComponent = () => {
   return (
-    <nav className="view-container sticky top-0 z-10 flex items-center justify-between border-x border-b px-4 py-2 backdrop-blur-lg">
+    <nav className="sticky top-0 z-10 mx-auto flex w-full max-w-screen-sm items-center justify-between border-x border-b px-4 py-2 backdrop-blur-lg">
       <Link href="/">
         <Icons.logo className="h-5 w-5" />
       </Link>

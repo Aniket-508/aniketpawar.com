@@ -9,7 +9,7 @@ const Header: React.FunctionComponent = () => {
   return (
     <Section
       id="profile"
-      className="flex flex-row items-center justify-start gap-4 border-b py-6 animation-delay-100 max-sm:items-start"
+      className="flex flex-row items-center justify-start gap-4 pb-6 animation-delay-100 max-sm:items-start"
     >
       <motion.div
         className="relative h-fit w-fit flex-shrink-0"
@@ -19,13 +19,13 @@ const Header: React.FunctionComponent = () => {
         <Image
           src={"/profile.jpg"}
           alt="aniket-profile"
-          width={80}
-          height={80}
+          width={64}
+          height={64}
           className="rounded-full transition-all hover:grayscale"
           priority
         />
         <motion.div
-          className="absolute bottom-0 left-14 cursor-default select-none rounded-full bg-background px-2 py-1 text-sm shadow"
+          className="absolute bottom-0 left-12 cursor-default select-none rounded-full bg-background px-1 py-0.5 text-sm shadow"
           whileHover={{ scale: 1.1 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
@@ -34,14 +34,14 @@ const Header: React.FunctionComponent = () => {
       </motion.div>
       <div>
         <h1 className="text-2xl font-semibold leading-snug tracking-tighter text-primary">
-          👋 Hi, I am Aniket
+          Hi, I am Aniket 👋
         </h1>
         <div className="mt-1 text-base font-normal leading-snug text-muted-foreground">
-          <p>
+          {/* <p>
             {
               "A half software engineer, full-time startup enthusiast from India📍"
             }
-          </p>
+          </p> */}
           <p>{new Date().getFullYear() - 2000 + ", he/him"}</p>
         </div>
       </div>

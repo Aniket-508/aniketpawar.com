@@ -130,7 +130,7 @@ export const getExperiences = function (): ExperienceItemProps[] {
         "Built a blog site along with an admin panel having CRUD functionalities.",
       ],
       experienceOrg: {
-        name: "e-InnoSec Advisory and Consulting",
+        name: "e-InnoSec",
         link: "https://www.einnosec.com",
         websiteDisplayName: "einnosec.com",
       },

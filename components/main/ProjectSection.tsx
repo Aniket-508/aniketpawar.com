@@ -53,7 +53,7 @@ const parseProjectStatus = ({
 const ProjectSection: React.FunctionComponent = () => {
   return (
     <Section
-      className="grid grid-cols-1 justify-start gap-4 border-b"
+      className="grid grid-cols-1 justify-start gap-8 animation-delay-500"
       id="projects"
     >
       <span className="group/projects flex items-center space-x-2">
@@ -81,61 +81,64 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
   ...attr
 }) => {
   return (
-    <div className={cn("space-y-1 rounded-lg border p-4", className)} {...attr}>
-      <div className="flex flex-wrap items-center">
-        <h3 className="font-normal capitalize text-primary">{projectTitle}</h3>
-        {status && (
-          <Tag className="bg-inherit hover:bg-inherit hover:text-muted-foreground">
-            [
-            {parseProjectStatus({
-              status,
-            })}
-            ]
-          </Tag>
-        )}
-      </div>
-      <div className="flex flex-row items-center justify-start gap-1.5 text-sm">
-        {projectData?.liveURL && (
-          <LinkText
-            className="text-xs font-normal text-muted-foreground"
-            href={projectData?.liveURL}
-            target={"_blank"}
-          >
-            {"Live Preview"}
-          </LinkText>
-        )}
-        {projectData?.githubURL && (
-          <LinkText
-            className="text-xs font-normal text-muted-foreground"
-            href={projectData?.githubURL}
-            target={"_blank"}
-          >
-            {"GitHub"}
-          </LinkText>
-        )}
-        {projectData?.relatedLinks?.map(
-          (
-            relatedLinkItem: {
-              label?: string | React.ReactNode
-              link?: string
-            },
-            relatedLinkIndex: number
-          ) => {
-            if (relatedLinkItem?.link) {
-              return (
-                <LinkText
-                  className="text-xs font-normal text-muted-foreground"
-                  href={relatedLinkItem?.link}
-                  target={"_blank"}
-                  key={relatedLinkIndex}
-                >
-                  {relatedLinkItem?.label}
-                </LinkText>
-              )
+    <div className={cn("space-y-2 rounded-lg", className)} {...attr}>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <h3 className="font-normal capitalize text-primary">
+            {projectTitle}
+          </h3>
+          {status && (
+            <Tag className="max-sm:hidden">
+              [{parseProjectStatus({ status })}]
+            </Tag>
+          )}
+        </div>
+        <div className="flex flex-row items-center justify-start gap-1.5 text-sm">
+          {projectData?.liveURL && (
+            <LinkText
+              className="min-w-[92px] text-xs font-normal text-muted-foreground"
+              href={projectData?.liveURL}
+              target="_blank"
+              side="bottom"
+            >
+              {"Live Preview"}
+            </LinkText>
+          )}
+          {projectData?.githubURL && (
+            <LinkText
+              className="min-w-[60px] text-xs font-normal text-muted-foreground"
+              href={projectData?.githubURL}
+              target="_blank"
+              side="bottom"
+            >
+              {"GitHub"}
+            </LinkText>
+          )}
+          {projectData?.relatedLinks?.map(
+            (
+              relatedLinkItem: {
+                label?: string | React.ReactNode
+                link?: string
+              },
+              relatedLinkIndex: number
+            ) => {
+              if (relatedLinkItem?.link) {
+                return (
+                  <LinkText
+                    className="text-xs font-normal text-muted-foreground"
+                    href={relatedLinkItem?.link}
+                    target={"_blank"}
+                    key={relatedLinkIndex}
+                  >
+                    {relatedLinkItem?.label}
+                  </LinkText>
+                )
+              }
             }
-          }
-        )}
+          )}
+        </div>
       </div>
+
       {description?.length && (
         <ul className="mt-3 flex flex-col items-start justify-start gap-2 pl-3">
           {description.map((descriptionItem, descriptionIndex) => (
@@ -148,15 +151,17 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
           ))}
         </ul>
       )}
-      <div className="flex items-center gap-2">
-        <p className="text-sm text-muted-foreground">category:</p>
-        <div className="flex flex-wrap gap-1">
-          {category.map((categoryItem, tagIndex) => (
+      <div className="flex flex-wrap gap-1">
+        {category.map((categoryItem, tagIndex) => (
+          <div className="flex items-center gap-1">
             <Tag key={tagIndex} className="font-mono">
               {categoryItem}
             </Tag>
-          ))}
-        </div>
+            <span className="text-xs text-secondary-foreground opacity-70">
+              {tagIndex !== category.length - 1 && "/"}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   )

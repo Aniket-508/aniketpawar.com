@@ -27,10 +27,7 @@ interface ExperienceItemProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const ExperienceSection: React.FunctionComponent = () => {
   return (
-    <Section
-      className="grid grid-cols-1 justify-start gap-4 border-b animation-delay-500"
-      id="experience"
-    >
+    <Section className="grid grid-cols-1 justify-start gap-6" id="experience">
       <span className="group/experience flex items-center space-x-2">
         <Title>{"worked as."}</Title>
         <CopyLink
@@ -57,7 +54,13 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
   ...attr
 }) => {
   return (
-    <div className={cn("space-y-4 rounded-lg border p-4", className)} {...attr}>
+    <div
+      className={cn(
+        "-mx-4 flex transform flex-col gap-4 rounded-lg px-4 py-2 transition-all duration-300 ease-in-out md:hover:scale-[1.02] md:hover:bg-accent",
+        className
+      )}
+      {...attr}
+    >
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
           <h3 className="font-normal text-primary">
@@ -84,7 +87,7 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
           {experienceStatus?.startAt + " - " + experienceStatus?.endAt}
         </p>
       </div>
-      {experienceDescription?.length ? (
+      {/* {experienceDescription?.length ? (
         <ul className="flex flex-col items-start justify-start gap-2 pl-3">
           {experienceDescription.map((descriptionItem, index) => (
             <li
@@ -94,12 +97,11 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
             />
           ))}
         </ul>
-      ) : null}
+      ) : null} */}
       {experienceTech?.length ? (
-        <div className="flex gap-2">
-          <p className="text-sm font-normal text-muted-foreground">tech:</p>
-          <div className="flex flex-wrap gap-1">
-            {experienceTech.map((tech) => (
+        <div className="flex flex-wrap gap-1">
+          {experienceTech.map((tech, index) => (
+            <div className="flex items-center gap-1">
               <Link
                 key={tech}
                 href={techLinks[tech as keyof typeof techLinks]}
@@ -107,8 +109,11 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
               >
                 <Tag className="cursor-pointer font-mono">{tech}</Tag>
               </Link>
-            ))}
-          </div>
+              <span className="text-xs text-secondary-foreground opacity-70">
+                {index !== experienceTech.length - 1 && "/"}
+              </span>
+            </div>
+          ))}
         </div>
       ) : null}
     </div>
