@@ -53,7 +53,7 @@ const parseProjectStatus = ({
 const ProjectSection: React.FunctionComponent = () => {
   return (
     <Section
-      className="grid grid-cols-1 justify-start gap-8 animation-delay-500"
+      className="grid grid-cols-1 justify-start gap-8 animation-delay-700"
       id="projects"
     >
       <span className="group/projects flex items-center space-x-2">

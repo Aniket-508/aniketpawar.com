@@ -8,7 +8,7 @@ import LinkText from "../ui/LinkText"
 
 const WorkTogether: React.FunctionComponent = () => {
   return (
-    <Section id="work-together">
+    <Section id="work-together" className="animation-delay-500">
       <Callout className="space-y-4">
         <p>{"Interested in working together? Feel free to schedule a meet!"}</p>
         <div className="flex flex-row items-center justify-start gap-4">

@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
     <footer className="mx-auto w-full max-w-screen-sm border-t px-4">
       <div className="flex items-center justify-between py-3">
         <p className="text-xs text-muted-foreground">
-          &copy; {new Date().getFullYear()} <span>Aniket</span>
+          &copy; {new Date().getFullYear()} <span>Aniket Pawar</span>
         </p>
         <ModeToggle />
       </div>
