@@ -56,7 +56,8 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
   return (
     <div
       className={cn(
-        "-mx-4 flex transform flex-col gap-4 rounded-lg px-4 py-2 transition-all duration-300 ease-in-out md:hover:scale-[1.02] md:hover:bg-accent",
+        "-mx-3 flex flex-col gap-4 rounded-lg px-3 py-2",
+        // "transform transition-all duration-300 ease-in-out md:hover:scale-[1.02] md:hover:bg-accent",
         className
       )}
       {...attr}

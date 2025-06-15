@@ -42,7 +42,7 @@ const Header: React.FunctionComponent = () => {
               "A half software engineer, full-time startup enthusiast from India📍"
             }
           </p> */}
-          <p>{new Date().getFullYear() - 2000 + ", he/him"}</p>
+          <p>Senior Frontend Engineer</p>
         </div>
       </div>
     </Section>
