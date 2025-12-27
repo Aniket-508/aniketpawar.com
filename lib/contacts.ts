@@ -15,8 +15,8 @@ export const getContacts = function (): ContactItemProps[] {
       title: "LinkedIn",
       icon: Icons.linkedin,
       link: {
-        display: "@aniket-pawar-4960911b8",
-        url: "https://linkedin.com/in/aniket-pawar-4960911b8/",
+        display: "@aniketpawar508",
+        url: "https://linkedin.com/in/aniketpawar508/",
       },
     },
     {
