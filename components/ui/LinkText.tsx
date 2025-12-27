@@ -47,7 +47,7 @@ const LinkText: React.FunctionComponent<LinkTextProps> = async ({
         <span>{attr?.children}</span>
         <ArrowUpRight className="h-4 w-4" />
       </GlimpseTrigger>
-      {preview && data && (
+      {preview && data && data.title && (
         <GlimpseContent side={side} className="z-99 w-80">
           <GlimpseImage
             src={
