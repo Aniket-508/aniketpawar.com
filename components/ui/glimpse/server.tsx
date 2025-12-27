@@ -11,6 +11,18 @@ const EMPTY_GLIMPSE = {
   image: null,
 } as const
 
+const resolveUrl = (baseUrl: string, relativeUrl: string): string => {
+  try {
+    return new URL(relativeUrl, baseUrl).href
+  } catch {
+    return relativeUrl
+  }
+}
+
+const extractContent = (match: RegExpMatchArray | null): string | null => {
+  return match?.at(1) ?? null
+}
+
 export const glimpse = async (url: string) => {
   try {
     // Add timeout to prevent hanging requests
@@ -19,9 +31,7 @@ export const glimpse = async (url: string) => {
 
     const response = await fetch(url, {
       signal: controller.signal,
-      headers: {
-        "User-Agent": "Mozilla/5.0 (compatible; LinkPreview/1.0)",
-      },
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; LinkPreview/1.0)" },
     })
 
     clearTimeout(timeoutId)
@@ -36,10 +46,15 @@ export const glimpse = async (url: string) => {
       data.match(DESCRIPTION_REGEX) || data.match(OG_DESCRIPTION_REGEX)
     const imageMatch = data.match(OG_IMAGE_REGEX)
 
+    const imageUrl = extractContent(imageMatch)
+    const resolvedImageUrl = imageUrl
+      ? resolveUrl(url, imageUrl)
+      : "https://placehold.co/1200x630?text=Preview+Not+Found"
+
     return {
-      title: titleMatch?.at(1) ?? null,
-      description: descriptionMatch?.at(1) ?? null,
-      image: imageMatch?.at(1) ?? null,
+      title: extractContent(titleMatch),
+      description: extractContent(descriptionMatch),
+      image: resolvedImageUrl,
     }
   } catch (error) {
     // Silently handle fetch errors (network issues, timeouts, invalid URLs, etc.)

@@ -49,12 +49,7 @@ const LinkText: React.FunctionComponent<LinkTextProps> = async ({
       </GlimpseTrigger>
       {preview && data && data.title && (
         <GlimpseContent side={side} className="z-99 w-80">
-          <GlimpseImage
-            src={
-              data.image ??
-              "https://placehold.co/1200x630?text=Preview+Not+Found"
-            }
-          />
+          <GlimpseImage src={data.image} />
           <GlimpseTitle>{data.title}</GlimpseTitle>
           <GlimpseDescription>{data.description}</GlimpseDescription>
         </GlimpseContent>
