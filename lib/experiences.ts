@@ -105,52 +105,5 @@ export const getExperiences = function (): ExperienceItemProps[] {
         "Strapi CMS",
       ],
     },
-    {
-      experienceTitle: "Web Development Intern",
-      experienceDescription: [
-        "Revamped existing and engineered new UI components.",
-        "Bridged frontend and backend via API integrations.",
-      ],
-      experienceOrg: {
-        name: "Youniv",
-        link: "https://www.linkedin.com/company/younivapp/",
-        websiteDisplayName: "youniv",
-      },
-      experienceStatus: {
-        startAt: "Dec, 2021",
-        endAt: "Jan, 2022",
-      },
-      experienceTech: ["Bootstrap", "Next.js", "Recoil", "Firebase"],
-    },
-    {
-      experienceTitle: "Web Development Intern",
-      experienceDescription: [
-        "Designed and developed various responsive UI components for company's website named <u>KritikalHire</u> from scratch.",
-        "Designed and developed company’s another website named <u>ServingNotice</u> completely from scratch.",
-        "Built a blog site along with an admin panel having CRUD functionalities.",
-      ],
-      experienceOrg: {
-        name: "e-InnoSec",
-        link: "https://www.einnosec.com",
-        websiteDisplayName: "einnosec.com",
-      },
-      experienceStatus: {
-        startAt: "Nov, 2021",
-        endAt: "Jan, 2022",
-      },
-      experienceTech: [
-        "HTML5",
-        "CSS3",
-        "Bootstrap",
-        "JavaScript",
-        "PHP",
-        "MySQL",
-        "React",
-        "Express.js",
-        "Node.js",
-        "MongoDB",
-        "Mongoose",
-      ],
-    },
   ]
 }
