@@ -21,21 +21,6 @@ const HeroSection: React.FunctionComponent = () => {
           inclusivity and seamless user experiences.
         </p>
         <p>
-          In the past, I completed my undergrad in{" "}
-          <Link
-            href={"https://vesit.ves.ac.in/departments/cmpn/deptreport"}
-            target="_blank"
-          >
-            computer engineering from vesit
-          </Link>{" "}
-          . While juggling with academics, I actively participated in{" "}
-          <Link href={"https://github.com/Aniket-508"} target="_blank">
-            open-source programs
-          </Link>{" "}
-          , contributing to various projects that enhanced my coding skills and
-          strengthened my problem-solving abilities.
-        </p>
-        <p>
           In my free time, I enjoy{" "}
           <Link href={"#projects"}>building side projects</Link>, exploring new
           products via. [
