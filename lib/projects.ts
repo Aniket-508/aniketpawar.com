@@ -11,6 +11,15 @@ export const getProjects = function (): ProjectItemProps[] {
       status: "Maintained",
     },
     {
+      projectTitle: "Animated Heroicons",
+      projectData: {
+        githubURL: "https://github.com/Aniket-508/heroicons-animated",
+        liveURL: "https://heroicons-animated.com/",
+      },
+      category: ["ui/ux", "icon-set"],
+      status: "Open Source",
+    },
+    {
       projectTitle: "Indian Quotes API",
       projectData: {
         githubURL: "https://github.com/Aniket-508/indian-quotes-api",
@@ -26,15 +35,6 @@ export const getProjects = function (): ProjectItemProps[] {
         liveURL: "https://instagram-posts-generator.vercel.app/",
       },
       category: ["ui/ux", "full-stack"],
-      status: "Open Source",
-    },
-    {
-      projectTitle: "Typeform Clone",
-      projectData: {
-        githubURL: "https://github.com/Aniket-508/Typeform-Clone",
-        liveURL: "https://typeform-clone-aniket-508.vercel.app/",
-      },
-      category: ["ui/ux"],
       status: "Open Source",
     },
   ]
