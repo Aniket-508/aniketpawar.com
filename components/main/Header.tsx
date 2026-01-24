@@ -9,7 +9,7 @@ const Header: React.FunctionComponent = () => {
   return (
     <Section
       id="profile"
-      className="flex flex-row items-center justify-start gap-4 pb-6 animation-delay-100 max-sm:items-start"
+      className="animation-delay-100 flex flex-row items-center justify-start gap-4 pb-6 max-sm:items-start"
     >
       <motion.div
         className="relative h-fit w-fit flex-shrink-0"
@@ -25,7 +25,7 @@ const Header: React.FunctionComponent = () => {
           priority
         />
         <motion.div
-          className="absolute bottom-0 left-12 cursor-default select-none rounded-full bg-background px-1 py-0.5 text-sm shadow"
+          className="bg-background absolute bottom-0 left-12 cursor-default rounded-full px-1 py-0.5 text-sm shadow select-none"
           whileHover={{ scale: 1.1 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
@@ -33,10 +33,10 @@ const Header: React.FunctionComponent = () => {
         </motion.div>
       </motion.div>
       <div>
-        <h1 className="text-2xl font-semibold leading-snug tracking-tighter text-primary">
+        <h1 className="text-primary text-2xl leading-snug font-semibold tracking-tighter">
           Hi, I am Aniket 👋
         </h1>
-        <div className="mt-1 text-base font-normal leading-snug text-muted-foreground">
+        <div className="text-muted-foreground mt-1 text-base leading-snug font-normal">
           {/* <p>
             {
               "A half software engineer, full-time startup enthusiast from India📍"

@@ -11,9 +11,9 @@ import WorkTogether from "@/components/main/WorkTogether"
 const MainView: React.FunctionComponent = () => {
   return (
     <>
-      <div className="pointer-events-none fixed left-0 top-0 z-50 h-12 w-full to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_bottom,black,transparent)]" />
+      <div className="pointer-events-none fixed top-0 left-0 z-50 h-12 w-full to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_bottom,black,transparent)]" />
       {/* <Navbar /> */}
-      <Container className="grid grid-cols-1 items-start justify-start pb-14 pt-20">
+      <Container className="grid grid-cols-1 items-start justify-start pt-20 pb-14">
         <Header />
         <HeroSection />
         <WorkTogether />

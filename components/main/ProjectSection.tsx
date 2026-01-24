@@ -52,7 +52,7 @@ const parseProjectStatus = ({
 const ProjectSection: React.FunctionComponent = () => {
   return (
     <Section
-      className="grid grid-cols-1 justify-start gap-8 animation-delay-700"
+      className="animation-delay-700 grid grid-cols-1 justify-start gap-8"
       id="projects"
     >
       <span className="group/projects flex items-center space-x-2">
@@ -83,7 +83,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
     <div className={cn("space-y-2 rounded-lg", className)} {...attr}>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <h3 className="font-normal capitalize text-primary">
+          <h3 className="text-primary font-normal capitalize">
             {projectTitle}
           </h3>
           {status && (
@@ -95,7 +95,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
         <div className="flex flex-row items-center justify-start gap-1.5 text-sm">
           {projectData?.liveURL && (
             <LinkText
-              className="min-w-[92px] text-xs font-normal text-muted-foreground"
+              className="text-muted-foreground min-w-[92px] text-xs font-normal"
               href={projectData?.liveURL}
               target="_blank"
               side="bottom"
@@ -105,7 +105,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
           )}
           {projectData?.githubURL && (
             <LinkText
-              className="min-w-[60px] text-xs font-normal text-muted-foreground"
+              className="text-muted-foreground min-w-[60px] text-xs font-normal"
               href={projectData?.githubURL}
               target="_blank"
               side="bottom"
@@ -124,7 +124,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
               if (relatedLinkItem?.link) {
                 return (
                   <LinkText
-                    className="text-xs font-normal text-muted-foreground"
+                    className="text-muted-foreground text-xs font-normal"
                     href={relatedLinkItem?.link}
                     target={"_blank"}
                     key={relatedLinkIndex}
@@ -143,7 +143,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
           {description.map((descriptionItem, descriptionIndex) => (
             <li
               key={descriptionIndex}
-              className="list-outside list-disc text-sm font-normal text-muted-foreground"
+              className="text-muted-foreground list-outside list-disc text-sm font-normal"
             >
               {descriptionItem}
             </li>
@@ -154,7 +154,7 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
         {category.map((categoryItem, tagIndex) => (
           <div key={tagIndex} className="flex items-center gap-1">
             <Tag className="font-mono">{categoryItem}</Tag>
-            <span className="text-xs text-secondary-foreground opacity-70">
+            <span className="text-secondary-foreground text-xs opacity-70">
               {tagIndex !== category.length - 1 && "/"}
             </span>
           </div>

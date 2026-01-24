@@ -22,7 +22,7 @@ const WorkTogether: React.FunctionComponent = () => {
           <LinkText
             href={"/resume.pdf"}
             target="_blank"
-            className="text-sm font-medium text-muted-foreground"
+            className="text-muted-foreground text-sm font-medium"
             preview={false}
           >
             {"Resume"}

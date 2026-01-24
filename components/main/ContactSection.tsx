@@ -10,7 +10,8 @@ import Title from "../ui/Title"
 
 interface ContactItemProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string
-  icon?: (props: IconProps) => JSX.Element
+  icon?: (props: IconProps) => React.JSX.Element
+
   link?: {
     display?: string
     url?: string
@@ -20,7 +21,7 @@ interface ContactItemProps extends React.HTMLAttributes<HTMLDivElement> {
 const ContactSection: React.FunctionComponent = () => {
   return (
     <Section
-      className="grid grid-cols-1 justify-start gap-4 pb-6 animation-delay-[1100ms]"
+      className="animation-delay-1100 grid grid-cols-1 justify-start gap-4 pb-6"
       id="socials"
     >
       <span className="group/social flex items-center space-x-2">
@@ -52,7 +53,7 @@ const ContactItem: React.FunctionComponent<ContactItemProps> = ({
       <span>
         {link?.url && (
           <LinkText
-            className="text-sm font-normal text-muted-foreground"
+            className="text-muted-foreground text-sm font-normal"
             href={link?.url}
             target="_blank"
           >
@@ -60,7 +61,7 @@ const ContactItem: React.FunctionComponent<ContactItemProps> = ({
           </LinkText>
         )}
         {!link?.url && (
-          <span className="text-sm font-normal text-muted-foreground">
+          <span className="text-muted-foreground text-sm font-normal">
             {"link not found"}
           </span>
         )}

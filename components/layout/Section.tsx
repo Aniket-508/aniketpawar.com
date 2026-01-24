@@ -9,7 +9,7 @@ const Section: React.FunctionComponent<HTMLAttributes<HTMLDivElement>> = ({
   return (
     <section
       className={cn(
-        "px-4 py-6 duration-1000 animate-in fade-in fill-mode-both",
+        "animate-in fade-in fill-mode-both px-4 py-6 duration-1000",
         className
       )}
       {...attr}

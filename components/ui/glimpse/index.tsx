@@ -43,7 +43,7 @@ export const GlimpseDescription = ({
 }: GlimpseDescriptionProps) => {
   return (
     <p
-      className={cn("line-clamp-2 text-sm text-muted-foreground", className)}
+      className={cn("text-muted-foreground line-clamp-2 text-sm", className)}
       {...props}
     />
   )

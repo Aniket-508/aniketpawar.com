@@ -14,7 +14,7 @@ const HeroSection: React.FunctionComponent = () => {
           className="hidden size-4 group-hover/about:inline"
         />
       </span>
-      <div className="prose mt-4 max-w-full text-sm font-normal leading-6 text-muted-foreground dark:prose-invert">
+      <div className="prose text-muted-foreground dark:prose-invert mt-4 max-w-full text-sm leading-6 font-normal">
         <p>
           Hey there! I&apos;m a software professional who is passionate about
           building customer-focused, design-centric products that prioritize

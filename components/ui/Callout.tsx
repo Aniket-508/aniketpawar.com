@@ -6,7 +6,7 @@ const Callout: React.FunctionComponent<
   return (
     <div
       className={cn(
-        "rounded-lg bg-accent p-4 text-sm font-normal leading-6 text-accent-foreground",
+        "bg-accent text-accent-foreground rounded-lg p-4 text-sm leading-6 font-normal",
         className
       )}
       {...attr}

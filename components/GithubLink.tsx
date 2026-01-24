@@ -32,7 +32,7 @@ export async function StarsCount() {
   const json = await data.json()
 
   return (
-    <span className="text-xs tabular-nums text-muted-foreground">
+    <span className="text-muted-foreground text-xs tabular-nums">
       {json.stargazers_count >= 1000
         ? `${(json.stargazers_count / 1000).toFixed(1)}k`
         : json.stargazers_count.toLocaleString()}

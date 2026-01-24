@@ -28,7 +28,7 @@ interface ExperienceItemProps extends React.HTMLAttributes<HTMLDivElement> {
 const ExperienceSection: React.FunctionComponent = () => {
   return (
     <Section
-      className="grid grid-cols-1 justify-start gap-6 animation-delay-[900ms]"
+      className="animation-delay-[900ms] grid grid-cols-1 justify-start gap-6"
       id="experience"
     >
       <span className="group/experience flex items-center space-x-2">
@@ -67,7 +67,7 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
     >
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
-          <h3 className="font-normal text-primary">
+          <h3 className="text-primary font-normal">
             {`${experienceTitle}, ${experienceOrg?.name}`}
           </h3>
           <div className="flex items-center justify-start gap-1.5 text-sm">
@@ -87,7 +87,7 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
             )}
           </div>
         </div>
-        <p className="text-sm font-normal text-muted-foreground">
+        <p className="text-muted-foreground text-sm font-normal">
           {experienceStatus?.startAt + " - " + experienceStatus?.endAt}
         </p>
       </div>
@@ -96,7 +96,7 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
           {experienceDescription.map((descriptionItem, index) => (
             <li
               key={index}
-              className="list-outside list-disc text-sm font-normal text-muted-foreground"
+              className="text-muted-foreground list-outside list-disc text-sm font-normal"
               dangerouslySetInnerHTML={{ __html: descriptionItem }}
             />
           ))}
@@ -112,7 +112,7 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
               >
                 <Tag className="cursor-pointer font-mono">{tech}</Tag>
               </Link>
-              <span className="text-xs text-secondary-foreground opacity-70">
+              <span className="text-secondary-foreground text-xs opacity-70">
                 {index !== experienceTech.length - 1 && "/"}
               </span>
             </div>

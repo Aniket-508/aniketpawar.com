@@ -25,7 +25,7 @@ function NavItem({ item }: Readonly<{ item: PathItem }>) {
     return (
       <li
         className={cn(
-          "text-base text-muted-foreground hover:text-primary",
+          "text-muted-foreground hover:text-primary text-base",
           isActive(item.link) && "underline underline-offset-1"
         )}
       >
@@ -40,7 +40,7 @@ function NavItem({ item }: Readonly<{ item: PathItem }>) {
     )
   } else {
     return (
-      <li className="cursor-not-allowed text-base text-muted-foreground">
+      <li className="text-muted-foreground cursor-not-allowed text-base">
         {item?.title}
       </li>
     )
@@ -62,7 +62,10 @@ const Navbar: React.FunctionComponent = () => {
 
       <div className="flex items-center gap-2">
         <GitHubLink />
-        <Separator orientation="vertical" className="!h-4" />
+        <Separator
+          orientation="vertical"
+          className="data-[orientation=vertical]:h-4"
+        />
         <ModeToggle />
       </div>
     </nav>
