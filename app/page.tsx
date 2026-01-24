@@ -1,6 +1,6 @@
 import Container from "@/components/layout/Container"
 import Footer from "@/components/layout/Footer"
-import Navbar from "@/components/layout/Navbar"
+// import Navbar from "@/components/layout/Navbar"
 import ContactSection from "@/components/main/ContactSection"
 import ExperienceSection from "@/components/main/ExperienceSection"
 import Header from "@/components/main/Header"

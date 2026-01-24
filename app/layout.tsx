@@ -1,12 +1,12 @@
-import type { Metadata } from "next"
 import { Instrument_Serif, Inter } from "next/font/google"
 
-import { MAIN_METADATA } from "@/lib/meta"
 import { ThemeProvider } from "@/components/ThemeProvider"
 
 import "./globals.css"
 
 import Script from "next/script"
+import { JsonLdScripts } from "@/seo/json-ld"
+import { baseMetadata } from "@/seo/metadata"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,24 +22,7 @@ const instrument_serif = Instrument_Serif({
   variable: "--font-instrument-serif",
 })
 
-export const metadata: Metadata = {
-  title: MAIN_METADATA.TITLE,
-  description: MAIN_METADATA.DESCRIPTION,
-  openGraph: {
-    type: "website",
-    siteName: MAIN_METADATA.SITE_NAME,
-    url: MAIN_METADATA.URL,
-    title: MAIN_METADATA.TITLE,
-    description: MAIN_METADATA.DESCRIPTION,
-    images: MAIN_METADATA.IMAGE,
-  },
-  twitter: {
-    card: "summary",
-    title: MAIN_METADATA.TITLE,
-    description: MAIN_METADATA.DESCRIPTION,
-    images: MAIN_METADATA.IMAGE,
-  },
-}
+export const metadata = baseMetadata
 
 export default function RootLayout({
   children,
@@ -48,6 +31,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <JsonLdScripts />
+      </head>
       <body className={`${inter.variable} ${instrument_serif.variable}`}>
         <ThemeProvider
           attribute="class"

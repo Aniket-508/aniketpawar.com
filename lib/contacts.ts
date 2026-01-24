@@ -1,3 +1,5 @@
+import { LINK } from "@/constants"
+
 import { Icons } from "@/components/Icons"
 import { ContactItemProps } from "@/components/main/ContactSection"
 
@@ -8,7 +10,7 @@ export const getContacts = function (): ContactItemProps[] {
       icon: Icons.github,
       link: {
         display: "@Aniket-508",
-        url: "https://github.com/Aniket-508",
+        url: LINK.GITHUB,
       },
     },
     {
@@ -24,7 +26,7 @@ export const getContacts = function (): ContactItemProps[] {
       icon: Icons.x,
       link: {
         display: "@alaymanguy",
-        url: "https://twitter.com/alaymanguy",
+        url: LINK.TWITTER,
       },
     },
     {
