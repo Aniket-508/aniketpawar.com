@@ -58,7 +58,7 @@ const FAQJsonLd = () => {
     {
       question: "What are Aniket's areas of expertise?",
       answer:
-        "Senior Frontend Engineering, building design-centric, inclusive, and seamless digital products using React, Next.js, and Vue.js.",
+        "Specializing in Frontend Engineering and Product Design, building high-fidelity, design-led digital products using React, Next.js, and modern web technologies.",
     },
     {
       question: "How can I contact Aniket?",

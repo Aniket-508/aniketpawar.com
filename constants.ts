@@ -10,11 +10,23 @@ const SITE = {
     URL: "https://www.aniketpawar.com",
   },
   DESCRIPTION: {
-    LONG: "Software professional passionate about building design-centric, inclusive, and seamless digital products.",
+    LONG: "Software Engineer & Product Builder crafting high-fidelity digital products that bridge design and tech. Explore my work and let's build something impactful today.",
     SHORT:
-      "Software professional passionate about building design-centric, inclusive, and seamless digital products.",
+      "Crafting high-fidelity, design-led digital products with technical precision.",
   },
-  KEYWORDS: [""],
+  KEYWORDS: [
+    "Aniket Pawar",
+    "Software Engineer",
+    "Product Builder",
+    "Frontend Engineer",
+    "React Developer",
+    "Next.js",
+    "Tailwind CSS",
+    "UI/UX Design",
+    "Design Engineering",
+    "Web Development",
+    "Portfolio",
+  ],
 } as const
 
 const LINK = {
