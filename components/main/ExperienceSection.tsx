@@ -91,8 +91,8 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
           {experienceStatus?.startAt + " - " + experienceStatus?.endAt}
         </p>
       </div>
-      {/* {experienceDescription?.length ? (
-        <ul className="flex flex-col items-start justify-start gap-2 pl-3">
+      {experienceDescription?.length ? (
+        <ul className="hidden flex-col items-start justify-start gap-2 pl-3">
           {experienceDescription.map((descriptionItem, index) => (
             <li
               key={index}
@@ -101,7 +101,7 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
             />
           ))}
         </ul>
-      ) : null} */}
+      ) : null}
       {experienceTech?.length ? (
         <div className="flex flex-wrap gap-1">
           {experienceTech.map((tech, index) => (

@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/ThemeProvider"
 
 import "./globals.css"
 
+import { Metadata, Viewport } from "next"
 import Script from "next/script"
 import { JsonLdScripts } from "@/seo/json-ld"
 import { baseMetadata } from "@/seo/metadata"
@@ -22,7 +23,21 @@ const instrument_serif = Instrument_Serif({
   variable: "--font-instrument-serif",
 })
 
-export const metadata = baseMetadata
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  userScalable: false,
+  maximumScale: 1,
+  minimumScale: 1,
+}
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
+}
 
 export default function RootLayout({
   children,
