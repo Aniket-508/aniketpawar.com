@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "v1.opengraph.11ty.dev",
+        hostname: "ik.imagekit.io",
       },
       {
         protocol: "https",
@@ -12,6 +12,6 @@ const nextConfig = {
       },
     ],
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig

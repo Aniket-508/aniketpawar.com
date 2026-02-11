@@ -12,12 +12,12 @@ const Header: React.FunctionComponent = () => {
       className="animation-delay-100 flex flex-row items-center justify-start gap-4 pb-6 max-sm:items-start"
     >
       <motion.div
-        className="relative h-fit w-fit flex-shrink-0"
+        className="relative h-fit w-fit shrink-0"
         whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
       >
         <Image
-          src={"/profile.jpg"}
+          src="https://ik.imagekit.io/2oajjadqkz/profile.jpg?updatedAt=1770631384305"
           alt="aniket-profile"
           width={64}
           height={64}
