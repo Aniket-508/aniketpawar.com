@@ -18,8 +18,8 @@ const Header: React.FunctionComponent = () => (
       <Image
         src="https://ik.imagekit.io/2oajjadqkz/profile.jpg?updatedAt=1770631384305"
         alt="aniket-profile"
-        width={64}
-        height={64}
+        width={60}
+        height={60}
         className="rounded-full transition-all hover:grayscale"
         priority
       />
@@ -33,7 +33,7 @@ const Header: React.FunctionComponent = () => (
     </motion.div>
     <div>
       <h1 className="text-primary text-2xl leading-snug font-semibold tracking-tighter">
-        Hi, I am Aniket 👋
+       Aniket Pawar
       </h1>
       <div className="text-muted-foreground mt-1 text-base leading-snug font-normal">
         {/* <p>
