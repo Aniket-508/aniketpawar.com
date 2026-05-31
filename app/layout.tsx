@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 
 import Script from "next/script";
 
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { META_THEME_COLORS } from "@/constants/site";
 import { HapticsProvider } from "@/providers/haptics-provider";
 import { SoundProvider } from "@/providers/sound-provider";
@@ -15,7 +16,7 @@ import { baseMetadata } from "@/seo/metadata";
 const inter = Inter({
   display: "swap",
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-sans",
 });
 
 const instrument_serif = Instrument_Serif({
@@ -67,11 +68,15 @@ export default function RootLayout({
         />
         <meta name="theme-color" content={META_THEME_COLORS.light} />
       </head>
-      <body className={`${inter.variable} ${instrument_serif.variable}`}>
+      <body
+        className={`overscroll-none font-sans ${inter.variable} ${instrument_serif.variable}`}
+      >
         <ThemeProvider>
-          <SoundProvider>
-            <HapticsProvider>{children}</HapticsProvider>
-          </SoundProvider>
+          <TooltipProvider>
+            <SoundProvider>
+              <HapticsProvider>{children}</HapticsProvider>
+            </SoundProvider>
+          </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>

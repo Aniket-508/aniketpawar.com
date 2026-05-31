@@ -1,5 +1,5 @@
-import type { HoverCardTriggerProps } from "@radix-ui/react-hover-card";
 import { ArrowUpRight } from "lucide-react";
+import type { HoverCard as HoverCardPrimitive } from "radix-ui";
 
 import { cn } from "@/lib/utils";
 
@@ -14,7 +14,9 @@ import {
 } from "./glimpse";
 import { glimpse } from "./glimpse/server";
 
-interface LinkTextProps extends HoverCardTriggerProps {
+interface LinkTextProps extends React.ComponentProps<
+  typeof HoverCardPrimitive.Trigger
+> {
   children?: React.ReactNode;
   className?: string;
   preview?: boolean;

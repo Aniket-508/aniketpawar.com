@@ -1,21 +1,22 @@
+import { LayoutGridIcon, TextAlignJustifyIcon } from "lucide-react";
 import React from "react";
 
+import { CopyLink } from "@/components/copy-link";
+import { Section } from "@/components/layout/section";
+import { Button } from "@/components/ui/button";
+import { LinkText } from "@/components/ui/link-text";
+import { Tag } from "@/components/ui/tag";
+import { Title } from "@/components/ui/title";
 import { getProjects } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 
-import { CopyLink } from "../copy-link";
-import Section from "../layout/section";
-import LinkText from "../ui/link-text";
-import Tag from "../ui/tag";
-import Title from "../ui/title";
-
 interface ProjectItemProps extends React.HTMLAttributes<HTMLDivElement> {
-  projectTitle?: string;
-  projectData?: {
-    liveURL?: string;
-    githubURL?: string;
-    relatedLinks?: {
-      label?: string | React.ReactNode;
+  title?: string;
+  links?: {
+    website?: string;
+    github?: string;
+    other?: {
+      label?: string;
       link?: string;
     }[];
   };
@@ -30,6 +31,7 @@ interface ProjectItemProps extends React.HTMLAttributes<HTMLDivElement> {
     | "icon-set"
   )[];
   status?: "Ongoing" | "Open Source" | "Maintained";
+  variant?: "grid" | "list";
 }
 
 const parseProjectStatus = ({
@@ -53,20 +55,21 @@ const parseProjectStatus = ({
   }
 };
 
-const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
-  projectTitle,
-  projectData,
+const ProjectItem = ({
+  title,
+  links,
   description,
   tech: _tech,
   category,
   status,
   className,
+  variant: _variant = "grid",
   ...attr
-}) => (
+}: ProjectItemProps) => (
   <div className={cn("space-y-2 rounded-lg", className)} {...attr}>
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-2">
-        <h3 className="text-primary font-normal capitalize">{projectTitle}</h3>
+        <h3 className="text-primary font-normal capitalize">{title}</h3>
         {status && (
           <Tag className="max-sm:hidden">
             [{parseProjectStatus({ status })}]
@@ -74,43 +77,43 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
         )}
       </div>
       <div className="flex flex-row items-center justify-start gap-1.5 text-sm">
-        {projectData?.liveURL && (
+        {links?.website && (
           <LinkText
             className="text-muted-foreground min-w-[92px] text-xs font-normal"
-            href={projectData?.liveURL}
+            href={links?.website}
             target="_blank"
             side="bottom"
           >
             {"Live Preview"}
           </LinkText>
         )}
-        {projectData?.githubURL && (
+        {links?.github && (
           <LinkText
             className="text-muted-foreground min-w-[60px] text-xs font-normal"
-            href={projectData?.githubURL}
+            href={links?.github}
             target="_blank"
             side="bottom"
           >
             {"GitHub"}
           </LinkText>
         )}
-        {projectData?.relatedLinks?.map(
+        {links?.other?.map(
           (
-            relatedLinkItem: {
+            otherLinkItem: {
               label?: string | React.ReactNode;
               link?: string;
             },
             relatedLinkIndex: number
           ) => {
-            if (relatedLinkItem?.link) {
+            if (otherLinkItem?.link) {
               return (
                 <LinkText
                   className="text-muted-foreground text-xs font-normal"
-                  href={relatedLinkItem?.link}
+                  href={otherLinkItem?.link}
                   target={"_blank"}
                   key={relatedLinkIndex}
                 >
-                  {relatedLinkItem?.label}
+                  {otherLinkItem?.label}
                 </LinkText>
               );
             }
@@ -145,24 +148,32 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
   </div>
 );
 
-const ProjectSection: React.FunctionComponent = () => (
+const ProjectSection = () => (
   <Section
     className="animation-delay-700 grid grid-cols-1 justify-start gap-8"
     id="projects"
   >
-    <span className="group/projects flex items-center space-x-2">
-      <Title>{"projects."}</Title>
-      <CopyLink
-        title={"Projects"}
-        className="hidden size-4 group-hover/projects:inline"
-      />
-    </span>
+    <div className="flex items-center justify-between gap-4">
+      <div className="group/projects flex items-center gap-2">
+        <Title>{"projects."}</Title>
+        <CopyLink
+          title={"Projects"}
+          className="hidden size-4 group-hover/projects:inline"
+        />
+      </div>
+      <div className="flex items-center gap-2">
+        <Button variant="ghost" size="icon">
+          <TextAlignJustifyIcon />
+        </Button>
+        <Button variant="ghost" size="icon">
+          <LayoutGridIcon />
+        </Button>
+      </div>
+    </div>
     {getProjects()?.map((project: ProjectItemProps, projectIndex: number) => (
       <ProjectItem {...project} key={projectIndex} />
     ))}
   </Section>
 );
 
-export default ProjectSection;
-
-export type { ProjectItemProps };
+export { ProjectSection, type ProjectItemProps };

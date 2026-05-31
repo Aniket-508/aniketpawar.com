@@ -1,7 +1,5 @@
 "use client";
 
-import type { ComponentProps } from "react";
-
 import {
   HoverCard,
   HoverCardContent,
@@ -9,29 +7,29 @@ import {
 } from "@/components/ui/hover-card";
 import { cn } from "@/lib/utils";
 
-export type GlimpseProps = ComponentProps<typeof HoverCard>;
+export type GlimpseProps = React.ComponentProps<typeof HoverCard>;
 
 export const Glimpse = (props: GlimpseProps) => <HoverCard {...props} />;
 
-export type GlimpseContentProps = ComponentProps<typeof HoverCardContent>;
+export type GlimpseContentProps = React.ComponentProps<typeof HoverCardContent>;
 
 export const GlimpseContent = (props: GlimpseContentProps) => (
   <HoverCardContent {...props} />
 );
 
-export type GlimpseTriggerProps = ComponentProps<typeof HoverCardTrigger>;
+export type GlimpseTriggerProps = React.ComponentProps<typeof HoverCardTrigger>;
 
 export const GlimpseTrigger = (props: GlimpseTriggerProps) => (
   <HoverCardTrigger {...props} />
 );
 
-export type GlimpseTitleProps = ComponentProps<"p">;
+export type GlimpseTitleProps = React.ComponentProps<"p">;
 
 export const GlimpseTitle = ({ className, ...props }: GlimpseTitleProps) => (
   <p className={cn("truncate text-sm font-semibold", className)} {...props} />
 );
 
-export type GlimpseDescriptionProps = ComponentProps<"p">;
+export type GlimpseDescriptionProps = React.ComponentProps<"p">;
 
 export const GlimpseDescription = ({
   className,
@@ -43,7 +41,7 @@ export const GlimpseDescription = ({
   />
 );
 
-export type GlimpseImageProps = ComponentProps<"img">;
+export type GlimpseImageProps = React.ComponentProps<"img">;
 
 export const GlimpseImage = ({
   className,

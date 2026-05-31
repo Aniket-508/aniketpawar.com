@@ -11,7 +11,7 @@ const WorkTogether = () => (
     <Callout className="space-y-4">
       <p>{"Interested in working together? Feel free to schedule a meet!"}</p>
       <div className="flex flex-row items-center justify-start gap-4">
-        <Button asChild className="gap-1">
+        <Button size="lg" asChild className="gap-1">
           <Link href="https://cal.com/aniket-pawar" target="_blank">
             Schedule a meet / <CalendarClockIcon className="inline sm:hidden" />
             <span className="hidden sm:inline">cal.com</span>
