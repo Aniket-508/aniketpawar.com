@@ -1,24 +1,24 @@
-import { HoverCardTriggerProps } from "@radix-ui/react-hover-card"
-import { ArrowUpRight } from "lucide-react"
+import type { HoverCardTriggerProps } from "@radix-ui/react-hover-card";
+import { ArrowUpRight } from "lucide-react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
+import type { GlimpseContentProps } from "./glimpse";
 import {
   Glimpse,
   GlimpseContent,
-  GlimpseContentProps,
   GlimpseDescription,
   GlimpseImage,
   GlimpseTitle,
   GlimpseTrigger,
-} from "./glimpse"
-import { glimpse } from "./glimpse/server"
+} from "./glimpse";
+import { glimpse } from "./glimpse/server";
 
 interface LinkTextProps extends HoverCardTriggerProps {
-  children?: React.ReactNode
-  className?: string
-  preview?: boolean
-  side?: GlimpseContentProps["side"]
+  children?: React.ReactNode;
+  className?: string;
+  preview?: boolean;
+  side?: GlimpseContentProps["side"];
 }
 
 const LinkText: React.FunctionComponent<LinkTextProps> = async ({
@@ -28,10 +28,10 @@ const LinkText: React.FunctionComponent<LinkTextProps> = async ({
   side = "right",
   ...attr
 }) => {
-  let data
+  let data;
 
   if (preview && href) {
-    data = await glimpse(href)
+    data = await glimpse(href);
   }
 
   return (
@@ -55,7 +55,7 @@ const LinkText: React.FunctionComponent<LinkTextProps> = async ({
         </GlimpseContent>
       )}
     </Glimpse>
-  )
-}
+  );
+};
 
-export default LinkText
+export default LinkText;

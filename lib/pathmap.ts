@@ -1,36 +1,36 @@
-import { PathItem } from "@/components/layout/Navbar"
+import type { PathItem } from "@/components/layout/navbar";
 
-export const getPathMap = function (): PathItem[] {
+export const getPathMap = function getPathMap(): PathItem[] {
   return [
     {
+      isAvailable: true,
+      link: "/",
       pathType: "internal",
       title: "about",
-      link: "/",
-      isAvailable: true,
     },
     {
+      isAvailable: true,
+      link: "/works",
       pathType: "internal",
       title: "works",
-      link: "/works",
-      isAvailable: true,
     },
     {
+      isAvailable: true,
+      link: "/projects",
       pathType: "internal",
       title: "projects",
-      link: "/projects",
-      isAvailable: true,
     },
     {
+      isAvailable: true,
+      link: "/socials",
       pathType: "internal",
       title: "socials",
-      link: "/socials",
-      isAvailable: true,
     },
     {
+      isAvailable: true,
+      link: "/resume.pdf",
       pathType: "internal",
       title: "resume",
-      link: "/resume.pdf",
-      isAvailable: true,
     },
-  ]
-}
+  ];
+};

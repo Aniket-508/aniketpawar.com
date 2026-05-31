@@ -1,48 +1,48 @@
-import { Instrument_Serif, Inter } from "next/font/google"
+import type { Metadata, Viewport } from "next";
+import { Instrument_Serif, Inter } from "next/font/google";
 
-import { ThemeProvider } from "@/components/ThemeProvider"
+import "./globals.css";
 
-import "./globals.css"
+import Script from "next/script";
 
-import { Metadata, Viewport } from "next"
-import Script from "next/script"
-import { JsonLdScripts } from "@/seo/json-ld"
-import { baseMetadata } from "@/seo/metadata"
+import { ThemeProvider } from "@/components/theme-provider";
+import { JsonLdScripts } from "@/seo/json-ld";
+import { baseMetadata } from "@/seo/metadata";
 
 const inter = Inter({
-  subsets: ["latin"],
   display: "swap",
+  subsets: ["latin"],
   variable: "--font-inter",
-})
+});
 
 const instrument_serif = Instrument_Serif({
-  subsets: ["latin"],
   display: "swap",
-  weight: ["400"],
   style: ["normal", "italic"],
+  subsets: ["latin"],
   variable: "--font-instrument-serif",
-})
+  weight: ["400"],
+});
 
 export const viewport: Viewport = {
-  width: "device-width",
   initialScale: 1,
-  userScalable: false,
   maximumScale: 1,
   minimumScale: 1,
-}
+  userScalable: false,
+  width: "device-width",
+};
 
 export const metadata: Metadata = {
   ...baseMetadata,
   icons: {
-    icon: "/icon.svg",
     apple: "/icon.svg",
+    icon: "/icon.svg",
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -69,5 +69,5 @@ export default function RootLayout({
         </Script>
       </body>
     </html>
-  )
+  );
 }

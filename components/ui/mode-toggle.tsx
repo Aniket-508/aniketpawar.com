@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { useTheme } from "next-themes"
+import { useTheme } from "next-themes";
+import * as React from "react";
 
-import { sounds } from "@/lib/sounds"
+import { sounds } from "@/lib/sounds";
 
-import { Button } from "../ui/Button"
+import { Button } from "../ui/button";
 
-export function ModeToggle() {
-  const { theme, setTheme } = useTheme()
+export const ModeToggle = () => {
+  const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
-    sounds.click()
-    setTheme(theme === "dark" ? "light" : "dark")
-  }
+    sounds.click();
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
   return (
     <Button
@@ -44,5 +44,5 @@ export function ModeToggle() {
       </svg>
       <span className="sr-only">Toggle theme</span>
     </Button>
-  )
-}
+  );
+};

@@ -1,49 +1,48 @@
-import { LINK } from "@/constants"
+import { Icons } from "@/components/icons";
+import type { ContactItemProps } from "@/components/main/contact-section";
+import { LINK } from "@/constants";
 
-import { Icons } from "@/components/Icons"
-import { ContactItemProps } from "@/components/main/ContactSection"
-
-export const getContacts = function (): ContactItemProps[] {
+export const getContacts = function getContacts(): ContactItemProps[] {
   return [
     {
-      title: "GitHub",
       icon: Icons.github,
       link: {
         display: "@Aniket-508",
         url: LINK.GITHUB,
       },
+      title: "GitHub",
     },
     {
-      title: "LinkedIn",
       icon: Icons.linkedin,
       link: {
         display: "@aniketpawar508",
         url: "https://linkedin.com/in/aniketpawar508/",
       },
+      title: "LinkedIn",
     },
     {
-      title: "Twitter",
       icon: Icons.x,
       link: {
         display: "@alaymanguy",
         url: LINK.TWITTER,
       },
+      title: "Twitter",
     },
     {
-      title: "Topmate",
       icon: Icons.topmate,
       link: {
         display: "@aniket_pawar",
         url: "https://topmate.io/aniket_pawar",
       },
+      title: "Topmate",
     },
     {
-      title: "Peerlist",
       icon: Icons.peerlist,
       link: {
         display: "@aniket_pawar",
         url: "https://peerlist.io/aniket_pawar",
       },
+      title: "Peerlist",
     },
-  ]
-}
+  ];
+};

@@ -1,75 +1,38 @@
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import Link from "next/link";
 
-import { cn } from "@/lib/utils"
+import { GitHubLink } from "../github-link";
+import { Icons } from "../icons";
+import { ModeToggle } from "../ui/mode-toggle";
+import { Separator } from "../ui/separator";
 
-import { GitHubLink } from "../GithubLink"
-import { Icons } from "../Icons"
-import { ModeToggle } from "../ui/ModeToggle"
-import { Separator } from "../ui/Separator"
-
-type PathType = "internal" | "external"
-
-export type PathItem = {
-  pathType?: PathType
-  title?: string
-  link: string
-  isAvailable?: boolean
+export interface PathItem {
+  pathType?: "internal" | "external";
+  title?: string;
+  link: string;
+  isAvailable?: boolean;
 }
 
-function NavItem({ item }: Readonly<{ item: PathItem }>) {
-  const pathname = usePathname()
-  const isActive = (path: string) => pathname === path
+const Navbar: React.FunctionComponent = () => (
+  <nav className="sticky top-0 z-10 mx-auto flex w-full max-w-screen-sm items-center justify-between border-x border-b px-4 py-2 backdrop-blur-lg">
+    <Link href="/">
+      <Icons.logo className="h-5 w-5" />
+    </Link>
 
-  if (item?.isAvailable) {
-    return (
-      <li
-        className={cn(
-          "text-muted-foreground hover:text-primary text-base",
-          isActive(item.link) && "underline underline-offset-1"
-        )}
-      >
-        <Link
-          href={item?.link}
-          target={item?.pathType === "external" ? "_blank" : "_self"}
-          className=""
-        >
-          {item?.title}
-        </Link>
-      </li>
-    )
-  } else {
-    return (
-      <li className="text-muted-foreground cursor-not-allowed text-base">
-        {item?.title}
-      </li>
-    )
-  }
-}
-
-const Navbar: React.FunctionComponent = () => {
-  return (
-    <nav className="sticky top-0 z-10 mx-auto flex w-full max-w-screen-sm items-center justify-between border-x border-b px-4 py-2 backdrop-blur-lg">
-      <Link href="/">
-        <Icons.logo className="h-5 w-5" />
-      </Link>
-
-      {/* <ul className="flex flex-row items-center justify-end gap-3">
+    {/* <ul className="flex flex-row items-center justify-end gap-3">
         {getPathMap()?.map((pathMapItem: PathItem, pathMapIndex: number) => (
           <NavItem key={pathMapIndex} item={pathMapItem} />
         ))}
       </ul> */}
 
-      <div className="flex items-center gap-2">
-        <GitHubLink />
-        <Separator
-          orientation="vertical"
-          className="data-[orientation=vertical]:h-4"
-        />
-        <ModeToggle />
-      </div>
-    </nav>
-  )
-}
+    <div className="flex items-center gap-2">
+      <GitHubLink />
+      <Separator
+        orientation="vertical"
+        className="data-[orientation=vertical]:h-4"
+      />
+      <ModeToggle />
+    </div>
+  </nav>
+);
 
-export default Navbar
+export default Navbar;

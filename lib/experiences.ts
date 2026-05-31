@@ -1,9 +1,8 @@
-import { ExperienceItemProps } from "@/components/main/ExperienceSection"
+import type { ExperienceItemProps } from "@/components/main/experience-section";
 
-export const getExperiences = function (): ExperienceItemProps[] {
+export const getExperiences = function getExperiences(): ExperienceItemProps[] {
   return [
     {
-      experienceTitle: "Frontend Engineer",
       experienceDescription: [
         "Revamped Live Market on the <u>DART</u> dashboard using Golden Layout, making it more intuitive & thereby simplifying the trading flow.",
         "Built Bonds Search & Detailed pages using Golden Layout, driving the development of the <u>FinD</u> dashboard.",
@@ -13,13 +12,13 @@ export const getExperiences = function (): ExperienceItemProps[] {
         "Implemented <u>AI-driven trade ticket generation</u> for direct client trades and complex broker workflows (single/double), enhancing order management to boost efficiency.",
       ],
       experienceOrg: {
-        name: "Harmoney",
         link: "https://www.harmoney.in/",
+        name: "Harmoney",
         websiteDisplayName: "harmoney.in",
       },
       experienceStatus: {
-        startAt: "March, 2024",
         endAt: "May, 2025",
+        startAt: "March, 2024",
       },
       experienceTech: [
         "Nuxt.js",
@@ -35,9 +34,9 @@ export const getExperiences = function (): ExperienceItemProps[] {
         "FormKit",
         "Sendbird Chat SDK",
       ],
+      experienceTitle: "Frontend Engineer",
     },
     {
-      experienceTitle: "SDE-2",
       experienceDescription: [
         "Developed the new website entirely from scratch using NextJS with SSG in record time.",
         "Developed various features for internal CMS tool to automate creation of assessments.",
@@ -48,13 +47,13 @@ export const getExperiences = function (): ExperienceItemProps[] {
         "Contributed to two successful ProductHunt launches: <u>EasySource</u> (#5 Product of the Day) and <u>JD Generator</u> (#1 Product of the Day).",
       ],
       experienceOrg: {
-        name: "HireQuotient",
         link: "https://www.hirequotient.com/",
+        name: "HireQuotient",
         websiteDisplayName: "hirequotient.com",
       },
       experienceStatus: {
-        startAt: "Jun, 2022",
         endAt: "Feb, 2024",
+        startAt: "Jun, 2022",
       },
       experienceTech: [
         "HTML5",
@@ -76,9 +75,9 @@ export const getExperiences = function (): ExperienceItemProps[] {
         "AWS",
         "GCP",
       ],
+      experienceTitle: "SDE-2",
     },
     {
-      experienceTitle: "Software Engineer Intern",
       experienceDescription: [
         "Engineered financial calculators module from scratch for SEO purposes.",
         "Developed the Company Financials Component for US Stocks detail page.",
@@ -86,13 +85,13 @@ export const getExperiences = function (): ExperienceItemProps[] {
         "Implemented Family Account Invite Flow on web from scratch.",
       ],
       experienceOrg: {
-        name: "INDmoney",
         link: "https://www.indmoney.com/",
+        name: "INDmoney",
         websiteDisplayName: "indmoney.com",
       },
       experienceStatus: {
-        startAt: "Jan, 2022",
         endAt: "Jun, 2022",
+        startAt: "Jan, 2022",
       },
       experienceTech: [
         "Tailwind CSS",
@@ -104,6 +103,7 @@ export const getExperiences = function (): ExperienceItemProps[] {
         "TypeScript",
         "Strapi CMS",
       ],
+      experienceTitle: "Software Engineer Intern",
     },
-  ]
-}
+  ];
+};
