@@ -32,11 +32,7 @@ const ProjectSectionView = ({
             className="hidden size-4 group-hover/projects:inline"
           />
         </div>
-        <ToggleGroup
-          type="single"
-          value={variant}
-          onValueChange={(value) => value && setVariant(value)}
-        >
+        <ToggleGroup type="single" value={variant} onValueChange={setVariant}>
           <ToggleGroupItem value="list" className="h-8 w-8">
             <TextAlignJustifyIcon />
           </ToggleGroupItem>

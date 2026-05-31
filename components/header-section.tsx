@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import { Section } from "@/components/layout/section";
 
-const Header = () => (
+const HeaderSection = () => (
   <Section
     id="profile"
     className="animation-delay-100 flex flex-row items-center justify-start gap-5 pb-6 max-sm:items-start"
@@ -42,4 +42,4 @@ const Header = () => (
   </Section>
 );
 
-export { Header };
+export { HeaderSection };
