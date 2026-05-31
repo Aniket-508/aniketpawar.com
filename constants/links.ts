@@ -1,10 +1,10 @@
 export const GITHUB = {
   branch: "main",
-  repo: "termcn",
+  repo: "aniketpawar.com",
   user: "Aniket-508",
 } as const;
 
-const GITHUB_URL = `https://github.com/${GITHUB.user}/${GITHUB.repo}`;
+const GITHUB_URL = `https://github.com/${GITHUB.user}`;
 
 export const LINK = {
   GITHUB: GITHUB_URL,
