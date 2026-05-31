@@ -1,4 +1,5 @@
-import { LINK, SITE } from "@/constants";
+import { LINK } from "@/constants/links";
+import { SITE } from "@/constants/site";
 
 const WebsiteJsonLd = () => {
   const jsonLd = {
@@ -33,7 +34,7 @@ const OrganizationJsonLd = () => {
     founder: {
       "@type": "Person",
       name: SITE.AUTHOR.NAME,
-      url: SITE.AUTHOR.URL,
+      url: SITE.URL,
     },
     logo: SITE.OG_IMAGE,
     name: SITE.NAME,

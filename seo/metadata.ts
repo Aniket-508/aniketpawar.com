@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { LINK, SITE } from "@/constants";
+import { LINK } from "@/constants/links";
+import { SITE } from "@/constants/site";
 
 interface CreateMetadataOptions {
   title?: string;
@@ -62,6 +63,25 @@ const baseMetadata: Metadata = {
   category: "technology",
   creator: SITE.AUTHOR.NAME,
   description: SITE.DESCRIPTION.LONG,
+  icons: {
+    apple: {
+      sizes: "180x180",
+      type: "image/png",
+      url: "/apple-touch-icon.png",
+    },
+    icon: [
+      {
+        sizes: "32x32",
+        url: "/favicon.ico",
+      },
+      {
+        sizes: "any",
+        type: "image/svg+xml",
+        url: "/favicon.svg",
+      },
+    ],
+    shortcut: "/favicon-16x16.png",
+  },
   keywords: [...SITE.KEYWORDS],
   metadataBase: new URL(SITE.URL),
   openGraph: {
