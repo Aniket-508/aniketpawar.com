@@ -1,13 +1,14 @@
-import type { Metadata } from "next"
-import { LINK, SITE } from "@/constants"
+import type { Metadata } from "next";
 
-type CreateMetadataOptions = {
-  title?: string
-  description?: string
-  canonical?: string
-  ogTitle?: string
-  ogDescription?: string
-  noIndex?: boolean
+import { LINK, SITE } from "@/constants";
+
+interface CreateMetadataOptions {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  noIndex?: boolean;
 }
 
 const createMetadata = (options: CreateMetadataOptions = {}): Metadata => {
@@ -18,7 +19,7 @@ const createMetadata = (options: CreateMetadataOptions = {}): Metadata => {
     ogTitle,
     ogDescription,
     noIndex = false,
-  } = options
+  } = options;
 
   return {
     ...(title && { title }),
@@ -29,76 +30,76 @@ const createMetadata = (options: CreateMetadataOptions = {}): Metadata => {
       },
     }),
     openGraph: {
-      title: ogTitle || title || SITE.NAME,
       description: ogDescription || description,
-      url: canonical ? `${SITE.URL}${canonical}` : SITE.URL,
+      title: ogTitle || title || SITE.NAME,
       type: "website",
+      url: canonical ? `${SITE.URL}${canonical}` : SITE.URL,
     },
     twitter: {
-      title: ogTitle || title || SITE.NAME,
       description: ogDescription || description,
+      title: ogTitle || title || SITE.NAME,
     },
     ...(noIndex && {
       robots: {
-        index: false,
         follow: false,
+        index: false,
       },
     }),
-  }
-}
+  };
+};
 
 const baseMetadata: Metadata = {
-  metadataBase: new URL(SITE.URL),
   alternates: {
     canonical: "/",
   },
-  openGraph: {
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
     title: SITE.NAME,
-    description: SITE.DESCRIPTION.SHORT,
-    siteName: SITE.NAME,
-    type: "website",
-    locale: "en_US",
-    url: SITE.URL,
-    images: [
-      {
-        url: SITE.OG_IMAGE,
-        width: 1200,
-        height: 630,
-        alt: `${SITE.NAME}`,
-      },
-    ],
   },
   applicationName: SITE.NAME,
-  appleWebApp: {
+  authors: [{ name: SITE.AUTHOR.NAME, url: LINK.TWITTER }],
+  category: "technology",
+  creator: SITE.AUTHOR.NAME,
+  description: SITE.DESCRIPTION.LONG,
+  keywords: [...SITE.KEYWORDS],
+  metadataBase: new URL(SITE.URL),
+  openGraph: {
+    description: SITE.DESCRIPTION.SHORT,
+    images: [
+      {
+        alt: `${SITE.NAME}`,
+        height: 630,
+        url: SITE.OG_IMAGE,
+        width: 1200,
+      },
+    ],
+    locale: "en_US",
+    siteName: SITE.NAME,
     title: SITE.NAME,
-    statusBarStyle: "default",
-    capable: true,
+    type: "website",
+    url: SITE.URL,
   },
+  publisher: SITE.AUTHOR.NAME,
   title: {
     default: `${SITE.NAME}`,
     template: `%s | ${SITE.NAME}`,
   },
-  description: SITE.DESCRIPTION.LONG,
-  keywords: [...SITE.KEYWORDS],
-  authors: [{ name: SITE.AUTHOR.NAME, url: LINK.TWITTER }],
-  creator: SITE.AUTHOR.NAME,
-  publisher: SITE.AUTHOR.NAME,
   twitter: {
     card: "summary_large_image",
-    title: `${SITE.NAME}`,
-    description: SITE.DESCRIPTION.SHORT,
     creator: SITE.AUTHOR.TWITTER,
-    site: SITE.AUTHOR.TWITTER,
+    description: SITE.DESCRIPTION.SHORT,
     images: [
       {
+        alt: `${SITE.NAME}`,
+        height: 630,
         url: SITE.OG_IMAGE,
         width: 1200,
-        height: 630,
-        alt: `${SITE.NAME}`,
       },
     ],
+    site: SITE.AUTHOR.TWITTER,
+    title: `${SITE.NAME}`,
   },
-  category: "technology",
-}
+};
 
-export { baseMetadata, createMetadata }
+export { baseMetadata, createMetadata };

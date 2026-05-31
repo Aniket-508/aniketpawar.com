@@ -1,13 +1,14 @@
-import { MetadataRoute } from "next"
-import { SITE } from "@/constants"
+import type { MetadataRoute } from "next";
+
+import { SITE } from "@/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: SITE.URL,
-      lastModified: new Date(),
       changeFrequency: "monthly",
+      lastModified: new Date(),
       priority: 1,
+      url: SITE.URL,
     },
-  ]
+  ];
 }
