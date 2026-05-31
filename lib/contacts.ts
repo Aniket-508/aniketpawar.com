@@ -1,6 +1,6 @@
 import { Icons } from "@/components/icons";
 import type { ContactItemProps } from "@/components/main/contact-section";
-import { LINK } from "@/constants";
+import { LINK } from "@/constants/links";
 
 export const getContacts = function getContacts(): ContactItemProps[] {
   return [
@@ -16,7 +16,7 @@ export const getContacts = function getContacts(): ContactItemProps[] {
       icon: Icons.linkedin,
       link: {
         display: "@aniketpawar508",
-        url: "https://linkedin.com/in/aniketpawar508/",
+        url: LINK.LINKEDIN,
       },
       title: "LinkedIn",
     },
@@ -32,7 +32,7 @@ export const getContacts = function getContacts(): ContactItemProps[] {
       icon: Icons.topmate,
       link: {
         display: "@aniket_pawar",
-        url: "https://topmate.io/aniket_pawar",
+        url: LINK.TOPMATE,
       },
       title: "Topmate",
     },
@@ -40,7 +40,7 @@ export const getContacts = function getContacts(): ContactItemProps[] {
       icon: Icons.peerlist,
       link: {
         display: "@aniket_pawar",
-        url: "https://peerlist.io/aniket_pawar",
+        url: LINK.PEERLIST,
       },
       title: "Peerlist",
     },

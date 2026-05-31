@@ -1,9 +1,21 @@
-const SITE = {
+export const FALLBACK_SITE_ORIGIN = "https://www.aniketpawar.com" as const;
+
+const getBaseUrl = () => {
+  if (process.env.NODE_ENV !== "production") {
+    return "http://localhost:3000";
+  }
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  }
+  return process.env.SITE_URL ?? FALLBACK_SITE_ORIGIN;
+};
+
+const baseUrl = getBaseUrl();
+
+export const SITE = {
   AUTHOR: {
-    GITHUB: "Aniket-508",
     NAME: "Aniket Pawar",
     TWITTER: "@alaymanguy",
-    URL: "https://www.aniketpawar.com",
   },
   DESCRIPTION: {
     LONG: "Software Engineer & Product Builder crafting high-fidelity digital products that bridge design and tech. Explore my work and let's build something impactful today.",
@@ -23,15 +35,17 @@ const SITE = {
     "Web Development",
     "Portfolio",
   ],
-  NAME: "Aniket Pawar | Software Professional & Product Builder",
+  NAME: "Aniket Pawar – Frontend Engineer",
   OG_IMAGE:
     "https://ik.imagekit.io/2oajjadqkz/portfolio-image.png?updatedAt=1708090929752",
-  URL: "https://www.aniketpawar.com",
+  URL: baseUrl,
 } as const;
 
-const LINK = {
-  GITHUB: "https://github.com/Aniket-508",
-  TWITTER: "https://x.com/alaymanguy",
-} as const;
+export const META_THEME_COLORS = {
+  dark: "#0a0a0a",
+  light: "#ffffff",
+};
 
-export { LINK, SITE };
+export const UTM_PARAMS = {
+  utm_source: new URL(baseUrl).hostname,
+};
