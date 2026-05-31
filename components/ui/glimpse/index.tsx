@@ -52,7 +52,7 @@ export const GlimpseImage = ({
   <img
     alt=""
     className={cn(
-      "mb-4 aspect-[120/63] w-full rounded-md border object-cover",
+      "mb-2.5 aspect-[120/63] w-full rounded-md border object-cover",
       className
     )}
     {...props}

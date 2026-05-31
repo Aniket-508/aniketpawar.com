@@ -16,12 +16,7 @@ export const ModeToggle = () => {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="size-6"
-          onClick={toggleTheme}
-        >
+        <Button variant="ghost" size="icon-sm" onClick={toggleTheme}>
           <Icons.theme />
         </Button>
       </TooltipTrigger>

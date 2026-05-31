@@ -1,4 +1,4 @@
-import type { ExperienceItemProps } from "@/components/main/experience-section";
+import type { ExperienceItemProps } from "@/components/experience-item";
 
 export const getExperiences = function getExperiences(): ExperienceItemProps[] {
   return [

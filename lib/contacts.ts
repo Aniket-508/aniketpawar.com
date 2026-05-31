@@ -1,5 +1,5 @@
+import type { ContactItemProps } from "@/components/contact-section";
 import { Icons } from "@/components/icons";
-import type { ContactItemProps } from "@/components/main/contact-section";
 import { LINK } from "@/constants/links";
 
 export const getContacts = function getContacts(): ContactItemProps[] {

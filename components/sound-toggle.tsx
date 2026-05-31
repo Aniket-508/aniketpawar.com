@@ -17,12 +17,7 @@ export const SoundToggle = () => {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="size-6"
-          onClick={toggleSound}
-        >
+        <Button variant="ghost" size="icon-sm" onClick={toggleSound}>
           {enabled ? <Volume2Icon /> : <VolumeXIcon />}
         </Button>
       </TooltipTrigger>

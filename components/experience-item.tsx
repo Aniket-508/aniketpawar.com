@@ -1,15 +1,9 @@
-import Link from "next/link";
-
-import { CopyLink } from "@/components/copy-link";
-import { Section } from "@/components/layout/section";
 import { LinkText } from "@/components/ui/link-text";
 import { Tag } from "@/components/ui/tag";
-import { Title } from "@/components/ui/title";
-import { getExperiences } from "@/lib/experiences";
 import { techLinks } from "@/lib/tech";
 import { cn } from "@/lib/utils";
 
-interface ExperienceItemProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ExperienceItemProps extends React.ComponentProps<"div"> {
   experienceTitle: React.ReactNode | string;
   experienceDescription?: string[];
   experienceOrg: {
@@ -78,12 +72,13 @@ const ExperienceItem = ({
       <div className="flex flex-wrap gap-1">
         {experienceTech.map((tech, index) => (
           <div key={tech} className="flex items-center gap-1">
-            <Link
+            <a
               href={techLinks[tech as keyof typeof techLinks]}
               target="_blank"
+              rel="noreferrer"
             >
               <Tag className="cursor-pointer font-mono">{tech}</Tag>
-            </Link>
+            </a>
             <span className="text-secondary-foreground text-xs opacity-70">
               {index !== experienceTech.length - 1 && "/"}
             </span>
@@ -94,24 +89,4 @@ const ExperienceItem = ({
   </div>
 );
 
-const ExperienceSection = () => (
-  <Section
-    className="animation-delay-[900ms] grid grid-cols-1 justify-start gap-6"
-    id="experience"
-  >
-    <span className="group/experience flex items-center space-x-2">
-      <Title>{"experience."}</Title>
-      <CopyLink
-        title={"Experience"}
-        className="hidden size-4 group-hover/experience:inline"
-      />
-    </span>
-    {getExperiences()?.map(
-      (experience: ExperienceItemProps, experienceIndex: number) => (
-        <ExperienceItem {...experience} key={experienceIndex} />
-      )
-    )}
-  </Section>
-);
-
-export { ExperienceSection, type ExperienceItemProps };
+export { ExperienceItem, type ExperienceItemProps };

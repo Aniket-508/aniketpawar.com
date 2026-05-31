@@ -1,13 +1,13 @@
+// import { Navbar } from "@/components/layout/navbar";
+import { ContactSection } from "@/components/contact-section";
+// import { CraftSection } from "@/components/craft-section";
+import { ExperienceSection } from "@/components/experience-section";
+import { Header } from "@/components/header";
+import { HeroSection } from "@/components/hero-section";
 import { Container } from "@/components/layout/container";
 import { Footer } from "@/components/layout/footer";
-// import { Navbar } from "@/components/layout/navbar";
-import { ContactSection } from "@/components/main/contact-section";
-import { CraftSection } from "@/components/main/craft-section";
-import { ExperienceSection } from "@/components/main/experience-section";
-import { Header } from "@/components/main/header";
-import { HeroSection } from "@/components/main/hero-section";
-import { ProjectSection } from "@/components/main/project-section";
-import { WorkTogether } from "@/components/main/work-together";
+import { ProjectSection } from "@/components/project-section";
+import { WorkTogether } from "@/components/work-together";
 
 const MainView = () => (
   <>
@@ -18,7 +18,7 @@ const MainView = () => (
       <HeroSection />
       <WorkTogether />
       <ProjectSection />
-      <CraftSection />
+      {/* <CraftSection /> */}
       <ExperienceSection />
       <ContactSection />
     </Container>

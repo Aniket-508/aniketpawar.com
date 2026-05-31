@@ -17,12 +17,7 @@ export const HapticsToggle = () => {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="size-6"
-          onClick={toggleHaptics}
-        >
+        <Button variant="ghost" size="icon-sm" onClick={toggleHaptics}>
           {enabled ? <VibrateIcon /> : <VibrateOffIcon />}
         </Button>
       </TooltipTrigger>

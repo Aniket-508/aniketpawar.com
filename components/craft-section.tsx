@@ -2,8 +2,8 @@ import { LayoutGridIcon, TextAlignJustifyIcon } from "lucide-react";
 
 import { CopyLink } from "@/components/copy-link";
 import { Section } from "@/components/layout/section";
-import { Button } from "@/components/ui/button";
 import { Title } from "@/components/ui/title";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 const CraftSection = () => (
   <Section
@@ -18,14 +18,14 @@ const CraftSection = () => (
           className="hidden size-4 group-hover/projects:inline"
         />
       </div>
-      <div className="flex items-center gap-2">
-        <Button variant="ghost" size="icon">
+      <ToggleGroup type="single" defaultValue="list">
+        <ToggleGroupItem value="list" className="h-8 w-8">
           <TextAlignJustifyIcon />
-        </Button>
-        <Button variant="ghost" size="icon">
+        </ToggleGroupItem>
+        <ToggleGroupItem value="grid" className="h-8 w-8">
           <LayoutGridIcon />
-        </Button>
-      </div>
+        </ToggleGroupItem>
+      </ToggleGroup>
     </div>
     {/* {getProjects()?.map((project: ProjectItemProps, projectIndex: number) => (
       <ProjectItem {...project} key={projectIndex} />

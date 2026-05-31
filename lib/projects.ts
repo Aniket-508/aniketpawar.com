@@ -1,40 +1,40 @@
-import type { ProjectItemProps } from "@/components/main/project-section";
+import type { ProjectItemProps } from "@/components/project-item";
 
 export const getProjects = function getProjects(): ProjectItemProps[] {
   const projects: ProjectItemProps[] = [
     {
-      category: ["ui/ux", "full-stack"],
+      description:
+        "Publish your Peerlist article effortlessly to multiple platforms, including DEV.to, Hashnode, Medium, Ghost and more.",
       links: {
         website: "https://peerlistpublish.vercel.app",
       },
-      status: "Maintained",
       title: "Peerlist Publish",
     },
     {
-      category: ["ui/ux", "icon-set"],
+      description:
+        "A collection of 316 beautifully animated Heroicons for React.",
       links: {
         github: "https://github.com/Aniket-508/heroicons-animated",
         website: "https://heroicons-animated.com/",
       },
-      status: "Open Source",
-      title: "Animated Heroicons",
+      title: "heroicons-animated",
     },
     {
-      category: ["ui/ux", "full-stack"],
+      description:
+        "Free, open-source API delivering curated quotes from India's most successful entrepreneurs.",
       links: {
         github: "https://github.com/Aniket-508/indian-quotes-api",
         website: "https://indian-quotes-api.vercel.app/",
       },
-      status: "Open Source",
       title: "Indian Quotes API",
     },
     {
-      category: ["ui/ux", "full-stack"],
+      description:
+        "Generate posts for your socials with templates from popular instagram pages with a few clicks.",
       links: {
         github: "https://github.com/Aniket-508/instagram-posts-generator",
         website: "https://instagram-posts-generator.vercel.app/",
       },
-      status: "Open Source",
       title: "IG Posts Generator",
     },
   ];

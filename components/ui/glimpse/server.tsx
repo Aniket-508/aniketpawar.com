@@ -1,3 +1,5 @@
+import type { GlimpseData } from "./types";
+
 const TITLE_REGEX = /<title[^>]*>([^<]+)<\/title>/u;
 const OG_TITLE_REGEX = /<meta[^>]*property="og:title"[^>]*content="([^"]+)"/u;
 const DESCRIPTION_REGEX = /<meta[^>]*name="description"[^>]*content="([^"]+)"/u;
@@ -5,11 +7,11 @@ const OG_DESCRIPTION_REGEX =
   /<meta[^>]*property="og:description"[^>]*content="([^"]+)"/u;
 const OG_IMAGE_REGEX = /<meta[^>]*property="og:image"[^>]*content="([^"]+)"/u;
 
-const EMPTY_GLIMPSE = {
+const EMPTY_GLIMPSE: GlimpseData = {
   description: null,
   image: null,
   title: null,
-} as const;
+};
 
 const resolveUrl = (baseUrl: string, relativeUrl: string): string => {
   try {
@@ -22,7 +24,7 @@ const resolveUrl = (baseUrl: string, relativeUrl: string): string => {
 const extractContent = (match: RegExpMatchArray | null): string | null =>
   match?.at(1) ?? null;
 
-export const glimpse = async (url: string) => {
+export const glimpse = async (url: string): Promise<GlimpseData> => {
   try {
     const controller = new AbortController();
     // 5 second timeout
@@ -59,4 +61,15 @@ export const glimpse = async (url: string) => {
     // Silently handle fetch errors (network issues, timeouts, invalid URLs, etc.)
     return EMPTY_GLIMPSE;
   }
+};
+
+export const prefetchGlimpses = async (
+  urls: string[]
+): Promise<Record<string, GlimpseData>> => {
+  const uniqueUrls = [...new Set(urls.filter(Boolean))];
+  const entries = await Promise.all(
+    uniqueUrls.map(async (url) => [url, await glimpse(url)] as const)
+  );
+
+  return Object.fromEntries(entries);
 };
