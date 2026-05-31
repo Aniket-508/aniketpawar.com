@@ -1,11 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Inter } from "next/font/google";
 
-import "./globals.css";
+import "@/styles/globals.css";
 
 import Script from "next/script";
 
-import { ThemeProvider } from "@/components/theme-provider";
+import { META_THEME_COLORS } from "@/constants/site";
+import { HapticsProvider } from "@/providers/haptics-provider";
+import { SoundProvider } from "@/providers/sound-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 import { JsonLdScripts } from "@/seo/json-ld";
 import { baseMetadata } from "@/seo/metadata";
 
@@ -48,16 +51,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <JsonLdScripts />
-      </head>
-      <body className={`${inter.variable} ${instrument_serif.variable}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
         <Script id="clarity-script" strategy="afterInteractive">
           {`
             (function(c,l,a,r,i,t,y){
@@ -67,6 +60,25 @@ export default function RootLayout({
             })(window, document, "clarity", "script", "${process.env.CLARITY_PROJECT_ID}");
           `}
         </Script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
+        <meta name="theme-color" content={META_THEME_COLORS.light} />
+      </head>
+      <body className={`${inter.variable} ${instrument_serif.variable}`}>
+        <ThemeProvider>
+          <SoundProvider>
+            <HapticsProvider>{children}</HapticsProvider>
+          </SoundProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
