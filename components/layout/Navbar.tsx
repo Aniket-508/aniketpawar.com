@@ -1,9 +1,9 @@
 import Link from "next/link";
 
-import { GitHubLink } from "../github-link";
-import { Icons } from "../icons";
-import { ModeToggle } from "../ui/mode-toggle";
-import { Separator } from "../ui/separator";
+import { GitHubLink } from "@/components/github-link";
+import { Icons } from "@/components/icons";
+import { ModeToggle } from "@/components/mode-toggle";
+import { Separator } from "@/components/ui/separator";
 
 export interface PathItem {
   pathType?: "internal" | "external";

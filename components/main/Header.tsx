@@ -8,7 +8,7 @@ import Section from "../layout/section";
 const Header: React.FunctionComponent = () => (
   <Section
     id="profile"
-    className="animation-delay-100 flex flex-row items-center justify-start gap-4 pb-6 max-sm:items-start"
+    className="animation-delay-100 flex flex-row items-center justify-start gap-5 pb-6 max-sm:items-start"
   >
     <motion.div
       className="relative h-fit w-fit shrink-0"
@@ -33,7 +33,7 @@ const Header: React.FunctionComponent = () => (
     </motion.div>
     <div>
       <h1 className="text-primary text-2xl leading-snug font-semibold tracking-tighter">
-       Aniket Pawar
+        Aniket Pawar
       </h1>
       <div className="text-muted-foreground mt-1 text-base leading-snug font-normal">
         <p>Frontend Engineer</p>

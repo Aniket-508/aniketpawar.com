@@ -5,6 +5,7 @@ import { Check, ChevronRight, Circle } from "lucide-react";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
+import { useHaptics } from "@/providers/haptics-provider";
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 
@@ -80,17 +81,27 @@ const DropdownMenuItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
     inset?: boolean;
   }
->(({ className, inset, ...props }, ref) => (
-  <DropdownMenuPrimitive.Item
-    ref={ref}
-    className={cn(
-      "focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm transition-colors outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&>svg]:size-4 [&>svg]:shrink-0",
-      inset && "pl-8",
-      className
-    )}
-    {...props}
-  />
-));
+>(({ className, inset, onClick, ...props }, ref) => {
+  const { trigger } = useHaptics();
+
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    trigger();
+    onClick?.(e);
+  };
+
+  return (
+    <DropdownMenuPrimitive.Item
+      ref={ref}
+      className={cn(
+        "focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm transition-colors outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&>svg]:size-4 [&>svg]:shrink-0",
+        inset && "pl-8",
+        className
+      )}
+      onClick={handleClick}
+      {...props}
+    />
+  );
+});
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
 
 const DropdownMenuCheckboxItem = React.forwardRef<
