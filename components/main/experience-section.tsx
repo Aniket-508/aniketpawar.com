@@ -1,14 +1,13 @@
 import Link from "next/link";
 
+import { CopyLink } from "@/components/copy-link";
+import { Section } from "@/components/layout/section";
+import { LinkText } from "@/components/ui/link-text";
+import { Tag } from "@/components/ui/tag";
+import { Title } from "@/components/ui/title";
 import { getExperiences } from "@/lib/experiences";
 import { techLinks } from "@/lib/tech";
 import { cn } from "@/lib/utils";
-
-import { CopyLink } from "../copy-link";
-import Section from "../layout/section";
-import LinkText from "../ui/link-text";
-import Tag from "../ui/tag";
-import Title from "../ui/title";
 
 interface ExperienceItemProps extends React.HTMLAttributes<HTMLDivElement> {
   experienceTitle: React.ReactNode | string;
@@ -25,7 +24,7 @@ interface ExperienceItemProps extends React.HTMLAttributes<HTMLDivElement> {
   experienceTech?: string[];
 }
 
-const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
+const ExperienceItem = ({
   experienceTitle,
   experienceDescription,
   experienceOrg,
@@ -33,7 +32,7 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
   experienceTech,
   className,
   ...attr
-}) => (
+}: ExperienceItemProps) => (
   <div
     className={cn("-mx-3 flex flex-col gap-4 rounded-lg px-3 py-2", className)}
     {...attr}
@@ -95,13 +94,13 @@ const ExperienceItem: React.FunctionComponent<ExperienceItemProps> = ({
   </div>
 );
 
-const ExperienceSection: React.FunctionComponent = () => (
+const ExperienceSection = () => (
   <Section
     className="animation-delay-[900ms] grid grid-cols-1 justify-start gap-6"
     id="experience"
   >
     <span className="group/experience flex items-center space-x-2">
-      <Title>{"worked as."}</Title>
+      <Title>{"experience."}</Title>
       <CopyLink
         title={"Experience"}
         className="hidden size-4 group-hover/experience:inline"
@@ -115,6 +114,4 @@ const ExperienceSection: React.FunctionComponent = () => (
   </Section>
 );
 
-export default ExperienceSection;
-
-export type { ExperienceItemProps };
+export { ExperienceSection, type ExperienceItemProps };

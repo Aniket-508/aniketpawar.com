@@ -1,8 +1,6 @@
 import { cn } from "@/lib/utils";
 
-const Callout: React.FunctionComponent<
-  React.HTMLAttributes<HTMLDivElement>
-> = ({ className, ...attr }) => (
+const Callout = ({ className, ...attr }: React.ComponentProps<"div">) => (
   <div
     className={cn(
       "bg-accent text-accent-foreground rounded-lg p-4 text-sm leading-6 font-normal",
@@ -14,4 +12,4 @@ const Callout: React.FunctionComponent<
   </div>
 );
 
-export default Callout;
+export { Callout };

@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-import { CopyLink } from "../copy-link";
-import Section from "../layout/section";
-import Title from "../ui/title";
+import { CopyLink } from "@/components/copy-link";
+import { Section } from "@/components/layout/section";
+import { Title } from "@/components/ui/title";
 
-const HeroSection: React.FunctionComponent = () => (
+const HeroSection = () => (
   <Section id="about" className="animation-delay-300">
     <span className="group/about flex items-center space-x-2">
       <Title>{"about me."}</Title>
@@ -52,4 +52,4 @@ const HeroSection: React.FunctionComponent = () => (
   </Section>
 );
 
-export default HeroSection;
+export { HeroSection };

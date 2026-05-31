@@ -4,38 +4,38 @@ export const getProjects = function getProjects(): ProjectItemProps[] {
   const projects: ProjectItemProps[] = [
     {
       category: ["ui/ux", "full-stack"],
-      projectData: {
-        liveURL: "https://www.peerlistpubli.sh/",
+      links: {
+        website: "https://peerlistpublish.vercel.app",
       },
-      projectTitle: "Peerlist Publish",
       status: "Maintained",
+      title: "Peerlist Publish",
     },
     {
       category: ["ui/ux", "icon-set"],
-      projectData: {
-        githubURL: "https://github.com/Aniket-508/heroicons-animated",
-        liveURL: "https://heroicons-animated.com/",
+      links: {
+        github: "https://github.com/Aniket-508/heroicons-animated",
+        website: "https://heroicons-animated.com/",
       },
-      projectTitle: "Animated Heroicons",
       status: "Open Source",
+      title: "Animated Heroicons",
     },
     {
       category: ["ui/ux", "full-stack"],
-      projectData: {
-        githubURL: "https://github.com/Aniket-508/indian-quotes-api",
-        liveURL: "https://indian-quotes-api.vercel.app/",
+      links: {
+        github: "https://github.com/Aniket-508/indian-quotes-api",
+        website: "https://indian-quotes-api.vercel.app/",
       },
-      projectTitle: "Indian Quotes API",
       status: "Open Source",
+      title: "Indian Quotes API",
     },
     {
       category: ["ui/ux", "full-stack"],
-      projectData: {
-        githubURL: "https://github.com/Aniket-508/instagram-posts-generator",
-        liveURL: "https://instagram-posts-generator.vercel.app/",
+      links: {
+        github: "https://github.com/Aniket-508/instagram-posts-generator",
+        website: "https://instagram-posts-generator.vercel.app/",
       },
-      projectTitle: "IG Posts Generator",
       status: "Open Source",
+      title: "IG Posts Generator",
     },
   ];
 

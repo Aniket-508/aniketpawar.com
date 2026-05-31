@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-import Section from "../layout/section";
+import { Section } from "@/components/layout/section";
 
-const Header: React.FunctionComponent = () => (
+const Header = () => (
   <Section
     id="profile"
     className="animation-delay-100 flex flex-row items-center justify-start gap-5 pb-6 max-sm:items-start"
@@ -42,4 +42,4 @@ const Header: React.FunctionComponent = () => (
   </Section>
 );
 
-export default Header;
+export { Header };

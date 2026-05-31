@@ -2,7 +2,7 @@ import { HapticsToggle } from "@/components/haptics-toggle";
 import { ModeToggle } from "@/components/mode-toggle";
 import { SoundToggle } from "@/components/sound-toggle";
 
-const Footer: React.FC = () => (
+const Footer = () => (
   <footer className="animate-in fade-in fill-mode-both animation-delay-1300 mx-auto w-full max-w-screen-sm border-t px-4 duration-1000">
     <div className="flex items-center justify-between py-3">
       <p className="text-muted-foreground text-xs">
@@ -17,4 +17,4 @@ const Footer: React.FC = () => (
   </footer>
 );
 
-export default Footer;
+export { Footer };

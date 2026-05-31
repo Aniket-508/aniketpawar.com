@@ -21,13 +21,13 @@ interface LinkTextProps extends HoverCardTriggerProps {
   side?: GlimpseContentProps["side"];
 }
 
-const LinkText: React.FunctionComponent<LinkTextProps> = async ({
+const LinkText = async ({
   className,
   preview = true,
   href,
   side = "right",
   ...attr
-}) => {
+}: LinkTextProps) => {
   let data;
 
   if (preview && href) {
@@ -58,4 +58,4 @@ const LinkText: React.FunctionComponent<LinkTextProps> = async ({
   );
 };
 
-export default LinkText;
+export { LinkText };

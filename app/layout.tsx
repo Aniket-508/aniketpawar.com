@@ -34,13 +34,7 @@ export const viewport: Viewport = {
   width: "device-width",
 };
 
-export const metadata: Metadata = {
-  ...baseMetadata,
-  icons: {
-    apple: "/icon.svg",
-    icon: "/icon.svg",
-  },
-};
+export const metadata: Metadata = baseMetadata;
 
 export default function RootLayout({
   children,

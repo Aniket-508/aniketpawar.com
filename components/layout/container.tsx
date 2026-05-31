@@ -1,11 +1,9 @@
 import { cn } from "@/lib/utils";
 
-const Container: React.FunctionComponent<
-  React.HTMLAttributes<HTMLDivElement>
-> = ({ className, ...attr }) => (
+const Container = ({ className, ...attr }: React.ComponentProps<"main">) => (
   <main className={cn("mx-auto w-full max-w-screen-sm", className)} {...attr}>
     {attr?.children}
   </main>
 );
 
-export default Container;
+export { Container };

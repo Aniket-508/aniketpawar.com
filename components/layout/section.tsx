@@ -1,11 +1,6 @@
-import type { HTMLAttributes } from "react";
-
 import { cn } from "@/lib/utils";
 
-const Section: React.FunctionComponent<HTMLAttributes<HTMLDivElement>> = ({
-  className,
-  ...attr
-}) => (
+const Section = ({ className, ...attr }: React.ComponentProps<"section">) => (
   <section
     className={cn(
       "animate-in fade-in fill-mode-both px-4 py-6 duration-1000",
@@ -17,4 +12,4 @@ const Section: React.FunctionComponent<HTMLAttributes<HTMLDivElement>> = ({
   </section>
 );
 
-export default Section;
+export { Section };

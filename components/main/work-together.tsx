@@ -1,12 +1,12 @@
 import { CalendarClockIcon } from "lucide-react";
 import Link from "next/link";
 
-import Section from "../layout/section";
-import { Button } from "../ui/button";
-import Callout from "../ui/callout";
-import LinkText from "../ui/link-text";
+import { Section } from "@/components/layout/section";
+import { Button } from "@/components/ui/button";
+import { Callout } from "@/components/ui/callout";
+import { LinkText } from "@/components/ui/link-text";
 
-const WorkTogether: React.FunctionComponent = () => (
+const WorkTogether = () => (
   <Section id="work-together" className="animation-delay-500">
     <Callout className="space-y-4">
       <p>{"Interested in working together? Feel free to schedule a meet!"}</p>
@@ -30,4 +30,4 @@ const WorkTogether: React.FunctionComponent = () => (
   </Section>
 );
 
-export default WorkTogether;
+export { WorkTogether };

@@ -1,12 +1,11 @@
 import React from "react";
 
+import { CopyLink } from "@/components/copy-link";
+import type { IconProps } from "@/components/icons";
+import { Section } from "@/components/layout/section";
+import { LinkText } from "@/components/ui/link-text";
+import { Title } from "@/components/ui/title";
 import { getContacts } from "@/lib/contacts";
-
-import { CopyLink } from "../copy-link";
-import type { IconProps } from "../icons";
-import Section from "../layout/section";
-import LinkText from "../ui/link-text";
-import Title from "../ui/title";
 
 interface ContactItemProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
@@ -18,13 +17,13 @@ interface ContactItemProps extends React.HTMLAttributes<HTMLDivElement> {
   };
 }
 
-const ContactItem: React.FunctionComponent<ContactItemProps> = ({
+const ContactItem = ({
   title,
   icon,
   link,
   className: _className,
   ...attr
-}) => (
+}: ContactItemProps) => (
   <div className={"flex flex-row items-center justify-start gap-4"} {...attr}>
     {icon && title && icon({ className: "size-4" })}
     <span>
@@ -46,7 +45,7 @@ const ContactItem: React.FunctionComponent<ContactItemProps> = ({
   </div>
 );
 
-const ContactSection: React.FunctionComponent = () => (
+const ContactSection = () => (
   <Section
     className="animation-delay-1100 grid grid-cols-1 justify-start gap-4 pb-6"
     id="socials"
@@ -66,6 +65,4 @@ const ContactSection: React.FunctionComponent = () => (
   </Section>
 );
 
-export default ContactSection;
-
-export type { ContactItemProps };
+export { ContactSection, type ContactItemProps };

@@ -12,7 +12,7 @@ export interface PathItem {
   isAvailable?: boolean;
 }
 
-const Navbar: React.FunctionComponent = () => (
+const Navbar = () => (
   <nav className="sticky top-0 z-10 mx-auto flex w-full max-w-screen-sm items-center justify-between border-x border-b px-4 py-2 backdrop-blur-lg">
     <Link href="/">
       <Icons.logo className="h-5 w-5" />
@@ -35,4 +35,4 @@ const Navbar: React.FunctionComponent = () => (
   </nav>
 );
 
-export default Navbar;
+export { Navbar };
