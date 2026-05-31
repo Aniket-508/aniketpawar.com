@@ -36,12 +36,7 @@ const Header: React.FunctionComponent = () => (
        Aniket Pawar
       </h1>
       <div className="text-muted-foreground mt-1 text-base leading-snug font-normal">
-        {/* <p>
-            {
-              "A half software engineer, full-time startup enthusiast from India📍"
-            }
-          </p> */}
-        <p>Senior Frontend Engineer</p>
+        <p>Frontend Engineer</p>
       </div>
     </div>
   </Section>
