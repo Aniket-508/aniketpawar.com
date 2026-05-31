@@ -50,6 +50,7 @@ export const GlimpseImage = ({
   alt: _alt,
   ...props
 }: GlimpseImageProps) => (
+  // eslint-disable-next-line next/no-img-element
   <img
     alt=""
     className={cn(

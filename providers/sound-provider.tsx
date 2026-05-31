@@ -5,7 +5,7 @@ import { createContext, useContext, useState } from "react";
 
 const SoundEnabledContext = createContext<{
   enabled: boolean;
-  setEnabled: (enabled: boolean) => void;
+  setEnabled: React.Dispatch<React.SetStateAction<boolean>>;
 } | null>(null);
 
 export const SoundProvider = ({
