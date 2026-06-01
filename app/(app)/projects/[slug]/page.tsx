@@ -1,12 +1,10 @@
-import { ArrowLeftIcon, FileTextIcon, GlobeIcon } from "lucide-react";
+import { FileTextIcon, GlobeIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Icons } from "@/components/icons";
 import { MdxBody } from "@/components/mdx-body";
-import { ProjectShareButton } from "@/components/project-share-button";
 import { TOCMinimap } from "@/components/toc-minimap";
 import { Button } from "@/components/ui/button";
 import { glimpse } from "@/components/ui/glimpse/server";
@@ -20,6 +18,8 @@ import {
   getProjectSlugs,
 } from "@/lib/projects";
 import { cn } from "@/lib/utils";
+import { BreadcrumbJsonLd, projectsBreadcrumbs } from "@/seo/json-ld";
+import { createMetadata } from "@/seo/metadata";
 import type { Project } from "@/types/projects";
 
 interface ProjectPageProps {
@@ -39,15 +39,11 @@ export const generateMetadata = async ({
     return { title: "Project not found" };
   }
 
-  return {
+  return createMetadata({
+    canonical: `${ROUTES.PROJECTS}/${project.slug}`,
     description: project.description,
-    openGraph: {
-      description: project.description,
-      title: project.title,
-      url: `${SITE.URL}${ROUTES.PROJECTS}/${project.slug}`,
-    },
-    title: `${project.title} · ${SITE.AUTHOR.NAME}`,
-  };
+    title: project.title,
+  });
 };
 
 const getPreviewImage = async (project: Project): Promise<string | null> => {
@@ -77,23 +73,18 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
   const tocItems = tocFromMdast(_mdast);
   const previewImage = await getPreviewImage(project);
   const imageSrc = project.image ?? previewImage ?? SITE.OG_IMAGE;
-  const pageUrl = `${SITE.URL}${ROUTES.PROJECTS}/${project.slug}`;
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={projectsBreadcrumbs({
+          name: project.title,
+          path: `${ROUTES.PROJECTS}/${project.slug}`,
+        })}
+      />
       <TOCMinimap items={tocItems} />
 
       <article className="space-y-8 px-4 pb-16">
-        <div className="flex items-center justify-between gap-4">
-          <Button variant="ghost" size="sm" className="-ml-2 gap-1.5" asChild>
-            <Link href={ROUTES.PROJECTS}>
-              <ArrowLeftIcon className="size-4" />
-              Projects
-            </Link>
-          </Button>
-          <ProjectShareButton title={project.title} url={pageUrl} />
-        </div>
-
         <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
           <span className="rounded-md border border-border px-2 py-0.5 text-xs">
             {project.category}

@@ -1,23 +1,27 @@
-import type { Metadata } from "next";
-
 import { CraftsView } from "@/components/crafts-view";
 import { Section } from "@/components/layout/section";
 import { Title } from "@/components/ui/title";
-import { SITE } from "@/constants/site";
+import { ROUTES } from "@/constants/routes";
 import { getCrafts } from "@/lib/crafts";
+import { BreadcrumbJsonLd, craftsBreadcrumbs } from "@/seo/json-ld";
+import { createMetadata } from "@/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata = createMetadata({
+  canonical: ROUTES.CRAFTS,
   description: "Motion and interaction experiments — UI crafts and prototypes.",
-  title: `Crafts · ${SITE.AUTHOR.NAME}`,
-};
+  title: "Crafts",
+});
 
 const CraftsPage = () => {
   const crafts = getCrafts();
 
   return (
     <>
+      <BreadcrumbJsonLd items={craftsBreadcrumbs()} />
       <div className="space-y-2 px-4 pt-6 pb-2">
-        <Title>{"crafts."}</Title>
+        <Title asChild>
+          <h1>{"crafts."}</h1>
+        </Title>
         <p className="text-muted-foreground text-sm">
           Motion studies and interaction experiments.
         </p>

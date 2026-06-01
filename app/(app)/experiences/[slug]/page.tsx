@@ -1,19 +1,18 @@
-import { ArrowLeftIcon, GlobeIcon } from "lucide-react";
+import { GlobeIcon } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { MdxBody } from "@/components/mdx-body";
-import { ProjectShareButton } from "@/components/project-share-button";
 import { TOCMinimap } from "@/components/toc-minimap";
 import { Button } from "@/components/ui/button";
 import { Tag } from "@/components/ui/tag";
 import { ROUTES } from "@/constants/routes";
-import { SITE } from "@/constants/site";
 import { getExperienceMdxEntry } from "@/lib/content/experiences";
 import { tocFromMdast } from "@/lib/content/toc";
 import { getExperienceBySlug, getExperienceSlugs } from "@/lib/experiences";
 import { getTechLink } from "@/lib/tech";
+import { BreadcrumbJsonLd, experiencesBreadcrumbs } from "@/seo/json-ld";
+import { createMetadata } from "@/seo/metadata";
 
 interface ExperiencePageProps {
   params: Promise<{ slug: string }>;
@@ -32,15 +31,11 @@ export const generateMetadata = async ({
     return { title: "Experience not found" };
   }
 
-  return {
+  return createMetadata({
+    canonical: `${ROUTES.EXPERIENCES}/${experience.slug}`,
     description: `${experience.experienceTitle} at ${experience.experienceOrg.name}`,
-    openGraph: {
-      description: `${experience.experienceTitle} at ${experience.experienceOrg.name}`,
-      title: `${experience.experienceTitle} · ${experience.experienceOrg.name}`,
-      url: `${SITE.URL}${ROUTES.EXPERIENCES}/${experience.slug}`,
-    },
-    title: `${experience.experienceTitle} · ${SITE.AUTHOR.NAME}`,
-  };
+    title: `${experience.experienceTitle}`,
+  });
 };
 
 const ExperiencePage = async ({ params }: ExperiencePageProps) => {
@@ -54,24 +49,18 @@ const ExperiencePage = async ({ params }: ExperiencePageProps) => {
 
   const { default: Content, _mdast } = mdxEntry.compiled;
   const tocItems = tocFromMdast(_mdast);
-  const pageUrl = `${SITE.URL}${ROUTES.EXPERIENCES}/${experience.slug}`;
-  const shareTitle = `${experience.experienceTitle} · ${experience.experienceOrg.name}`;
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={experiencesBreadcrumbs({
+          name: experience.experienceTitle,
+          path: `${ROUTES.EXPERIENCES}/${experience.slug}`,
+        })}
+      />
       <TOCMinimap items={tocItems} />
 
       <article className="px-4 space-y-8 pb-16">
-        <div className="flex items-center justify-between gap-4">
-          <Button variant="ghost" size="sm" className="-ml-2 gap-1.5" asChild>
-            <Link href={ROUTES.EXPERIENCES}>
-              <ArrowLeftIcon className="size-4" />
-              Experience
-            </Link>
-          </Button>
-          <ProjectShareButton title={shareTitle} url={pageUrl} />
-        </div>
-
         <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
           <span className="rounded-md border border-border px-2 py-0.5 text-xs">
             Experience

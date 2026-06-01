@@ -1,23 +1,27 @@
-import type { Metadata } from "next";
-
 import { ExperiencesView } from "@/components/experiences-view";
 import { Section } from "@/components/layout/section";
 import { Title } from "@/components/ui/title";
-import { SITE } from "@/constants/site";
+import { ROUTES } from "@/constants/routes";
 import { getExperiences } from "@/lib/experiences";
+import { BreadcrumbJsonLd, experiencesBreadcrumbs } from "@/seo/json-ld";
+import { createMetadata } from "@/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata = createMetadata({
+  canonical: ROUTES.EXPERIENCES,
   description: "Work history — roles, highlights, and technologies used.",
-  title: `Experience · ${SITE.AUTHOR.NAME}`,
-};
+  title: "Experience",
+});
 
 const ExperiencesPage = () => {
   const experiences = getExperiences();
 
   return (
     <>
+      <BreadcrumbJsonLd items={experiencesBreadcrumbs()} />
       <div className="space-y-2 px-4 pt-6 pb-2">
-        <Title>{"experience."}</Title>
+        <Title asChild>
+          <h1>{"experience."}</h1>
+        </Title>
         <p className="text-muted-foreground text-sm">
           Where I have worked and what I shipped.
         </p>

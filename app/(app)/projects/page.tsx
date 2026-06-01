@@ -1,16 +1,17 @@
-import type { Metadata } from "next";
-
 import { Section } from "@/components/layout/section";
 import { ProjectsView } from "@/components/projects-view";
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
 import { Title } from "@/components/ui/title";
-import { SITE } from "@/constants/site";
+import { ROUTES } from "@/constants/routes";
 import { collectProjectUrls, getProjects } from "@/lib/projects";
+import { BreadcrumbJsonLd, projectsBreadcrumbs } from "@/seo/json-ld";
+import { createMetadata } from "@/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata = createMetadata({
+  canonical: ROUTES.PROJECTS,
   description: "Selected work — open source tools, APIs, and products.",
-  title: `Projects · ${SITE.AUTHOR.NAME}`,
-};
+  title: "Projects",
+});
 
 const ProjectsPage = async () => {
   const projects = getProjects();
@@ -18,8 +19,11 @@ const ProjectsPage = async () => {
 
   return (
     <>
+      <BreadcrumbJsonLd items={projectsBreadcrumbs()} />
       <div className="space-y-2 px-4 pt-6 pb-2">
-        <Title>{"projects."}</Title>
+        <Title asChild>
+          <h1>{"projects."}</h1>
+        </Title>
         <p className="text-muted-foreground text-sm">
           Tools, APIs, and products I have built or maintain.
         </p>

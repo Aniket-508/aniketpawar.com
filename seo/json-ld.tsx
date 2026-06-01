@@ -1,5 +1,14 @@
 import { LINK } from "@/constants/links";
+import { ROUTES } from "@/constants/routes";
 import { SITE } from "@/constants/site";
+
+const JsonLdScript = ({ data }: { data: Record<string, unknown> }) => (
+  <script
+    // eslint-disable-next-line react/no-danger
+    dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    type="application/ld+json"
+  />
+);
 
 const WebsiteJsonLd = () => {
   const jsonLd = {
@@ -19,12 +28,7 @@ const WebsiteJsonLd = () => {
     url: SITE.URL,
   };
 
-  return (
-    <script
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      type="application/ld+json"
-    />
-  );
+  return <JsonLdScript data={jsonLd} />;
 };
 
 const OrganizationJsonLd = () => {
@@ -42,12 +46,7 @@ const OrganizationJsonLd = () => {
     url: SITE.URL,
   };
 
-  return (
-    <script
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      type="application/ld+json"
-    />
-  );
+  return <JsonLdScript data={jsonLd} />;
 };
 
 const FAQJsonLd = () => {
@@ -84,12 +83,55 @@ const FAQJsonLd = () => {
     })),
   };
 
-  return (
-    <script
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      type="application/ld+json"
-    />
-  );
+  return <JsonLdScript data={jsonLd} />;
+};
+
+interface BreadcrumbItem {
+  name: string;
+  path: string;
+}
+
+const normalizeBreadcrumbPath = (path: string): string => {
+  if (path === ROUTES.HOME) {
+    return ROUTES.HOME;
+  }
+
+  return path.startsWith("/") ? path : `${ROUTES.HOME}${path}`;
+};
+
+const HOME_BREADCRUMB: BreadcrumbItem = { name: "Home", path: ROUTES.HOME };
+
+const projectsBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Projects", path: ROUTES.PROJECTS },
+  ...(current ? [current] : []),
+];
+
+const craftsBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Crafts", path: ROUTES.CRAFTS },
+  ...(current ? [current] : []),
+];
+
+const experiencesBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Experience", path: ROUTES.EXPERIENCES },
+  ...(current ? [current] : []),
+];
+
+const BreadcrumbJsonLd = ({ items }: { items: BreadcrumbItem[] }) => {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      item: `${SITE.URL}${normalizeBreadcrumbPath(item.path)}`,
+      name: item.name,
+      position: index + 1,
+    })),
+  };
+
+  return <JsonLdScript data={jsonLd} />;
 };
 
 const JsonLdScripts = () => (
@@ -100,4 +142,14 @@ const JsonLdScripts = () => (
   </>
 );
 
-export { JsonLdScripts, WebsiteJsonLd, OrganizationJsonLd, FAQJsonLd };
+export {
+  BreadcrumbJsonLd,
+  craftsBreadcrumbs,
+  experiencesBreadcrumbs,
+  JsonLdScripts,
+  projectsBreadcrumbs,
+  WebsiteJsonLd,
+  OrganizationJsonLd,
+  FAQJsonLd,
+};
+export type { BreadcrumbItem };
