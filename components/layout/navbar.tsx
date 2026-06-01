@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 
 import { ROUTES } from "@/constants/routes";
 import { SITE } from "@/constants/site";
+import { trackNavbarHomeClick, trackNavbarSectionClick } from "@/lib/events";
 import { cn } from "@/lib/utils";
 
 export type { PathItem } from "@/types/navigation";
@@ -62,7 +63,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex items-center justify-between gap-4 px-4 py-6">
-      <Link href={ROUTES.HOME} aria-label="Home">
+      <Link href={ROUTES.HOME} aria-label="Home" onClick={trackNavbarHomeClick}>
         <Image
           src={SITE.AUTHOR.AVATAR}
           alt="Aniket Pawar"
@@ -84,6 +85,11 @@ const Navbar = () => {
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground"
               )}
+              onClick={() =>
+                trackNavbarSectionClick(
+                  section.id === "experiences" ? "experience" : section.id
+                )
+              }
             >
               {section.label}
             </Link>

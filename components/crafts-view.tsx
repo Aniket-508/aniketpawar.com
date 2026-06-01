@@ -44,13 +44,18 @@ const CraftsView = ({
             />
           </div>
 
-          <ViewToggle value={variant} onChange={setVariant} />
+          <ViewToggle value={variant} onChange={setVariant} section="crafts" />
         </div>
       )}
 
       <div className={cn("grid grid-cols-1 gap-8", viewClassName)}>
         {crafts.map((craft) => (
-          <CraftItem key={craft.slug} {...craft} variant={variant} />
+          <CraftItem
+            key={craft.slug}
+            {...craft}
+            variant={variant}
+            location={showHeader ? "home" : "listing"}
+          />
         ))}
       </div>
     </>

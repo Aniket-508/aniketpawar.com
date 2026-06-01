@@ -9,14 +9,20 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useThemeToggle } from "@/hooks/use-theme-toggle";
+import { trackThemeToggle } from "@/lib/events";
 
 export const ModeToggle = () => {
-  const { toggleTheme } = useThemeToggle();
+  const { theme, toggleTheme } = useThemeToggle();
+
+  const handleToggle = () => {
+    toggleTheme();
+    trackThemeToggle(theme === "dark" ? "light" : "dark");
+  };
 
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button variant="ghost" size="icon-sm" onClick={toggleTheme}>
+        <Button variant="ghost" size="icon-sm" onClick={handleToggle}>
           <Icons.theme />
         </Button>
       </TooltipTrigger>

@@ -3,19 +3,29 @@
 import { LayoutGridIcon, TextAlignJustifyIcon } from "lucide-react";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { trackViewModeChange } from "@/lib/events";
 
 type ViewVariant = "list" | "grid";
 
 interface ViewToggleProps {
   value: ViewVariant;
   onChange: (value: ViewVariant) => void;
+  section: "projects" | "crafts";
 }
 
-const ViewToggle = ({ value, onChange }: ViewToggleProps) => (
+const ViewToggle = ({ value, onChange, section }: ViewToggleProps) => (
   <ToggleGroup
     type="single"
     value={value}
-    onValueChange={(next) => next && onChange(next as ViewVariant)}
+    onValueChange={(next) => {
+      if (!next) {
+        return;
+      }
+
+      const variant = next as ViewVariant;
+      trackViewModeChange(section, variant);
+      onChange(variant);
+    }}
   >
     <ToggleGroupItem value="list" className="h-8 w-8" aria-label="List view">
       <TextAlignJustifyIcon className="size-4" />

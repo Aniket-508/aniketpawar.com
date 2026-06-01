@@ -7,6 +7,7 @@ import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
 import { CRAFTS } from "@/constants/crafts";
 import { ROUTES } from "@/constants/routes";
+import { trackViewAllClick } from "@/lib/events";
 
 import { CraftsView } from "./crafts-view";
 
@@ -21,7 +22,7 @@ const CraftSection = () => (
       crafts={CRAFTS}
     />
     <Button variant="secondary" className="group" asChild>
-      <Link href={ROUTES.CRAFTS}>
+      <Link href={ROUTES.CRAFTS} onClick={() => trackViewAllClick("crafts")}>
         View all
         <ArrowUpRightIcon className="size-4 transition-transform duration-300 group-hover:rotate-45" />
       </Link>

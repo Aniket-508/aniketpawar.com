@@ -14,6 +14,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { ROUTES } from "@/constants/routes";
+import { trackExternalLinkClick, trackProjectDetailClick } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/types/projects";
 
@@ -33,7 +34,19 @@ const ProjectLink = ({
   isGrid,
   preview,
   listClassName,
-}: ProjectLinkProps) => {
+  slug,
+  title,
+}: ProjectLinkProps & { slug: string; title: string }) => {
+  const handleClick = () => {
+    trackExternalLinkClick({
+      context: "project_item",
+      link_type: label.toLowerCase(),
+      slug,
+      title,
+      url: href,
+    });
+  };
+
   if (isGrid) {
     return (
       <Tooltip>
@@ -44,7 +57,12 @@ const ProjectLink = ({
             className="text-muted-foreground"
             asChild
           >
-            <a href={href} target="_blank" rel="noreferrer">
+            <a
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              onClick={handleClick}
+            >
               {icon}
             </a>
           </Button>
@@ -64,6 +82,7 @@ const ProjectLink = ({
       target="_blank"
       side="bottom"
       preview={preview}
+      onClick={handleClick}
     >
       {label}
     </LinkTextClient>
@@ -74,7 +93,7 @@ interface ProjectItemProps
   extends
     Omit<React.HTMLAttributes<HTMLDivElement>, "title">,
     Pick<Project, "slug" | "title" | "description" | "links"> {
-  tech?: Project["tech"];
+  location?: "home" | "listing";
   variant?: string;
   previews?: Record<string, GlimpseData>;
 }
@@ -84,7 +103,7 @@ const ProjectItem = ({
   title,
   links,
   description,
-  tech: _tech,
+  location = "home",
   className,
   variant = "list",
   previews,
@@ -111,6 +130,7 @@ const ProjectItem = ({
         <Link
           href={`${ROUTES.PROJECTS}/${slug}`}
           className="text-primary font-normal hover:underline underline-offset-4"
+          onClick={() => trackProjectDetailClick(slug, title, location)}
         >
           {title}
         </Link>
@@ -123,6 +143,8 @@ const ProjectItem = ({
               isGrid={isGrid}
               preview={previews?.[links.website]}
               listClassName="min-w-[66px]"
+              slug={slug}
+              title={title}
             />
           )}
           {links.github && (
@@ -132,6 +154,8 @@ const ProjectItem = ({
               icon={<Icons.github />}
               isGrid={isGrid}
               preview={previews?.[links.github]}
+              slug={slug}
+              title={title}
             />
           )}
         </div>

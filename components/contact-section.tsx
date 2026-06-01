@@ -1,11 +1,14 @@
+"use client";
+
 import React from "react";
 
 import { CopyLink } from "@/components/copy-link";
 import { Section } from "@/components/layout/section";
-import { LinkText } from "@/components/ui/link-text";
+import { LinkTextClient } from "@/components/ui/link-text/client";
 import { Title } from "@/components/ui/title";
 import { resolveContacts } from "@/lib/contacts";
 import type { ResolvedContact } from "@/lib/contacts";
+import { trackContactLinkClick } from "@/lib/events";
 
 interface ContactItemProps
   extends
@@ -23,13 +26,14 @@ const ContactItem = ({
     {icon && title && icon({ className: "size-4" })}
     <span>
       {link?.url && (
-        <LinkText
+        <LinkTextClient
           className="text-muted-foreground text-sm font-normal"
           href={link?.url}
           target="_blank"
+          onClick={() => trackContactLinkClick(title, link.url)}
         >
           {link?.display}
-        </LinkText>
+        </LinkTextClient>
       )}
       {!link?.url && (
         <span className="text-muted-foreground text-sm font-normal">

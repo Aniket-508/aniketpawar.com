@@ -4,6 +4,7 @@ import { Share2Icon } from "lucide-react";
 import { useCallback, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { trackContentShare } from "@/lib/events";
 
 interface ProjectShareButtonProps {
   title: string;
@@ -17,6 +18,7 @@ const ProjectShareButton = ({ title, url }: ProjectShareButtonProps) => {
     if (navigator.share) {
       try {
         await navigator.share({ title, url });
+        trackContentShare(title, url, "native");
         return;
       } catch {
         // User cancelled or share failed — fall through to copy
@@ -24,6 +26,7 @@ const ProjectShareButton = ({ title, url }: ProjectShareButtonProps) => {
     }
 
     await navigator.clipboard.writeText(url);
+    trackContentShare(title, url, "clipboard");
     setCopied(true);
     window.setTimeout(() => setCopied(false), 2000);
   }, [title, url]);

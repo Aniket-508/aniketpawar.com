@@ -1,11 +1,15 @@
+"use client";
+
 import Link from "next/link";
 
 import { ROUTES } from "@/constants/routes";
+import { trackCraftDetailClick } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import type { Craft } from "@/types/crafts";
 
 interface CraftItemProps
   extends Craft, Omit<React.ComponentProps<"div">, "title"> {
+  location?: "home" | "listing";
   variant?: string;
 }
 
@@ -14,6 +18,7 @@ const CraftItem = ({
   title,
   description,
   links,
+  location = "home",
   variant = "list",
   className,
   ...attr
@@ -38,6 +43,7 @@ const CraftItem = ({
               muted
               loop
               aria-label={`Preview of ${title}`}
+              preload="metadata"
               className="w-full h-full object-cover"
             />
           </div>
@@ -47,6 +53,7 @@ const CraftItem = ({
         <Link
           href={`${ROUTES.CRAFTS}/${slug}`}
           className="hover:underline underline-offset-4"
+          onClick={() => trackCraftDetailClick(slug, title, location)}
         >
           {title}
         </Link>

@@ -1,11 +1,7 @@
-import { ArrowUpRightIcon } from "lucide-react";
-import Link from "next/link";
-
 import { Section } from "@/components/layout/section";
+import { ProjectSectionLinks } from "@/components/project-section-links";
 import { ProjectsView } from "@/components/projects-view";
-import { Button } from "@/components/ui/button";
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
-import { ROUTES } from "@/constants/routes";
 import {
   collectProjectUrls,
   getFeaturedProjects,
@@ -30,14 +26,7 @@ const ProjectSection = async () => {
         projects={featured}
         previews={previews}
       />
-      {showViewAll && (
-        <Button variant="secondary" className="group col-span-2" asChild>
-          <Link href={ROUTES.PROJECTS}>
-            View all
-            <ArrowUpRightIcon className="size-4 transition-transform duration-300 group-hover:rotate-45" />
-          </Link>
-        </Button>
-      )}
+      {showViewAll && <ProjectSectionLinks />}
     </Section>
   );
 };

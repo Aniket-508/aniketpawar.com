@@ -47,7 +47,11 @@ const ProjectsView = ({
               className="hidden size-4 group-hover/projects:inline"
             />
           </div>
-          <ViewToggle value={variant} onChange={setVariant} />
+          <ViewToggle
+            value={variant}
+            onChange={setVariant}
+            section="projects"
+          />
         </div>
       )}
 
@@ -67,6 +71,7 @@ const ProjectsView = ({
             links={project.links}
             previews={previews}
             variant={variant}
+            location={showHeader ? "home" : "listing"}
           />
         ))}
       </div>
