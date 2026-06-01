@@ -23,7 +23,7 @@ const CraftsView = ({
   showHeader = true,
   headerClassName,
   viewClassName,
-  defaultVariant = "grid",
+  defaultVariant = "list",
 }: CraftsViewProps) => {
   const [variant, setVariant] = useState(defaultVariant);
 

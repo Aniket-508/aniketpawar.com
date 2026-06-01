@@ -27,7 +27,7 @@ const ProjectsView = ({
   showHeader = true,
   headerClassName,
   viewClassName,
-  defaultVariant = "grid",
+  defaultVariant = "list",
 }: ProjectsViewProps) => {
   const [variant, setVariant] = useState(defaultVariant);
 
