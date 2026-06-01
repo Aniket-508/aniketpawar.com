@@ -1,21 +1,16 @@
 import React from "react";
 
 import { CopyLink } from "@/components/copy-link";
-import type { IconProps } from "@/components/icons";
 import { Section } from "@/components/layout/section";
 import { LinkText } from "@/components/ui/link-text";
 import { Title } from "@/components/ui/title";
-import { getContacts } from "@/lib/contacts";
+import { resolveContacts } from "@/lib/contacts";
+import type { ResolvedContact } from "@/lib/contacts";
 
-interface ContactItemProps extends React.HTMLAttributes<HTMLDivElement> {
-  title?: string;
-  icon?: (props: IconProps) => React.JSX.Element;
-
-  link?: {
-    display?: string;
-    url?: string;
-  };
-}
+interface ContactItemProps
+  extends
+    ResolvedContact,
+    Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {}
 
 const ContactItem = ({
   title,
@@ -58,7 +53,7 @@ const ContactSection = () => (
       />
     </span>
     <Section className="grid grid-cols-1 justify-start gap-4 p-0">
-      {getContacts()?.map((contact, contactIndex) => (
+      {resolveContacts().map((contact, contactIndex) => (
         <ContactItem {...contact} key={contactIndex} />
       ))}
     </Section>

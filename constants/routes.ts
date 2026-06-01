@@ -1,4 +1,5 @@
 export const ROUTES = {
+  CRAFTS: "/crafts",
   EXPERIENCES: "/experiences",
   HOME: "/",
   LLMS: "/llms.txt",

@@ -5,12 +5,7 @@ import { Icons } from "@/components/icons";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Separator } from "@/components/ui/separator";
 
-export interface PathItem {
-  pathType?: "internal" | "external";
-  title?: string;
-  link: string;
-  isAvailable?: boolean;
-}
+export type { PathItem } from "@/types/navigation";
 
 const Navbar = () => (
   <nav className="sticky top-0 z-10 mx-auto flex w-full max-w-screen-sm items-center justify-between border-x border-b px-4 py-2 backdrop-blur-lg">
@@ -19,7 +14,7 @@ const Navbar = () => (
     </Link>
 
     {/* <ul className="flex flex-row items-center justify-end gap-3">
-        {getPathMap()?.map((pathMapItem: PathItem, pathMapIndex: number) => (
+        {PATH_MAP.map((pathMapItem: PathItem, pathMapIndex) => (
           <NavItem key={pathMapIndex} item={pathMapItem} />
         ))}
       </ul> */}

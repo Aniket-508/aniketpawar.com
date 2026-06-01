@@ -7,7 +7,7 @@ import { CopyLink } from "@/components/copy-link";
 import { Section } from "@/components/layout/section";
 import { Title } from "@/components/ui/title";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { getCrafts } from "@/lib/crafts";
+import { CRAFTS } from "@/constants/crafts";
 
 import { CraftItem } from "./craft-item";
 
@@ -36,7 +36,7 @@ const CraftSection = () => {
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
-      {getCrafts()?.map((craft, craftIndex: number) => (
+      {CRAFTS.map((craft, craftIndex) => (
         <CraftItem {...craft} key={craftIndex} variant={variant} />
       ))}
     </Section>

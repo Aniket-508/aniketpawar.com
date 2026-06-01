@@ -2,7 +2,7 @@ import { CopyLink } from "@/components/copy-link";
 import { ExperienceItem } from "@/components/experience-item";
 import { Section } from "@/components/layout/section";
 import { Title } from "@/components/ui/title";
-import { getExperiences } from "@/lib/experiences";
+import { EXPERIENCES } from "@/constants/experiences";
 
 const ExperienceSection = () => (
   <Section
@@ -16,7 +16,7 @@ const ExperienceSection = () => (
         className="hidden size-4 group-hover/experience:inline"
       />
     </span>
-    {getExperiences()?.map((experience, experienceIndex: number) => (
+    {EXPERIENCES.map((experience, experienceIndex) => (
       <ExperienceItem {...experience} key={experienceIndex} />
     ))}
   </Section>

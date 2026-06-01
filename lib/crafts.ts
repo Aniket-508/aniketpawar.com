@@ -1,24 +1,9 @@
-import type { CraftItemProps } from "@/components/craft-item";
+import { CRAFTS } from "@/constants/crafts";
+import type { Craft } from "@/types/crafts";
 
-export const getCrafts = function getCrafts(): CraftItemProps[] {
-  return [
-    {
-      description:
-        "Enter/exit animations using Motion for CRUD operations in a dialog.",
-      links: {
-        preview:
-          "https://yffrvzi8zwbljfuj.public.blob.vercel-storage.com/portfolio-website/crud_dialog_animation.mp4",
-      },
-      title: "CRUD Dialog",
-    },
-    {
-      description:
-        "Envelope opening animation using CSS animations for founder's letter.",
-      links: {
-        preview:
-          "https://yffrvzi8zwbljfuj.public.blob.vercel-storage.com/portfolio-website/founder_letter_animation.mp4",
-      },
-      title: "Founder's Letter",
-    },
-  ];
-};
+export const getCrafts = (): readonly Craft[] => CRAFTS;
+
+export const getCraftBySlug = (slug: string): Craft | undefined =>
+  CRAFTS.find((craft) => craft.slug === slug);
+
+export const getCraftSlugs = (): string[] => CRAFTS.map((craft) => craft.slug);
