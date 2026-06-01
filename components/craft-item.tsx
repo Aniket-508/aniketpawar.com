@@ -1,15 +1,16 @@
-import { cn } from "@/lib/utils";
+import Link from "next/link";
 
-interface CraftItemProps extends React.ComponentProps<"div"> {
-  title: string;
-  description: string;
-  links: {
-    preview: string;
-  };
+import { ROUTES } from "@/constants/routes";
+import { cn } from "@/lib/utils";
+import type { Craft } from "@/types/crafts";
+
+interface CraftItemProps
+  extends Craft, Omit<React.ComponentProps<"div">, "title"> {
   variant?: string;
 }
 
 const CraftItem = ({
+  slug,
   title,
   description,
   links,
@@ -42,7 +43,14 @@ const CraftItem = ({
           </div>
         </div>
       )}
-      <h3 className="text-primary font-normal">{title}</h3>
+      <h3 className="text-primary font-normal">
+        <Link
+          href={`${ROUTES.CRAFTS}/${slug}`}
+          className="hover:underline underline-offset-4"
+        >
+          {title}
+        </Link>
+      </h3>
       <p
         className={cn(
           "text-muted-foreground text-sm font-normal truncate max-w-[60%]",

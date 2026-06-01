@@ -1,24 +1,17 @@
+import Link from "next/link";
+
 import { LinkText } from "@/components/ui/link-text";
 import { Tag } from "@/components/ui/tag";
-import { techLinks } from "@/lib/tech";
+import { ROUTES } from "@/constants/routes";
+import { getTechLink } from "@/lib/tech";
 import { cn } from "@/lib/utils";
+import type { Experience } from "@/types/experiences";
 
-interface ExperienceItemProps extends React.ComponentProps<"div"> {
-  experienceTitle: React.ReactNode | string;
-  experienceDescription?: string[];
-  experienceOrg: {
-    name: React.ReactNode | string;
-    link: React.ReactNode | string;
-    websiteDisplayName: React.ReactNode | string;
-  };
-  experienceStatus: {
-    startAt: React.ReactNode | string;
-    endAt: React.ReactNode | string;
-  };
-  experienceTech?: string[];
-}
+interface ExperienceItemProps
+  extends Experience, Omit<React.ComponentProps<"div">, "title"> {}
 
 const ExperienceItem = ({
+  slug,
   experienceTitle,
   experienceDescription,
   experienceOrg,
@@ -34,7 +27,12 @@ const ExperienceItem = ({
     <div className="flex flex-wrap items-start justify-between gap-2">
       <div>
         <h3 className="text-primary font-normal">
-          {`${experienceTitle}, ${experienceOrg?.name}`}
+          <Link
+            href={`${ROUTES.EXPERIENCES}/${slug}`}
+            className="hover:underline underline-offset-4"
+          >
+            {`${experienceTitle}, ${experienceOrg?.name}`}
+          </Link>
         </h3>
         <div className="flex items-center justify-start gap-1.5 text-sm">
           {"at, "}
@@ -70,20 +68,24 @@ const ExperienceItem = ({
     ) : null}
     {experienceTech?.length ? (
       <div className="flex flex-wrap gap-1">
-        {experienceTech.map((tech, index) => (
-          <div key={tech} className="flex items-center gap-1">
-            <a
-              href={techLinks[tech as keyof typeof techLinks]}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Tag className="cursor-pointer font-mono">{tech}</Tag>
-            </a>
-            <span className="text-secondary-foreground text-xs opacity-70">
-              {index !== experienceTech.length - 1 && "/"}
-            </span>
-          </div>
-        ))}
+        {experienceTech.map((tech, index) => {
+          const techUrl = getTechLink(tech);
+
+          return (
+            <div key={tech} className="flex items-center gap-1">
+              {techUrl ? (
+                <a href={techUrl} target="_blank" rel="noreferrer">
+                  <Tag className="cursor-pointer font-mono">{tech}</Tag>
+                </a>
+              ) : (
+                <Tag className="font-mono">{tech}</Tag>
+              )}
+              <span className="text-secondary-foreground text-xs opacity-70">
+                {index !== experienceTech.length - 1 && "/"}
+              </span>
+            </div>
+          );
+        })}
       </div>
     ) : null}
   </div>
