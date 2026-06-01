@@ -1,51 +1,73 @@
-import { LinkText } from "@/components/ui/link-text";
-import { Tag } from "@/components/ui/tag";
-import { techLinks } from "@/lib/tech";
-import { cn } from "@/lib/utils";
+"use client";
 
-interface ExperienceItemProps extends React.ComponentProps<"div"> {
-  experienceTitle: React.ReactNode | string;
-  experienceDescription?: string[];
-  experienceOrg: {
-    name: React.ReactNode | string;
-    link: React.ReactNode | string;
-    websiteDisplayName: React.ReactNode | string;
-  };
-  experienceStatus: {
-    startAt: React.ReactNode | string;
-    endAt: React.ReactNode | string;
-  };
-  experienceTech?: string[];
+import Link from "next/link";
+
+import { TechStack } from "@/components/tech-stack";
+import { LinkTextClient } from "@/components/ui/link-text/client";
+import { ROUTES } from "@/constants/routes";
+import {
+  trackExperienceDetailClick,
+  trackExternalLinkClick,
+} from "@/lib/events";
+import { cn } from "@/lib/utils";
+import type { Experience } from "@/types/experiences";
+
+interface ExperienceItemProps
+  extends Experience, Omit<React.ComponentProps<"div">, "title"> {
+  location?: "home" | "listing";
 }
 
 const ExperienceItem = ({
+  slug,
   experienceTitle,
   experienceDescription,
   experienceOrg,
   experienceStatus,
   experienceTech,
+  category: _category,
+  orgDescription: _orgDescription,
+  experienceLinks: _experienceLinks,
+  location = "home",
   className,
   ...attr
 }: ExperienceItemProps) => (
-  <div
-    className={cn("-mx-3 flex flex-col gap-4 rounded-lg px-3 py-2", className)}
-    {...attr}
-  >
+  <div className={cn("w-full space-y-4", className)} {...attr}>
     <div className="flex flex-wrap items-start justify-between gap-2">
       <div>
         <h3 className="text-primary font-normal">
-          {`${experienceTitle}, ${experienceOrg?.name}`}
+          <Link
+            href={`${ROUTES.EXPERIENCES}/${slug}`}
+            className="hover:underline underline-offset-4"
+            onClick={() =>
+              trackExperienceDetailClick(
+                slug,
+                `${experienceTitle}, ${experienceOrg.name}`,
+                location
+              )
+            }
+          >
+            {`${experienceTitle}, ${experienceOrg?.name}`}
+          </Link>
         </h3>
         <div className="flex items-center justify-start gap-1.5 text-sm">
           {"at, "}
           {typeof experienceOrg?.link === "string" ? (
-            <LinkText
+            <LinkTextClient
               className="text-sm font-normal"
               href={experienceOrg?.link}
-              target={"_blank"}
+              target="_blank"
+              onClick={() =>
+                trackExternalLinkClick({
+                  context: "experience_item",
+                  link_type: "website",
+                  slug,
+                  title: experienceOrg.name,
+                  url: experienceOrg.link,
+                })
+              }
             >
               {experienceOrg?.websiteDisplayName}
-            </LinkText>
+            </LinkTextClient>
           ) : (
             <span className="text-sm font-normal">
               {experienceOrg?.websiteDisplayName}
@@ -68,24 +90,7 @@ const ExperienceItem = ({
         ))}
       </ul>
     ) : null}
-    {experienceTech?.length ? (
-      <div className="flex flex-wrap gap-1">
-        {experienceTech.map((tech, index) => (
-          <div key={tech} className="flex items-center gap-1">
-            <a
-              href={techLinks[tech as keyof typeof techLinks]}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Tag className="cursor-pointer font-mono">{tech}</Tag>
-            </a>
-            <span className="text-secondary-foreground text-xs opacity-70">
-              {index !== experienceTech.length - 1 && "/"}
-            </span>
-          </div>
-        ))}
-      </div>
-    ) : null}
+    {experienceTech?.length ? <TechStack items={experienceTech} /> : null}
   </div>
 );
 

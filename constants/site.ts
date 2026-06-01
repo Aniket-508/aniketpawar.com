@@ -14,6 +14,8 @@ const baseUrl = getBaseUrl();
 
 export const SITE = {
   AUTHOR: {
+    AVATAR:
+      "https://ik.imagekit.io/2oajjadqkz/profile.jpg?updatedAt=1770631384305",
     NAME: "Aniket Pawar",
     TWITTER: "@alaymanguy",
   },
@@ -35,7 +37,7 @@ export const SITE = {
     "Web Development",
     "Portfolio",
   ],
-  NAME: "Aniket Pawar – Frontend Engineer",
+  NAME: "Aniket Pawar",
   OG_IMAGE:
     "https://ik.imagekit.io/2oajjadqkz/portfolio-image.png?updatedAt=1708090929752",
   URL: baseUrl,

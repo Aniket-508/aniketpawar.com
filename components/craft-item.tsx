@@ -1,18 +1,26 @@
-import { cn } from "@/lib/utils";
+"use client";
 
-interface CraftItemProps extends React.ComponentProps<"div"> {
-  title: string;
-  description: string;
-  links: {
-    preview: string;
-  };
+import Link from "next/link";
+
+import { ROUTES } from "@/constants/routes";
+import { trackCraftDetailClick } from "@/lib/events";
+import { cn } from "@/lib/utils";
+import type { Craft } from "@/types/crafts";
+
+import { MediaPreview } from "./media-preview";
+
+interface CraftItemProps
+  extends Craft, Omit<React.ComponentProps<"div">, "title"> {
+  location?: "home" | "listing";
   variant?: string;
 }
 
 const CraftItem = ({
+  slug,
   title,
   description,
   links,
+  location = "home",
   variant = "list",
   className,
   ...attr
@@ -22,27 +30,29 @@ const CraftItem = ({
   return (
     <div
       className={cn(
-        "flex items-center justify-between gap-2 min-w-0",
+        "w-full flex items-center justify-between gap-2 min-w-0",
         isGrid && "flex-col items-start gap-1",
         className
       )}
       {...attr}
     >
       {isGrid && (
-        <div className="mb-1 p-1 rounded-md border">
-          <div className="relative w-full rounded-sm border border-border aspect-video overflow-hidden select-none">
-            <video
-              src={links.preview}
-              autoPlay
-              muted
-              loop
-              aria-label={`Preview of ${title}`}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
+        <MediaPreview
+          src={links.preview}
+          title={title}
+          className="mb-1"
+          type="video"
+        />
       )}
-      <h3 className="text-primary font-normal">{title}</h3>
+      <h3 className="text-primary font-normal flex-1">
+        <Link
+          href={`${ROUTES.CRAFTS}/${slug}`}
+          className="hover:underline underline-offset-4 whitespace-nowrap"
+          onClick={() => trackCraftDetailClick(slug, title, location)}
+        >
+          {title}
+        </Link>
+      </h3>
       <p
         className={cn(
           "text-muted-foreground text-sm font-normal truncate max-w-[60%]",

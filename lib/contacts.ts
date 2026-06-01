@@ -1,48 +1,25 @@
-import type { ContactItemProps } from "@/components/contact-section";
+import type { IconProps } from "@/components/icons";
 import { Icons } from "@/components/icons";
-import { LINK } from "@/constants/links";
+import { CONTACTS } from "@/constants/contacts";
+import type { Contact, ContactIconKey } from "@/types/contacts";
 
-export const getContacts = function getContacts(): ContactItemProps[] {
-  return [
-    {
-      icon: Icons.github,
-      link: {
-        display: "@Aniket-508",
-        url: LINK.GITHUB,
-      },
-      title: "GitHub",
-    },
-    {
-      icon: Icons.linkedin,
-      link: {
-        display: "@aniketpawar508",
-        url: LINK.LINKEDIN,
-      },
-      title: "LinkedIn",
-    },
-    {
-      icon: Icons.x,
-      link: {
-        display: "@alaymanguy",
-        url: LINK.TWITTER,
-      },
-      title: "Twitter",
-    },
-    {
-      icon: Icons.topmate,
-      link: {
-        display: "@aniket_pawar",
-        url: LINK.TOPMATE,
-      },
-      title: "Topmate",
-    },
-    {
-      icon: Icons.peerlist,
-      link: {
-        display: "@aniket_pawar",
-        url: LINK.PEERLIST,
-      },
-      title: "Peerlist",
-    },
-  ];
+const CONTACT_ICONS: Record<
+  ContactIconKey,
+  (props: IconProps) => React.JSX.Element
+> = {
+  github: Icons.github,
+  linkedin: Icons.linkedin,
+  peerlist: Icons.peerlist,
+  topmate: Icons.topmate,
+  x: Icons.x,
 };
+
+export type ResolvedContact = Omit<Contact, "icon"> & {
+  icon: (props: IconProps) => React.JSX.Element;
+};
+
+export const resolveContacts = (): ResolvedContact[] =>
+  CONTACTS.map((contact) => ({
+    ...contact,
+    icon: CONTACT_ICONS[contact.icon],
+  }));

@@ -1,0 +1,133 @@
+import type { Experience } from "@/types/experiences";
+
+export const EXPERIENCES = [
+  {
+    category: "FinTech",
+    experienceDescription: [
+      "Revamped Live Market on the <u>DART</u> dashboard using Golden Layout, making it more intuitive & thereby simplifying the trading flow.",
+      "Built Bonds Search & Detailed pages using Golden Layout, driving the development of the <u>FinD</u> dashboard.",
+      "Led the migration of the DART dashboard from Nuxt2 & BootstrapVue to Nuxt3 & PrimeVue for improved functionality",
+      "Developed a scalable design system with PrimeVue 4 styled mode, collaborating closely with designers to ensure consistency, accessibility, and seamless user experience.",
+      "Developed a modularized chat app with Sendbird Chat SDK, enabling <u>AI-driven real-time quote detection.</u>",
+      "Implemented <u>AI-driven trade ticket generation</u> for direct client trades and complex broker workflows (single/double), enhancing order management to boost efficiency.",
+    ],
+    experienceLinks: {
+      linkedin: "https://www.linkedin.com/company/harmoney/",
+      website: "https://www.harmoney.in/",
+    },
+    experienceOrg: {
+      link: "https://www.harmoney.in/",
+      name: "Harmoney",
+      websiteDisplayName: "harmoney.in",
+    },
+    experienceStatus: {
+      endAt: "May, 2025",
+      startAt: "March, 2024",
+    },
+    experienceTech: [
+      "Nuxt.js",
+      "Vue.js",
+      "TypeScript",
+      "JavaScript",
+      "Tailwind CSS",
+      "BootstrapVue",
+      "PrimeVue",
+      "Pinia",
+      "GoldenLayout",
+      "NuxtAuth",
+      "FormKit",
+      "Sendbird Chat SDK",
+    ],
+    experienceTitle: "Frontend Engineer",
+    orgDescription:
+      "Harmoney builds institutional-grade trading infrastructure for brokers and wealth managers — unified dashboards, real-time market data, and AI-assisted workflows across bonds, equities, and derivatives.",
+    slug: "harmoney",
+  },
+  {
+    category: "HRTech",
+    experienceDescription: [
+      "Developed the new website entirely from scratch using NextJS with SSG in record time.",
+      "Developed various features for internal CMS tool to automate creation of assessments.",
+      "Integrated Strapi CMS for rapid, performant static page generation by business/content teams aiding SEO.",
+      "Implemented various optimization techniques in EasyAccess dashboard, reducing loading & build time by 70%.",
+      "Developed a microservice for on-demand generation and delivery of candidate reports in PDF format, allowing them to be sent as a single file or in bulk.",
+      "Built React Native app for EasyAccess that runs on iOS, Android, and the Web, achieving an 85% concurrency of the codebase.",
+      "Contributed to two successful ProductHunt launches: <u>EasySource</u> (#5 Product of the Day) and <u>JD Generator</u> (#1 Product of the Day).",
+    ],
+    experienceLinks: {
+      linkedin: "https://www.linkedin.com/company/hirequotient/",
+      website: "https://www.hirequotient.com/",
+      x: "https://x.com/hirequotient",
+    },
+    experienceOrg: {
+      link: "https://www.hirequotient.com/",
+      name: "HireQuotient",
+      websiteDisplayName: "hirequotient.com",
+    },
+    experienceStatus: {
+      endAt: "Feb, 2024",
+      startAt: "Jun, 2022",
+    },
+    experienceTech: [
+      "HTML5",
+      "CSS3",
+      "SASS",
+      "Material UI",
+      "Tailwind CSS",
+      "Bootstrap",
+      "JavaScript",
+      "React",
+      "Redux Saga",
+      "Next.js",
+      "TypeScript",
+      "Strapi CMS",
+      "Express.js",
+      "Node.js",
+      "MongoDB",
+      "Mongoose",
+      "AWS",
+      "GCP",
+    ],
+    experienceTitle: "SDE-2",
+    orgDescription:
+      "HireQuotient helps recruiting teams source and engage talent faster with AI-assisted workflows, automated assessments, and tools that scale high-volume hiring.",
+    slug: "hirequotient",
+  },
+  {
+    category: "FinTech",
+    experienceDescription: [
+      "Engineered financial calculators module from scratch for SEO purposes.",
+      "Developed the Company Financials Component for US Stocks detail page.",
+      "Built the Fixed Deposit Purchase Flow on web, catering to both KYC and non-KYC users.",
+      "Implemented Family Account Invite Flow on web from scratch.",
+    ],
+    experienceLinks: {
+      linkedin: "https://www.linkedin.com/company/indmoney/",
+      website: "https://www.indmoney.com/",
+      x: "https://x.com/INDmoneyApp",
+    },
+    experienceOrg: {
+      link: "https://www.indmoney.com/",
+      name: "INDmoney",
+      websiteDisplayName: "indmoney.com",
+    },
+    experienceStatus: {
+      endAt: "Jun, 2022",
+      startAt: "Jan, 2022",
+    },
+    experienceTech: [
+      "Tailwind CSS",
+      "React",
+      "React Query",
+      "React Hook Form",
+      "React Highcharts",
+      "Next.js",
+      "TypeScript",
+      "Strapi CMS",
+    ],
+    experienceTitle: "Software Engineer Intern",
+    orgDescription:
+      "INDmoney is a personal finance super app that helps Indians track net worth, invest across stocks and mutual funds, and manage money in one place.",
+    slug: "indmoney",
+  },
+] as const satisfies readonly Experience[];

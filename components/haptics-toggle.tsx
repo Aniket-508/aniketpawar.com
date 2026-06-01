@@ -10,14 +10,20 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useHapticsToggle } from "@/hooks/use-haptics-toggle";
+import { trackHapticsToggle } from "@/lib/events";
 
 export const HapticsToggle = () => {
   const { enabled, toggleHaptics } = useHapticsToggle();
 
+  const handleToggle = () => {
+    toggleHaptics();
+    trackHapticsToggle(!enabled);
+  };
+
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button variant="ghost" size="icon-sm" onClick={toggleHaptics}>
+        <Button variant="ghost" size="icon-sm" onClick={handleToggle}>
           {enabled ? <VibrateIcon /> : <VibrateOffIcon />}
         </Button>
       </TooltipTrigger>

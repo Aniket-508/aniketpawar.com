@@ -1,24 +1,25 @@
-import { CopyLink } from "@/components/copy-link";
-import { ExperienceItem } from "@/components/experience-item";
+"use client";
+
 import { Section } from "@/components/layout/section";
-import { Title } from "@/components/ui/title";
-import { getExperiences } from "@/lib/experiences";
+import { EXPERIENCES } from "@/constants/experiences";
+
+import { ExperiencesView } from "./experiences-view";
 
 const ExperienceSection = () => (
   <Section
-    className="animation-delay-[900ms] grid grid-cols-1 justify-start gap-6"
+    className="delay-500 grid grid-cols-1 place-items-center gap-8"
     id="experience"
   >
-    <span className="group/experience flex items-center space-x-2">
-      <Title>{"experience."}</Title>
-      <CopyLink
-        title={"Experience"}
-        className="hidden size-4 group-hover/experience:inline"
-      />
-    </span>
-    {getExperiences()?.map((experience, experienceIndex: number) => (
-      <ExperienceItem {...experience} key={experienceIndex} />
-    ))}
+    <ExperiencesView headerClassName="w-full" experiences={EXPERIENCES} />
+    {/* <Button variant="secondary" className="group w-fit" asChild>
+      <Link
+        href={ROUTES.EXPERIENCES}
+        onClick={() => trackViewAllClick("experience")}
+      >
+        View all
+        <ArrowUpRightIcon className="size-4 transition-transform duration-300 group-hover:rotate-45" />
+      </Link>
+    </Button> */}
   </Section>
 );
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { GlobeIcon } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 import { Icons } from "@/components/icons";
@@ -12,7 +13,12 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { ROUTES } from "@/constants/routes";
+import { trackExternalLinkClick, trackProjectDetailClick } from "@/lib/events";
 import { cn } from "@/lib/utils";
+import type { Project } from "@/types/projects";
+
+import { MediaPreview } from "./media-preview";
 
 interface ProjectLinkProps {
   href: string;
@@ -30,7 +36,19 @@ const ProjectLink = ({
   isGrid,
   preview,
   listClassName,
-}: ProjectLinkProps) => {
+  slug,
+  title,
+}: ProjectLinkProps & { slug: string; title: string }) => {
+  const handleClick = () => {
+    trackExternalLinkClick({
+      context: "project_item",
+      link_type: label.toLowerCase(),
+      slug,
+      title,
+      url: href,
+    });
+  };
+
   if (isGrid) {
     return (
       <Tooltip>
@@ -41,7 +59,12 @@ const ProjectLink = ({
             className="text-muted-foreground"
             asChild
           >
-            <a href={href} target="_blank" rel="noreferrer">
+            <a
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              onClick={handleClick}
+            >
               {icon}
             </a>
           </Button>
@@ -61,29 +84,28 @@ const ProjectLink = ({
       target="_blank"
       side="bottom"
       preview={preview}
+      onClick={handleClick}
     >
       {label}
     </LinkTextClient>
   );
 };
 
-interface ProjectItemProps extends React.ComponentProps<"div"> {
-  title?: string;
-  links?: {
-    website?: string;
-    github?: string;
-  };
-  description?: string;
-  tech?: string[];
+interface ProjectItemProps
+  extends
+    Omit<React.HTMLAttributes<HTMLDivElement>, "title">,
+    Pick<Project, "slug" | "title" | "description" | "links"> {
+  location?: "home" | "listing";
   variant?: string;
   previews?: Record<string, GlimpseData>;
 }
 
 const ProjectItem = ({
+  slug,
   title,
   links,
   description,
-  tech: _tech,
+  location = "home",
   className,
   variant = "list",
   previews,
@@ -93,23 +115,24 @@ const ProjectItem = ({
   const image = previews?.[links?.website ?? ""]?.image ?? "";
 
   return (
-    <div className={cn("space-y-1", className)} {...attr}>
-      {isGrid && (
-        <div className="mb-2 p-1 rounded-md border">
-          <div className="relative w-full rounded-sm border border-border aspect-1200/630 overflow-hidden select-none">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={image}
-              alt={title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
+    <div className={cn("w-full space-y-1", className)} {...attr}>
+      {isGrid && image && (
+        <MediaPreview
+          src={image}
+          title={title}
+          className="mb-2 aspect-1200/630"
+        />
       )}
-      <div className="flex items-center justify-between">
-        <h3 className="text-primary font-normal">{title}</h3>
-        <div className="flex flex-row items-center justify-start gap-1.5">
-          {links?.website && (
+      <div className="flex items-center justify-between gap-4">
+        <Link
+          href={`${ROUTES.PROJECTS}/${slug}`}
+          className="text-primary font-normal hover:underline underline-offset-4"
+          onClick={() => trackProjectDetailClick(slug, title, location)}
+        >
+          {title}
+        </Link>
+        <div className="flex shrink-0 flex-row items-center justify-start gap-1.5">
+          {links.website && (
             <ProjectLink
               href={links.website}
               label="Website"
@@ -117,25 +140,25 @@ const ProjectItem = ({
               isGrid={isGrid}
               preview={previews?.[links.website]}
               listClassName="min-w-[66px]"
+              slug={slug}
+              title={title}
             />
           )}
-          {links?.github && (
+          {links.github && (
             <ProjectLink
               href={links.github}
               label="GitHub"
               icon={<Icons.github />}
               isGrid={isGrid}
               preview={previews?.[links.github]}
+              slug={slug}
+              title={title}
             />
           )}
         </div>
       </div>
 
-      {description && (
-        <p className="text-muted-foreground text-sm font-normal">
-          {description}
-        </p>
-      )}
+      <p className="text-muted-foreground text-sm font-normal">{description}</p>
     </div>
   );
 };

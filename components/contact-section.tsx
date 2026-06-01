@@ -1,21 +1,19 @@
+"use client";
+
 import React from "react";
 
 import { CopyLink } from "@/components/copy-link";
-import type { IconProps } from "@/components/icons";
 import { Section } from "@/components/layout/section";
-import { LinkText } from "@/components/ui/link-text";
+import { LinkTextClient } from "@/components/ui/link-text/client";
 import { Title } from "@/components/ui/title";
-import { getContacts } from "@/lib/contacts";
+import { resolveContacts } from "@/lib/contacts";
+import type { ResolvedContact } from "@/lib/contacts";
+import { trackContactLinkClick } from "@/lib/events";
 
-interface ContactItemProps extends React.HTMLAttributes<HTMLDivElement> {
-  title?: string;
-  icon?: (props: IconProps) => React.JSX.Element;
-
-  link?: {
-    display?: string;
-    url?: string;
-  };
-}
+interface ContactItemProps
+  extends
+    ResolvedContact,
+    Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {}
 
 const ContactItem = ({
   title,
@@ -28,13 +26,14 @@ const ContactItem = ({
     {icon && title && icon({ className: "size-4" })}
     <span>
       {link?.url && (
-        <LinkText
+        <LinkTextClient
           className="text-muted-foreground text-sm font-normal"
           href={link?.url}
           target="_blank"
+          onClick={() => trackContactLinkClick(title, link.url)}
         >
           {link?.display}
-        </LinkText>
+        </LinkTextClient>
       )}
       {!link?.url && (
         <span className="text-muted-foreground text-sm font-normal">
@@ -47,7 +46,7 @@ const ContactItem = ({
 
 const ContactSection = () => (
   <Section
-    className="animation-delay-1100 grid grid-cols-1 justify-start gap-4 pb-6"
+    className="delay-600 grid grid-cols-1 justify-start gap-4"
     id="socials"
   >
     <span className="group/social flex items-center space-x-2">
@@ -58,7 +57,7 @@ const ContactSection = () => (
       />
     </span>
     <Section className="grid grid-cols-1 justify-start gap-4 p-0">
-      {getContacts()?.map((contact, contactIndex) => (
+      {resolveContacts().map((contact, contactIndex) => (
         <ContactItem {...contact} key={contactIndex} />
       ))}
     </Section>
