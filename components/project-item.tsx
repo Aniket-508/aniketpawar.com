@@ -1,6 +1,7 @@
 "use client";
 
 import { GlobeIcon } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 import { Icons } from "@/components/icons";
@@ -12,7 +13,9 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { ROUTES } from "@/constants/routes";
 import { cn } from "@/lib/utils";
+import type { ProjectLinks } from "@/types/projects";
 
 interface ProjectLinkProps {
   href: string;
@@ -67,12 +70,10 @@ const ProjectLink = ({
   );
 };
 
-interface ProjectItemProps extends React.ComponentProps<"div"> {
+interface ProjectItemProps extends React.HTMLAttributes<HTMLDivElement> {
+  slug?: string;
   title?: string;
-  links?: {
-    website?: string;
-    github?: string;
-  };
+  links?: ProjectLinks;
   description?: string;
   tech?: string[];
   variant?: string;
@@ -80,6 +81,7 @@ interface ProjectItemProps extends React.ComponentProps<"div"> {
 }
 
 const ProjectItem = ({
+  slug,
   title,
   links,
   description,
@@ -91,24 +93,42 @@ const ProjectItem = ({
 }: ProjectItemProps) => {
   const isGrid = variant === "grid";
   const image = previews?.[links?.website ?? ""]?.image ?? "";
+  const detailHref = slug ? `${ROUTES.PROJECTS}/${slug}` : undefined;
+
+  const titleElement = detailHref ? (
+    <Link
+      href={detailHref}
+      className="text-primary font-normal hover:underline underline-offset-4"
+    >
+      {title}
+    </Link>
+  ) : (
+    <h3 className="text-primary font-normal">{title}</h3>
+  );
 
   return (
     <div className={cn("space-y-1", className)} {...attr}>
-      {isGrid && (
-        <div className="mb-2 p-1 rounded-md border">
-          <div className="relative w-full rounded-sm border border-border aspect-1200/630 overflow-hidden select-none">
+      {isGrid && image && (
+        <Link
+          href={detailHref ?? "#"}
+          className={cn(
+            "mb-2 block rounded-md border p-1",
+            !detailHref && "pointer-events-none"
+          )}
+        >
+          <div className="relative aspect-1200/630 w-full overflow-hidden rounded-sm border border-border select-none">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={image}
               alt={title}
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover"
             />
           </div>
-        </div>
+        </Link>
       )}
-      <div className="flex items-center justify-between">
-        <h3 className="text-primary font-normal">{title}</h3>
-        <div className="flex flex-row items-center justify-start gap-1.5">
+      <div className="flex items-center justify-between gap-4">
+        {titleElement}
+        <div className="flex shrink-0 flex-row items-center justify-start gap-1.5">
           {links?.website && (
             <ProjectLink
               href={links.website}

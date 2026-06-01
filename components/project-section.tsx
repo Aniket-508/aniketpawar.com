@@ -1,31 +1,17 @@
-// import { ArrowUpRightIcon } from "lucide-react";
-
 import { Section } from "@/components/layout/section";
-import type { ProjectItemProps } from "@/components/project-item";
 import { ProjectSectionView } from "@/components/project-section-view";
-// import { Button } from "@/components/ui/button";
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
-import { getProjects } from "@/lib/projects";
+import {
+  collectProjectUrls,
+  getFeaturedProjects,
+  getProjects,
+} from "@/lib/projects";
 import { cn } from "@/lib/utils";
 
-const collectProjectUrls = (projects: ProjectItemProps[]): string[] => {
-  const urls: string[] = [];
-
-  for (const project of projects) {
-    if (project.links?.website) {
-      urls.push(project.links.website);
-    }
-    if (project.links?.github) {
-      urls.push(project.links.github);
-    }
-  }
-
-  return urls;
-};
-
 const ProjectSection = async () => {
-  const projects = getProjects();
-  const previews = await prefetchGlimpses(collectProjectUrls(projects));
+  const featured = getFeaturedProjects(4);
+  const allProjects = getProjects();
+  const previews = await prefetchGlimpses(collectProjectUrls(allProjects));
 
   return (
     <Section
@@ -34,11 +20,11 @@ const ProjectSection = async () => {
       )}
       id="projects"
     >
-      <ProjectSectionView projects={projects} previews={previews} />
-      {/* <Button variant="secondary" className="group">
-        View All{" "}
-        <ArrowUpRightIcon className="size-4 group-hover:rotate-45 transition-transform duration-300" />
-      </Button> */}
+      <ProjectSectionView
+        projects={featured}
+        previews={previews}
+        showViewAll={allProjects.length > featured.length}
+      />
     </Section>
   );
 };
