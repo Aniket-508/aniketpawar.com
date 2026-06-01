@@ -7,6 +7,8 @@ import { trackCraftDetailClick } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import type { Craft } from "@/types/crafts";
 
+import { MediaPreview } from "./media-preview";
+
 interface CraftItemProps
   extends Craft, Omit<React.ComponentProps<"div">, "title"> {
   location?: "home" | "listing";
@@ -35,19 +37,12 @@ const CraftItem = ({
       {...attr}
     >
       {isGrid && (
-        <div className="mb-1 p-1 rounded-md border">
-          <div className="relative w-full rounded-sm border border-border aspect-video overflow-hidden select-none">
-            <video
-              src={links.preview}
-              autoPlay
-              muted
-              loop
-              aria-label={`Preview of ${title}`}
-              preload="metadata"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
+        <MediaPreview
+          src={links.preview}
+          title={title}
+          className="mb-1"
+          type="video"
+        />
       )}
       <h3 className="text-primary font-normal">
         <Link

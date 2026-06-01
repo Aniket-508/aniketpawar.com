@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ContentTOC } from "@/components/content-toc";
 import { MdxBody } from "@/components/mdx-body";
 import { TrackedExperienceLinks } from "@/components/tracked-external-links";
+import { Badge } from "@/components/ui/badge";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
 import { getExperienceMdxEntry } from "@/lib/content/experiences";
@@ -67,9 +68,9 @@ const ExperiencePage = async ({ params }: ExperiencePageProps) => {
 
       <article className="space-y-4 px-4 py-6">
         <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-          <span className="rounded-md border border-border px-2 py-0.5 text-xs">
+          <Badge variant="outline" className="text-muted-foreground">
             {experience.category}
-          </span>
+          </Badge>
           <span aria-hidden>·</span>
           <time>
             {experience.experienceStatus.startAt} –{" "}

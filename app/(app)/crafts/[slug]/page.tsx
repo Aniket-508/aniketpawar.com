@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 
 import { ContentTOC } from "@/components/content-toc";
 import { MdxBody } from "@/components/mdx-body";
+import { MediaPreview } from "@/components/media-preview";
+import { Badge } from "@/components/ui/badge";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
 import { getCraftMdxEntry } from "@/lib/content/crafts";
@@ -58,7 +60,13 @@ const CraftPage = async ({ params }: CraftPageProps) => {
 
       <ContentTOC items={tocItems} />
 
-      <article className="px-4 py-6 space-y-4">
+      <article className="space-y-4 px-4 py-6">
+        <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+          <Badge variant="outline" className="text-muted-foreground">
+            {craft.category}
+          </Badge>
+        </div>
+
         <header className="animate-slide-in space-y-2">
           <Title asChild>
             <h1>{craft.title}</h1>
@@ -66,19 +74,12 @@ const CraftPage = async ({ params }: CraftPageProps) => {
           <p className="text-muted-foreground text-sm">{craft.description}</p>
         </header>
 
-        <div className="animate-slide-in delay-100 p-1 rounded-md border">
-          <div className="relative w-full rounded-sm border border-border aspect-video overflow-hidden select-none">
-            <video
-              src={craft.links.preview}
-              autoPlay
-              muted
-              loop
-              aria-label={`Preview of ${craft.title}`}
-              className="w-full h-full object-cover"
-              preload="metadata"
-            />
-          </div>
-        </div>
+        <MediaPreview
+          src={craft.links.preview}
+          title={craft.title}
+          className="animate-slide-in delay-100"
+          type="video"
+        />
 
         <MdxBody className="delay-200 mt-10" Content={Content} />
       </article>

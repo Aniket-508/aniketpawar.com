@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ContentTOC } from "@/components/content-toc";
 import { MdxBody } from "@/components/mdx-body";
 import { TrackedProjectLinks } from "@/components/tracked-external-links";
+import { Badge } from "@/components/ui/badge";
 import { glimpse } from "@/components/ui/glimpse/server";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
@@ -84,9 +85,9 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
 
       <article className="px-4 py-6 space-y-4">
         <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-          <span className="rounded-md border border-border px-2 py-0.5 text-xs">
+          <Badge variant="outline" className="text-muted-foreground">
             {project.category}
-          </span>
+          </Badge>
           <span aria-hidden>·</span>
           <time dateTime={`${project.date.year}-${project.date.month}`}>
             {formatProjectDate(project.date)}

@@ -18,6 +18,8 @@ import { trackExternalLinkClick, trackProjectDetailClick } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/types/projects";
 
+import { MediaPreview } from "./media-preview";
+
 interface ProjectLinkProps {
   href: string;
   label: string;
@@ -115,16 +117,11 @@ const ProjectItem = ({
   return (
     <div className={cn("w-full space-y-1", className)} {...attr}>
       {isGrid && image && (
-        <div className="mb-2 block rounded-md border p-1">
-          <div className="relative aspect-1200/630 w-full overflow-hidden rounded-sm border border-border select-none">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={image}
-              alt={title}
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </div>
+        <MediaPreview
+          src={image}
+          title={title}
+          className="mb-2 aspect-1200/630"
+        />
       )}
       <div className="flex items-center justify-between gap-4">
         <Link

@@ -2,6 +2,7 @@ import type { Craft } from "@/types/crafts";
 
 export const CRAFTS = [
   {
+    category: "Motion",
     description:
       "Enter/exit animations using Motion for CRUD operations in a dialog.",
     links: {
@@ -12,6 +13,7 @@ export const CRAFTS = [
     title: "CRUD Dialog",
   },
   {
+    category: "CSS",
     description:
       "Envelope opening animation using CSS animations for founder's letter.",
     links: {
