@@ -1,3 +1,5 @@
+import { createContent } from "fuma-content/next";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -10,8 +12,18 @@ const nextConfig = {
         hostname: "placehold.co",
         protocol: "https",
       },
+      {
+        hostname: "opengraph.githubassets.com",
+        protocol: "https",
+      },
+      {
+        hostname: "**.vercel.app",
+        protocol: "https",
+      },
     ],
   },
 };
 
-export default nextConfig;
+const withContent = await createContent();
+
+export default withContent(nextConfig);

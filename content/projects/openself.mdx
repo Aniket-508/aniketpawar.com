@@ -1,0 +1,33 @@
+---
+slug: openself
+---
+
+## Overview
+
+Openself helps you build professional resumes through a conversational AI interface. Describe your experience in natural language and watch structured resume sections appear in a live preview.
+
+The app keeps parsing on the server while file data stays in the browser, with full TypeScript and Zod validation across resume schemas.
+
+## The problem
+
+Traditional resume builders force rigid forms and generic templates. Updating a resume for different roles means duplicating work across tools, and most products treat AI as a one-shot generator rather than a collaborative editor.
+
+I wanted something that feels like pair-programming for your career story — iterative, structured, and export-ready.
+
+## Wins
+
+Shipped an end-to-end flow from chat → structured resume → PDF download with interactable sections the AI can update in place.
+
+Integrated Tambo AI for component-level control so the model can edit header, experience, projects, and skills as first-class UI blocks.
+
+## Tech stack
+
+Built on Next.js App Router with React 19, Tailwind CSS v4, and Radix UI primitives. State lives in Zustand; resume shapes are validated with Zod.
+
+PDF export uses React PDF; AI orchestration runs through Tambo with Gemini for generation.
+
+## What's next
+
+Template variants and role-specific tailoring prompts.
+
+Import from LinkedIn and richer section types (publications, speaking).

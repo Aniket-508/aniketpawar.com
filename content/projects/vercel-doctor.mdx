@@ -1,0 +1,31 @@
+---
+slug: vercel-doctor
+---
+
+## Overview
+
+Vercel Doctor packages review guidance agents can run after changes to catch cost-heavy patterns early — oversized functions, cache misuse, image handling, and similar footguns.
+
+It is designed as an installable skill for Cursor and other agent workflows, not a standalone SaaS dashboard.
+
+## The problem
+
+Vercel's pricing model rewards efficient compute, but Next.js apps easily accumulate expensive defaults: unbounded ISR, large server bundles, missing image optimization, and Fluid Compute misconfiguration.
+
+Developers often discover bill spikes after deploy, when fixes are reactive and stressful.
+
+## Wins
+
+Published as open source with clear, agent-consumable rules so reviews run automatically in CI and local dev.
+
+Gained traction in the OSS community as a practical guardrail for Vercel-hosted Next.js apps.
+
+## Tech stack
+
+Authored as an MDX-based skill package with structured checklists and examples agents can cite during code review.
+
+## What's next
+
+Deeper integration with Vercel deployment logs and automated fix suggestions.
+
+Coverage for marketplace databases and edge middleware patterns.
