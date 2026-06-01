@@ -28,9 +28,8 @@ const instrument_serif = Instrument_Serif({
 
 export const viewport: Viewport = {
   initialScale: 1,
-  maximumScale: 1,
-  minimumScale: 1,
-  userScalable: false,
+  themeColor: META_THEME_COLORS.light,
+  viewportFit: "cover",
   width: "device-width",
 };
 

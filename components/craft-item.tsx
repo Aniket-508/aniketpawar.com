@@ -44,10 +44,10 @@ const CraftItem = ({
           type="video"
         />
       )}
-      <h3 className="text-primary font-normal">
+      <h3 className="text-primary font-normal flex-1">
         <Link
           href={`${ROUTES.CRAFTS}/${slug}`}
-          className="hover:underline underline-offset-4"
+          className="hover:underline underline-offset-4 whitespace-nowrap"
           onClick={() => trackCraftDetailClick(slug, title, location)}
         >
           {title}

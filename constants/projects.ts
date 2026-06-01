@@ -4,6 +4,37 @@ export const HOME_FEATURED_PROJECT_COUNT = 4 as const;
 
 export const PROJECTS = [
   {
+    category: "Open Source",
+    date: {
+      month: "January",
+      year: 2026,
+    },
+    description:
+      "A collection of 316 beautifully animated Heroicons for React.",
+    featured: true,
+    links: {
+      github: "https://github.com/Aniket-508/heroicons-animated",
+      website: "https://heroicons-animated.com/",
+    },
+    slug: "heroicons-animated",
+    title: "heroicons-animated",
+  },
+  {
+    category: "Product",
+    date: {
+      month: "Feb",
+      year: 2025,
+    },
+    description:
+      "Publish your Peerlist article effortlessly to multiple platforms, including DEV.to, Hashnode, Medium, Ghost and more.",
+    featured: true,
+    links: {
+      website: "https://peerlistpublish.vercel.app",
+    },
+    slug: "peerlist-publish",
+    title: "Peerlist Publish",
+  },
+  {
     category: "Product",
     date: {
       month: "May",
@@ -11,7 +42,6 @@ export const PROJECTS = [
     },
     description:
       "An AI-powered resume builder with interactive chat, real-time preview, and high-quality PDF export — Cursor for resumes.",
-    featured: true,
     links: {
       github: "https://github.com/Aniket-508/openself",
       website: "https://openself.vercel.app",
@@ -43,7 +73,6 @@ export const PROJECTS = [
     },
     description:
       "An open Graph image toolkit for generating beautiful, consistent social preview images with Satori and Takumi.",
-    featured: true,
     links: {
       github: "https://github.com/Aniket-508/better-og",
       website: "https://better-og.vercel.app",
@@ -66,21 +95,6 @@ export const PROJECTS = [
     },
     slug: "awesome-oss-perks",
     title: "Awesome OSS Perks",
-  },
-  {
-    category: "Open Source",
-    date: {
-      month: "January",
-      year: 2026,
-    },
-    description:
-      "A collection of 316 beautifully animated Heroicons for React.",
-    links: {
-      github: "https://github.com/Aniket-508/heroicons-animated",
-      website: "https://heroicons-animated.com/",
-    },
-    slug: "heroicons-animated",
-    title: "heroicons-animated",
   },
   {
     category: "API",
