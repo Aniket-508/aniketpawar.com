@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { ContentTOC } from "@/components/content-toc";
 import { MdxBody } from "@/components/mdx-body";
-import { TOCMinimap } from "@/components/toc-minimap";
+import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
 import { getCraftMdxEntry } from "@/lib/content/crafts";
 import { tocFromMdast } from "@/lib/content/toc";
@@ -54,31 +55,32 @@ const CraftPage = async ({ params }: CraftPageProps) => {
           path: `${ROUTES.CRAFTS}/${craft.slug}`,
         })}
       />
-      <TOCMinimap items={tocItems} />
 
-      <article className="px-4 space-y-8 pb-16">
-        <header className="space-y-4">
-          <h1 className="text-3xl font-normal tracking-tight text-primary">
-            {craft.title}
-          </h1>
-          <p className="text-base leading-relaxed text-muted-foreground">
-            {craft.description}
-          </p>
+      <ContentTOC items={tocItems} />
+
+      <article className="px-4 py-6 space-y-4">
+        <header className="animate-slide-in space-y-2">
+          <Title asChild>
+            <h1>{craft.title}</h1>
+          </Title>
+          <p className="text-muted-foreground text-sm">{craft.description}</p>
         </header>
 
-        <div className="overflow-hidden rounded-lg border border-border">
-          <video
-            src={craft.links.preview}
-            controls
-            className="aspect-video w-full bg-muted"
-            preload="metadata"
-            aria-label={`${craft.title} preview`}
-          >
-            <track kind="captions" />
-          </video>
+        <div className="animate-slide-in delay-100 p-1 rounded-md border">
+          <div className="relative w-full rounded-sm border border-border aspect-video overflow-hidden select-none">
+            <video
+              src={craft.links.preview}
+              autoPlay
+              muted
+              loop
+              aria-label={`Preview of ${craft.title}`}
+              className="w-full h-full object-cover"
+              preload="metadata"
+            />
+          </div>
         </div>
 
-        <MdxBody Content={Content} />
+        <MdxBody className="delay-200 mt-10" Content={Content} />
       </article>
     </>
   );
