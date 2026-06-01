@@ -2,6 +2,20 @@
 slug: crud-dialog
 ---
 
-Enter/exit animations using Motion for CRUD operations in a dialog.
+## Overview
 
-Write more about the craft, tooling, and motion decisions here.
+Dialog transitions for create, update, and delete flows. The goal was to make state changes feel intentional instead of abrupt when records appear or disappear from a list.
+
+## Approach
+
+Motion handles enter/exit timing for the dialog shell and list rows, with staggered delays so the eye can follow what changed.
+
+Shared easing keeps open, save, and delete paths consistent.
+
+## Tech stack
+
+<TechStack items={["React", "Motion", "Radix UI", "Tailwind CSS"]} />
+
+## Notes
+
+The animation stays subtle enough for production admin surfaces while still giving clear feedback after each action.
