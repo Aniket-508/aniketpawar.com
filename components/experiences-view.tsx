@@ -36,7 +36,11 @@ const ExperiencesView = ({
 
     <div className={cn("grid grid-cols-1 gap-8", viewClassName)}>
       {experiences.map((experience) => (
-        <ExperienceItem {...experience} key={experience.slug} />
+        <ExperienceItem
+          {...experience}
+          key={experience.slug}
+          location={showHeader ? "home" : "listing"}
+        />
       ))}
     </div>
   </>

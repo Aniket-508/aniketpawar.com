@@ -1,14 +1,21 @@
+"use client";
+
 import Link from "next/link";
 
+import { TechStack } from "@/components/tech-stack";
 import { LinkText } from "@/components/ui/link-text";
-import { Tag } from "@/components/ui/tag";
 import { ROUTES } from "@/constants/routes";
-import { getTechLink } from "@/lib/tech";
+import {
+  trackExperienceDetailClick,
+  trackExternalLinkClick,
+} from "@/lib/events";
 import { cn } from "@/lib/utils";
 import type { Experience } from "@/types/experiences";
 
 interface ExperienceItemProps
-  extends Experience, Omit<React.ComponentProps<"div">, "title"> {}
+  extends Experience, Omit<React.ComponentProps<"div">, "title"> {
+  location?: "home" | "listing";
+}
 
 const ExperienceItem = ({
   slug,
@@ -17,6 +24,7 @@ const ExperienceItem = ({
   experienceOrg,
   experienceStatus,
   experienceTech,
+  location = "home",
   className,
   ...attr
 }: ExperienceItemProps) => (
@@ -27,6 +35,13 @@ const ExperienceItem = ({
           <Link
             href={`${ROUTES.EXPERIENCES}/${slug}`}
             className="hover:underline underline-offset-4"
+            onClick={() =>
+              trackExperienceDetailClick(
+                slug,
+                `${experienceTitle}, ${experienceOrg.name}`,
+                location
+              )
+            }
           >
             {`${experienceTitle}, ${experienceOrg?.name}`}
           </Link>
@@ -37,7 +52,16 @@ const ExperienceItem = ({
             <LinkText
               className="text-sm font-normal"
               href={experienceOrg?.link}
-              target={"_blank"}
+              target="_blank"
+              onClick={() =>
+                trackExternalLinkClick({
+                  context: "experience_item",
+                  link_type: "website",
+                  slug,
+                  title: experienceOrg.name,
+                  url: experienceOrg.link,
+                })
+              }
             >
               {experienceOrg?.websiteDisplayName}
             </LinkText>
@@ -63,28 +87,7 @@ const ExperienceItem = ({
         ))}
       </ul>
     ) : null}
-    {experienceTech?.length ? (
-      <div className="flex flex-wrap gap-1">
-        {experienceTech.map((tech, index) => {
-          const techUrl = getTechLink(tech);
-
-          return (
-            <div key={tech} className="flex items-center gap-1">
-              {techUrl ? (
-                <a href={techUrl} target="_blank" rel="noreferrer">
-                  <Tag className="cursor-pointer font-mono">{tech}</Tag>
-                </a>
-              ) : (
-                <Tag className="font-mono">{tech}</Tag>
-              )}
-              <span className="text-secondary-foreground text-xs opacity-70">
-                {index !== experienceTech.length - 1 && "/"}
-              </span>
-            </div>
-          );
-        })}
-      </div>
-    ) : null}
+    {experienceTech?.length ? <TechStack items={experienceTech} /> : null}
   </div>
 );
 

@@ -22,6 +22,7 @@ const ExperiencesPage = () => {
         <Title asChild>
           <h1>{"experience."}</h1>
         </Title>
+
         <p className="text-muted-foreground text-sm">
           Where I have worked and what I shipped.
         </p>

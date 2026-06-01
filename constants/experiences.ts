@@ -2,6 +2,7 @@ import type { Experience } from "@/types/experiences";
 
 export const EXPERIENCES = [
   {
+    category: "FinTech",
     experienceDescription: [
       "Revamped Live Market on the <u>DART</u> dashboard using Golden Layout, making it more intuitive & thereby simplifying the trading flow.",
       "Built Bonds Search & Detailed pages using Golden Layout, driving the development of the <u>FinD</u> dashboard.",
@@ -10,6 +11,10 @@ export const EXPERIENCES = [
       "Developed a modularized chat app with Sendbird Chat SDK, enabling <u>AI-driven real-time quote detection.</u>",
       "Implemented <u>AI-driven trade ticket generation</u> for direct client trades and complex broker workflows (single/double), enhancing order management to boost efficiency.",
     ],
+    experienceLinks: {
+      linkedin: "https://www.linkedin.com/company/harmoney/",
+      website: "https://www.harmoney.in/",
+    },
     experienceOrg: {
       link: "https://www.harmoney.in/",
       name: "Harmoney",
@@ -34,9 +39,12 @@ export const EXPERIENCES = [
       "Sendbird Chat SDK",
     ],
     experienceTitle: "Frontend Engineer",
+    orgDescription:
+      "Harmoney builds institutional-grade trading infrastructure for brokers and wealth managers — unified dashboards, real-time market data, and AI-assisted workflows across bonds, equities, and derivatives.",
     slug: "harmoney",
   },
   {
+    category: "HRTech",
     experienceDescription: [
       "Developed the new website entirely from scratch using NextJS with SSG in record time.",
       "Developed various features for internal CMS tool to automate creation of assessments.",
@@ -46,6 +54,11 @@ export const EXPERIENCES = [
       "Built React Native app for EasyAccess that runs on iOS, Android, and the Web, achieving an 85% concurrency of the codebase.",
       "Contributed to two successful ProductHunt launches: <u>EasySource</u> (#5 Product of the Day) and <u>JD Generator</u> (#1 Product of the Day).",
     ],
+    experienceLinks: {
+      linkedin: "https://www.linkedin.com/company/hirequotient/",
+      website: "https://www.hirequotient.com/",
+      x: "https://x.com/hirequotient",
+    },
     experienceOrg: {
       link: "https://www.hirequotient.com/",
       name: "HireQuotient",
@@ -76,15 +89,23 @@ export const EXPERIENCES = [
       "GCP",
     ],
     experienceTitle: "SDE-2",
+    orgDescription:
+      "HireQuotient helps recruiting teams source and engage talent faster with AI-assisted workflows, automated assessments, and tools that scale high-volume hiring.",
     slug: "hirequotient",
   },
   {
+    category: "FinTech",
     experienceDescription: [
       "Engineered financial calculators module from scratch for SEO purposes.",
       "Developed the Company Financials Component for US Stocks detail page.",
       "Built the Fixed Deposit Purchase Flow on web, catering to both KYC and non-KYC users.",
       "Implemented Family Account Invite Flow on web from scratch.",
     ],
+    experienceLinks: {
+      linkedin: "https://www.linkedin.com/company/indmoney/",
+      website: "https://www.indmoney.com/",
+      x: "https://x.com/INDmoneyApp",
+    },
     experienceOrg: {
       link: "https://www.indmoney.com/",
       name: "INDmoney",
@@ -105,6 +126,8 @@ export const EXPERIENCES = [
       "Strapi CMS",
     ],
     experienceTitle: "Software Engineer Intern",
+    orgDescription:
+      "INDmoney is a personal finance super app that helps Indians track net worth, invest across stocks and mutual funds, and manage money in one place.",
     slug: "indmoney",
   },
 ] as const satisfies readonly Experience[];
