@@ -9,7 +9,7 @@ import { SITE } from "@/constants/site";
 const HeaderSection = () => (
   <Section
     id="profile"
-    className="animation-delay-100 flex flex-row items-center justify-start gap-5 pb-6 max-sm:items-start"
+    className="flex flex-row items-center justify-start gap-5 pb-6 max-sm:items-start"
   >
     <motion.div
       className="relative h-fit w-fit shrink-0"

@@ -17,20 +17,22 @@ const ProjectsPage = async () => {
   const previews = await prefetchGlimpses(collectProjectUrls(projects));
 
   return (
-    <Section className="animation-delay-100 flex flex-col gap-8">
-      <div className="space-y-2">
+    <>
+      <div className="space-y-2 px-4 pt-6 pb-2">
         <Title>{"projects."}</Title>
         <p className="text-muted-foreground text-sm">
           Tools, APIs, and products I have built or maintain.
         </p>
       </div>
-      <ProjectsView
-        showHeader={false}
-        defaultVariant="grid"
-        projects={projects}
-        previews={previews}
-      />
-    </Section>
+      <Section className="delay-100 flex flex-col gap-8">
+        <ProjectsView
+          showHeader={false}
+          defaultVariant="grid"
+          projects={projects}
+          previews={previews}
+        />
+      </Section>
+    </>
   );
 };
 

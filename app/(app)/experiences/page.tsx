@@ -15,15 +15,17 @@ const ExperiencesPage = () => {
   const experiences = getExperiences();
 
   return (
-    <Section className="animation-delay-100 flex flex-col gap-8">
-      <div className="space-y-2">
+    <>
+      <div className="space-y-2 px-4 pt-6 pb-2">
         <Title>{"experience."}</Title>
         <p className="text-muted-foreground text-sm">
           Where I have worked and what I shipped.
         </p>
       </div>
-      <ExperiencesView showHeader={false} experiences={experiences} />
-    </Section>
+      <Section className="delay-100 flex flex-col gap-8">
+        <ExperiencesView showHeader={false} experiences={experiences} />
+      </Section>
+    </>
   );
 };
 

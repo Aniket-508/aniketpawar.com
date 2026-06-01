@@ -12,7 +12,7 @@ import { CraftsView } from "./crafts-view";
 
 const CraftSection = () => (
   <Section
-    className="animation-delay-700 grid grid-cols-1 place-items-center gap-8"
+    className="delay-400 grid grid-cols-1 place-items-center gap-8"
     id="crafts"
   >
     <CraftsView

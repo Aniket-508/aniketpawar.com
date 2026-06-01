@@ -42,7 +42,7 @@ const ContactItem = ({
 
 const ContactSection = () => (
   <Section
-    className="animation-delay-1100 grid grid-cols-1 justify-start gap-4"
+    className="delay-600 grid grid-cols-1 justify-start gap-4"
     id="socials"
   >
     <span className="group/social flex items-center space-x-2">

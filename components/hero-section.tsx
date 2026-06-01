@@ -5,7 +5,7 @@ import { Section } from "@/components/layout/section";
 import { Title } from "@/components/ui/title";
 
 const HeroSection = () => (
-  <Section id="about" className="animation-delay-300 space-y-4">
+  <Section id="about" className="delay-100 space-y-4">
     <span className="group/about flex items-center space-x-2">
       <Title>{"about me."}</Title>
       <CopyLink

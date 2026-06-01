@@ -7,7 +7,7 @@ import { Callout } from "@/components/ui/callout";
 import { LinkText } from "@/components/ui/link-text";
 
 const WorkTogether = () => (
-  <Section id="work-together" className="animation-delay-500">
+  <Section id="work-together" className="delay-200">
     <Callout className="space-y-4">
       <p>{"Interested in working together? Feel free to schedule a meet!"}</p>
       <div className="flex flex-row items-center justify-start gap-4">

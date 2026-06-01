@@ -10,7 +10,7 @@ import { ExperiencesView } from "./experiences-view";
 
 const ExperienceSection = () => (
   <Section
-    className="animation-delay-[900ms] grid grid-cols-1 place-items-center gap-8"
+    className="delay-500 grid grid-cols-1 place-items-center gap-8"
     id="experience"
   >
     <ExperiencesView headerClassName="w-full" experiences={EXPERIENCES} />

@@ -15,15 +15,17 @@ const CraftsPage = () => {
   const crafts = getCrafts();
 
   return (
-    <Section className="animation-delay-100 flex flex-col gap-8">
-      <div className="space-y-2">
+    <>
+      <div className="space-y-2 px-4 pt-6 pb-2">
         <Title>{"crafts."}</Title>
         <p className="text-muted-foreground text-sm">
           Motion studies and interaction experiments.
         </p>
       </div>
-      <CraftsView showHeader={false} defaultVariant="grid" crafts={crafts} />
-    </Section>
+      <Section className="delay-100 flex flex-col gap-8">
+        <CraftsView showHeader={false} defaultVariant="grid" crafts={crafts} />
+      </Section>
+    </>
   );
 };
 

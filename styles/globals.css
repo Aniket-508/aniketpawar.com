@@ -127,3 +127,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+@utility animate-slide-in {
+  @apply animate-in fade-in slide-in-from-bottom-5 blur-in-md fill-mode-both duration-[600ms];
+}
