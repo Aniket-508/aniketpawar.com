@@ -25,7 +25,6 @@ export interface Project {
   featured?: boolean;
   links: ProjectLinks;
   image?: string;
-  tech?: string[];
 }
 
 export interface TOCItem {

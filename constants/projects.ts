@@ -17,16 +17,6 @@ export const PROJECTS = [
       website: "https://openself.vercel.app",
     },
     slug: "openself",
-    tech: [
-      "Next.js 15",
-      "React 19",
-      "TypeScript",
-      "Tambo AI",
-      "React PDF",
-      "Zustand",
-      "Tailwind CSS v4",
-      "Radix UI",
-    ],
     title: "OpenSelf",
   },
   {
@@ -43,7 +33,6 @@ export const PROJECTS = [
       website: "https://www.vercel-doctor.com",
     },
     slug: "vercel-doctor",
-    tech: ["MDX", "Agent Skills", "Next.js", "Vercel", "TypeScript"],
     title: "Vercel Doctor",
   },
   {
@@ -60,7 +49,6 @@ export const PROJECTS = [
       website: "https://better-og.vercel.app",
     },
     slug: "better-og",
-    tech: ["TypeScript", "Satori", "Takumi", "Next.js"],
     title: "Better OG",
   },
   {
@@ -77,7 +65,6 @@ export const PROJECTS = [
       website: "https://www.ossperks.com",
     },
     slug: "awesome-oss-perks",
-    tech: ["TypeScript", "Awesome List"],
     title: "Awesome OSS Perks",
   },
   {
@@ -93,7 +80,6 @@ export const PROJECTS = [
       website: "https://heroicons-animated.com/",
     },
     slug: "heroicons-animated",
-    tech: ["React", "TypeScript", "Framer Motion", "Tailwind CSS"],
     title: "heroicons-animated",
   },
   {
@@ -109,7 +95,6 @@ export const PROJECTS = [
       website: "https://indian-quotes-api.vercel.app/",
     },
     slug: "indian-quotes-api",
-    tech: ["TypeScript", "Next.js", "Vercel"],
     title: "Indian Quotes API",
   },
   {
@@ -125,7 +110,6 @@ export const PROJECTS = [
       website: "https://instagram-posts-generator.vercel.app/",
     },
     slug: "instagram-posts-generator",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
     title: "IG Posts Generator",
   },
 ] satisfies readonly Project[];
