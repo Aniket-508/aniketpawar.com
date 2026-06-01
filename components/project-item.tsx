@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/tooltip";
 import { ROUTES } from "@/constants/routes";
 import { cn } from "@/lib/utils";
-import type { ProjectLinks } from "@/types/projects";
+import type { Project } from "@/types/projects";
 
 interface ProjectLinkProps {
   href: string;
@@ -70,12 +70,11 @@ const ProjectLink = ({
   );
 };
 
-interface ProjectItemProps extends React.HTMLAttributes<HTMLDivElement> {
-  slug?: string;
-  title?: string;
-  links?: ProjectLinks;
-  description?: string;
-  tech?: string[];
+interface ProjectItemProps
+  extends
+    Omit<React.HTMLAttributes<HTMLDivElement>, "title">,
+    Pick<Project, "slug" | "title" | "description" | "links"> {
+  tech?: Project["tech"];
   variant?: string;
   previews?: Record<string, GlimpseData>;
 }
@@ -93,29 +92,11 @@ const ProjectItem = ({
 }: ProjectItemProps) => {
   const isGrid = variant === "grid";
   const image = previews?.[links?.website ?? ""]?.image ?? "";
-  const detailHref = slug ? `${ROUTES.PROJECTS}/${slug}` : undefined;
-
-  const titleElement = detailHref ? (
-    <Link
-      href={detailHref}
-      className="text-primary font-normal hover:underline underline-offset-4"
-    >
-      {title}
-    </Link>
-  ) : (
-    <h3 className="text-primary font-normal">{title}</h3>
-  );
 
   return (
     <div className={cn("w-full space-y-1", className)} {...attr}>
       {isGrid && image && (
-        <Link
-          href={detailHref ?? "#"}
-          className={cn(
-            "mb-2 block rounded-md border p-1",
-            !detailHref && "pointer-events-none"
-          )}
-        >
+        <div className="mb-2 block rounded-md border p-1">
           <div className="relative aspect-1200/630 w-full overflow-hidden rounded-sm border border-border select-none">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -124,12 +105,17 @@ const ProjectItem = ({
               className="h-full w-full object-cover"
             />
           </div>
-        </Link>
+        </div>
       )}
       <div className="flex items-center justify-between gap-4">
-        {titleElement}
+        <Link
+          href={`${ROUTES.PROJECTS}/${slug}`}
+          className="text-primary font-normal hover:underline underline-offset-4"
+        >
+          {title}
+        </Link>
         <div className="flex shrink-0 flex-row items-center justify-start gap-1.5">
-          {links?.website && (
+          {links.website && (
             <ProjectLink
               href={links.website}
               label="Website"
@@ -139,7 +125,7 @@ const ProjectItem = ({
               listClassName="min-w-[66px]"
             />
           )}
-          {links?.github && (
+          {links.github && (
             <ProjectLink
               href={links.github}
               label="GitHub"
@@ -151,11 +137,7 @@ const ProjectItem = ({
         </div>
       </div>
 
-      {description && (
-        <p className="text-muted-foreground text-sm font-normal">
-          {description}
-        </p>
-      )}
+      <p className="text-muted-foreground text-sm font-normal">{description}</p>
     </div>
   );
 };
