@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import { TechStack } from "@/components/tech-stack";
-import { LinkText } from "@/components/ui/link-text";
+import { LinkTextClient } from "@/components/ui/link-text/client";
 import { ROUTES } from "@/constants/routes";
 import {
   trackExperienceDetailClick,
@@ -24,6 +24,9 @@ const ExperienceItem = ({
   experienceOrg,
   experienceStatus,
   experienceTech,
+  category: _category,
+  orgDescription: _orgDescription,
+  experienceLinks: _experienceLinks,
   location = "home",
   className,
   ...attr
@@ -49,7 +52,7 @@ const ExperienceItem = ({
         <div className="flex items-center justify-start gap-1.5 text-sm">
           {"at, "}
           {typeof experienceOrg?.link === "string" ? (
-            <LinkText
+            <LinkTextClient
               className="text-sm font-normal"
               href={experienceOrg?.link}
               target="_blank"
@@ -64,7 +67,7 @@ const ExperienceItem = ({
               }
             >
               {experienceOrg?.websiteDisplayName}
-            </LinkText>
+            </LinkTextClient>
           ) : (
             <span className="text-sm font-normal">
               {experienceOrg?.websiteDisplayName}

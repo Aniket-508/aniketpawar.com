@@ -1,7 +1,5 @@
 "use client";
 
-import type { TOCItemType } from "fumadocs-core/toc";
-
 import {
   HoverCard,
   HoverCardContent,
@@ -9,11 +7,12 @@ import {
 } from "@/components/ui/hover-card";
 import { trackTocMinimapHover, trackTocMinimapItemClick } from "@/lib/events";
 import { cn } from "@/lib/utils";
+import type { TOCItem } from "@/types/projects";
 
 import { AnchorProvider, useActiveAnchor, useItems } from "./toc";
 
 export interface TOCMinimapProps {
-  items: TOCItemType[];
+  items: TOCItem[];
   options?: IntersectionObserverInit;
   className?: string;
 }
@@ -100,27 +99,26 @@ export const TOCMinimap = ({ items, options, className }: TOCMinimapProps) => {
     <AnchorProvider toc={items} options={options}>
       <TOCMinimapContainer className={cn("ml-auto w-18", className)}>
         <HoverCard
+          openDelay={0}
+          closeDelay={0}
           onOpenChange={(open) => {
             if (open) {
               trackTocMinimapHover();
             }
           }}
         >
-          <HoverCardTrigger
-            render={
-              <div className="flex max-h-[calc(100dvh-var(--doc-cols-top,0)+(--spacing(-24)))] flex-col gap-3 overflow-hidden py-3 pl-6 opacity-100 transition-opacity duration-200 data-popup-open:opacity-0">
-                <Minimap />
-              </div>
-            }
-          />
+          <HoverCardTrigger asChild>
+            <div className="flex max-h-[calc(100dvh-var(--doc-cols-top,0)+(--spacing(-24)))] flex-col gap-3 overflow-hidden py-3 pl-6 opacity-100 transition-opacity duration-200 data-popup-open:opacity-0">
+              <Minimap />
+            </div>
+          </HoverCardTrigger>
 
           <HoverCardContent
-            className="w-56 overflow-hidden p-0 duration-200 data-[side=left]:slide-in-from-right-3 data-[side=left]:slide-out-to-right-3 data-open:zoom-in-100 data-closed:zoom-out-100"
+            className="w-56 overflow-hidden p-0 duration-200 data-[side=left]:slide-in-from-right-3 data-[side=left]:slide-out-to-right-3 data-open:zoom-in-100 data-closed:zoom-out-95"
             align="start"
             alignOffset={0}
             side="left"
             sideOffset={-60}
-            positionMethod="fixed"
           >
             <div className="flex max-h-[calc(100dvh-var(--doc-cols-top,0)+(--spacing(-24)))] overflow-y-auto overscroll-contain">
               <TOCList />

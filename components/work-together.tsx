@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
-import { LinkText } from "@/components/ui/link-text";
+import { LinkTextClient } from "@/components/ui/link-text/client";
 import { trackResumeClick, trackScheduleMeetClick } from "@/lib/events";
 
 const WorkTogether = () => (
@@ -24,15 +24,14 @@ const WorkTogether = () => (
             <span className="hidden sm:inline">cal.com</span>
           </Link>
         </Button>
-        <LinkText
+        <LinkTextClient
           href={"/resume.pdf"}
           target="_blank"
           className="text-muted-foreground text-sm font-medium"
-          preview={false}
           onClick={() => trackResumeClick("work_together")}
         >
           {"Resume"}
-        </LinkText>
+        </LinkTextClient>
       </div>
     </Callout>
   </Section>

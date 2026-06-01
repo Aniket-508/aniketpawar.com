@@ -1,9 +1,5 @@
-// Thanks @fuma-nama
-// https://github.com/fuma-nama/fumadocs/blob/dev/packages/core/src/toc.tsx
-
 "use client";
 
-import type { TOCItemInfo, TOCItemType } from "fumadocs-core/toc";
 import type { ReactNode } from "react";
 import {
   createContext,
@@ -13,6 +9,18 @@ import {
   useMemo,
   useState,
 } from "react";
+
+import type { TOCItem } from "@/types/projects";
+
+export interface TOCItemInfo {
+  active: boolean;
+  fallback: boolean;
+  id: string;
+  original: TOCItem;
+  t: number;
+}
+
+export type TOCItemType = TOCItem;
 
 const DEFAULT_INTERSECTION_OPTIONS: IntersectionObserverInit = {
   threshold: 0.9,
