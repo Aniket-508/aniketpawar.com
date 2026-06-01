@@ -62,7 +62,7 @@ const ExperiencePage = async ({ params }: ExperiencePageProps) => {
     <Container className="pt-20 pb-14">
       <TOCMinimap items={tocItems} />
 
-      <article className="space-y-8 pb-16">
+      <article className="px-4 space-y-8 pb-16">
         <div className="flex items-center justify-between gap-4">
           <Button variant="ghost" size="sm" className="-ml-2 gap-1.5" asChild>
             <Link href={ROUTES.EXPERIENCES}>

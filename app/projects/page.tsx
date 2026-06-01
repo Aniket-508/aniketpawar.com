@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Container } from "@/components/layout/container";
+import { Section } from "@/components/layout/section";
 import { ProjectsView } from "@/components/projects-view";
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
 import { Title } from "@/components/ui/title";
@@ -20,7 +21,7 @@ const ProjectsPage = async () => {
 
   return (
     <Container className="pt-20 pb-14">
-      <div className="mb-10 space-y-4">
+      <div className="space-y-4 px-4">
         <Link
           href={ROUTES.HOME}
           className="text-muted-foreground hover:text-foreground text-sm transition-colors"
@@ -33,12 +34,14 @@ const ProjectsPage = async () => {
           maintain.
         </p>
       </div>
-      <ProjectsView
-        showHeader={false}
-        headerClassName="mb-8 justify-end"
-        projects={projects}
-        previews={previews}
-      />
+      <Section className="animation-delay-100 flex flex-col gap-8">
+        <ProjectsView
+          showHeader={false}
+          defaultVariant="grid"
+          projects={projects}
+          previews={previews}
+        />
+      </Section>
     </Container>
   );
 };

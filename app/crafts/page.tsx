@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { CraftsView } from "@/components/crafts-view";
 import { Container } from "@/components/layout/container";
+import { Section } from "@/components/layout/section";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
 import { SITE } from "@/constants/site";
@@ -18,7 +19,7 @@ const CraftsPage = () => {
 
   return (
     <Container className="pt-20 pb-14">
-      <div className="mb-10 space-y-4">
+      <div className="space-y-4 px-4">
         <Link
           href={ROUTES.HOME}
           className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -30,11 +31,9 @@ const CraftsPage = () => {
           {crafts.length} crafts — motion studies and interaction experiments.
         </p>
       </div>
-      <CraftsView
-        showHeader={false}
-        headerClassName="mb-8 justify-end"
-        crafts={crafts}
-      />
+      <Section className="animation-delay-100 flex flex-col gap-8">
+        <CraftsView showHeader={false} defaultVariant="grid" crafts={crafts} />
+      </Section>
     </Container>
   );
 };

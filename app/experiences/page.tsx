@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { ExperiencesView } from "@/components/experiences-view";
 import { Container } from "@/components/layout/container";
+import { Section } from "@/components/layout/section";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
 import { SITE } from "@/constants/site";
@@ -18,7 +19,7 @@ const ExperiencesPage = () => {
 
   return (
     <Container className="pt-20 pb-14">
-      <div className="mb-10 space-y-4">
+      <div className="space-y-4 px-4">
         <Link
           href={ROUTES.HOME}
           className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -30,7 +31,9 @@ const ExperiencesPage = () => {
           {experiences.length} roles — where I have worked and what I shipped.
         </p>
       </div>
-      <ExperiencesView showHeader={false} experiences={experiences} />
+      <Section className="animation-delay-100 flex flex-col gap-8">
+        <ExperiencesView showHeader={false} experiences={experiences} />
+      </Section>
     </Container>
   );
 };

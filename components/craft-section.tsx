@@ -15,7 +15,11 @@ const CraftSection = () => (
     className="animation-delay-700 grid grid-cols-1 place-items-center gap-8"
     id="crafts"
   >
-    <CraftsView headerClassName="w-full" crafts={CRAFTS} />
+    <CraftsView
+      headerClassName="col-span-2 w-full"
+      viewClassName="col-span-2 w-full"
+      crafts={CRAFTS}
+    />
     <Button variant="secondary" className="group" asChild>
       <Link href={ROUTES.CRAFTS}>
         View all

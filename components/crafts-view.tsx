@@ -29,13 +29,13 @@ const CraftsView = ({
 
   return (
     <>
-      <div
-        className={cn(
-          "flex items-center justify-between gap-4",
-          headerClassName
-        )}
-      >
-        {showHeader && (
+      {showHeader && (
+        <div
+          className={cn(
+            "flex items-center justify-between gap-4",
+            headerClassName
+          )}
+        >
           <div className="group/projects flex-1 flex items-center gap-2">
             <Title>{"crafts."}</Title>
             <CopyLink
@@ -43,9 +43,10 @@ const CraftsView = ({
               className="hidden size-4 group-hover/projects:inline"
             />
           </div>
-        )}
-        <ViewToggle value={variant} onChange={setVariant} />
-      </div>
+
+          <ViewToggle value={variant} onChange={setVariant} />
+        </div>
+      )}
 
       <div className={cn("grid grid-cols-1 gap-8", viewClassName)}>
         {crafts.map((craft) => (

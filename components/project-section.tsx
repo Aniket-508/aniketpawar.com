@@ -28,7 +28,7 @@ const ProjectSection = async () => {
     >
       <ProjectsView
         headerClassName="col-span-2 w-full"
-        viewClassName="col-span-2"
+        viewClassName="col-span-2 w-full"
         projects={featured}
         previews={previews}
       />
