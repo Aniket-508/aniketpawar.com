@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Container } from "@/components/layout/container";
 import { MdxBody } from "@/components/mdx-body";
 import { ProjectShareButton } from "@/components/project-share-button";
 import { TOCMinimap } from "@/components/toc-minimap";
@@ -56,7 +55,7 @@ const CraftPage = async ({ params }: CraftPageProps) => {
   const pageUrl = `${SITE.URL}${ROUTES.CRAFTS}/${craft.slug}`;
 
   return (
-    <Container className="pt-20 pb-14">
+    <>
       <TOCMinimap items={tocItems} />
 
       <article className="px-4 space-y-8 pb-16">
@@ -104,7 +103,7 @@ const CraftPage = async ({ params }: CraftPageProps) => {
 
         <MdxBody Content={Content} />
       </article>
-    </Container>
+    </>
   );
 };
 

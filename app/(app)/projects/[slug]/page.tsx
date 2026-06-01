@@ -5,7 +5,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Icons } from "@/components/icons";
-import { Container } from "@/components/layout/container";
 import { MdxBody } from "@/components/mdx-body";
 import { ProjectShareButton } from "@/components/project-share-button";
 import { TOCMinimap } from "@/components/toc-minimap";
@@ -81,10 +80,10 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
   const pageUrl = `${SITE.URL}${ROUTES.PROJECTS}/${project.slug}`;
 
   return (
-    <Container className="pt-20 pb-14">
+    <>
       <TOCMinimap items={tocItems} />
 
-      <article className="px-4 space-y-8 pb-16">
+      <article className="space-y-8 px-4 pb-16">
         <div className="flex items-center justify-between gap-4">
           <Button variant="ghost" size="sm" className="-ml-2 gap-1.5" asChild>
             <Link href={ROUTES.PROJECTS}>
@@ -186,7 +185,7 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
           </section>
         )}
       </article>
-    </Container>
+    </>
   );
 };
 

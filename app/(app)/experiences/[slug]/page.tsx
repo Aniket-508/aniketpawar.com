@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Container } from "@/components/layout/container";
 import { MdxBody } from "@/components/mdx-body";
 import { ProjectShareButton } from "@/components/project-share-button";
 import { TOCMinimap } from "@/components/toc-minimap";
@@ -59,7 +58,7 @@ const ExperiencePage = async ({ params }: ExperiencePageProps) => {
   const shareTitle = `${experience.experienceTitle} · ${experience.experienceOrg.name}`;
 
   return (
-    <Container className="pt-20 pb-14">
+    <>
       <TOCMinimap items={tocItems} />
 
       <article className="px-4 space-y-8 pb-16">
@@ -135,7 +134,7 @@ const ExperiencePage = async ({ params }: ExperiencePageProps) => {
           </section>
         )}
       </article>
-    </Container>
+    </>
   );
 };
 

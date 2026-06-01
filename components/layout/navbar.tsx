@@ -1,33 +1,97 @@
-import Link from "next/link";
+"use client";
 
-import { GitHubLink } from "@/components/github-link";
-import { Icons } from "@/components/icons";
-import { ModeToggle } from "@/components/mode-toggle";
-import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+import { ROUTES } from "@/constants/routes";
+import { SITE } from "@/constants/site";
+import { cn } from "@/lib/utils";
 
 export type { PathItem } from "@/types/navigation";
 
-const Navbar = () => (
-  <nav className="sticky top-0 z-10 mx-auto flex w-full max-w-screen-sm items-center justify-between border-x border-b px-4 py-2 backdrop-blur-lg">
-    <Link href="/">
-      <Icons.logo className="h-5 w-5" />
-    </Link>
+const SECTIONS = [
+  {
+    href: ROUTES.PROJECTS,
+    id: "projects",
+    label: "projects",
+  },
+  {
+    href: ROUTES.CRAFTS,
+    id: "crafts",
+    label: "crafts",
+  },
+  {
+    href: ROUTES.EXPERIENCES,
+    id: "experiences",
+    label: "experience",
+  },
+] as const;
 
-    {/* <ul className="flex flex-row items-center justify-end gap-3">
-        {PATH_MAP.map((pathMapItem: PathItem, pathMapIndex) => (
-          <NavItem key={pathMapIndex} item={pathMapItem} />
+type SectionId = (typeof SECTIONS)[number]["id"];
+
+const getActiveSection = (pathname: string): SectionId | null => {
+  if (
+    pathname === ROUTES.PROJECTS ||
+    pathname.startsWith(`${ROUTES.PROJECTS}/`)
+  ) {
+    return "projects";
+  }
+
+  if (pathname === ROUTES.CRAFTS || pathname.startsWith(`${ROUTES.CRAFTS}/`)) {
+    return "crafts";
+  }
+
+  if (
+    pathname === ROUTES.EXPERIENCES ||
+    pathname.startsWith(`${ROUTES.EXPERIENCES}/`)
+  ) {
+    return "experiences";
+  }
+
+  return null;
+};
+
+const Navbar = () => {
+  const pathname = usePathname();
+  const activeSection = getActiveSection(pathname);
+
+  if (!activeSection) {
+    return null;
+  }
+
+  return (
+    <nav className="flex items-center justify-between gap-4 px-4 py-6">
+      <Link href={ROUTES.HOME} aria-label="Home">
+        <Image
+          src={SITE.AUTHOR.AVATAR}
+          alt="Aniket Pawar"
+          width={36}
+          height={36}
+          className="rounded-full"
+          priority
+        />
+      </Link>
+
+      <ul className="flex items-center gap-4">
+        {SECTIONS.map((section) => (
+          <li key={section.id}>
+            <Link
+              href={section.href}
+              className={cn(
+                "text-sm transition-colors",
+                activeSection === section.id
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              {section.label}
+            </Link>
+          </li>
         ))}
-      </ul> */}
-
-    <div className="flex items-center gap-2">
-      <GitHubLink />
-      <Separator
-        orientation="vertical"
-        className="data-[orientation=vertical]:h-4"
-      />
-      <ModeToggle />
-    </div>
-  </nav>
-);
+      </ul>
+    </nav>
+  );
+};
 
 export { Navbar };

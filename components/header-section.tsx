@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 import { Section } from "@/components/layout/section";
+import { SITE } from "@/constants/site";
 
 const HeaderSection = () => (
   <Section
@@ -16,7 +17,7 @@ const HeaderSection = () => (
       transition={{ damping: 10, stiffness: 400, type: "spring" }}
     >
       <Image
-        src="https://ik.imagekit.io/2oajjadqkz/profile.jpg?updatedAt=1770631384305"
+        src={SITE.AUTHOR.AVATAR}
         alt="aniket-profile"
         width={60}
         height={60}
