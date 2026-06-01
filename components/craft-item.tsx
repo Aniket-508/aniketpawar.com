@@ -23,7 +23,7 @@ const CraftItem = ({
   return (
     <div
       className={cn(
-        "flex items-center justify-between gap-2 min-w-0",
+        "w-full flex items-center justify-between gap-2 min-w-0",
         isGrid && "flex-col items-start gap-1",
         className
       )}

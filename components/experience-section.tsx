@@ -1,24 +1,25 @@
-import { CopyLink } from "@/components/copy-link";
-import { ExperienceItem } from "@/components/experience-item";
+import { ArrowUpRightIcon } from "lucide-react";
+import Link from "next/link";
+
 import { Section } from "@/components/layout/section";
-import { Title } from "@/components/ui/title";
+import { Button } from "@/components/ui/button";
 import { EXPERIENCES } from "@/constants/experiences";
+import { ROUTES } from "@/constants/routes";
+
+import { ExperiencesView } from "./experiences-view";
 
 const ExperienceSection = () => (
   <Section
-    className="animation-delay-[900ms] grid grid-cols-1 justify-start gap-6"
+    className="animation-delay-[900ms] grid grid-cols-1 place-items-center gap-8"
     id="experience"
   >
-    <span className="group/experience flex items-center space-x-2">
-      <Title>{"experience."}</Title>
-      <CopyLink
-        title={"Experience"}
-        className="hidden size-4 group-hover/experience:inline"
-      />
-    </span>
-    {EXPERIENCES.map((experience, experienceIndex) => (
-      <ExperienceItem {...experience} key={experienceIndex} />
-    ))}
+    <ExperiencesView headerClassName="w-full" experiences={EXPERIENCES} />
+    <Button variant="secondary" className="group w-fit" asChild>
+      <Link href={ROUTES.EXPERIENCES}>
+        View all
+        <ArrowUpRightIcon className="size-4 transition-transform duration-300 group-hover:rotate-45" />
+      </Link>
+    </Button>
   </Section>
 );
 

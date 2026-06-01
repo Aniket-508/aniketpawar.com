@@ -24,8 +24,8 @@ const CraftDetailContent = ({
 
   return (
     <ContentDetailShell
-      backHref={ROUTES.HOME}
-      backLabel="Home"
+      backHref={ROUTES.CRAFTS}
+      backLabel="Crafts"
       shareTitle={craft.title}
       shareUrl={pageUrl}
       tocItems={tocItems}

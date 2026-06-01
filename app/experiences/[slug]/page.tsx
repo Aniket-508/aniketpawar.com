@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 
 import { ExperienceDetailContent } from "@/components/experience-detail-content";
 import { Container } from "@/components/layout/container";
-import { Footer } from "@/components/layout/footer";
 import { ROUTES } from "@/constants/routes";
 import { SITE } from "@/constants/site";
 import { getExperienceMdxEntry } from "@/lib/content/experiences";
@@ -51,17 +50,13 @@ const ExperiencePage = async ({ params }: ExperiencePageProps) => {
   const tocItems = tocFromMdast(_mdast);
 
   return (
-    <>
-      <div className="pointer-events-none fixed top-0 left-0 z-50 h-12 w-full to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_bottom,black,transparent)]" />
-      <Container className="pt-20 pb-14">
-        <ExperienceDetailContent
-          experience={experience}
-          Content={Content}
-          tocItems={tocItems}
-        />
-      </Container>
-      <Footer />
-    </>
+    <Container className="pt-20 pb-14">
+      <ExperienceDetailContent
+        experience={experience}
+        Content={Content}
+        tocItems={tocItems}
+      />
+    </Container>
   );
 };
 

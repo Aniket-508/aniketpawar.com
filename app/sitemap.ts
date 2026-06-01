@@ -41,6 +41,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
       url: `${SITE.URL}${ROUTES.PROJECTS}`,
     },
+    {
+      changeFrequency: "monthly",
+      lastModified: new Date(),
+      priority: 0.9,
+      url: `${SITE.URL}${ROUTES.CRAFTS}`,
+    },
+    {
+      changeFrequency: "monthly",
+      lastModified: new Date(),
+      priority: 0.9,
+      url: `${SITE.URL}${ROUTES.EXPERIENCES}`,
+    },
     ...projectEntries,
     ...craftEntries,
     ...experienceEntries,

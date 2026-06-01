@@ -29,7 +29,11 @@ const textFromNode = (node: MdastNode): string => {
   return node.children.map(textFromNode).join("");
 };
 
-export const tocFromMdast = (mdastJson: string): TOCItem[] => {
+export const tocFromMdast = (mdastJson: unknown): TOCItem[] => {
+  if (typeof mdastJson !== "string" || mdastJson.length === 0) {
+    return [];
+  }
+
   const tree = JSON.parse(mdastJson) as MdastNode;
   const items: TOCItem[] = [];
 

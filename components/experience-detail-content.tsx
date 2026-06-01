@@ -26,8 +26,8 @@ const ExperienceDetailContent = ({
 
   return (
     <ContentDetailShell
-      backHref={ROUTES.HOME}
-      backLabel="Home"
+      backHref={ROUTES.EXPERIENCES}
+      backLabel="Experience"
       shareTitle={`${experience.experienceTitle} · ${experience.experienceOrg.name}`}
       shareUrl={pageUrl}
       tocItems={tocItems}

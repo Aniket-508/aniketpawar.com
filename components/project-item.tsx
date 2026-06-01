@@ -107,7 +107,7 @@ const ProjectItem = ({
   );
 
   return (
-    <div className={cn("space-y-1", className)} {...attr}>
+    <div className={cn("w-full space-y-1", className)} {...attr}>
       {isGrid && image && (
         <Link
           href={detailHref ?? "#"}

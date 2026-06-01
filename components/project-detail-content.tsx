@@ -31,6 +31,7 @@ const ProjectDetailContent = ({
   return (
     <ContentDetailShell
       backHref={ROUTES.PROJECTS}
+      backLabel="Projects"
       shareTitle={project.title}
       shareUrl={pageUrl}
       tocItems={tocItems}

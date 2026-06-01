@@ -20,10 +20,7 @@ const ExperienceItem = ({
   className,
   ...attr
 }: ExperienceItemProps) => (
-  <div
-    className={cn("-mx-3 flex flex-col gap-4 rounded-lg px-3 py-2", className)}
-    {...attr}
-  >
+  <div className={cn("w-full space-y-4", className)} {...attr}>
     <div className="flex flex-wrap items-start justify-between gap-2">
       <div>
         <h3 className="text-primary font-normal">

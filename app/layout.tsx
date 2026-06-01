@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 
 import Script from "next/script";
 
+import { Footer } from "@/components/layout/footer";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { META_THEME_COLORS } from "@/constants/site";
 import { HapticsProvider } from "@/providers/haptics-provider";
@@ -69,12 +70,16 @@ export default function RootLayout({
         <meta name="theme-color" content={META_THEME_COLORS.light} />
       </head>
       <body
-        className={`overscroll-none font-sans ${inter.variable} ${instrument_serif.variable}`}
+        className={`overscroll-none font-sans flex flex-col min-h-screen ${inter.variable} ${instrument_serif.variable}`}
       >
         <ThemeProvider>
           <TooltipProvider>
             <SoundProvider>
-              <HapticsProvider>{children}</HapticsProvider>
+              <HapticsProvider>
+                <div className="pointer-events-none fixed top-0 left-0 z-50 h-12 w-full to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_bottom,black,transparent)]" />
+                {children}
+                <Footer />
+              </HapticsProvider>
             </SoundProvider>
           </TooltipProvider>
         </ThemeProvider>

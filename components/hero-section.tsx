@@ -5,7 +5,7 @@ import { Section } from "@/components/layout/section";
 import { Title } from "@/components/ui/title";
 
 const HeroSection = () => (
-  <Section id="about" className="animation-delay-300">
+  <Section id="about" className="animation-delay-300 space-y-4">
     <span className="group/about flex items-center space-x-2">
       <Title>{"about me."}</Title>
       <CopyLink
@@ -13,7 +13,7 @@ const HeroSection = () => (
         className="hidden size-4 group-hover/about:inline"
       />
     </span>
-    <div className="prose text-muted-foreground dark:prose-invert mt-4 max-w-full text-sm leading-6 font-normal">
+    <div className="prose text-muted-foreground dark:prose-invert max-w-full text-sm leading-6 font-normal">
       <p>
         Hey there! I&apos;m a software professional who is passionate about
         building customer-focused, design-centric products that prioritize

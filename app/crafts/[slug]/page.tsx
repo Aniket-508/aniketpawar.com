@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 
 import { CraftDetailContent } from "@/components/craft-detail-content";
 import { Container } from "@/components/layout/container";
-import { Footer } from "@/components/layout/footer";
 import { ROUTES } from "@/constants/routes";
 import { SITE } from "@/constants/site";
 import { getCraftMdxEntry } from "@/lib/content/crafts";
@@ -51,17 +50,9 @@ const CraftPage = async ({ params }: CraftPageProps) => {
   const tocItems = tocFromMdast(_mdast);
 
   return (
-    <>
-      <div className="pointer-events-none fixed top-0 left-0 z-50 h-12 w-full to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_bottom,black,transparent)]" />
-      <Container className="pt-20 pb-14">
-        <CraftDetailContent
-          craft={craft}
-          Content={Content}
-          tocItems={tocItems}
-        />
-      </Container>
-      <Footer />
-    </>
+    <Container className="pt-20 pb-14">
+      <CraftDetailContent craft={craft} Content={Content} tocItems={tocItems} />
+    </Container>
   );
 };
 

@@ -27,7 +27,7 @@ export const PROJECTS = [
       "Tailwind CSS v4",
       "Radix UI",
     ],
-    title: "Openself",
+    title: "OpenSelf",
   },
   {
     category: "Tool",
@@ -40,6 +40,7 @@ export const PROJECTS = [
     featured: true,
     links: {
       github: "https://github.com/Aniket-508/vercel-doctor",
+      website: "https://www.vercel-doctor.com",
     },
     slug: "vercel-doctor",
     tech: ["MDX", "Agent Skills", "Next.js", "Vercel", "TypeScript"],
@@ -56,6 +57,7 @@ export const PROJECTS = [
     featured: true,
     links: {
       github: "https://github.com/Aniket-508/better-og",
+      website: "https://better-og.vercel.app",
     },
     slug: "better-og",
     tech: ["TypeScript", "Satori", "Takumi", "Next.js"],
@@ -72,6 +74,7 @@ export const PROJECTS = [
     featured: true,
     links: {
       github: "https://github.com/Aniket-508/awesome-oss-perks",
+      website: "https://www.ossperks.com",
     },
     slug: "awesome-oss-perks",
     tech: ["TypeScript", "Awesome List"],
@@ -124,36 +127,5 @@ export const PROJECTS = [
     slug: "instagram-posts-generator",
     tech: ["Next.js", "TypeScript", "Tailwind CSS"],
     title: "IG Posts Generator",
-  },
-  {
-    category: "Open Source",
-    date: {
-      month: "May",
-      year: 2026,
-    },
-    description:
-      "A curated collection of brand logo styles and morphing treatments for design exploration.",
-    links: {
-      github: "https://github.com/Aniket-508/logomorphism",
-    },
-    slug: "logomorphism",
-    tech: ["TypeScript", "React", "Tailwind CSS"],
-    title: "Logomorphism",
-  },
-  {
-    category: "Boilerplate",
-    date: {
-      month: "January",
-      year: 2026,
-    },
-    description:
-      "Monorepo boilerplate with Next.js web app and browser extension, sharing TypeScript, ESLint, Tailwind, and Prettier configs.",
-    links: {
-      github:
-        "https://github.com/Aniket-508/turborepo-nextjs-wxt-shadcn-boilerplate",
-    },
-    slug: "turborepo-nextjs-wxt-shadcn-boilerplate",
-    tech: ["Turborepo", "Next.js", "WXT", "shadcn/ui", "TypeScript"],
-    title: "Turborepo Next + WXT Boilerplate",
   },
 ] satisfies readonly Project[];

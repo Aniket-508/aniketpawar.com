@@ -19,6 +19,9 @@ const projects = mdxCollection({
   frontmatter: slugFrontmatter,
   // @ts-expect-error — remark-heading-id plugin tuple typing
   options: mdxOptions,
+  postprocess: {
+    mdast: true,
+  },
 });
 
 const crafts = mdxCollection({
@@ -26,6 +29,9 @@ const crafts = mdxCollection({
   frontmatter: slugFrontmatter,
   // @ts-expect-error — remark-heading-id plugin tuple typing
   options: mdxOptions,
+  postprocess: {
+    mdast: true,
+  },
 });
 
 const experiences = mdxCollection({
@@ -33,6 +39,9 @@ const experiences = mdxCollection({
   frontmatter: slugFrontmatter,
   // @ts-expect-error — remark-heading-id plugin tuple typing
   options: mdxOptions,
+  postprocess: {
+    mdast: true,
+  },
 });
 
 export default defineConfig({
