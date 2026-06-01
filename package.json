@@ -13,6 +13,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@microsoft/clarity": "^1.0.2",
     "@shikijs/rehype": "^4.1.0",
     "@web-kits/audio": "^0.1.0",
     "class-variance-authority": "^0.7.1",

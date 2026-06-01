@@ -3,8 +3,7 @@ import { Instrument_Serif, Inter } from "next/font/google";
 
 import "@/styles/globals.css";
 
-import Script from "next/script";
-
+import { Analytics } from "@/components/analytics";
 import { Footer } from "@/components/layout/footer";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { META_THEME_COLORS } from "@/constants/site";
@@ -47,15 +46,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <JsonLdScripts />
-        <Script id="clarity-script" strategy="afterInteractive">
-          {`
-            (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "${process.env.CLARITY_PROJECT_ID}");
-          `}
-        </Script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -73,6 +63,7 @@ export default function RootLayout({
         className={`overscroll-none font-sans flex flex-col min-h-screen ${inter.variable} ${instrument_serif.variable}`}
       >
         <ThemeProvider>
+          <Analytics projectId={process.env.CLARITY_PROJECT_ID} />
           <TooltipProvider>
             <SoundProvider>
               <HapticsProvider>
