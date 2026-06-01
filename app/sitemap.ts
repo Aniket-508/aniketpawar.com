@@ -5,27 +5,28 @@ import { SITE } from "@/constants/site";
 import { getCraftSlugs } from "@/lib/crafts";
 import { getExperienceSlugs } from "@/lib/experiences";
 import { getProjectSlugs } from "@/lib/projects";
+import { absoluteUrl } from "@/lib/utils";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const projectEntries = getProjectSlugs().map((slug) => ({
     changeFrequency: "monthly" as const,
     lastModified: new Date(),
     priority: 0.8,
-    url: `${SITE.URL}${ROUTES.PROJECTS}/${slug}`,
+    url: absoluteUrl(`${ROUTES.PROJECTS}/${slug}`),
   }));
 
   const craftEntries = getCraftSlugs().map((slug) => ({
     changeFrequency: "monthly" as const,
     lastModified: new Date(),
     priority: 0.7,
-    url: `${SITE.URL}${ROUTES.CRAFTS}/${slug}`,
+    url: absoluteUrl(`${ROUTES.CRAFTS}/${slug}`),
   }));
 
   const experienceEntries = getExperienceSlugs().map((slug) => ({
     changeFrequency: "monthly" as const,
     lastModified: new Date(),
     priority: 0.7,
-    url: `${SITE.URL}${ROUTES.EXPERIENCES}/${slug}`,
+    url: absoluteUrl(`${ROUTES.EXPERIENCES}/${slug}`),
   }));
 
   return [
@@ -39,19 +40,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       lastModified: new Date(),
       priority: 0.9,
-      url: `${SITE.URL}${ROUTES.PROJECTS}`,
+      url: absoluteUrl(ROUTES.PROJECTS),
     },
     {
       changeFrequency: "monthly",
       lastModified: new Date(),
       priority: 0.9,
-      url: `${SITE.URL}${ROUTES.CRAFTS}`,
+      url: absoluteUrl(ROUTES.CRAFTS),
     },
     {
       changeFrequency: "monthly",
       lastModified: new Date(),
       priority: 0.9,
-      url: `${SITE.URL}${ROUTES.EXPERIENCES}`,
+      url: absoluteUrl(ROUTES.EXPERIENCES),
     },
     ...projectEntries,
     ...craftEntries,

@@ -20,14 +20,14 @@ const ProjectsPage = async () => {
   return (
     <>
       <BreadcrumbJsonLd items={projectsBreadcrumbs()} />
-      <div className="space-y-2 px-4 pt-6 pb-2">
+      <header className="space-y-2 px-4 pt-6 pb-2">
         <Title asChild>
           <h1>{"projects."}</h1>
         </Title>
         <p className="text-muted-foreground text-sm">
           Tools, APIs, and products I have built or maintain.
         </p>
-      </div>
+      </header>
       <Section className="delay-100 flex flex-col gap-8">
         <ProjectsView
           showHeader={false}

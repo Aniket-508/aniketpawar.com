@@ -1,6 +1,7 @@
 import { LINK } from "@/constants/links";
 import { ROUTES } from "@/constants/routes";
 import { SITE } from "@/constants/site";
+import { absoluteUrl } from "@/lib/utils";
 
 const JsonLdScript = ({ data }: { data: Record<string, unknown> }) => (
   <script
@@ -22,7 +23,7 @@ const WebsiteJsonLd = () => {
       "query-input": "required name=search_term_string",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${SITE.URL}?search={search_term_string}`,
+        urlTemplate: absoluteUrl(`?search={search_term_string}`),
       },
     },
     url: SITE.URL,
@@ -125,7 +126,7 @@ const BreadcrumbJsonLd = ({ items }: { items: BreadcrumbItem[] }) => {
     "@type": "BreadcrumbList",
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
-      item: `${SITE.URL}${normalizeBreadcrumbPath(item.path)}`,
+      item: absoluteUrl(`${normalizeBreadcrumbPath(item.path)}`),
       name: item.name,
       position: index + 1,
     })),

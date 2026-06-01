@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { LINK } from "@/constants/links";
 import { SITE } from "@/constants/site";
+import { absoluteUrl } from "@/lib/utils";
 
 interface CreateMetadataOptions {
   title?: string;
@@ -34,7 +35,7 @@ const createMetadata = (options: CreateMetadataOptions = {}): Metadata => {
       description: ogDescription || description,
       title: ogTitle || title || SITE.NAME,
       type: "website",
-      url: canonical ? `${SITE.URL}${canonical}` : SITE.URL,
+      url: canonical ? absoluteUrl(`${canonical}`) : SITE.URL,
     },
     twitter: {
       description: ogDescription || description,
