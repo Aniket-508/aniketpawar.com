@@ -20,7 +20,7 @@ const ProjectsPage = async () => {
   return (
     <>
       <BreadcrumbJsonLd items={projectsBreadcrumbs()} />
-      <header className="space-y-2 px-4 pt-6 pb-2">
+      <header className="animate-slide-in space-y-2 px-4 pt-6 pb-2">
         <Title asChild>
           <h1>{"projects."}</h1>
         </Title>
