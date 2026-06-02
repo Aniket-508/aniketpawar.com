@@ -36,11 +36,11 @@ const CraftsView = ({
             headerClassName
           )}
         >
-          <div className="group/projects flex-1 flex items-center gap-2">
+          <div className="group/projects flex-1 flex items-center gap-1">
             <Title>{"crafts."}</Title>
             <CopyLink
               title={"Crafts"}
-              className="hidden size-4 group-hover/projects:inline"
+              className="hidden group-hover/projects:inline-flex"
             />
           </div>
 

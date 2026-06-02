@@ -18,11 +18,11 @@ const trackHeroExternalLink = (title: string, url: string) => {
 
 const HeroSection = () => (
   <Section id="about" className="delay-100 space-y-4">
-    <span className="group/about flex items-center space-x-2">
+    <span className="group/about flex items-center gap-1">
       <Title>{"about me."}</Title>
       <CopyLink
         title={"About"}
-        className="hidden size-4 group-hover/about:inline"
+        className="hidden group-hover/about:inline-flex"
       />
     </span>
     <div className="prose text-muted-foreground dark:prose-invert max-w-full text-sm leading-6 font-normal">

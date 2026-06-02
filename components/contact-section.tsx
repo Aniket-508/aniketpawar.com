@@ -49,11 +49,11 @@ const ContactSection = () => (
     className="delay-600 grid grid-cols-1 justify-start gap-4"
     id="socials"
   >
-    <span className="group/social flex items-center space-x-2">
+    <span className="group/social flex items-center gap-1">
       <Title>{"socials."}</Title>
       <CopyLink
         title={"Socials"}
-        className="hidden size-4 group-hover/social:inline"
+        className="hidden group-hover/social:inline-flex"
       />
     </span>
     <Section className="grid grid-cols-1 justify-start gap-4 p-0">

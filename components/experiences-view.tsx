@@ -22,14 +22,14 @@ const ExperiencesView = ({
     {showHeader && (
       <div
         className={cn(
-          "group/experience flex items-center gap-2",
+          "group/experience flex items-center gap-1",
           headerClassName
         )}
       >
         <Title>{"experience."}</Title>
         <CopyLink
           title={"Experience"}
-          className="hidden size-4 group-hover/experience:inline"
+          className="hidden group-hover/experience:inline-flex"
         />
       </div>
     )}
