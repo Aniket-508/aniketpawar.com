@@ -4,8 +4,8 @@ import { useState } from "react";
 
 import { ProjectItem } from "@/components/project-item";
 import type { GlimpseData } from "@/components/ui/glimpse/types";
-import type { ViewVariant } from "@/components/view-toggle";
-import { ViewToggle } from "@/components/view-toggle";
+import type { ViewVariant } from "@/components/view-tabs";
+import { ViewToggle } from "@/components/view-tabs";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/types/projects";
 

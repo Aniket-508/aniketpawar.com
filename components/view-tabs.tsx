@@ -2,7 +2,7 @@
 
 import { LayoutGridIcon, TextAlignJustifyIcon } from "lucide-react";
 
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { trackViewModeChange } from "@/lib/events";
 
 type ViewVariant = "list" | "grid";
@@ -14,8 +14,7 @@ interface ViewToggleProps {
 }
 
 const ViewToggle = ({ value, onChange, section }: ViewToggleProps) => (
-  <ToggleGroup
-    type="single"
+  <Tabs
     value={value}
     onValueChange={(next) => {
       if (!next) {
@@ -27,13 +26,25 @@ const ViewToggle = ({ value, onChange, section }: ViewToggleProps) => (
       onChange(variant);
     }}
   >
-    <ToggleGroupItem value="list" className="h-8 w-8" aria-label="List view">
-      <TextAlignJustifyIcon className="size-4" />
-    </ToggleGroupItem>
-    <ToggleGroupItem value="grid" className="h-8 w-8" aria-label="Grid view">
-      <LayoutGridIcon className="size-4" />
-    </ToggleGroupItem>
-  </ToggleGroup>
+    <TabsList>
+      <TabsTrigger
+        value="list"
+        title="List view"
+        aria-label="List view"
+        className="px-1"
+      >
+        <TextAlignJustifyIcon />
+      </TabsTrigger>
+      <TabsTrigger
+        value="grid"
+        title="Grid view"
+        aria-label="Grid view"
+        className="px-1"
+      >
+        <LayoutGridIcon />
+      </TabsTrigger>
+    </TabsList>
+  </Tabs>
 );
 
 export { ViewToggle, type ViewVariant };

@@ -5,8 +5,8 @@ import { useState } from "react";
 import { CopyLink } from "@/components/copy-link";
 import { CraftItem } from "@/components/craft-item";
 import { Title } from "@/components/ui/title";
-import type { ViewVariant } from "@/components/view-toggle";
-import { ViewToggle } from "@/components/view-toggle";
+import type { ViewVariant } from "@/components/view-tabs";
+import { ViewToggle } from "@/components/view-tabs";
 import { cn } from "@/lib/utils";
 import type { Craft } from "@/types/crafts";
 
