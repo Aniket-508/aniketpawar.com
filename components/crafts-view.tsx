@@ -48,7 +48,7 @@ const CraftsView = ({
         </div>
       )}
 
-      <div className={cn("grid grid-cols-1 gap-8", viewClassName)}>
+      <div className={cn("group grid grid-cols-1", viewClassName)}>
         {crafts.map((craft) => (
           <CraftItem
             key={craft.slug}

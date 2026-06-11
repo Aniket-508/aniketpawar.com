@@ -29,7 +29,7 @@ const CraftItem = ({
   return (
     <div
       className={cn(
-        "w-full flex items-center justify-between gap-2 min-w-0",
+        "py-4 w-full transition-[border-color,opacity] duration-50 hover:opacity-100 group-hover:opacity-30 flex items-center justify-between gap-2 min-w-0",
         isGrid && "flex-col items-start gap-1",
         className
       )}

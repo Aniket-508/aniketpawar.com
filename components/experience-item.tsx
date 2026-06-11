@@ -31,7 +31,13 @@ const ExperienceItem = ({
   className,
   ...attr
 }: ExperienceItemProps) => (
-  <div className={cn("w-full space-y-4", className)} {...attr}>
+  <div
+    className={cn(
+      "py-4 w-full space-y-4 transition-[border-color,opacity] duration-50 hover:opacity-100 group-hover:opacity-30",
+      className
+    )}
+    {...attr}
+  >
     <div className="flex flex-wrap items-start justify-between gap-2">
       <div>
         <h3 className="text-primary font-normal">

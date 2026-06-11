@@ -33,7 +33,7 @@ const ExperiencesView = ({
       </div>
     )}
 
-    <div className={cn("grid grid-cols-1 gap-8", viewClassName)}>
+    <div className={cn("group grid grid-cols-1", viewClassName)}>
       {experiences.map((experience) => (
         <ExperienceItem
           {...experience}

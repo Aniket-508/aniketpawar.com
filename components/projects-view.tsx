@@ -56,8 +56,8 @@ const ProjectsView = ({
 
       <div
         className={cn(
-          "group grid grid-cols-1 gap-8",
-          variant === "grid" && "sm:grid-cols-2",
+          "group grid grid-cols-1",
+          variant === "grid" && "gap-x-8 sm:grid-cols-2",
           viewClassName
         )}
       >

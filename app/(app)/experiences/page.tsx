@@ -27,7 +27,7 @@ const ExperiencesPage = () => {
           Where I have worked and what I shipped.
         </p>
       </div>
-      <Section className="delay-100 flex flex-col gap-8">
+      <Section className="delay-100 flex flex-col py-2">
         <ExperiencesView showHeader={false} experiences={experiences} />
       </Section>
     </>

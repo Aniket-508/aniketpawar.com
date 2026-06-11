@@ -9,6 +9,7 @@ import { Title } from "@/components/ui/title";
 import { resolveContacts } from "@/lib/contacts";
 import type { ResolvedContact } from "@/lib/contacts";
 import { trackContactLinkClick } from "@/lib/events";
+import { cn } from "@/lib/utils";
 
 interface ContactItemProps
   extends
@@ -19,10 +20,16 @@ const ContactItem = ({
   title,
   icon,
   link,
-  className: _className,
+  className,
   ...attr
 }: ContactItemProps) => (
-  <div className={"flex flex-row items-center justify-start gap-4"} {...attr}>
+  <div
+    className={cn(
+      "py-2 flex items-center justify-start gap-4 transition-[border-color,opacity] duration-50 hover:opacity-100 group-hover:opacity-30",
+      className
+    )}
+    {...attr}
+  >
     {icon && title && icon({ className: "size-4" })}
     <span>
       {link?.url && (
@@ -46,7 +53,7 @@ const ContactItem = ({
 
 const ContactSection = () => (
   <Section
-    className="delay-600 grid grid-cols-1 justify-start gap-4"
+    className="delay-600 grid grid-cols-1 justify-start gap-2"
     id="socials"
   >
     <span className="group/social flex items-center gap-1">
@@ -56,7 +63,7 @@ const ContactSection = () => (
         className="hidden group-hover/social:inline-flex"
       />
     </span>
-    <Section className="grid grid-cols-1 justify-start gap-4 p-0">
+    <Section className="group grid grid-cols-1 justify-start p-0">
       {resolveContacts().map((contact, contactIndex) => (
         <ContactItem {...contact} key={contactIndex} />
       ))}

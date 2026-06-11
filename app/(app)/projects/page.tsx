@@ -28,7 +28,7 @@ const ProjectsPage = async () => {
           Tools, APIs, and products I have built or maintain.
         </p>
       </header>
-      <Section className="delay-100 flex flex-col gap-8">
+      <Section className="delay-100 flex flex-col py-2">
         <ProjectsView
           showHeader={false}
           defaultVariant="grid"

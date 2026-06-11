@@ -26,7 +26,7 @@ const CraftsPage = () => {
           Motion studies and interaction experiments.
         </p>
       </header>
-      <Section className="delay-100 flex flex-col gap-8">
+      <Section className="delay-100 flex flex-col py-2">
         <CraftsView showHeader={false} defaultVariant="grid" crafts={crafts} />
       </Section>
     </>

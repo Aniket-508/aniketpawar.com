@@ -114,7 +114,13 @@ const ProjectItem = ({
   const image = previews?.[links?.website ?? ""]?.image ?? "";
 
   return (
-    <div className={cn("w-full space-y-1", className)} {...attr}>
+    <div
+      className={cn(
+        "py-4 w-full space-y-1 transition-[border-color,opacity] duration-50 hover:opacity-100 group-hover:opacity-30",
+        className
+      )}
+      {...attr}
+    >
       {isGrid && image && (
         <MediaPreview
           src={image}
