@@ -5,8 +5,8 @@ import { useState } from "react";
 import { CopyLink } from "@/components/copy-link";
 import { CraftItem } from "@/components/craft-item";
 import { Title } from "@/components/ui/title";
-import type { ViewVariant } from "@/components/view-tabs";
 import { ViewToggle } from "@/components/view-tabs";
+import type { Variant } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import type { Craft } from "@/types/crafts";
 
@@ -14,7 +14,7 @@ interface CraftsViewProps {
   crafts: readonly Craft[];
   showHeader?: boolean;
   headerClassName?: string;
-  defaultVariant?: ViewVariant;
+  defaultVariant?: Variant;
   viewClassName?: string;
 }
 

@@ -37,6 +37,8 @@ const eventSchema = z.object({
 
 export type Event = z.infer<typeof eventSchema>;
 export type EventName = Event["name"];
+export type Section = "projects" | "crafts" | "experience";
+export type Variant = "list" | "grid";
 
 export const trackEvent = (input: Event): void => {
   if (!isClarityReady()) {
@@ -128,9 +130,7 @@ export const trackInternalLinkClick = (href: string, label: string) =>
 export const trackNavbarHomeClick = () =>
   trackEvent({ name: "navbar_home_click" });
 
-export const trackNavbarSectionClick = (
-  section: "projects" | "crafts" | "experience"
-) =>
+export const trackNavbarSectionClick = (section: Section) =>
   trackEvent({
     name: "navbar_section_click",
     properties: { section },
@@ -192,18 +192,13 @@ export const trackTocMinimapItemClick = (
     properties: { depth, title, url },
   });
 
-export const trackViewAllClick = (
-  section: "projects" | "crafts" | "experience"
-) =>
+export const trackViewAllClick = (section: Section) =>
   trackEvent({
     name: "view_all_click",
     properties: { section },
   });
 
-export const trackViewModeChange = (
-  section: "projects" | "crafts",
-  variant: "list" | "grid"
-) =>
+export const trackViewModeChange = (section: Section, variant: Variant) =>
   trackEvent({
     name: "view_mode_change",
     properties: { section, variant },

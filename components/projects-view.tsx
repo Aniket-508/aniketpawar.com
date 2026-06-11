@@ -6,15 +6,15 @@ import { CopyLink } from "@/components/copy-link";
 import { ProjectItem } from "@/components/project-item";
 import type { GlimpseData } from "@/components/ui/glimpse/types";
 import { Title } from "@/components/ui/title";
-import type { ViewVariant } from "@/components/view-tabs";
 import { ViewToggle } from "@/components/view-tabs";
+import type { Variant } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/types/projects";
 
 interface ProjectsViewProps {
   projects: readonly Project[];
   previews: Record<string, GlimpseData>;
-  defaultVariant?: ViewVariant;
+  defaultVariant?: Variant;
   showHeader?: boolean;
   headerClassName?: string;
   viewClassName?: string;
@@ -56,7 +56,7 @@ const ProjectsView = ({
 
       <div
         className={cn(
-          "grid grid-cols-1 gap-8",
+          "group grid grid-cols-1 gap-8",
           variant === "grid" && "sm:grid-cols-2",
           viewClassName
         )}

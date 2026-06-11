@@ -1,5 +1,3 @@
-"use client";
-
 import { CraftsView } from "@/components/crafts-view";
 import { Section } from "@/components/layout/section";
 import { CRAFTS } from "@/constants/crafts";
@@ -14,12 +12,7 @@ const CraftSection = () => (
       viewClassName="col-span-2 w-full"
       crafts={CRAFTS}
     />
-    {/* <Button variant="secondary" className="group" asChild>
-      <Link href={ROUTES.CRAFTS} onClick={() => trackViewAllClick("crafts")}>
-        View all
-        <ArrowUpRightIcon className="size-4 transition-transform duration-300 group-hover:rotate-45" />
-      </Link>
-    </Button> */}
+    {/* <ViewAllButton href={ROUTES.CRAFTS} eventName="crafts" /> */}
   </Section>
 );
 

@@ -4,13 +4,12 @@ import { LayoutGridIcon, TextAlignJustifyIcon } from "lucide-react";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { trackViewModeChange } from "@/lib/events";
-
-type ViewVariant = "list" | "grid";
+import type { Section, Variant } from "@/lib/events";
 
 interface ViewToggleProps {
-  value: ViewVariant;
-  onChange: (value: ViewVariant) => void;
-  section: "projects" | "crafts";
+  value: Variant;
+  onChange: (value: Variant) => void;
+  section: Section;
 }
 
 const ViewToggle = ({ value, onChange, section }: ViewToggleProps) => (
@@ -21,7 +20,7 @@ const ViewToggle = ({ value, onChange, section }: ViewToggleProps) => (
         return;
       }
 
-      const variant = next as ViewVariant;
+      const variant = next as Variant;
       trackViewModeChange(section, variant);
       onChange(variant);
     }}
@@ -47,4 +46,4 @@ const ViewToggle = ({ value, onChange, section }: ViewToggleProps) => (
   </Tabs>
 );
 
-export { ViewToggle, type ViewVariant };
+export { ViewToggle };

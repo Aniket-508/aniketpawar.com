@@ -1,14 +1,8 @@
-"use client";
-
-import { ArrowUpRightIcon } from "lucide-react";
-import Link from "next/link";
-
 import { Section } from "@/components/layout/section";
 import { ProjectsView } from "@/components/projects-view";
-import { Button } from "@/components/ui/button";
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
+import { ViewAllButton } from "@/components/view-all-button";
 import { ROUTES } from "@/constants/routes";
-import { trackViewAllClick } from "@/lib/events";
 import {
   collectProjectUrls,
   getFeaturedProjects,
@@ -34,15 +28,7 @@ const ProjectSection = async () => {
         previews={previews}
       />
       {showViewAll && (
-        <Button variant="secondary" className="group col-span-2" asChild>
-          <Link
-            href={ROUTES.PROJECTS}
-            onClick={() => trackViewAllClick("projects")}
-          >
-            View all
-            <ArrowUpRightIcon className="size-4 transition-transform duration-300 group-hover:rotate-45" />
-          </Link>
-        </Button>
+        <ViewAllButton href={ROUTES.PROJECTS} eventName="projects" />
       )}
     </Section>
   );

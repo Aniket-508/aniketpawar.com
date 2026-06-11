@@ -1,5 +1,7 @@
 "use client";
 
+import { Link } from "next/link";
+
 import { MediaPreview } from "@/components/media-preview";
 import { ROUTES } from "@/constants/routes";
 import { trackCraftDetailClick } from "@/lib/events";

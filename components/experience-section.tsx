@@ -1,5 +1,3 @@
-"use client";
-
 import { ExperiencesView } from "@/components/experiences-view";
 import { Section } from "@/components/layout/section";
 import { EXPERIENCES } from "@/constants/experiences";
@@ -10,15 +8,7 @@ const ExperienceSection = () => (
     id="experience"
   >
     <ExperiencesView headerClassName="w-full" experiences={EXPERIENCES} />
-    {/* <Button variant="secondary" className="group w-fit" asChild>
-      <Link
-        href={ROUTES.EXPERIENCES}
-        onClick={() => trackViewAllClick("experience")}
-      >
-        View all
-        <ArrowUpRightIcon className="size-4 transition-transform duration-300 group-hover:rotate-45" />
-      </Link>
-    </Button> */}
+    {/* <ViewAllButton href={ROUTES.EXPERIENCES} eventName="experience" /> */}
   </Section>
 );
 
