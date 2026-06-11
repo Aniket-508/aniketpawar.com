@@ -1,9 +1,8 @@
 "use client";
 
+import { ExperiencesView } from "@/components/experiences-view";
 import { Section } from "@/components/layout/section";
 import { EXPERIENCES } from "@/constants/experiences";
-
-import { ExperiencesView } from "./experiences-view";
 
 const ExperienceSection = () => (
   <Section

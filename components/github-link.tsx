@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 
+import { Icons } from "@/components/icons";
+import { Button } from "@/components/ui/button";
 import { trackExternalLinkClick } from "@/lib/events";
-
-import { Icons } from "./icons";
-import { Button } from "./ui/button";
 
 const GITHUB_REPO_URL = "https://github.com/Aniket-508/aniketpawar.com";
 

@@ -2,15 +2,14 @@
 
 import { useState } from "react";
 
+import { CopyLink } from "@/components/copy-link";
 import { ProjectItem } from "@/components/project-item";
 import type { GlimpseData } from "@/components/ui/glimpse/types";
+import { Title } from "@/components/ui/title";
 import type { ViewVariant } from "@/components/view-tabs";
 import { ViewToggle } from "@/components/view-tabs";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/types/projects";
-
-import { CopyLink } from "./copy-link";
-import { Title } from "./ui/title";
 
 interface ProjectsViewProps {
   projects: readonly Project[];

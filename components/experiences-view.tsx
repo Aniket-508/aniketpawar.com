@@ -1,9 +1,8 @@
+import { CopyLink } from "@/components/copy-link";
 import { ExperienceItem } from "@/components/experience-item";
+import { Title } from "@/components/ui/title";
 import { cn } from "@/lib/utils";
 import type { Experience } from "@/types/experiences";
-
-import { CopyLink } from "./copy-link";
-import { Title } from "./ui/title";
 
 interface ExperiencesViewProps {
   showHeader?: boolean;

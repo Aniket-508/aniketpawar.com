@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 
 import { Icons } from "@/components/icons";
+import { MediaPreview } from "@/components/media-preview";
 import { Button } from "@/components/ui/button";
 import type { GlimpseData } from "@/components/ui/glimpse/types";
 import { LinkTextClient } from "@/components/ui/link-text/client";
@@ -17,8 +18,6 @@ import { ROUTES } from "@/constants/routes";
 import { trackExternalLinkClick, trackProjectDetailClick } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/types/projects";
-
-import { MediaPreview } from "./media-preview";
 
 interface ProjectLinkProps {
   href: string;

@@ -1,5 +1,6 @@
 "use client";
 
+import { AnchorProvider, useActiveAnchor, useItems } from "@/components/toc";
 import {
   HoverCard,
   HoverCardContent,
@@ -8,8 +9,6 @@ import {
 import { trackTocMinimapHover, trackTocMinimapItemClick } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import type { TOCItem } from "@/types/projects";
-
-import { AnchorProvider, useActiveAnchor, useItems } from "./toc";
 
 export interface TOCMinimapProps {
   items: TOCItem[];

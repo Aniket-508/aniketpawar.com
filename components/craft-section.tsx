@@ -1,9 +1,8 @@
 "use client";
 
+import { CraftsView } from "@/components/crafts-view";
 import { Section } from "@/components/layout/section";
 import { CRAFTS } from "@/constants/crafts";
-
-import { CraftsView } from "./crafts-view";
 
 const CraftSection = () => (
   <Section

@@ -1,13 +1,10 @@
 "use client";
 
-import Link from "next/link";
-
+import { MediaPreview } from "@/components/media-preview";
 import { ROUTES } from "@/constants/routes";
 import { trackCraftDetailClick } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import type { Craft } from "@/types/crafts";
-
-import { MediaPreview } from "./media-preview";
 
 interface CraftItemProps
   extends Craft, Omit<React.ComponentProps<"div">, "title"> {
