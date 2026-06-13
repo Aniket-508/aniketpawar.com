@@ -1,7 +1,5 @@
-"use client";
-
+import { AppLink } from "@/components/ui/app-link";
 import { Tag } from "@/components/ui/tag";
-import { trackTechLinkClick } from "@/lib/events";
 import { getTechLink } from "@/lib/tech";
 import { cn } from "@/lib/utils";
 
@@ -23,14 +21,14 @@ const TechStack = ({ items, className }: TechStackProps) => {
         return (
           <div key={tech} className="flex items-center gap-1">
             {techUrl ? (
-              <a
+              <AppLink
                 href={techUrl}
                 target="_blank"
-                rel="noreferrer"
-                onClick={() => trackTechLinkClick(tech, techUrl)}
+                eventName="tech_link_click"
+                eventProperties={{ tech, url: techUrl }}
               >
                 <Tag className="cursor-pointer font-mono">{tech}</Tag>
-              </a>
+              </AppLink>
             ) : (
               <Tag className="font-mono">{tech}</Tag>
             )}

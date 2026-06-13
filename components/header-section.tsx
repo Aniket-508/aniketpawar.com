@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 import { Section } from "@/components/layout/section";
+import { ModeToggle } from "@/components/mode-toggle";
+import { NavItemGitHub } from "@/components/nav-item-github";
+import { SoundToggle } from "@/components/sound-toggle";
 import { SITE } from "@/constants/site";
 
 const HeaderSection = () => (
@@ -32,12 +35,19 @@ const HeaderSection = () => (
         {"🐢"}
       </motion.div>
     </motion.div>
-    <div>
-      <h1 className="text-primary text-2xl leading-snug font-semibold tracking-tighter">
-        Aniket Pawar
-      </h1>
-      <div className="text-muted-foreground mt-1 text-base leading-snug font-normal">
-        <p>Frontend Engineer</p>
+    <div className="flex flex-1 items-start justify-between">
+      <div>
+        <h1 className="text-primary text-2xl leading-snug font-semibold tracking-tighter">
+          Aniket Pawar
+        </h1>
+        <div className="text-muted-foreground mt-1 text-base leading-snug font-normal">
+          <p>Frontend Engineer</p>
+        </div>
+      </div>
+      <div className="flex items-center gap-2">
+        <NavItemGitHub />
+        <SoundToggle />
+        <ModeToggle />
       </div>
     </div>
   </Section>

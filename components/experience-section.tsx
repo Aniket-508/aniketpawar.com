@@ -4,7 +4,7 @@ import { EXPERIENCES } from "@/constants/experiences";
 
 const ExperienceSection = () => (
   <Section
-    className="delay-500 grid grid-cols-1 place-items-center gap-4"
+    className="delay-400 grid grid-cols-1 place-items-center gap-4"
     id="experience"
   >
     <ExperiencesView headerClassName="w-full" experiences={EXPERIENCES} />

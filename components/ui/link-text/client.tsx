@@ -41,8 +41,6 @@ const LinkTextClient = ({
   return (
     <Glimpse>
       <GlimpseTrigger
-        delay={0.1}
-        closeDelay={0.1}
         className={cn(
           "after:bg-primary hover:text-primary active:text-primary relative flex flex-row items-center justify-start gap-0.5 text-base font-medium transition-all after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-0 after:transition-all after:duration-300 hover:gap-1 hover:after:w-full",
           className

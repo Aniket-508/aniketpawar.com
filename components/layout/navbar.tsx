@@ -4,6 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { ModeToggle } from "@/components/mode-toggle";
+import { NavItemGitHub } from "@/components/nav-item-github";
+import { SoundToggle } from "@/components/sound-toggle";
 import { ROUTES } from "@/constants/routes";
 import { SITE } from "@/constants/site";
 import { trackNavbarHomeClick, trackNavbarSectionClick } from "@/lib/events";
@@ -63,39 +66,51 @@ const Navbar = () => {
 
   return (
     <nav className="flex items-center justify-between gap-4 px-4 py-6">
-      <Link href={ROUTES.HOME} aria-label="Home" onClick={trackNavbarHomeClick}>
-        <Image
-          src={SITE.AUTHOR.AVATAR}
-          alt="Aniket Pawar"
-          width={36}
-          height={36}
-          className="rounded-full"
-          priority
-        />
-      </Link>
+      <div className="flex items-center gap-4">
+        <Link
+          href={ROUTES.HOME}
+          aria-label="Home"
+          onClick={trackNavbarHomeClick}
+        >
+          <Image
+            src={SITE.AUTHOR.AVATAR}
+            alt="Aniket Pawar"
+            width={36}
+            height={36}
+            className="rounded-full"
+            priority
+          />
+        </Link>
 
-      <ul className="flex items-center gap-4">
-        {SECTIONS.map((section) => (
-          <li key={section.id}>
-            <Link
-              href={section.href}
-              className={cn(
-                "text-sm transition-colors",
-                activeSection === section.id
-                  ? "text-foreground"
-                  : "text-muted-foreground hover:text-foreground"
-              )}
-              onClick={() =>
-                trackNavbarSectionClick(
-                  section.id === "experiences" ? "experience" : section.id
-                )
-              }
-            >
-              {section.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
+        <ul className="flex items-center gap-4">
+          {SECTIONS.map((section) => (
+            <li key={section.id}>
+              <Link
+                href={section.href}
+                className={cn(
+                  "text-sm transition-colors",
+                  activeSection === section.id
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+                onClick={() =>
+                  trackNavbarSectionClick(
+                    section.id === "experiences" ? "experience" : section.id
+                  )
+                }
+              >
+                {section.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="flex items-center gap-2">
+        <NavItemGitHub />
+        <SoundToggle />
+        <ModeToggle />
+      </div>
     </nav>
   );
 };

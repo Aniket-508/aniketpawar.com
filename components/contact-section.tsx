@@ -1,14 +1,11 @@
-"use client";
-
 import React from "react";
 
 import { CopyLink } from "@/components/copy-link";
 import { Section } from "@/components/layout/section";
-import { LinkTextClient } from "@/components/ui/link-text/client";
+import { AppLink } from "@/components/ui/app-link";
 import { Title } from "@/components/ui/title";
 import { resolveContacts } from "@/lib/contacts";
 import type { ResolvedContact } from "@/lib/contacts";
-import { trackContactLinkClick } from "@/lib/events";
 import { cn } from "@/lib/utils";
 
 interface ContactItemProps
@@ -33,14 +30,15 @@ const ContactItem = ({
     {icon && title && icon({ className: "size-4" })}
     <span>
       {link?.url && (
-        <LinkTextClient
+        <AppLink
           className="text-muted-foreground text-sm font-normal"
           href={link?.url}
           target="_blank"
-          onClick={() => trackContactLinkClick(title, link.url)}
+          eventName="contact_link_click"
+          eventProperties={{ platform: title, url: link.url }}
         >
           {link?.display}
-        </LinkTextClient>
+        </AppLink>
       )}
       {!link?.url && (
         <span className="text-muted-foreground text-sm font-normal">
@@ -53,7 +51,7 @@ const ContactItem = ({
 
 const ContactSection = () => (
   <Section
-    className="delay-600 grid grid-cols-1 justify-start gap-2"
+    className="delay-500 grid grid-cols-1 justify-start gap-2"
     id="socials"
   >
     <span className="group/social flex items-center gap-1">
