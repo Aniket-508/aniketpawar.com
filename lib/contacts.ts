@@ -7,6 +7,7 @@ const CONTACT_ICONS: Record<
   ContactIconKey,
   (props: IconProps) => React.JSX.Element
 > = {
+  discord: Icons.discord,
   github: Icons.github,
   linkedin: Icons.linkedin,
   peerlist: Icons.peerlist,

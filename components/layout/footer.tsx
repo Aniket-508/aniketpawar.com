@@ -2,7 +2,7 @@ import { getLastUpdated } from "@/lib/github";
 
 const Footer = () => (
   <footer className="mt-auto animate-slide-in delay-700 mx-auto w-full max-w-screen-sm px-4">
-    <div className="flex items-center justify-between border-t py-3">
+    <div className="flex items-center justify-between border-t pt-3 pb-[calc(env(safe-area-inset-bottom,0)+0.75rem)]">
       <p className="text-muted-foreground text-xs">
         Last updated · {getLastUpdated()}
       </p>

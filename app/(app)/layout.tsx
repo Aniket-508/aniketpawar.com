@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/container";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
+import { ScrollToTop } from "@/components/scroll-to-top";
 
 export default function AppLayout({
   children,
@@ -15,6 +16,7 @@ export default function AppLayout({
         {children}
       </Container>
       <Footer />
+      <ScrollToTop />
     </>
   );
 }
