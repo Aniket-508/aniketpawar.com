@@ -21,10 +21,12 @@ export const ModeToggle = () => {
 
   return (
     <Tooltip>
-      <TooltipTrigger asChild>
-        <Button variant="ghost" size="icon-sm" onClick={handleToggle}>
-          <Icons.theme />
-        </Button>
+      <TooltipTrigger
+        render={
+          <Button variant="ghost" size="icon-sm" onClick={handleToggle} />
+        }
+      >
+        <Icons.theme />
       </TooltipTrigger>
       <TooltipContent>
         Toggle Mode

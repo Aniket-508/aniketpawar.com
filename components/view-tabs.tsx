@@ -3,6 +3,11 @@
 import { LayoutGridIcon, TextAlignJustifyIcon } from "lucide-react";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { trackViewModeChange } from "@/lib/events";
 import type { Section, Variant } from "@/lib/events";
 
@@ -26,22 +31,26 @@ const ViewToggle = ({ value, onChange, section }: ViewToggleProps) => (
     }}
   >
     <TabsList>
-      <TabsTrigger
-        value="list"
-        title="List view"
-        aria-label="List view"
-        className="px-1"
-      >
-        <TextAlignJustifyIcon />
-      </TabsTrigger>
-      <TabsTrigger
-        value="grid"
-        title="Grid view"
-        aria-label="Grid view"
-        className="px-1"
-      >
-        <LayoutGridIcon />
-      </TabsTrigger>
+      <Tooltip disabled={value === "list"}>
+        <TooltipTrigger
+          render={
+            <TabsTrigger value="list" aria-label="List view" className="px-1" />
+          }
+        >
+          <TextAlignJustifyIcon />
+        </TooltipTrigger>
+        <TooltipContent sideOffset={8}>List view</TooltipContent>
+      </Tooltip>
+      <Tooltip disabled={value === "grid"}>
+        <TooltipTrigger
+          render={
+            <TabsTrigger value="grid" aria-label="Grid view" className="px-1" />
+          }
+        >
+          <LayoutGridIcon />
+        </TooltipTrigger>
+        <TooltipContent sideOffset={8}>Grid view</TooltipContent>
+      </Tooltip>
     </TabsList>
   </Tabs>
 );

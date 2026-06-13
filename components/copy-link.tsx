@@ -23,16 +23,20 @@ export const CopyLink = ({
       size="icon-sm"
       className={cn("text-muted-foreground", className)}
       aria-label={title}
+      nativeButton={false}
       onClick={(event) => {
         trackSectionAnchorClick(title);
         onClick?.(event);
       }}
       {...props}
-      asChild
+      render={
+        <Link
+          id={`section-link-${titleFormatted}`}
+          href={`#${titleFormatted}`}
+        />
+      }
     >
-      <Link id={`section-link-${titleFormatted}`} href={`#${titleFormatted}`}>
-        <LinkIcon className="size-4" />
-      </Link>
+      <LinkIcon className="size-4" />
     </Button>
   );
 };

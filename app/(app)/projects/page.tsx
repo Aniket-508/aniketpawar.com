@@ -21,9 +21,7 @@ const ProjectsPage = async () => {
     <>
       <BreadcrumbJsonLd items={projectsBreadcrumbs()} />
       <header className="animate-slide-in space-y-2 px-4 pt-6 pb-2">
-        <Title asChild>
-          <h1>{"projects."}</h1>
-        </Title>
+        <Title render={<h1>{"projects."}</h1>} />
         <p className="text-muted-foreground text-sm">
           Tools, APIs, and products I have built or maintain.
         </p>

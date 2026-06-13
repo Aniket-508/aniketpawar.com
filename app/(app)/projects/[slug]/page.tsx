@@ -95,9 +95,7 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
         </div>
 
         <header className="animate-slide-in space-y-2">
-          <Title asChild>
-            <h1>{project.title}</h1>
-          </Title>
+          <Title render={<h1>{project.title}</h1>} />
           <p className="text-muted-foreground text-sm">{project.description}</p>
         </header>
 

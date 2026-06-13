@@ -14,15 +14,20 @@ const WorkTogether = () => (
     <Callout className="space-y-4">
       <p>{"Interested in working together? Feel free to schedule a meet!"}</p>
       <div className="flex flex-row items-center justify-start gap-4">
-        <Button size="lg" asChild className="gap-1">
-          <Link
-            href="https://cal.com/aniket-pawar"
-            target="_blank"
-            onClick={trackScheduleMeetClick}
-          >
-            Schedule a meet / <CalendarClockIcon className="inline sm:hidden" />
-            <span className="hidden sm:inline">cal.com</span>
-          </Link>
+        <Button
+          size="lg"
+          className="gap-1"
+          nativeButton={false}
+          render={
+            <Link
+              href="https://cal.com/aniket-pawar"
+              target="_blank"
+              onClick={trackScheduleMeetClick}
+            />
+          }
+        >
+          Schedule a meet / <CalendarClockIcon className="inline sm:hidden" />
+          <span className="hidden sm:inline">cal.com</span>
         </Button>
         <LinkTextClient
           href={"/resume.pdf"}

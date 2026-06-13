@@ -68,9 +68,7 @@ const CraftPage = async ({ params }: CraftPageProps) => {
         </div>
 
         <header className="animate-slide-in space-y-2">
-          <Title asChild>
-            <h1>{craft.title}</h1>
-          </Title>
+          <Title render={<h1>{craft.title}</h1>} />
           <p className="text-muted-foreground text-sm">{craft.description}</p>
         </header>
 

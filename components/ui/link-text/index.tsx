@@ -1,11 +1,11 @@
-import type { HoverCard as HoverCardPrimitive } from "radix-ui";
+import type { PreviewCard as PreviewCardPrimitive } from "@base-ui/react/preview-card";
 
 import type { GlimpseContentProps } from "@/components/ui/glimpse";
 import { glimpse } from "@/components/ui/glimpse/server";
 import { LinkTextClient } from "@/components/ui/link-text/client";
 
 interface LinkTextProps extends React.ComponentProps<
-  typeof HoverCardPrimitive.Trigger
+  typeof PreviewCardPrimitive.Trigger
 > {
   children?: React.ReactNode;
   className?: string;

@@ -74,17 +74,19 @@ const TrackedProjectLinks = ({
           variant="outline"
           size="sm"
           className="gap-1.5"
-          asChild
+          nativeButton={false}
+          render={
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              onClick={() => trackClick(linkType, href)}
+            />
+          }
         >
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackClick(linkType, href)}
-          >
-            {icon}
-            {label}
-          </a>
+          {icon}
+          {label}
         </Button>
       ))}
     </div>
@@ -158,17 +160,19 @@ const TrackedExperienceLinks = ({
           variant="outline"
           size="sm"
           className="gap-1.5"
-          asChild
+          nativeButton={false}
+          render={
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              onClick={() => trackClick(linkType, href)}
+            />
+          }
         >
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackClick(linkType, href)}
-          >
-            {icon}
-            {label}
-          </a>
+          {icon}
+          {label}
         </Button>
       ))}
     </div>

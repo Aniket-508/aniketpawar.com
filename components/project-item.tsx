@@ -51,22 +51,26 @@ const ProjectLink = ({
   if (isGrid) {
     return (
       <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            className="text-muted-foreground"
-            asChild
-          >
-            <a
-              href={href}
-              target="_blank"
-              rel="noreferrer"
-              onClick={handleClick}
-            >
-              {icon}
-            </a>
-          </Button>
+        <TooltipTrigger
+          render={
+            <Button
+              variant="ghost"
+              size="icon-sm"
+              className="text-muted-foreground"
+              nativeButton={false}
+              render={
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  onClick={handleClick}
+                />
+              }
+            />
+          }
+        >
+          {icon}
         </TooltipTrigger>
         <TooltipContent>{label}</TooltipContent>
       </Tooltip>

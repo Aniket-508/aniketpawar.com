@@ -14,10 +14,13 @@ export const ViewAllButton = ({
   href: string;
   eventName: Section;
 }) => (
-  <Button variant="secondary" className="group col-span-2" asChild>
-    <Link href={href} onClick={() => trackViewAllClick(eventName)}>
-      View all
-      <ArrowUpRightIcon className="size-4 transition-transform duration-300 group-hover:rotate-45" />
-    </Link>
+  <Button
+    variant="secondary"
+    className="group col-span-2"
+    nativeButton={false}
+    render={<Link href={href} onClick={() => trackViewAllClick(eventName)} />}
+  >
+    View all
+    <ArrowUpRightIcon className="size-4 transition-transform duration-300 group-hover:rotate-45" />
   </Button>
 );

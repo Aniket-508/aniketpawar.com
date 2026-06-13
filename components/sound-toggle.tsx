@@ -22,10 +22,12 @@ export const SoundToggle = () => {
 
   return (
     <Tooltip>
-      <TooltipTrigger asChild>
-        <Button variant="ghost" size="icon-sm" onClick={handleToggle}>
-          {enabled ? <Volume2Icon /> : <VolumeXIcon />}
-        </Button>
+      <TooltipTrigger
+        render={
+          <Button variant="ghost" size="icon-sm" onClick={handleToggle} />
+        }
+      >
+        {enabled ? <Volume2Icon /> : <VolumeXIcon />}
       </TooltipTrigger>
       <TooltipContent>
         Toggle Sound
