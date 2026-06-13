@@ -3,7 +3,8 @@ export type ContactIconKey =
   | "linkedin"
   | "x"
   | "topmate"
-  | "peerlist";
+  | "peerlist"
+  | "discord";
 
 export interface ContactLink {
   display: string;
