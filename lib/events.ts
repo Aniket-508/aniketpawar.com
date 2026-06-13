@@ -61,22 +61,6 @@ export const trackEvent = (input: Event): void => {
   }
 };
 
-export const trackContactLinkClick = (platform: string, url: string) =>
-  trackEvent({
-    name: "contact_link_click",
-    properties: { platform, url },
-  });
-
-export const trackContentShare = (
-  title: string,
-  url: string,
-  method: "native" | "clipboard"
-) =>
-  trackEvent({
-    name: "content_share",
-    properties: { method, title, url },
-  });
-
 export const trackCraftDetailClick = (
   slug: string,
   title: string,
@@ -121,12 +105,6 @@ export const trackHapticsToggle = (enabled: boolean) =>
     properties: { enabled },
   });
 
-export const trackInternalLinkClick = (href: string, label: string) =>
-  trackEvent({
-    name: "internal_link_click",
-    properties: { href, label },
-  });
-
 export const trackNavbarHomeClick = () =>
   trackEvent({ name: "navbar_home_click" });
 
@@ -146,15 +124,6 @@ export const trackProjectDetailClick = (
     properties: { location, slug, title },
   });
 
-export const trackResumeClick = (location: string) =>
-  trackEvent({
-    name: "resume_click",
-    properties: { location },
-  });
-
-export const trackScheduleMeetClick = () =>
-  trackEvent({ name: "schedule_meet_click" });
-
 export const trackSectionAnchorClick = (section: string) =>
   trackEvent({
     name: "section_anchor_click",
@@ -165,12 +134,6 @@ export const trackSoundToggle = (enabled: boolean) =>
   trackEvent({
     name: "sound_toggle",
     properties: { enabled },
-  });
-
-export const trackTechLinkClick = (tech: string, url: string) =>
-  trackEvent({
-    name: "tech_link_click",
-    properties: { tech, url },
   });
 
 export const trackThemeToggle = (theme: string) =>
@@ -190,12 +153,6 @@ export const trackTocMinimapItemClick = (
   trackEvent({
     name: "toc_minimap_item_click",
     properties: { depth, title, url },
-  });
-
-export const trackViewAllClick = (section: Section) =>
-  trackEvent({
-    name: "view_all_click",
-    properties: { section },
   });
 
 export const trackViewModeChange = (section: Section, variant: Variant) =>

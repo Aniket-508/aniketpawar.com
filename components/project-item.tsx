@@ -6,9 +6,9 @@ import React from "react";
 
 import { Icons } from "@/components/icons";
 import { MediaPreview } from "@/components/media-preview";
+import { AppLink } from "@/components/ui/app-link";
 import { Button } from "@/components/ui/button";
 import type { GlimpseData } from "@/components/ui/glimpse/types";
-import { LinkTextClient } from "@/components/ui/link-text/client";
 import {
   Tooltip,
   TooltipContent,
@@ -78,19 +78,27 @@ const ProjectLink = ({
   }
 
   return (
-    <LinkTextClient
+    <AppLink
       className={cn(
         "text-muted-foreground min-w-[60px] text-xs font-normal",
         listClassName
       )}
       href={href}
       target="_blank"
-      side="bottom"
+      external
+      previewSide="bottom"
       preview={preview}
-      onClick={handleClick}
+      eventName="external_link_click"
+      eventProperties={{
+        context: "project_item",
+        link_type: label.toLowerCase(),
+        slug,
+        title,
+        url: href,
+      }}
     >
       {label}
-    </LinkTextClient>
+    </AppLink>
   );
 };
 

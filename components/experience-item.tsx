@@ -3,18 +3,17 @@
 import Link from "next/link";
 
 import { TechStack } from "@/components/tech-stack";
-import { LinkTextClient } from "@/components/ui/link-text/client";
+import { AppLink } from "@/components/ui/app-link";
+import type { GlimpseData } from "@/components/ui/glimpse/types";
 import { ROUTES } from "@/constants/routes";
-import {
-  trackExperienceDetailClick,
-  trackExternalLinkClick,
-} from "@/lib/events";
+import { trackExperienceDetailClick } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import type { Experience } from "@/types/experiences";
 
 interface ExperienceItemProps
   extends Experience, Omit<React.ComponentProps<"div">, "title"> {
   location?: "home" | "listing";
+  preview?: GlimpseData | null;
 }
 
 const ExperienceItem = ({
@@ -28,6 +27,7 @@ const ExperienceItem = ({
   orgDescription: _orgDescription,
   experienceLinks: _experienceLinks,
   location = "home",
+  preview,
   className,
   ...attr
 }: ExperienceItemProps) => (
@@ -58,22 +58,23 @@ const ExperienceItem = ({
         <div className="flex items-center justify-start gap-1.5 text-sm">
           {"at, "}
           {typeof experienceOrg?.link === "string" ? (
-            <LinkTextClient
+            <AppLink
               className="text-sm font-normal"
               href={experienceOrg?.link}
               target="_blank"
-              onClick={() =>
-                trackExternalLinkClick({
-                  context: "experience_item",
-                  link_type: "website",
-                  slug,
-                  title: experienceOrg.name,
-                  url: experienceOrg.link,
-                })
-              }
+              external
+              preview={preview}
+              eventName="external_link_click"
+              eventProperties={{
+                context: "experience_item",
+                link_type: "website",
+                slug,
+                title: experienceOrg.name,
+                url: experienceOrg.link,
+              }}
             >
               {experienceOrg?.websiteDisplayName}
-            </LinkTextClient>
+            </AppLink>
           ) : (
             <span className="text-sm font-normal">
               {experienceOrg?.websiteDisplayName}

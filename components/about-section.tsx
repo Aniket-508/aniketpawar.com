@@ -132,10 +132,7 @@ const AboutSection = () => {
       </div>
       <Callout className="space-y-1 p-1">
         <Suspense fallback={<GitHubContributionsFallback />}>
-          <GitHubContributions
-            contributions={contributions}
-            githubProfileUrl={LINK.GITHUB}
-          />
+          <GitHubContributions contributions={contributions} />
         </Suspense>
         <div className="flex flex-col gap-4 p-3">
           <p>Interested in working together? Feel free to schedule a meet!</p>

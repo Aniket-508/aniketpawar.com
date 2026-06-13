@@ -22,11 +22,9 @@ import { cn } from "@/lib/utils";
 
 export const GitHubContributions = ({
   contributions,
-  githubProfileUrl,
   className,
 }: {
   contributions: Promise<Activity[]>;
-  githubProfileUrl: string;
   className?: string;
 }) => {
   const data = use(contributions);

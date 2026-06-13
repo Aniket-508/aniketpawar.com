@@ -1,5 +1,6 @@
 import { CopyLink } from "@/components/copy-link";
 import { ExperienceItem } from "@/components/experience-item";
+import type { GlimpseData } from "@/components/ui/glimpse/types";
 import { Title } from "@/components/ui/title";
 import { cn } from "@/lib/utils";
 import type { Experience } from "@/types/experiences";
@@ -9,6 +10,7 @@ interface ExperiencesViewProps {
   headerClassName?: string;
   viewClassName?: string;
   experiences: readonly Experience[];
+  previews?: Record<string, GlimpseData>;
 }
 
 const ExperiencesView = ({
@@ -16,6 +18,7 @@ const ExperiencesView = ({
   headerClassName,
   viewClassName,
   experiences,
+  previews,
 }: ExperiencesViewProps) => (
   <>
     {showHeader && (
@@ -39,6 +42,7 @@ const ExperiencesView = ({
           {...experience}
           key={experience.slug}
           location={showHeader ? "home" : "listing"}
+          preview={previews?.[experience.experienceOrg.link]}
         />
       ))}
     </div>
