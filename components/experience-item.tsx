@@ -82,7 +82,7 @@ const ExperienceItem = ({
           )}
         </div>
       </div>
-      <p className="text-muted-foreground text-sm font-normal">
+      <p className="text-muted-foreground text-sm font-normal tabular-nums">
         {`${experienceStatus?.startAt} - ${experienceStatus?.endAt}`}
       </p>
     </div>

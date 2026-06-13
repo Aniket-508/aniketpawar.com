@@ -22,7 +22,7 @@ export const EXPERIENCES = [
     },
     experienceStatus: {
       endAt: "May, 2025",
-      startAt: "March, 2024",
+      startAt: "Mar, 2024",
     },
     experienceTech: [
       "Nuxt.js",
