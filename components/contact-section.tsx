@@ -63,7 +63,7 @@ const ContactSection = async () => {
 
   return (
     <Section
-      className="delay-500 grid grid-cols-1 justify-start gap-2"
+      className="delay-600 grid grid-cols-1 justify-start gap-2"
       id="socials"
     >
       <span className="group/social flex items-center gap-1">

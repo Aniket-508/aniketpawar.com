@@ -4,7 +4,7 @@ import { CRAFTS } from "@/constants/crafts";
 
 const CraftSection = () => (
   <Section
-    className="delay-300 grid grid-cols-1 place-items-center gap-4"
+    className="delay-400 grid grid-cols-1 place-items-center gap-4"
     id="crafts"
   >
     <CraftsView

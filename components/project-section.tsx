@@ -18,7 +18,7 @@ const ProjectSection = async () => {
 
   return (
     <Section
-      className={cn("delay-200 grid grid-cols-1 place-items-center gap-4")}
+      className={cn("delay-300 grid grid-cols-1 place-items-center gap-4")}
       id="projects"
     >
       <ProjectsView

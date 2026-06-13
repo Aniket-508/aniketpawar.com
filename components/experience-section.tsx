@@ -11,7 +11,7 @@ const ExperienceSection = async () => {
 
   return (
     <Section
-      className="delay-400 grid grid-cols-1 place-items-center gap-4"
+      className="delay-500 grid grid-cols-1 place-items-center gap-4"
       id="experience"
     >
       <ExperiencesView
