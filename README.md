@@ -1,28 +1,52 @@
-<div align="center">
+# [aniketpawar.com](https://aniket-pawar.vercel.app) · [![GitHub License](https://img.shields.io/github/license/Aniket-508/aniketpawar.com?label=License)](https://github.com/Aniket-508/aniketpawar.com/blob/main/LICENSE) ![GitHub Repo Views](https://gitviews.com/repo/Aniket-508/aniketpawar.com.svg?style=flat&label-color=%23555&color=%23f59e0b)
 
-[![Start](https://img.shields.io/github/stars/Aniket-508/aniketpawar.com?color=yellow&style=flat&label=%E2%AD%90%20stars)](https://github.com/Aniket-508/aniketpawar.com/stargazers)
-[![License](http://img.shields.io/:license-MIT-green.svg?style=flat)](https://github.com/Aniket-508/aniketpawar.com/blob/main/LICENSE)
+A personal portfolio website showcasing my work as a Frontend Engineer.
 
-</div>
+→ Check out the live site: [aniket-pawar.vercel.app](https://aniket-pawar.vercel.app)
 
-[![Image](https://ik.imagekit.io/2oajjadqkz/portfolio-image.png?updatedAt=1708090929752 "Portfolio Front Page")](https://aniket-pawar.vercel.app/)
+[![Portfolio](https://ik.imagekit.io/2oajjadqkz/portfolio-image.png?updatedAt=1708090929752)](https://aniket-pawar.vercel.app)
 
-## Features
+## Overview
+
+### Stack
+
+- Next.js 16 (App Router)
+- React 19
+- Tailwind CSS v4
+- Base UI
+- Framer Motion
+
+### Features
 
 - Light & dark theme interface
 - Mobile-first responsive design
 - Server components architecture
-- Websites preview hover cards
+- Website preview hover cards
 - CSS animations with slide/fade effects
-- Analytics by Microsoft Clarity
+- Haptic feedback support
+- Sound effects on interactions
+- SEO optimized with metadata
+- AI-ready with LLMs.txt
+- Analytics with Microsoft Clarity
 
-## Getting Started
+### Content
+
+Portfolio sections powered by MDX and server components:
+
+- Project showcases with live previews
+- Experience timeline with company links
+- Craft gallery with image previews
+- Blog posts with syntax highlighting
+- Dynamic OG images for rich link previews
+
+## Development
 
 ### Prerequisites
 
-- Node.js installed on your system.
+- Node.js 18+ installed on your system
+- pnpm package manager
 
-### Installation
+### Getting Started
 
 1. Clone the repository:
 
@@ -39,45 +63,70 @@
 3. Install dependencies:
 
    ```bash
-   pnpm i
+   pnpm install
    ```
 
-4. Start the server:
+4. Start the development server:
 
    ```bash
    pnpm dev
    ```
 
-5. The server will start at `http://localhost:3000`.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Contribution
+### Commands
 
-Contributions are welcome! If you have suggestions or would like to add more quotes, feel free to submit a pull request.
+| Command          | Description                  |
+| ---------------- | ---------------------------- |
+| `pnpm dev`       | Start development server     |
+| `pnpm build`     | Build for production         |
+| `pnpm start`     | Start production server      |
+| `pnpm fix`       | Fix linting issues           |
+| `pnpm check`     | Check for lint errors        |
+| `pnpm typecheck` | Run TypeScript type checking |
+
+## Contributing
+
+Contributions are welcome! If you have suggestions or would like to add features, feel free to submit a pull request.
 
 ### Steps to Contribute
 
-1. Fork the repository.
+1. Fork the repository
 2. Create a new branch:
    ```bash
-   git checkout -b feature-branch-name
+   git checkout -b feature/your-feature-name
    ```
-3. Commit your changes:
+3. Make your changes
+4. Commit your changes:
    ```bash
-   git commit -m "Added new feature"
+   git commit -m "feat: add your feature description"
    ```
-4. Push the branch:
+5. Push the branch:
    ```bash
-   git push origin feature-branch-name
+   git push origin feature/your-feature-name
    ```
-5. Open a pull request on GitHub.
+6. Open a pull request on GitHub
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Licensed under the [MIT license](./LICENSE).
+
+You're free to use my code! Just make sure to <ins>remove all my personal information</ins> before publishing your website. It's awesome to see my code being useful to someone!
 
 ## Contact
 
-If you have any questions or feedback, feel free to contact me at:
+If you have any questions or feedback, feel free to reach out:
 
 - **Email**: pawaraniket508@gmail.com
 - **GitHub**: [Aniket-508](https://github.com/Aniket-508)
+- **LinkedIn**: [Aniket Pawar](https://linkedin.com/in/aniket-pawar)
+
+## Star History
+
+<a href="https://www.star-history.com/?repos=Aniket-508%2Faniketpawar.com&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=Aniket-508/aniketpawar.com&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=Aniket-508/aniketpawar.com&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=Aniket-508/aniketpawar.com&type=date&legend=top-left" />
+ </picture>
+</a>
