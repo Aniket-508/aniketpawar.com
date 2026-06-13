@@ -42,4 +42,12 @@ export const CONTACTS = [
     },
     title: "Peerlist",
   },
+  {
+    icon: "discord",
+    link: {
+      display: "@aniketpawar",
+      url: LINK.DISCORD,
+    },
+    title: "Discord",
+  },
 ] as const satisfies readonly Contact[];
