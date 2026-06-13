@@ -58,6 +58,7 @@ const ProjectsView = ({
         className={cn(
           "group grid grid-cols-1",
           variant === "grid" && "gap-x-8 sm:grid-cols-2",
+          variant === "list" && "divide-y divide-border",
           viewClassName
         )}
       >

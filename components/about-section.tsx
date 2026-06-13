@@ -157,6 +157,7 @@ const AboutSection = () => {
               href={LINK.RESUME}
               target="_blank"
               className="text-muted-foreground text-sm font-medium"
+              external
               eventName="resume_click"
               eventProperties={{ location: "work_together" }}
             >

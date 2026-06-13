@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Serif, Inter } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 
 import "@/styles/globals.css";
 
@@ -12,15 +12,18 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import { JsonLdScripts } from "@/seo/json-ld";
 import { baseMetadata } from "@/seo/metadata";
 
-const inter = Inter({
-  display: "swap",
+const geist = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
+const geist_mono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: ["400"],
+});
+
 const instrument_serif = Instrument_Serif({
-  display: "swap",
-  style: ["normal", "italic"],
   subsets: ["latin"],
   variable: "--font-instrument-serif",
   weight: ["400"],
@@ -58,7 +61,7 @@ export default function RootLayout({
         <meta name="theme-color" content={META_THEME_COLORS.light} />
       </head>
       <body
-        className={`overscroll-none font-sans flex flex-col min-h-screen ${inter.variable} ${instrument_serif.variable}`}
+        className={`overscroll-none font-sans flex flex-col min-h-screen ${geist.variable} ${geist_mono.variable} ${instrument_serif.variable}`}
       >
         <ThemeProvider>
           <Analytics projectId={process.env.CLARITY_PROJECT_ID} />

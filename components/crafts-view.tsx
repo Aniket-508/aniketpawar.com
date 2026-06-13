@@ -48,7 +48,13 @@ const CraftsView = ({
         </div>
       )}
 
-      <div className={cn("group grid grid-cols-1", viewClassName)}>
+      <div
+        className={cn(
+          "group grid grid-cols-1",
+          variant === "list" && "divide-y divide-border",
+          viewClassName
+        )}
+      >
         {crafts.map((craft) => (
           <CraftItem
             key={craft.slug}

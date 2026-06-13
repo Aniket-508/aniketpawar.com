@@ -36,7 +36,12 @@ const ExperiencesView = ({
       </div>
     )}
 
-    <div className={cn("group grid grid-cols-1", viewClassName)}>
+    <div
+      className={cn(
+        "group grid grid-cols-1 divide-y divide-border",
+        viewClassName
+      )}
+    >
       {experiences.map((experience) => (
         <ExperienceItem
           {...experience}
