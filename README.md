@@ -2,7 +2,7 @@
 
 A personal portfolio website showcasing my work as a Frontend Engineer.
 
-→ Check out the live site: [aniket-pawar.vercel.app](https://aniket-pawar.vercel.app)
+→ Check out the live site: [aniketpawar.com](https://aniket-pawar.vercel.app)
 
 [![Portfolio](https://ik.imagekit.io/2oajjadqkz/portfolio-image.png?updatedAt=1708090929752)](https://aniket-pawar.vercel.app)
 
