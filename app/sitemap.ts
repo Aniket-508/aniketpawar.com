@@ -54,6 +54,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
       url: absoluteUrl(ROUTES.EXPERIENCES),
     },
+    {
+      changeFrequency: "monthly",
+      lastModified: new Date(),
+      priority: 0.9,
+      url: absoluteUrl(ROUTES.STACK),
+    },
     ...projectEntries,
     ...craftEntries,
     ...experienceEntries,
