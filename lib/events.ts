@@ -105,15 +105,6 @@ export const trackHapticsToggle = (enabled: boolean) =>
     properties: { enabled },
   });
 
-export const trackNavbarHomeClick = () =>
-  trackEvent({ name: "navbar_home_click" });
-
-export const trackNavbarSectionClick = (section: Section) =>
-  trackEvent({
-    name: "navbar_section_click",
-    properties: { section },
-  });
-
 export const trackProjectDetailClick = (
   slug: string,
   title: string,

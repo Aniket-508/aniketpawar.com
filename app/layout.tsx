@@ -4,6 +4,9 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "@/styles/globals.css";
 
 import { Analytics } from "@/components/analytics";
+import { Container } from "@/components/layout/container";
+import { Footer } from "@/components/layout/footer";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { META_THEME_COLORS } from "@/constants/site";
 import { HapticsProvider } from "@/providers/haptics-provider";
@@ -67,7 +70,12 @@ export default function RootLayout({
           <Analytics projectId={process.env.CLARITY_PROJECT_ID} />
           <TooltipProvider>
             <SoundProvider>
-              <HapticsProvider>{children}</HapticsProvider>
+              <HapticsProvider>
+                <div className="pointer-events-none fixed top-0 left-0 z-50 h-12 w-full to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_bottom,black,transparent)]" />
+                <Container className="pt-20 pb-14">{children}</Container>
+                <Footer />
+                <ScrollToTop />
+              </HapticsProvider>
             </SoundProvider>
           </TooltipProvider>
         </ThemeProvider>
