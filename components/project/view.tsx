@@ -150,4 +150,5 @@ export {
   ProjectsViewProvider,
   ProjectsViewToolbar,
 };
+
 export { useProjectsView } from "./view-context";

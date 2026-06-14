@@ -3,15 +3,12 @@
 import { useState } from "react";
 
 import { CopyLink } from "@/components/copy-link";
-import { AppLink } from "@/components/ui/app-link";
-import { Badge } from "@/components/ui/badge";
 import { Title } from "@/components/ui/title";
 import { ViewToggle } from "@/components/view-tabs";
 import type { Variant } from "@/lib/events";
 import { cn } from "@/lib/utils";
-import type { TechStackItem } from "@/types/tech-stack";
 
-import { ShelfRow } from "./shelf-icon";
+import { TechStackItem } from "./item";
 
 interface TechStackViewProps {
   items: TechStackItem[];
@@ -67,77 +64,24 @@ const TechStackView = ({
         </div>
       )}
 
-      {variant === "list" && (
-        <div
-          className={cn(
-            "group relative divide-y divide-border [--badge-height:--spacing(6)] [--col-left-width:--spacing(40)]",
-            viewClassName
-          )}
-        >
-          {Object.entries(grouped).map(([category, catItems], index) => {
-            const categoryId = `stack-${category
-              .toLowerCase()
-              .replaceAll(/[^a-z0-9]+/gu, "-")
-              .replaceAll(/(^-|-$)/gu, "")}`;
-
-            return (
-              <div
-                key={category}
-                className="transition-[border-color,opacity] duration-50 hover:opacity-100 group-hover:opacity-30 grid items-start gap-y-2 py-4 sm:grid-cols-[var(--col-left-width)_1fr]"
-              >
-                <div
-                  id={categoryId}
-                  className="text-sm/(--badge-height) text-muted-foreground"
-                >
-                  <span
-                    className="mr-1.5 font-mono text-muted-foreground/50 select-none"
-                    aria-hidden
-                  >
-                    {(index + 1).toString().padStart(2, "0")}
-                  </span>
-                  {category}
-                </div>
-
-                <ul
-                  aria-labelledby={categoryId}
-                  className="flex flex-wrap gap-1.5 sm:pl-4"
-                >
-                  {catItems.map((item) => (
-                    <li key={item.key} className="flex">
-                      <AppLink
-                        href={item.href}
-                        target="_blank"
-                        external={false}
-                      >
-                        <Badge
-                          variant="secondary"
-                          className="gap-1.5 font-mono"
-                        >
-                          {item.icon}
-                          {item.title}
-                        </Badge>
-                      </AppLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
-        </div>
-      )}
-
-      {variant === "grid" && (
-        <div className={cn("group relative", viewClassName)}>
-          {Object.entries(grouped).map(([category, catItems], index) => (
-            <ShelfRow
-              key={category}
-              category={category}
-              items={catItems}
-              index={index}
-            />
-          ))}
-        </div>
-      )}
+      <div
+        className={cn(
+          "group relative",
+          variant === "list" &&
+            "divide-y divide-border [--badge-height:--spacing(6)] [--col-left-width:--spacing(40)]",
+          viewClassName
+        )}
+      >
+        {Object.entries(grouped).map(([category, catItems], index) => (
+          <TechStackItem
+            key={category}
+            index={index}
+            category={category}
+            items={catItems}
+            variant={variant}
+          />
+        ))}
+      </div>
     </>
   );
 };
