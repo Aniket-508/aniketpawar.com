@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { TechStack } from "@/components/tech-stack";
+import { TechStack } from "@/components/tech-stack/stack";
 import { AppLink } from "@/components/ui/app-link";
 import type { GlimpseData } from "@/components/ui/glimpse/types";
 import { Title } from "@/components/ui/title";

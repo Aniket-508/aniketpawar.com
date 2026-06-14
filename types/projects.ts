@@ -1,3 +1,5 @@
+export type ProjectSource = "personal" | "shadcn-labs";
+
 export type ProjectCategory =
   | "Open Source"
   | "Tool"
@@ -21,6 +23,7 @@ export interface Project {
   title: string;
   description: string;
   category: ProjectCategory;
+  source: ProjectSource;
   date: ProjectDate;
   featured?: boolean;
   links: ProjectLinks;

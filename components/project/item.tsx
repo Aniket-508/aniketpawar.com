@@ -9,6 +9,7 @@ import { MediaPreview } from "@/components/media-preview";
 import { AppLink } from "@/components/ui/app-link";
 import { Button } from "@/components/ui/button";
 import type { GlimpseData } from "@/components/ui/glimpse/types";
+import { Title } from "@/components/ui/title";
 import {
   Tooltip,
   TooltipContent,
@@ -18,8 +19,6 @@ import { ROUTES } from "@/constants/routes";
 import { trackExternalLinkClick, trackProjectDetailClick } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/types/projects";
-
-import { Title } from "./ui/title";
 
 interface ProjectLinkProps {
   href: string;

@@ -1,4 +1,4 @@
-export const urlToName = (url: string) => url.replace(/(^\w+:|^)\/\//, "");
+export const urlToName = (url: string) => url.replace(/(^\w+:|^)\/\//u, "");
 
 export const addQueryParams = (
   urlString: string,

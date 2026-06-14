@@ -1,7 +1,13 @@
 import { HOME_FEATURED_PROJECT_COUNT, PROJECTS } from "@/constants/projects";
-import type { Project } from "@/types/projects";
+import type { Project, ProjectSource } from "@/types/projects";
 
 export const getProjects = (): readonly Project[] => PROJECTS;
+
+export const filterProjectsBySource = (
+  projects: readonly Project[],
+  source: ProjectSource
+): readonly Project[] =>
+  projects.filter((project) => project.source === source);
 
 export const getFeaturedProjects = (
   limit = HOME_FEATURED_PROJECT_COUNT

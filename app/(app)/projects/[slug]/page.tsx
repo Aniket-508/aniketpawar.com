@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import { ContentTOC } from "@/components/content-toc";
 import { MdxBody } from "@/components/mdx-body";
-import { TrackedProjectLinks } from "@/components/tracked-external-links";
+import { TrackedProjectLinks } from "@/components/project/tracked-links";
 import { Badge } from "@/components/ui/badge";
 import { glimpse } from "@/components/ui/glimpse/server";
 import { Title } from "@/components/ui/title";

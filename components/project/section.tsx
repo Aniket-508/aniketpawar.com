@@ -1,31 +1,30 @@
 import { Section } from "@/components/layout/section";
-import { ProjectsView } from "@/components/projects-view";
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
 import { ViewAllButton } from "@/components/view-all-button";
+import { HOME_FEATURED_PROJECT_COUNT } from "@/constants/projects";
 import { ROUTES } from "@/constants/routes";
-import {
-  collectProjectUrls,
-  getFeaturedProjects,
-  getProjects,
-} from "@/lib/projects";
+import { collectProjectUrls, getProjects } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 
+import { ProjectsView } from "./view";
+
 const ProjectSection = async () => {
-  const featured = getFeaturedProjects(4);
   const allProjects = getProjects();
   const previews = await prefetchGlimpses(collectProjectUrls(allProjects));
-  const showViewAll = allProjects.length > featured.length;
 
   return (
     <Section className={cn("delay-300 flex flex-col gap-4")} id="projects">
-      <ProjectsView projects={featured} previews={previews} />
-      {showViewAll && (
-        <ViewAllButton
-          href={ROUTES.PROJECTS}
-          eventName="projects"
-          className="mx-auto"
-        />
-      )}
+      <ProjectsView
+        projects={allProjects}
+        previews={previews}
+        featuredOnly
+        limit={HOME_FEATURED_PROJECT_COUNT}
+      />
+      <ViewAllButton
+        href={ROUTES.PROJECTS}
+        eventName="projects"
+        className="mx-auto"
+      />
     </Section>
   );
 };

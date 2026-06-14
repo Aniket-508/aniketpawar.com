@@ -3,15 +3,6 @@
 import { format } from "date-fns";
 import { use } from "react";
 
-import type { Activity } from "@/components/contribution-graph";
-import {
-  ContributionGraph,
-  ContributionGraphBlock,
-  ContributionGraphCalendar,
-  ContributionGraphFooter,
-  ContributionGraphLegend,
-  ContributionGraphTotalCount,
-} from "@/components/contribution-graph";
 import { Spinner } from "@/components/ui/spinner";
 import {
   Tooltip,
@@ -19,6 +10,16 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+
+import {
+  ContributionGraph,
+  ContributionGraphBlock,
+  ContributionGraphCalendar,
+  ContributionGraphFooter,
+  ContributionGraphLegend,
+  ContributionGraphTotalCount,
+} from "./contribution-graph";
+import type { Activity } from "./contribution-graph";
 
 export const GitHubContributions = ({
   contributions,

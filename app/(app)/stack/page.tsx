@@ -1,5 +1,5 @@
 import { Section } from "@/components/layout/section";
-import { TechStackView } from "@/components/tech-stack-view";
+import { TechStackView } from "@/components/tech-stack/view";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
 import { TECH_STACK } from "@/constants/tech-stack";
@@ -25,6 +25,7 @@ const StackPage = () => (
     <Section className="delay-100 flex flex-col py-2">
       <TechStackView
         showHeader={false}
+        defaultVariant="grid"
         items={TECH_STACK}
       />
     </Section>

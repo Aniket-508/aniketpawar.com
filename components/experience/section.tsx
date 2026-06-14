@@ -1,7 +1,8 @@
-import { ExperiencesView } from "@/components/experiences-view";
 import { Section } from "@/components/layout/section";
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
 import { EXPERIENCES } from "@/constants/experiences";
+
+import { ExperiencesView } from "./view";
 
 const ExperienceSection = async () => {
   const orgLinks = EXPERIENCES.map((exp) => exp.experienceOrg.link).filter(

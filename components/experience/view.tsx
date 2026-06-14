@@ -1,9 +1,10 @@
 import { CopyLink } from "@/components/copy-link";
-import { ExperienceItem } from "@/components/experience-item";
 import type { GlimpseData } from "@/components/ui/glimpse/types";
 import { Title } from "@/components/ui/title";
 import { cn } from "@/lib/utils";
 import type { Experience } from "@/types/experiences";
+
+import { ExperienceItem } from "./item";
 
 interface ExperiencesViewProps {
   showHeader?: boolean;
