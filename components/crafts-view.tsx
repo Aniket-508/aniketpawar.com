@@ -37,7 +37,10 @@ const CraftsView = ({
           )}
         >
           <div className="group/projects flex-1 flex items-center gap-1">
-            <Title>{"crafts."}</Title>
+            <Title
+              className="text-xl font-medium italic"
+              render={<h2>{"crafts."}</h2>}
+            />
             <CopyLink
               title={"Crafts"}
               className="hidden group-hover/projects:inline-flex"
@@ -60,7 +63,7 @@ const CraftsView = ({
             key={craft.slug}
             {...craft}
             variant={variant}
-            location={showHeader ? "home" : "listing"}
+            showHeader={showHeader}
           />
         ))}
       </div>

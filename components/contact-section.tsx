@@ -67,7 +67,10 @@ const ContactSection = async () => {
       id="socials"
     >
       <span className="group/social flex items-center gap-1">
-        <Title>{"socials."}</Title>
+        <Title
+          className="text-xl font-medium italic"
+          render={<h2>{"socials."}</h2>}
+        />
         <CopyLink
           title={"Socials"}
           className="hidden group-hover/social:inline-flex"

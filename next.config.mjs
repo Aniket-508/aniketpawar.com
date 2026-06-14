@@ -8,18 +8,6 @@ const nextConfig = {
         hostname: "ik.imagekit.io",
         protocol: "https",
       },
-      {
-        hostname: "placehold.co",
-        protocol: "https",
-      },
-      {
-        hostname: "opengraph.githubassets.com",
-        protocol: "https",
-      },
-      {
-        hostname: "**.vercel.app",
-        protocol: "https",
-      },
     ],
   },
 };

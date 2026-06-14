@@ -40,7 +40,10 @@ const ProjectsView = ({
           )}
         >
           <div className="group/projects flex-1 flex items-center gap-1">
-            <Title>{"projects."}</Title>
+            <Title
+              className="text-xl font-medium italic"
+              render={<h2>{"projects."}</h2>}
+            />
             <CopyLink
               title={"Projects"}
               className="hidden group-hover/projects:inline-flex"
@@ -71,7 +74,7 @@ const ProjectsView = ({
             links={project.links}
             previews={previews}
             variant={variant}
-            location={showHeader ? "home" : "listing"}
+            showHeader={showHeader}
           />
         ))}
       </div>

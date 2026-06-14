@@ -19,7 +19,7 @@ const CraftsPage = () => {
     <>
       <BreadcrumbJsonLd items={craftsBreadcrumbs()} />
       <header className="animate-slide-in space-y-2 px-4 pt-6 pb-2">
-        <Title render={<h1>{"crafts."}</h1>} />
+        <Title className="text-xl font-medium italic">{"crafts."}</Title>
         <p className="text-muted-foreground text-sm">
           Motion studies and interaction experiments.
         </p>
