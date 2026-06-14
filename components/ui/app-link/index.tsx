@@ -15,8 +15,10 @@ import {
   GlimpseTrigger,
 } from "@/components/ui/glimpse";
 import type { GlimpseData } from "@/components/ui/glimpse/types";
+import { UTM_PARAMS } from "@/constants/site";
 import { trackEvent } from "@/lib/events";
 import type { EventName } from "@/lib/events";
+import { addQueryParams } from "@/lib/url";
 import { cn } from "@/lib/utils";
 
 interface AppLinkProps extends React.ComponentProps<typeof Link> {
@@ -78,7 +80,7 @@ const AppLink = ({
       <Glimpse>
         <GlimpseTrigger
           className={linkClassName}
-          href={hrefString}
+          href={addQueryParams(hrefString, UTM_PARAMS)}
           onPointerEnter={handlePointerEnter}
           onPointerDown={handlePointerDown}
           {...props}

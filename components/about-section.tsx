@@ -6,6 +6,7 @@ import {
   GitHubContributions,
   GitHubContributionsFallback,
 } from "@/components/github-contributions";
+import { Icons } from "@/components/icons";
 import { Section } from "@/components/layout/section";
 import { AppLink } from "@/components/ui/app-link";
 import { Button } from "@/components/ui/button";
@@ -28,109 +29,44 @@ const AboutSection = () => {
           className="hidden group-hover/about:inline-flex"
         />
       </span>
-      <div className="prose text-muted-foreground dark:prose-invert max-w-full text-sm leading-6 font-normal">
+      <div className="prose text-muted-foreground prose-p:my-2 dark:prose-invert max-w-full text-sm leading-6 font-normal">
+        <p>I&apos;m a frontend engineer based in Mumbai, India.</p>
         <p>
-          Hey there! I&apos;m a software professional who is passionate about
-          building customer-focused, design-centric products that prioritize
-          inclusivity and seamless user experiences.
+          I care deeply about visual craft and obsess over building products
+          that feel fast, polished, and human.
         </p>
         <p>
-          In my free time, I enjoy{" "}
+          I run{" "}
           <AppLink
-            href="#projects"
-            eventName="internal_link_click"
-            eventProperties={{
-              href: "#projects",
-              label: "building side projects",
-            }}
-          >
-            building side projects
-          </AppLink>
-          , exploring new products via. [
-          <AppLink
-            href="https://www.producthunt.com/"
+            className="inline-flex items-center gap-1 translate-y-[3px]"
+            href={LINK.GITHUB_ORG}
             target="_blank"
             eventName="external_link_click"
             eventProperties={{
               context: "hero",
               link_type: "external",
-              title: "product hunt",
-              url: "https://www.producthunt.com/",
+              title: "shadcn labs",
+              url: LINK.GITHUB_ORG,
             }}
           >
-            product hunt
+            <Icons.shadcnlabs className="size-4" /> Shadcn Labs
           </AppLink>
-          ,{" "}
+          , an open-source org committed to building technologies that push the
+          limits of{" "}
           <AppLink
-            href="https://peerlist.io/projects"
+            href={LINK.SHADCN_UI}
             target="_blank"
             eventName="external_link_click"
             eventProperties={{
               context: "hero",
               link_type: "external",
-              title: "peerlist spotlight",
-              url: "https://peerlist.io/projects",
+              title: "shadcn/ui",
+              url: LINK.SHADCN_UI,
             }}
           >
-            peerlist spotlight
-          </AppLink>
-          ,{" "}
-          <AppLink
-            href="https://fazier.com/"
-            target="_blank"
-            eventName="external_link_click"
-            eventProperties={{
-              context: "hero",
-              link_type: "external",
-              title: "fazier",
-              url: "https://fazier.com/",
-            }}
-          >
-            fazier
-          </AppLink>
-          ], checking out what&apos;s happening in the startup world via. [
-          <AppLink
-            href="https://techcrunch.com/"
-            target="_blank"
-            eventName="external_link_click"
-            eventProperties={{
-              context: "hero",
-              link_type: "external",
-              title: "techcrunch",
-              url: "https://techcrunch.com/",
-            }}
-          >
-            techcrunch
-          </AppLink>
-          ,{" "}
-          <AppLink
-            href="https://news.ycombinator.com/"
-            target="_blank"
-            eventName="external_link_click"
-            eventProperties={{
-              context: "hero",
-              link_type: "external",
-              title: "hackernews",
-              url: "https://news.ycombinator.com/",
-            }}
-          >
-            hackernews
-          </AppLink>
-          ,{" "}
-          <AppLink
-            href="https://inc42.com/"
-            target="_blank"
-            eventName="external_link_click"
-            eventProperties={{
-              context: "hero",
-              link_type: "external",
-              title: "inc42",
-              url: "https://inc42.com/",
-            }}
-          >
-            inc42
-          </AppLink>
-          ], and watching my favourite animes.
+            shadcn/ui
+          </AppLink>{" "}
+          ecosystem.
         </p>
       </div>
       <Callout className="space-y-1 p-1">
