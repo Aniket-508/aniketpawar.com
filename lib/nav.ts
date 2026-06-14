@@ -1,5 +1,5 @@
-import type { SectionId } from "@/constants/nav";
 import { ROUTES } from "@/constants/routes";
+import type { SectionId } from "@/types/nav";
 
 export const getActiveSection = (pathname: string): SectionId | null => {
   if (

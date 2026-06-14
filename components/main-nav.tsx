@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 
 import { AppLink } from "@/components/ui/app-link";
-import { NAV_ITEMS } from "@/constants/nav";
+import { NAV_ITEMS } from "@/constants/site";
 import { getActiveSection } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
@@ -12,7 +12,7 @@ const MainNav = () => {
   const activeSection = getActiveSection(pathname);
 
   return (
-    <ul className="flex items-center gap-4">
+    <ul className="hidden sm:flex items-center gap-4">
       {NAV_ITEMS.map(({ href, id, label }) => (
         <li key={id}>
           <AppLink

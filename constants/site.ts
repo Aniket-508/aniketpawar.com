@@ -1,3 +1,7 @@
+import type { NavItem } from "@/types/nav";
+
+import { ROUTES } from "./routes";
+
 export const FALLBACK_SITE_ORIGIN = "https://www.aniketpawar.com" as const;
 
 const getBaseUrl = () => {
@@ -51,3 +55,26 @@ export const META_THEME_COLORS = {
 export const UTM_PARAMS = {
   utm_source: new URL(baseUrl).hostname,
 };
+
+export const NAV_ITEMS: NavItem[] = [
+  {
+    href: ROUTES.STACK,
+    id: "stack",
+    label: "stack",
+  },
+  {
+    href: ROUTES.PROJECTS,
+    id: "projects",
+    label: "projects",
+  },
+  {
+    href: ROUTES.CRAFTS,
+    id: "crafts",
+    label: "crafts",
+  },
+  {
+    href: ROUTES.EXPERIENCES,
+    id: "experiences",
+    label: "experience",
+  },
+];
