@@ -20,5 +20,9 @@
     "ui": "@/components/ui",
     "lib": "@/lib",
     "hooks": "@/hooks"
+  },
+  "registries": {
+    "@ncdai": "https://chanhdai.com/r/{name}.json",
+    "@bklit": "https://ui.bklit.com/r/{name}.json"
   }
 }
