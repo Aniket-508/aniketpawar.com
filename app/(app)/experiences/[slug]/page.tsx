@@ -79,7 +79,7 @@ const ExperiencePage = async ({ params }: ExperiencePageProps) => {
         </div>
 
         <header className="animate-slide-in space-y-2">
-          <Title render={<h1>{heading}</h1>} />
+          <Title className="font-sans">{heading}</Title>
           <p className="text-muted-foreground text-sm">
             {experience.orgDescription}
           </p>

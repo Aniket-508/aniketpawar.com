@@ -19,6 +19,8 @@ import { trackExternalLinkClick, trackProjectDetailClick } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/types/projects";
 
+import { Title } from "./ui/title";
+
 interface ProjectLinkProps {
   href: string;
   label: string;
@@ -106,7 +108,7 @@ interface ProjectItemProps
   extends
     Omit<React.HTMLAttributes<HTMLDivElement>, "title">,
     Pick<Project, "slug" | "title" | "description" | "links"> {
-  location?: "home" | "listing";
+  showHeader?: boolean;
   variant?: string;
   previews?: Record<string, GlimpseData>;
 }
@@ -116,7 +118,7 @@ const ProjectItem = ({
   title,
   links,
   description,
-  location = "home",
+  showHeader = true,
   className,
   variant = "list",
   previews,
@@ -124,6 +126,18 @@ const ProjectItem = ({
 }: ProjectItemProps) => {
   const isGrid = variant === "grid";
   const image = previews?.[links?.website ?? ""]?.image ?? "";
+
+  const titleLink = (
+    <Link
+      href={`${ROUTES.PROJECTS}/${slug}`}
+      className="hover:underline underline-offset-4"
+      onClick={() =>
+        trackProjectDetailClick(slug, title, showHeader ? "home" : "listing")
+      }
+    >
+      {title}
+    </Link>
+  );
 
   return (
     <div
@@ -141,13 +155,10 @@ const ProjectItem = ({
         />
       )}
       <div className="flex items-center justify-between gap-4">
-        <Link
-          href={`${ROUTES.PROJECTS}/${slug}`}
-          className="text-primary font-normal hover:underline underline-offset-4"
-          onClick={() => trackProjectDetailClick(slug, title, location)}
-        >
-          {title}
-        </Link>
+        <Title
+          className="font-sans text-base font-normal"
+          render={showHeader ? <h3>{titleLink}</h3> : <h2>{titleLink}</h2>}
+        />
         <div className="flex shrink-0 flex-row items-center justify-start gap-1.5">
           {links.website && (
             <ProjectLink

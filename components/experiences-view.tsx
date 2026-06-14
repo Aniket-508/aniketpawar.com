@@ -28,7 +28,10 @@ const ExperiencesView = ({
           headerClassName
         )}
       >
-        <Title>{"experience."}</Title>
+        <Title
+          className="text-xl font-medium italic"
+          render={<h2>{"experience."}</h2>}
+        />
         <CopyLink
           title={"Experience"}
           className="hidden group-hover/experience:inline-flex"
@@ -46,7 +49,7 @@ const ExperiencesView = ({
         <ExperienceItem
           {...experience}
           key={experience.slug}
-          location={showHeader ? "home" : "listing"}
+          showHeader={showHeader}
           preview={previews?.[experience.experienceOrg.link]}
         />
       ))}

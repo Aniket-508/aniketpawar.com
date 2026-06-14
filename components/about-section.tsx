@@ -19,7 +19,10 @@ const AboutSection = () => {
   return (
     <Section id="about" className="delay-100 space-y-4">
       <span className="group/about flex items-center gap-1">
-        <Title>{"about me."}</Title>
+        <Title
+          className="text-xl font-medium italic"
+          render={<h2>{"about me."}</h2>}
+        />
         <CopyLink
           title={"About"}
           className="hidden group-hover/about:inline-flex"

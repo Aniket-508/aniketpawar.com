@@ -25,7 +25,10 @@ const TechStackSection = () => {
   return (
     <Section id="stack" className={cn("delay-200 flex flex-col gap-4")}>
       <span className="group/stack flex items-center gap-1">
-        <Title>{"stack."}</Title>
+        <Title
+          className="text-xl font-medium italic"
+          render={<h2>{"stack."}</h2>}
+        />
         <CopyLink
           title={"Stack"}
           className="hidden group-hover/stack:inline-flex"
