@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { MediaPreview } from "@/components/media-preview";
+import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
 import { trackCraftDetailClick } from "@/lib/events";
 import { cn } from "@/lib/utils";
@@ -10,7 +11,7 @@ import type { Craft } from "@/types/crafts";
 
 interface CraftItemProps
   extends Craft, Omit<React.ComponentProps<"div">, "title"> {
-  location?: "home" | "listing";
+  showHeader?: boolean;
   variant?: string;
 }
 
@@ -19,12 +20,24 @@ const CraftItem = ({
   title,
   description,
   links,
-  location = "home",
+  showHeader = true,
   variant = "list",
   className,
   ...attr
 }: CraftItemProps) => {
   const isGrid = variant === "grid";
+
+  const titleLink = (
+    <Link
+      href={`${ROUTES.CRAFTS}/${slug}`}
+      className="hover:underline underline-offset-4 whitespace-nowrap"
+      onClick={() =>
+        trackCraftDetailClick(slug, title, showHeader ? "home" : "listing")
+      }
+    >
+      {title}
+    </Link>
+  );
 
   return (
     <div
@@ -43,15 +56,10 @@ const CraftItem = ({
           type="video"
         />
       )}
-      <h3 className="text-primary font-normal flex-1">
-        <Link
-          href={`${ROUTES.CRAFTS}/${slug}`}
-          className="hover:underline underline-offset-4 whitespace-nowrap"
-          onClick={() => trackCraftDetailClick(slug, title, location)}
-        >
-          {title}
-        </Link>
-      </h3>
+      <Title
+        className="font-sans text-base font-normal flex-1"
+        render={showHeader ? <h3>{titleLink}</h3> : <h2>{titleLink}</h2>}
+      />
       <p
         className={cn(
           "text-muted-foreground text-sm font-normal truncate max-w-[60%]",

@@ -7,13 +7,13 @@ const Title = ({
   className,
   render,
   ...props
-}: useRender.ComponentProps<"h2">) =>
+}: useRender.ComponentProps<"h1">) =>
   useRender({
-    defaultTagName: "h2",
-    props: mergeProps<"h2">(
+    defaultTagName: "h1",
+    props: mergeProps<"h1">(
       {
         className: cn(
-          "font-heading text-primary text-xl leading-snug font-medium italic",
+          "font-heading text-primary text-2xl leading-snug font-semibold",
           className
         ),
       },

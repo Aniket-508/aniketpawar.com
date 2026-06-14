@@ -19,7 +19,7 @@ const ExperiencesPage = () => {
     <>
       <BreadcrumbJsonLd items={experiencesBreadcrumbs()} />
       <div className="animate-slide-in space-y-2 px-4 pt-6 pb-2">
-        <Title render={<h1>{"experience."}</h1>} />
+        <Title className="text-xl font-medium italic">{"experience."}</Title>
 
         <p className="text-muted-foreground text-sm">
           Where I have worked and what I shipped.
