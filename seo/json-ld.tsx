@@ -120,6 +120,12 @@ const experiencesBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
   ...(current ? [current] : []),
 ];
 
+const stackBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Stack", path: ROUTES.STACK },
+  ...(current ? [current] : []),
+];
+
 const BreadcrumbJsonLd = ({ items }: { items: BreadcrumbItem[] }) => {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -149,6 +155,7 @@ export {
   experiencesBreadcrumbs,
   JsonLdScripts,
   projectsBreadcrumbs,
+  stackBreadcrumbs,
   WebsiteJsonLd,
   OrganizationJsonLd,
   FAQJsonLd,

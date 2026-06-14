@@ -10,15 +10,8 @@ const ExperienceSection = async () => {
   const previews = await prefetchGlimpses(orgLinks);
 
   return (
-    <Section
-      className="delay-500 grid grid-cols-1 place-items-center gap-4"
-      id="experience"
-    >
-      <ExperiencesView
-        headerClassName="w-full"
-        experiences={EXPERIENCES}
-        previews={previews}
-      />
+    <Section className="delay-500 flex flex-col gap-4" id="experience">
+      <ExperiencesView experiences={EXPERIENCES} previews={previews} />
     </Section>
   );
 };

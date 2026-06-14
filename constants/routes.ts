@@ -7,4 +7,5 @@ export const ROUTES = {
   PROJECTS: "/projects",
   RESUME: "/resume.pdf",
   SOCIALS: "/socials",
+  STACK: "/stack",
 } as const;

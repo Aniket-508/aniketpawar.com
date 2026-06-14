@@ -37,7 +37,7 @@ const eventSchema = z.object({
 
 export type Event = z.infer<typeof eventSchema>;
 export type EventName = Event["name"];
-export type Section = "projects" | "crafts" | "experience";
+export type Section = "projects" | "crafts" | "experience" | "stack";
 export type Variant = "list" | "grid";
 
 export const trackEvent = (input: Event): void => {

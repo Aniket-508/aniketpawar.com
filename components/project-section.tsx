@@ -17,18 +17,14 @@ const ProjectSection = async () => {
   const showViewAll = allProjects.length > featured.length;
 
   return (
-    <Section
-      className={cn("delay-300 grid grid-cols-1 place-items-center gap-4")}
-      id="projects"
-    >
-      <ProjectsView
-        headerClassName="col-span-2 w-full"
-        viewClassName="col-span-2 w-full"
-        projects={featured}
-        previews={previews}
-      />
+    <Section className={cn("delay-300 flex flex-col gap-4")} id="projects">
+      <ProjectsView projects={featured} previews={previews} />
       {showViewAll && (
-        <ViewAllButton href={ROUTES.PROJECTS} eventName="projects" />
+        <ViewAllButton
+          href={ROUTES.PROJECTS}
+          eventName="projects"
+          className="mx-auto"
+        />
       )}
     </Section>
   );
