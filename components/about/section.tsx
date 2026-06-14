@@ -73,7 +73,7 @@ const AboutSection = () => {
         <Suspense fallback={<GitHubContributionsFallback />}>
           <GitHubContributions contributions={contributions} />
         </Suspense>
-        <div className="flex flex-col gap-4 p-3">
+        <div className="flex flex-col gap-3 p-2">
           <p>
             Interested in working together? Check out my{" "}
             <AppLink
@@ -87,7 +87,7 @@ const AboutSection = () => {
               Resume
             </AppLink>
           </p>
-          <div className="flex flex-row items-center gap-4">
+          <div className="flex flex-row items-center gap-2">
             <Button
               nativeButton={false}
               render={
