@@ -17,6 +17,7 @@ export const PROJECTS = [
       website: "https://heroicons-animated.com/",
     },
     slug: "heroicons-animated",
+    source: "personal",
     title: "heroicons-animated",
   },
   {
@@ -32,6 +33,7 @@ export const PROJECTS = [
       website: "https://peerlistpublish.vercel.app",
     },
     slug: "peerlist-publish",
+    source: "personal",
     title: "Peerlist Publish",
   },
   {
@@ -47,6 +49,7 @@ export const PROJECTS = [
       website: "https://openself.vercel.app",
     },
     slug: "openself",
+    source: "personal",
     title: "OpenSelf",
   },
   {
@@ -63,6 +66,7 @@ export const PROJECTS = [
       website: "https://www.vercel-doctor.com",
     },
     slug: "vercel-doctor",
+    source: "personal",
     title: "Vercel Doctor",
   },
   {
@@ -78,6 +82,7 @@ export const PROJECTS = [
       website: "https://better-og.vercel.app",
     },
     slug: "better-og",
+    source: "personal",
     title: "Better OG",
   },
   {
@@ -94,6 +99,7 @@ export const PROJECTS = [
       website: "https://www.ossperks.com",
     },
     slug: "awesome-oss-perks",
+    source: "personal",
     title: "Awesome OSS Perks",
   },
   {
@@ -109,6 +115,7 @@ export const PROJECTS = [
       website: "https://indian-quotes-api.vercel.app/",
     },
     slug: "indian-quotes-api",
+    source: "personal",
     title: "Indian Quotes API",
   },
   {
@@ -124,6 +131,107 @@ export const PROJECTS = [
       website: "https://instagram-posts-generator.vercel.app/",
     },
     slug: "instagram-posts-generator",
+    source: "personal",
     title: "IG Posts Generator",
+  },
+  {
+    category: "Open Source",
+    date: {
+      month: "January",
+      year: 2026,
+    },
+    description:
+      "A template for building and publishing your own custom shadcn registry components.",
+    featured: true,
+    links: {
+      github: "https://github.com/shadcn-labs/startercn",
+      website: "https://startercn.vercel.app",
+    },
+    slug: "startercn",
+    source: "shadcn-labs",
+    title: "startercn",
+  },
+  {
+    category: "Open Source",
+    date: {
+      month: "February",
+      year: 2026,
+    },
+    description:
+      "Ready-to-use, customizable terminal UI components for React, built on Ink and OpenTUI.",
+    featured: true,
+    links: {
+      github: "https://github.com/shadcn-labs/termcn",
+      website: "https://termcn.dev",
+    },
+    slug: "termcn",
+    source: "shadcn-labs",
+    title: "termcn",
+  },
+  {
+    category: "Open Source",
+    date: {
+      month: "March",
+      year: 2026,
+    },
+    description:
+      "Ready-to-use, customizable video components for React, built on Editframe.",
+    featured: true,
+    links: {
+      github: "https://github.com/shadcn-labs/framecn",
+      website: "https://framecn.dev",
+    },
+    slug: "framecn",
+    source: "shadcn-labs",
+    title: "framecn",
+  },
+  {
+    category: "Open Source",
+    date: {
+      month: "April",
+      year: 2026,
+    },
+    description:
+      "Ready-to-use, customizable Open Graph image components for React, built on Satori.",
+    featured: true,
+    links: {
+      github: "https://github.com/shadcn-labs/ogimagecn",
+      website: "https://ogimagecn.vercel.app",
+    },
+    slug: "ogimagecn",
+    source: "shadcn-labs",
+    title: "ogimagecn",
+  },
+  {
+    category: "Open Source",
+    date: {
+      month: "May",
+      year: 2026,
+    },
+    description:
+      "Ready-to-use, customizable email components for React, built on React Email.",
+    links: {
+      github: "https://github.com/shadcn-labs/emailcn",
+      website: "https://emailcn.dev",
+    },
+    slug: "emailcn",
+    source: "shadcn-labs",
+    title: "emailcn",
+  },
+  {
+    category: "Open Source",
+    date: {
+      month: "June",
+      year: 2026,
+    },
+    description:
+      "Ready-to-use, customizable presentation components for React, built on reveal.js.",
+    links: {
+      github: "https://github.com/shadcn-labs/slidecn",
+      website: "https://slidecn.vercel.app",
+    },
+    slug: "slidecn",
+    source: "shadcn-labs",
+    title: "slidecn",
   },
 ] satisfies readonly Project[];

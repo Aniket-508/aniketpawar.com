@@ -3,31 +3,29 @@
 import { useState } from "react";
 
 import { CopyLink } from "@/components/copy-link";
-import { ProjectItem } from "@/components/project-item";
-import type { GlimpseData } from "@/components/ui/glimpse/types";
 import { Title } from "@/components/ui/title";
 import { ViewToggle } from "@/components/view-tabs";
 import type { Variant } from "@/lib/events";
 import { cn } from "@/lib/utils";
-import type { Project } from "@/types/projects";
+import type { Craft } from "@/types/crafts";
 
-interface ProjectsViewProps {
-  projects: readonly Project[];
-  previews: Record<string, GlimpseData>;
-  defaultVariant?: Variant;
+import { CraftItem } from "./item";
+
+interface CraftsViewProps {
+  crafts: readonly Craft[];
   showHeader?: boolean;
   headerClassName?: string;
+  defaultVariant?: Variant;
   viewClassName?: string;
 }
 
-const ProjectsView = ({
-  projects,
-  previews,
+const CraftsView = ({
+  crafts,
   showHeader = true,
   headerClassName,
   viewClassName,
   defaultVariant = "list",
-}: ProjectsViewProps) => {
+}: CraftsViewProps) => {
   const [variant, setVariant] = useState(defaultVariant);
 
   return (
@@ -42,37 +40,29 @@ const ProjectsView = ({
           <div className="group/projects flex-1 flex items-center gap-1">
             <Title
               className="text-xl font-medium italic"
-              render={<h2>{"projects."}</h2>}
+              render={<h2>{"crafts."}</h2>}
             />
             <CopyLink
-              title={"Projects"}
+              title={"Crafts"}
               className="hidden group-hover/projects:inline-flex"
             />
           </div>
-          <ViewToggle
-            value={variant}
-            onChange={setVariant}
-            section="projects"
-          />
+
+          <ViewToggle value={variant} onChange={setVariant} section="crafts" />
         </div>
       )}
 
       <div
         className={cn(
           "group grid grid-cols-1",
-          variant === "grid" && "gap-x-8 sm:grid-cols-2",
           variant === "list" && "divide-y divide-border",
           viewClassName
         )}
       >
-        {projects.map((project) => (
-          <ProjectItem
-            key={project.slug}
-            slug={project.slug}
-            title={project.title}
-            description={project.description}
-            links={project.links}
-            previews={previews}
+        {crafts.map((craft) => (
+          <CraftItem
+            key={craft.slug}
+            {...craft}
             variant={variant}
             showHeader={showHeader}
           />
@@ -82,4 +72,4 @@ const ProjectsView = ({
   );
 };
 
-export { ProjectsView };
+export { CraftsView };

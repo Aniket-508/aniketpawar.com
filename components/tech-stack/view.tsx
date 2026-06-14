@@ -6,9 +6,12 @@ import { CopyLink } from "@/components/copy-link";
 import { AppLink } from "@/components/ui/app-link";
 import { Badge } from "@/components/ui/badge";
 import { Title } from "@/components/ui/title";
+import { ViewToggle } from "@/components/view-tabs";
 import type { Variant } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import type { TechStackItem } from "@/types/tech-stack";
+
+import { ShelfRow } from "./shelf-icon";
 
 interface TechStackViewProps {
   items: TechStackItem[];
@@ -59,6 +62,8 @@ const TechStackView = ({
               className="hidden group-hover/stack:inline-flex"
             />
           </div>
+
+          <ViewToggle value={variant} onChange={setVariant} section="stack" />
         </div>
       )}
 
@@ -118,6 +123,19 @@ const TechStackView = ({
               </div>
             );
           })}
+        </div>
+      )}
+
+      {variant === "grid" && (
+        <div className={cn("group relative", viewClassName)}>
+          {Object.entries(grouped).map(([category, catItems], index) => (
+            <ShelfRow
+              key={category}
+              category={category}
+              items={catItems}
+              index={index}
+            />
+          ))}
         </div>
       )}
     </>

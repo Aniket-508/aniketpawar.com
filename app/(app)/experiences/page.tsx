@@ -1,4 +1,4 @@
-import { ExperiencesView } from "@/components/experiences-view";
+import { ExperiencesView } from "@/components/experience/view";
 import { Section } from "@/components/layout/section";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";

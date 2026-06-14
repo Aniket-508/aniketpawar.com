@@ -1,8 +1,9 @@
 import { Section } from "@/components/layout/section";
-import { TechStackView } from "@/components/tech-stack-view";
 import { ViewAllButton } from "@/components/view-all-button";
 import { ROUTES } from "@/constants/routes";
 import { TECH_STACK } from "@/constants/tech-stack";
+
+import { TechStackView } from "./view";
 
 const HIDDEN_CATEGORIES = new Set(["Dev Tools", "Native Apps"]);
 

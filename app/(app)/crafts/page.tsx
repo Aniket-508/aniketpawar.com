@@ -1,4 +1,4 @@
-import { CraftsView } from "@/components/crafts-view";
+import { CraftsView } from "@/components/craft/view";
 import { Section } from "@/components/layout/section";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";

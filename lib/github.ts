@@ -3,7 +3,7 @@ import { execSync } from "node:child_process";
 
 import { unstable_cache } from "next/cache";
 
-import type { Activity } from "@/components/contribution-graph";
+import type { Activity } from "@/components/about/contribution-graph";
 import { GITHUB } from "@/constants/links";
 
 interface GitHubContributionsResponse {

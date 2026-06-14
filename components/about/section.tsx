@@ -1,11 +1,11 @@
 import { CalendarClockIcon } from "lucide-react";
 import { Suspense } from "react";
 
-import { CopyLink } from "@/components/copy-link";
 import {
   GitHubContributions,
   GitHubContributionsFallback,
-} from "@/components/github-contributions";
+} from "@/components/about/github-contributions";
+import { CopyLink } from "@/components/copy-link";
 import { Icons } from "@/components/icons";
 import { Section } from "@/components/layout/section";
 import { AppLink } from "@/components/ui/app-link";
