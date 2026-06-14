@@ -11,6 +11,7 @@ const GITHUB_ORG_URL = `https://github.com/${GITHUB.org}`;
 export const LINK = {
   CALENDLY: "https://cal.com/aniket-pawar",
   DISCORD: "https://discordapp.com/users/393317827186130964",
+  EMAIL: "mailto:pawaraniket508@gmail.com",
   GITHUB: GITHUB_URL,
   GITHUB_ORG: GITHUB_ORG_URL,
   GITHUB_REPO: `https://github.com/${GITHUB.user}/${GITHUB.repo}`,

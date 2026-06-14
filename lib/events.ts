@@ -15,6 +15,7 @@ const eventNames = [
   "project_detail_click",
   "resume_click",
   "schedule_meet_click",
+  "send_email_click",
   "section_anchor_click",
   "sound_toggle",
   "tech_link_click",
