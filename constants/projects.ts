@@ -162,7 +162,7 @@ export const PROJECTS = [
     featured: true,
     links: {
       github: "https://github.com/shadcn-labs/termcn",
-      website: "https://termcn.dev",
+      website: "https://termcn.vercel.app",
     },
     slug: "termcn",
     source: "shadcn-labs",
@@ -179,7 +179,7 @@ export const PROJECTS = [
     featured: true,
     links: {
       github: "https://github.com/shadcn-labs/framecn",
-      website: "https://framecn.dev",
+      website: "https://framecn.vercel.app",
     },
     slug: "framecn",
     source: "shadcn-labs",
@@ -212,7 +212,7 @@ export const PROJECTS = [
       "Ready-to-use, customizable email components for React, built on React Email.",
     links: {
       github: "https://github.com/shadcn-labs/emailcn",
-      website: "https://emailcn.dev",
+      website: "https://emailcn.vercel.app",
     },
     slug: "emailcn",
     source: "shadcn-labs",
