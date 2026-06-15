@@ -1,26 +1,15 @@
 import type { NavItem } from "@/types/nav";
 
 import { ROUTES } from "./routes";
-
-export const FALLBACK_SITE_ORIGIN = "https://www.aniketpawar.com" as const;
-
-const getBaseUrl = () => {
-  if (process.env.NODE_ENV !== "production") {
-    return "http://localhost:3000";
-  }
-  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
-    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
-  }
-  return process.env.SITE_URL ?? FALLBACK_SITE_ORIGIN;
-};
+import { getBaseUrl } from "./url";
+import { NAME, USER } from "./user";
 
 const baseUrl = getBaseUrl();
 
 export const SITE = {
   AUTHOR: {
-    AVATAR:
-      "https://ik.imagekit.io/2oajjadqkz/profile.jpg?updatedAt=1770631384305",
-    NAME: "Aniket Pawar",
+    AVATAR: USER.avatar,
+    NAME,
     TWITTER: "@alaymanguy",
   },
   DESCRIPTION: {
@@ -41,9 +30,7 @@ export const SITE = {
     "Web Development",
     "Portfolio",
   ],
-  NAME: "Aniket Pawar",
-  OG_IMAGE:
-    "https://ik.imagekit.io/2oajjadqkz/portfolio-image.png?updatedAt=1708090929752",
+  NAME,
   URL: baseUrl,
 } as const;
 
