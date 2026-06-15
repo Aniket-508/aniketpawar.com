@@ -6,9 +6,11 @@ import { getCrafts } from "@/lib/crafts";
 import { BreadcrumbJsonLd, craftsBreadcrumbs } from "@/seo/json-ld";
 import { createMetadata } from "@/seo/metadata";
 
+const DESCRIPTION = "Motion studies and interaction experiments.";
+
 export const metadata = createMetadata({
   canonical: ROUTES.CRAFTS,
-  description: "Motion and interaction experiments — UI crafts and prototypes.",
+  description: DESCRIPTION,
   title: "Crafts",
 });
 
@@ -20,9 +22,7 @@ const CraftsPage = () => {
       <BreadcrumbJsonLd items={craftsBreadcrumbs()} />
       <header className="animate-slide-in space-y-2 px-4 pt-6 pb-2">
         <Title className="text-xl font-medium italic">{"crafts."}</Title>
-        <p className="text-muted-foreground text-sm">
-          Motion studies and interaction experiments.
-        </p>
+        <p className="text-muted-foreground text-sm">{DESCRIPTION}</p>
       </header>
       <Section className="delay-100 flex flex-col py-2">
         <CraftsView showHeader={false} defaultVariant="grid" crafts={crafts} />
