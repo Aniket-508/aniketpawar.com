@@ -20,4 +20,4 @@ export const USER = {
   website: getBaseUrl(),
 } as const;
 
-export const NAME = `${USER.firstName  } ${  USER.lastName}`;
+export const NAME = `${USER.firstName} ${USER.lastName}`;
