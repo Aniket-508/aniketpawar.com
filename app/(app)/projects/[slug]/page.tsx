@@ -8,7 +8,6 @@ import { Badge } from "@/components/ui/badge";
 import { glimpse } from "@/components/ui/glimpse/server";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
-import { SITE } from "@/constants/site";
 import { getProjectMdxEntry } from "@/lib/content/projects";
 import { tocFromMdast } from "@/lib/content/toc";
 import {
@@ -70,7 +69,7 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
   const { default: Content, _mdast } = mdxEntry.compiled;
   const tocItems = tocFromMdast(_mdast);
   const previewImage = await getPreviewImage(project);
-  const imageSrc = project.image ?? previewImage ?? SITE.OG_IMAGE;
+  const imageSrc = project.image ?? previewImage;
 
   return (
     <>
@@ -99,16 +98,18 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
           <p className="text-muted-foreground text-sm">{project.description}</p>
         </header>
 
-        <div className="animate-slide-in delay-100 rounded-md border p-1">
-          <div className="relative aspect-1200/630 w-full overflow-hidden rounded-sm border border-border select-none">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={imageSrc}
-              alt={project.title}
-              className="h-full w-full object-cover"
-            />
+        {imageSrc && (
+          <div className="animate-slide-in delay-100 rounded-md border p-1">
+            <div className="relative aspect-1200/630 w-full overflow-hidden rounded-sm border border-border select-none">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={imageSrc}
+                alt={project.title}
+                className="h-full w-full object-cover"
+              />
+            </div>
           </div>
-        </div>
+        )}
 
         <TrackedProjectLinks
           slug={project.slug}

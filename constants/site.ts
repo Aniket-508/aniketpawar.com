@@ -31,8 +31,6 @@ export const SITE = {
     "Portfolio",
   ],
   NAME,
-  OG_IMAGE:
-    "https://ik.imagekit.io/2oajjadqkz/portfolio-image.png?updatedAt=1708090929752",
   URL: baseUrl,
 } as const;
 
