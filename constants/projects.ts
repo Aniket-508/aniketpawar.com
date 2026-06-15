@@ -1,6 +1,27 @@
-import type { Project } from "@/types/projects";
+import { Icons } from "@/components/icons";
+import { SITE } from "@/constants/site";
+import type {
+  Project,
+  ProjectSource,
+  ProjectSourceOption,
+} from "@/types/projects";
 
 export const HOME_FEATURED_PROJECT_COUNT = 4 as const;
+
+export const PROJECT_SOURCES = [
+  {
+    image: SITE.AUTHOR.AVATAR,
+    label: "Personal",
+    value: "personal",
+  },
+  {
+    icon: Icons.shadcnlabs,
+    label: "Shadcn Labs",
+    value: "shadcn-labs",
+  },
+] as const satisfies readonly ProjectSourceOption[];
+
+export const DEFAULT_PROJECT_SOURCE: ProjectSource = "personal";
 
 export const PROJECTS = [
   {

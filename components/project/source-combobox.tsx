@@ -8,13 +8,10 @@ import {
   ComboboxTrigger,
 } from "@/components/ui/combobox";
 import { tabsListVariants } from "@/components/ui/tabs";
-import {
-  getProjectSourceOption,
-  PROJECT_SOURCES,
-} from "@/constants/project-sources";
-import type { ProjectSourceOption } from "@/constants/project-sources";
+import { PROJECT_SOURCES } from "@/constants/projects";
+import { getProjectSourceOption } from "@/lib/projects";
 import { cn } from "@/lib/utils";
-import type { ProjectSource } from "@/types/projects";
+import type { ProjectSourceOption, ProjectSource } from "@/types/projects";
 
 import { ProjectSourceLabel } from "./source-label";
 

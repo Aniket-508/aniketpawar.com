@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import type { ProjectSourceOption } from "@/constants/project-sources";
 import { cn } from "@/lib/utils";
+import type { ProjectSourceOption } from "@/types/projects";
 
 interface ProjectSourceLabelProps {
   source: ProjectSourceOption;
