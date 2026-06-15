@@ -20,14 +20,13 @@ A personal portfolio website showcasing my work as a Frontend Engineer.
 
 - Light & dark theme interface
 - Mobile-first responsive design
-- Server components architecture
-- Website preview hover cards
-- CSS animations with slide/fade effects
-- Haptic feedback support
-- Sound effects on interactions
-- SEO optimized with metadata
-- AI-ready with LLMs.txt
-- Analytics with Microsoft Clarity
+- vCard integration
+- Installable as PWA
+- [Haptic feedback](https://haptics.lochie.me/) support
+- [Sound effects](https://audio.raphaelsalaja.com/) on interactions
+- SEO optimized ([JSON-LD](https://json-ld.org/), sitemap, robots)
+- AI-ready with [LLMs.txt](https://llmstxt.org/)
+- Analytics with [Microsoft Clarity](https://clarity.microsoft.com/projects)
 
 ### Content
 
@@ -41,71 +40,7 @@ Portfolio sections powered by MDX and server components:
 
 ## Development
 
-### Prerequisites
-
-- Node.js 18+ installed on your system
-- pnpm package manager
-
-### Getting Started
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/Aniket-508/aniketpawar.com.git
-   ```
-
-2. Navigate to the project directory:
-
-   ```bash
-   cd aniketpawar.com
-   ```
-
-3. Install dependencies:
-
-   ```bash
-   pnpm install
-   ```
-
-4. Start the development server:
-
-   ```bash
-   pnpm dev
-   ```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Commands
-
-| Command          | Description                  |
-| ---------------- | ---------------------------- |
-| `pnpm dev`       | Start development server     |
-| `pnpm build`     | Build for production         |
-| `pnpm start`     | Start production server      |
-| `pnpm fix`       | Fix linting issues           |
-| `pnpm check`     | Check for lint errors        |
-| `pnpm typecheck` | Run TypeScript type checking |
-
-## Contributing
-
-Contributions are welcome! If you have suggestions or would like to add features, feel free to submit a pull request.
-
-### Steps to Contribute
-
-1. Fork the repository
-2. Create a new branch:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-3. Make your changes
-4. Commit your changes:
-   ```bash
-   git commit -m "feat: add your feature description"
-   ```
-5. Push the branch:
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-6. Open a pull request on GitHub
+Please refer to the [Development Guide](./DEVELOPMENT.md) for more details.
 
 ## License
 
