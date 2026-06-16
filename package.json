@@ -17,7 +17,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "pnpm registry:build && next build",
+    "build": "next build",
     "registry:build": "npx tsx scripts/build-registry.ts && shadcn build",
     "start": "next start",
     "check": "ultracite check",
