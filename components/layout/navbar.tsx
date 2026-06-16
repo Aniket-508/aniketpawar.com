@@ -4,10 +4,10 @@ import { NavItemGitHub } from "@/components/nav-item-github";
 import { SoundToggle } from "@/components/sound-toggle";
 
 const Navbar = () => (
-  <header className="view-container flex items-center justify-between gap-4 px-4 pt-26 pb-6">
+  <header className="view-container relative flex items-center justify-between gap-4 px-4 py-6">
     <MainNav />
 
-    <div className="flex items-center gap-1">
+    <div className="absolute top-7 right-4 flex items-center gap-1">
       <NavItemGitHub />
       <SoundToggle />
       <ModeToggle />
