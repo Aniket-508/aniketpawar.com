@@ -7,9 +7,11 @@ import { collectProjectUrls, getProjects } from "@/lib/projects";
 import { BreadcrumbJsonLd, projectsBreadcrumbs } from "@/seo/json-ld";
 import { createMetadata } from "@/seo/metadata";
 
+const DESCRIPTION = "Tools, APIs, and products I have built or maintain.";
+
 export const metadata = createMetadata({
   canonical: ROUTES.PROJECTS,
-  description: "Selected work — open source tools, APIs, and products.",
+  description: DESCRIPTION,
   title: "Projects",
 });
 
@@ -22,9 +24,7 @@ const ProjectsPage = async () => {
       <BreadcrumbJsonLd items={projectsBreadcrumbs()} />
       <header className="animate-slide-in space-y-2 px-4 py-6">
         <Title className="text-xl font-medium italic">{"projects."}</Title>
-        <p className="text-muted-foreground text-sm">
-          Tools, APIs, and products I have built or maintain.
-        </p>
+        <p className="text-muted-foreground text-sm">{DESCRIPTION}</p>
       </header>
       <Section className="delay-100 flex flex-col gap-4 py-2">
         <ProjectsView

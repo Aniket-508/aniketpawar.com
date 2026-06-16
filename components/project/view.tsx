@@ -44,7 +44,8 @@ const ProjectsViewList = ({
     <div
       className={cn(
         "group grid grid-cols-1",
-        variant === "grid" && "gap-x-8 sm:grid-cols-2",
+        variant === "grid" &&
+          "sm:grid-cols-2 sm:[&>*:nth-child(2n+1)]:pr-4 sm:[&>*:nth-child(2n+2)]:pl-4 [&>*:nth-child(2n+1)]:pb-4 [&>*:nth-child(2n+2)]:pb-4",
         variant === "list" && "divide-y divide-border",
         viewClassName
       )}
@@ -150,4 +151,5 @@ export {
   ProjectsViewProvider,
   ProjectsViewToolbar,
 };
+
 export { useProjectsView } from "./view-context";

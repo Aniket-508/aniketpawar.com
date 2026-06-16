@@ -4,9 +4,6 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "@/styles/globals.css";
 
 import { Analytics } from "@/components/analytics";
-import { Container } from "@/components/layout/container";
-import { Footer } from "@/components/layout/footer";
-import { ScrollToTop } from "@/components/scroll-to-top";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { META_THEME_COLORS } from "@/constants/site";
 import { HapticsProvider } from "@/providers/haptics-provider";
@@ -64,18 +61,13 @@ export default function RootLayout({
         <meta name="theme-color" content={META_THEME_COLORS.light} />
       </head>
       <body
-        className={`overscroll-none font-sans flex flex-col min-h-screen ${geist.variable} ${geist_mono.variable} ${instrument_serif.variable}`}
+        className={`overscroll-none font-sans flex flex-col min-h-screen pt-20 ${geist.variable} ${geist_mono.variable} ${instrument_serif.variable}`}
       >
         <ThemeProvider>
           <Analytics projectId={process.env.CLARITY_PROJECT_ID} />
           <TooltipProvider>
             <SoundProvider>
-              <HapticsProvider>
-                <div className="pointer-events-none fixed top-0 left-0 z-50 h-12 w-full to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_bottom,black,transparent)]" />
-                <Container className="pt-20 pb-14">{children}</Container>
-                <Footer />
-                <ScrollToTop />
-              </HapticsProvider>
+              <HapticsProvider>{children}</HapticsProvider>
             </SoundProvider>
           </TooltipProvider>
         </ThemeProvider>

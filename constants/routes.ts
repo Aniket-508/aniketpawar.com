@@ -8,4 +8,5 @@ export const ROUTES = {
   RESUME: "/resume.pdf",
   SOCIALS: "/socials",
   STACK: "/stack",
+  VCARD: "/vcard",
 } as const;

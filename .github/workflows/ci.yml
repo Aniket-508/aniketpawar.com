@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  merge_group:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      NEXT_TELEMETRY_DISABLED: 1
+      # Public API base used at build/prerender time by lib/github.ts (has a
+      # fallback, but set explicitly so CI matches production behavior).
+      GITHUB_CONTRIBUTIONS_API_URL: https://github-contributions-api.jogruber.de
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Lint and format check
+        run: pnpm check
+
+      # Persist Next.js build cache (.next/cache) between runs. The pnpm store
+      # is already cached via `cache: pnpm` on setup-node.
+      - name: Cache Next.js build
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        with:
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('app/**/*.ts', 'app/**/*.tsx', 'app/**/*.mdx', 'components/**/*.ts', 'components/**/*.tsx', 'content/**/*.mdx', 'lib/**/*.ts', 'lib/**/*.tsx', 'constants/**/*.ts', 'constants/**/*.tsx', 'hooks/**/*.ts', 'providers/**/*.ts', 'seo/**/*.ts', 'types/**/*.ts') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('pnpm-lock.yaml') }}-
+
+      # Build MUST run before Typecheck: `tsc --noEmit` depends on types that
+      # Next.js generates into `.next/types/**` during `next build`. On a fresh
+      # checkout, typecheck fails until a build has generated those types.
+      - name: Build
+        run: pnpm build
+
+      - name: Typecheck
+        run: pnpm typecheck

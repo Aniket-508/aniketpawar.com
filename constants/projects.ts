@@ -1,6 +1,27 @@
-import type { Project } from "@/types/projects";
+import { Icons } from "@/components/icons";
+import { SITE } from "@/constants/site";
+import type {
+  Project,
+  ProjectSource,
+  ProjectSourceOption,
+} from "@/types/projects";
 
 export const HOME_FEATURED_PROJECT_COUNT = 4 as const;
+
+export const PROJECT_SOURCES = [
+  {
+    image: SITE.AUTHOR.AVATAR,
+    label: "Personal",
+    value: "personal",
+  },
+  {
+    icon: Icons.shadcnlabs,
+    label: "Shadcn Labs",
+    value: "shadcn-labs",
+  },
+] as const satisfies readonly ProjectSourceOption[];
+
+export const DEFAULT_PROJECT_SOURCE: ProjectSource = "personal";
 
 export const PROJECTS = [
   {
@@ -162,7 +183,7 @@ export const PROJECTS = [
     featured: true,
     links: {
       github: "https://github.com/shadcn-labs/termcn",
-      website: "https://termcn.dev",
+      website: "https://termcn.vercel.app",
     },
     slug: "termcn",
     source: "shadcn-labs",
@@ -179,7 +200,7 @@ export const PROJECTS = [
     featured: true,
     links: {
       github: "https://github.com/shadcn-labs/framecn",
-      website: "https://framecn.dev",
+      website: "https://framecn.vercel.app",
     },
     slug: "framecn",
     source: "shadcn-labs",
@@ -212,7 +233,7 @@ export const PROJECTS = [
       "Ready-to-use, customizable email components for React, built on React Email.",
     links: {
       github: "https://github.com/shadcn-labs/emailcn",
-      website: "https://emailcn.dev",
+      website: "https://emailcn.vercel.app",
     },
     slug: "emailcn",
     source: "shadcn-labs",

@@ -6,9 +6,11 @@ import { getExperiences } from "@/lib/experiences";
 import { BreadcrumbJsonLd, experiencesBreadcrumbs } from "@/seo/json-ld";
 import { createMetadata } from "@/seo/metadata";
 
+const DESCRIPTION = "Where I have worked and what I shipped.";
+
 export const metadata = createMetadata({
   canonical: ROUTES.EXPERIENCES,
-  description: "Work history — roles, highlights, and technologies used.",
+  description: DESCRIPTION,
   title: "Experience",
 });
 
@@ -21,9 +23,7 @@ const ExperiencesPage = () => {
       <div className="animate-slide-in space-y-2 px-4 pt-6 pb-2">
         <Title className="text-xl font-medium italic">{"experience."}</Title>
 
-        <p className="text-muted-foreground text-sm">
-          Where I have worked and what I shipped.
-        </p>
+        <p className="text-muted-foreground text-sm">{DESCRIPTION}</p>
       </div>
       <Section className="delay-100 flex flex-col py-2">
         <ExperiencesView showHeader={false} experiences={experiences} />

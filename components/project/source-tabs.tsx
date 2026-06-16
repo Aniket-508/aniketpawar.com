@@ -1,7 +1,7 @@
 "use client";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { PROJECT_SOURCES } from "@/constants/project-sources";
+import { PROJECT_SOURCES } from "@/constants/projects";
 import type { ProjectSource } from "@/types/projects";
 
 import { ProjectSourceLabel } from "./source-label";

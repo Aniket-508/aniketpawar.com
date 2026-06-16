@@ -23,11 +23,7 @@ const StackPage = () => (
       </p>
     </header>
     <Section className="delay-100 flex flex-col py-2">
-      <TechStackView
-        showHeader={false}
-        defaultVariant="grid"
-        items={TECH_STACK}
-      />
+      <TechStackView showHeader={false} items={TECH_STACK} />
     </Section>
   </>
 );

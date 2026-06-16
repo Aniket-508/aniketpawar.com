@@ -1,4 +1,4 @@
-import { CalendarClockIcon } from "lucide-react";
+import { CalendarDaysIcon, MailIcon } from "lucide-react";
 import { Suspense } from "react";
 
 import {
@@ -73,12 +73,22 @@ const AboutSection = () => {
         <Suspense fallback={<GitHubContributionsFallback />}>
           <GitHubContributions contributions={contributions} />
         </Suspense>
-        <div className="flex flex-col gap-4 p-3">
-          <p>Interested in working together? Feel free to schedule a meet!</p>
-          <div className="flex flex-row items-center gap-4">
+        <div className="flex flex-col gap-3 p-2">
+          <p>
+            Interested in working together? Check out my{" "}
+            <AppLink
+              href={LINK.RESUME}
+              target="_blank"
+              className="text-muted-foreground text-sm font-medium inline-flex min-w-[69px]"
+              external
+              eventName="resume_click"
+              eventProperties={{ location: "work_together" }}
+            >
+              Resume
+            </AppLink>
+          </p>
+          <div className="flex flex-row items-center gap-2">
             <Button
-              size="lg"
-              className="gap-1"
               nativeButton={false}
               render={
                 <AppLink
@@ -88,20 +98,23 @@ const AboutSection = () => {
                 />
               }
             >
-              Schedule a meet /{" "}
-              <CalendarClockIcon className="inline sm:hidden" />
-              <span className="hidden sm:inline">cal.com</span>
+              <CalendarDaysIcon />
+              Book an intro call
             </Button>
-            <AppLink
-              href={LINK.RESUME}
-              target="_blank"
-              className="text-muted-foreground text-sm font-medium"
-              external
-              eventName="resume_click"
-              eventProperties={{ location: "work_together" }}
+            <Button
+              variant="outline"
+              nativeButton={false}
+              render={
+                <AppLink
+                  href={LINK.EMAIL}
+                  target="_blank"
+                  eventName="send_email_click"
+                />
+              }
             >
-              Resume
-            </AppLink>
+              <MailIcon />
+              Send an email
+            </Button>
           </div>
         </div>
       </Callout>
