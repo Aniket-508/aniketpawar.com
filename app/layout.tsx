@@ -65,7 +65,7 @@ export default function RootLayout({
         className={`overscroll-none font-sans flex flex-col min-h-screen pt-20 ${geist.variable} ${geist_mono.variable} ${instrument_serif.variable}`}
       >
         <ThemeProvider>
-          <Analytics projectId={env.CLARITY_PROJECT_ID} />
+          <Analytics projectId={env.NEXT_PUBLIC_CLARITY_PROJECT_ID} />
           <TooltipProvider>
             <SoundProvider>
               <HapticsProvider>{children}</HapticsProvider>
