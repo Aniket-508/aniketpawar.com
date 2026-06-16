@@ -1,11 +1,24 @@
 {
-  "name": "portfolio-website",
+  "name": "aniketpawar.com",
   "version": "0.1.0",
   "private": true,
+  "description": "A minimal dev portfolio and shadcn registry.",
+  "homepage": "https://aniketpawar.com",
+  "license": "MIT",
+  "author": {
+    "name": "Aniket Pawar",
+    "email": "pawaraniket508@gmail.com",
+    "url": "https://github.com/Aniket-508"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aniket-508/aniketpawar.com.git"
+  },
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "pnpm registry:build && next build",
+    "registry:build": "npx tsx scripts/build-registry.ts && shadcn build",
     "start": "next start",
     "check": "ultracite check",
     "fix": "ultracite fix",
@@ -65,7 +78,9 @@
     "typescript": "^5.9.3",
     "ultracite": "7.8.0"
   },
-  "volta": {
-    "node": "18.17.0"
-  }
+  "engines": {
+    "node": ">=22.x",
+    "pnpm": ">=10"
+  },
+  "packageManager": "pnpm@10.28.2"
 }
