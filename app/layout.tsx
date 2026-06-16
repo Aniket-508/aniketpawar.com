@@ -6,6 +6,7 @@ import "@/styles/globals.css";
 import { Analytics } from "@/components/analytics";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { META_THEME_COLORS } from "@/constants/site";
+import { env } from "@/env";
 import { HapticsProvider } from "@/providers/haptics-provider";
 import { SoundProvider } from "@/providers/sound-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
@@ -64,7 +65,7 @@ export default function RootLayout({
         className={`overscroll-none font-sans flex flex-col min-h-screen pt-20 ${geist.variable} ${geist_mono.variable} ${instrument_serif.variable}`}
       >
         <ThemeProvider>
-          <Analytics projectId={process.env.CLARITY_PROJECT_ID} />
+          <Analytics projectId={env.CLARITY_PROJECT_ID} />
           <TooltipProvider>
             <SoundProvider>
               <HapticsProvider>{children}</HapticsProvider>
