@@ -8,7 +8,7 @@ import { CopyLink } from "@/components/copy-link";
 import { Section } from "@/components/layout/section";
 import { Callout } from "@/components/ui/callout";
 import { Title } from "@/components/ui/title";
-import { getClarityInsights } from "@/lib/clarity";
+import { getClarityInsights } from "@/lib/insights";
 import { cn } from "@/lib/utils";
 
 const Metric = ({ className, ...props }: React.ComponentProps<"div">) => (
