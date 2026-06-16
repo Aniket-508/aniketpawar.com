@@ -2,11 +2,9 @@
 
 import { localPoint } from "@visx/event";
 import type { scaleLinear, scaleTime } from "@visx/scale";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 import type { LineConfig, Margin, TooltipData } from "./chart-context";
-import { useScheduledTooltip } from "./use-scheduled-tooltip";
-import { normalizeYAxisId } from "./y-axis-scales";
 
 type ScaleTime = ReturnType<typeof scaleTime<number>>;
 type ScaleLinear = ReturnType<typeof scaleLinear<number>>;
@@ -22,7 +20,6 @@ export interface ChartSelection {
 interface UseChartInteractionParams {
   xScale: ScaleTime;
   yScale: ScaleLinear;
-  yScales: Record<string, ScaleLinear>;
   data: Record<string, unknown>[];
   lines: LineConfig[];
   margin: Margin;
@@ -55,7 +52,6 @@ interface ChartInteractionResult {
 export const useChartInteraction = ({
   xScale,
   yScale,
-  yScales,
   data,
   lines,
   margin,
@@ -63,18 +59,11 @@ export const useChartInteraction = ({
   bisectDate,
   canInteract,
 }: UseChartInteractionParams): ChartInteractionResult => {
+  const [tooltipData, setTooltipData] = useState<TooltipData | null>(null);
   const [selection, setSelection] = useState<ChartSelection | null>(null);
-  const {
-    tooltipData,
-    setTooltipData,
-    scheduleTooltip,
-    clearTooltip,
-    resetTooltipDedupe,
-  } = useScheduledTooltip<TooltipData>();
 
   const isDraggingRef = useRef(false);
   const dragStartXRef = useRef<number>(0);
-  const lastHoveredXRef = useRef<number | null>(null);
 
   const resolveTooltipFromX = useCallback(
     (pixelX: number): TooltipData | null => {
@@ -102,8 +91,7 @@ export const useChartInteraction = ({
       for (const line of lines) {
         const value = d[line.dataKey];
         if (typeof value === "number") {
-          const axisScale = yScales[normalizeYAxisId(line.yAxisId)] ?? yScale;
-          yPositions[line.dataKey] = axisScale(value) ?? 0;
+          yPositions[line.dataKey] = yScale(value) ?? 0;
         }
       }
 
@@ -114,7 +102,7 @@ export const useChartInteraction = ({
         yPositions,
       };
     },
-    [xScale, yScale, yScales, data, lines, xAccessor, bisectDate]
+    [xScale, yScale, data, lines, xAccessor, bisectDate]
   );
 
   const resolveIndexFromX = useCallback(
@@ -167,6 +155,8 @@ export const useChartInteraction = ({
     [margin.left]
   );
 
+  // --- Mouse handlers ---
+
   const handleMouseMove = useCallback(
     (event: React.MouseEvent<SVGGElement>) => {
       const chartX = getChartX(event);
@@ -187,23 +177,21 @@ export const useChartInteraction = ({
         return;
       }
 
-      lastHoveredXRef.current = chartX;
       const tooltip = resolveTooltipFromX(chartX);
       if (tooltip) {
-        scheduleTooltip(tooltip);
+        setTooltipData(tooltip);
       }
     },
-    [getChartX, resolveTooltipFromX, resolveIndexFromX, scheduleTooltip]
+    [getChartX, resolveTooltipFromX, resolveIndexFromX]
   );
 
   const handleMouseLeave = useCallback(() => {
-    lastHoveredXRef.current = null;
-    clearTooltip();
+    setTooltipData(null);
     if (isDraggingRef.current) {
       isDraggingRef.current = false;
     }
     setSelection(null);
-  }, [clearTooltip]);
+  }, []);
 
   const handleMouseDown = useCallback(
     (event: React.MouseEvent<SVGGElement>) => {
@@ -213,10 +201,10 @@ export const useChartInteraction = ({
       }
       isDraggingRef.current = true;
       dragStartXRef.current = chartX;
-      clearTooltip();
+      setTooltipData(null);
       setSelection(null);
     },
-    [getChartX, clearTooltip]
+    [getChartX]
   );
 
   const handleMouseUp = useCallback(() => {
@@ -226,6 +214,8 @@ export const useChartInteraction = ({
     setSelection(null);
   }, []);
 
+  // --- Touch handlers ---
+
   const handleTouchStart = useCallback(
     (event: React.TouchEvent<SVGGElement>) => {
       if (event.touches.length === 1) {
@@ -234,15 +224,13 @@ export const useChartInteraction = ({
         if (chartX === null) {
           return;
         }
-        lastHoveredXRef.current = chartX;
         const tooltip = resolveTooltipFromX(chartX);
         if (tooltip) {
-          scheduleTooltip(tooltip);
+          setTooltipData(tooltip);
         }
       } else if (event.touches.length === 2) {
         event.preventDefault();
-        resetTooltipDedupe();
-        clearTooltip();
+        setTooltipData(null);
         const x0 = getChartX(event, 0);
         const x1 = getChartX(event, 1);
         if (x0 === null || x1 === null) {
@@ -259,14 +247,7 @@ export const useChartInteraction = ({
         });
       }
     },
-    [
-      getChartX,
-      resolveTooltipFromX,
-      resolveIndexFromX,
-      scheduleTooltip,
-      resetTooltipDedupe,
-      clearTooltip,
-    ]
+    [getChartX, resolveTooltipFromX, resolveIndexFromX]
   );
 
   const handleTouchMove = useCallback(
@@ -277,10 +258,9 @@ export const useChartInteraction = ({
         if (chartX === null) {
           return;
         }
-        lastHoveredXRef.current = chartX;
         const tooltip = resolveTooltipFromX(chartX);
         if (tooltip) {
-          scheduleTooltip(tooltip);
+          setTooltipData(tooltip);
         }
       } else if (event.touches.length === 2) {
         event.preventDefault();
@@ -300,31 +280,17 @@ export const useChartInteraction = ({
         });
       }
     },
-    [getChartX, resolveTooltipFromX, resolveIndexFromX, scheduleTooltip]
+    [getChartX, resolveTooltipFromX, resolveIndexFromX]
   );
 
   const handleTouchEnd = useCallback(() => {
-    clearTooltip();
+    setTooltipData(null);
     setSelection(null);
-  }, [clearTooltip]);
+  }, []);
 
   const clearSelection = useCallback(() => {
     setSelection(null);
   }, []);
-
-  // Re-anchor tooltip/crosshair when x-scale or visible data changes (e.g. brush zoom commit).
-  useEffect(() => {
-    if (!canInteract || lastHoveredXRef.current === null) {
-      return;
-    }
-    const tooltip = resolveTooltipFromX(lastHoveredXRef.current);
-    if (tooltip) {
-      // Bypass index-only dedupe so x re-snaps when xScale changes after brush zoom.
-      setTooltipData(tooltip);
-      return;
-    }
-    clearTooltip();
-  }, [canInteract, clearTooltip, resolveTooltipFromX, setTooltipData]);
 
   const interactionHandlers = canInteract
     ? {

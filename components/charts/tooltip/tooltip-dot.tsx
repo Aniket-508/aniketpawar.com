@@ -2,9 +2,10 @@
 
 import { motion, useSpring } from "motion/react";
 
-import { useChartConfig } from "../chart-config-context";
-import type { SpringConfig } from "../chart-config-context";
 import { chartCssVars } from "../chart-context";
+
+// Faster spring to stay in sync with indicator
+const crosshairSpringConfig = { damping: 30, stiffness: 300 };
 
 export interface TooltipDotProps {
   x: number;
@@ -14,10 +15,6 @@ export interface TooltipDotProps {
   size?: number;
   strokeColor?: string;
   strokeWidth?: number;
-  /** Per-chart override; falls back to `ChartConfigProvider.tooltipSpring`. */
-  springConfig?: SpringConfig;
-  /** Animate position with a spring. Default: true */
-  animate?: boolean;
 }
 
 export const TooltipDot = ({
@@ -28,34 +25,15 @@ export const TooltipDot = ({
   size = 5,
   strokeColor = chartCssVars.background,
   strokeWidth = 2,
-  springConfig,
-  animate = true,
 }: TooltipDotProps) => {
-  const { tooltipSpring } = useChartConfig();
-  const effectiveSpring = springConfig ?? tooltipSpring;
-  const animatedX = useSpring(x, effectiveSpring);
-  const animatedY = useSpring(y, effectiveSpring);
+  const animatedX = useSpring(x, crosshairSpringConfig);
+  const animatedY = useSpring(y, crosshairSpringConfig);
 
-  if (animate) {
-    animatedX.set(x);
-    animatedY.set(y);
-  }
+  animatedX.set(x);
+  animatedY.set(y);
 
   if (!visible) {
     return null;
-  }
-
-  if (!animate) {
-    return (
-      <circle
-        cx={x}
-        cy={y}
-        fill={color}
-        r={size}
-        stroke={strokeColor}
-        strokeWidth={strokeWidth}
-      />
-    );
   }
 
   return (

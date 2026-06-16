@@ -48,22 +48,22 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-  --color-chart-label: var(----chart-label);
-  --color-chart-ring-background: var(----chart-ring-background);
-  --color-chart-marker-foreground: var(----chart-marker-foreground);
-  --color-chart-marker-border: var(----chart-marker-border);
-  --color-chart-marker-background: var(----chart-marker-background);
-  --color-chart-tooltip-muted: var(----chart-tooltip-muted);
-  --color-chart-tooltip-foreground: var(----chart-tooltip-foreground);
-  --color-chart-tooltip-background: var(----chart-tooltip-background);
-  --chart-brush-border: var(----chart-brush-border);
-  --color-chart-grid: var(----chart-grid);
-  --color-chart-crosshair: var(----chart-crosshair);
-  --chart-line-secondary: var(----chart-line-secondary);
-  --chart-line-primary: var(----chart-line-primary);
-  --color-chart-foreground-muted: var(----chart-foreground-muted);
-  --color-chart-foreground: var(----chart-foreground);
-  --color-chart-background: var(----chart-background);
+  --color-chart-label: var(--chart-label);
+  --color-chart-ring-background: var(--chart-ring-background);
+  --color-chart-marker-foreground: var(--chart-marker-foreground);
+  --color-chart-marker-border: var(--chart-marker-border);
+  --color-chart-marker-background: var(--chart-marker-background);
+  --color-chart-tooltip-muted: var(--chart-tooltip-muted);
+  --color-chart-tooltip-foreground: var(--chart-tooltip-foreground);
+  --color-chart-tooltip-background: var(--chart-tooltip-background);
+  --chart-brush-border: var(--chart-brush-border);
+  --color-chart-grid: var(--chart-grid);
+  --color-chart-crosshair: var(--chart-crosshair);
+  --chart-line-secondary: var(--chart-line-secondary);
+  --chart-line-primary: var(--chart-line-primary);
+  --color-chart-foreground-muted: var(--chart-foreground-muted);
+  --color-chart-foreground: var(--chart-foreground);
+  --color-chart-background: var(--chart-background);
 }
 
 :root {

@@ -50,6 +50,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/typography": "^0.5.19",
+    "@types/d3-array": "^3.2.2",
     "@types/mdx": "^2.0.13",
     "@types/node": "^25.0.10",
     "@types/react": "^19.2.9",

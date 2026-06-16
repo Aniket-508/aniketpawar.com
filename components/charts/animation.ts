@@ -19,10 +19,7 @@ export const clipRevealTransition = (
   enterTransition?: Transition
 ): Transition => {
   if (enterTransition?.type === "tween") {
-    return {
-      ...enterTransition,
-      ease: enterTransition.ease ?? DEFAULT_CHART_ENTER_TRANSITION.ease,
-    };
+    return enterTransition;
   }
 
   const duration =

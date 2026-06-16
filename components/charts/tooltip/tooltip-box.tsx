@@ -1,14 +1,18 @@
+/* eslint-disable @typescript-eslint/consistent-type-imports */
+/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable react-hooks/refs */
+/* eslint-disable unicorn/prefer-module */
+/* eslint-disable node/global-require */
 "use client";
 
 import { motion, useSpring } from "motion/react";
 import type { RefObject } from "react";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
 
 import { cn } from "@/lib/utils";
 
-import { useChartConfig } from "../chart-config-context";
-import type { SpringConfig } from "../chart-config-context";
+// Spring config for smooth tooltip movement
+const springConfig = { damping: 20, stiffness: 100 };
 
 export interface TooltipBoxProps {
   /** X position in pixels (relative to container) */
@@ -35,17 +39,13 @@ export interface TooltipBoxProps {
   top?: number | ReturnType<typeof useSpring>;
   /** Force flip direction (for custom positioning) */
   flipped?: boolean;
-  /** Per-chart override; falls back to `ChartConfigProvider.tooltipBoxSpring`. */
-  springConfig?: SpringConfig;
-  /** Animate panel position with a spring. Default: true */
-  animate?: boolean;
-  /** Inline styles for the inner tooltip panel. */
-  panelStyle?: React.CSSProperties;
 }
 
-const TooltipBoxInner = ({
+export const TooltipBox = ({
   x,
   y,
+  visible,
+  containerRef,
   containerWidth,
   containerHeight,
   offset = 16,
@@ -54,20 +54,18 @@ const TooltipBoxInner = ({
   left: leftOverride,
   top: topOverride,
   flipped: flippedOverride,
-  springConfig,
-  animate = true,
-  panelStyle,
-  container,
-}: Omit<TooltipBoxProps, "visible" | "containerRef"> & {
-  container: HTMLElement;
-}) => {
-  const { tooltipBoxSpring } = useChartConfig();
-  const effectiveSpring = springConfig ?? tooltipBoxSpring;
-
+}: TooltipBoxProps) => {
   const tooltipRef = useRef<HTMLDivElement>(null);
   const tooltipWidthRef = useRef(180);
   const tooltipHeightRef = useRef(80);
-  const [staticPosition, setStaticPosition] = useState({ left: x, top: y });
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const animatedLeft = useSpring(x + offset, springConfig);
+  const animatedTop = useSpring(y, springConfig);
 
   const tw = tooltipWidthRef.current;
   const th = tooltipHeightRef.current;
@@ -78,18 +76,15 @@ const TooltipBoxInner = ({
     Math.min(y - th / 2, containerHeight - th - offset)
   );
 
-  const animatedLeft = useSpring(targetX, effectiveSpring);
-  const animatedTop = useSpring(targetY, effectiveSpring);
-
-  if (animate && leftOverride === undefined) {
+  if (leftOverride === undefined) {
     animatedLeft.set(targetX);
   }
-  if (animate && topOverride === undefined) {
+  if (topOverride === undefined) {
     animatedTop.set(targetY);
   }
 
   useLayoutEffect(() => {
-    if (!tooltipRef.current) {
+    if (!(visible && tooltipRef.current)) {
       return;
     }
     const el = tooltipRef.current;
@@ -109,10 +104,6 @@ const TooltipBoxInner = ({
       offset,
       Math.min(y - h2 / 2, containerHeight - h2 - offset)
     );
-    if (!animate) {
-      setStaticPosition({ left: tx, top: ty });
-      return;
-    }
     if (leftOverride === undefined) {
       animatedLeft.set(tx);
     }
@@ -120,6 +111,7 @@ const TooltipBoxInner = ({
       animatedTop.set(ty);
     }
   }, [
+    visible,
     x,
     y,
     containerWidth,
@@ -127,7 +119,6 @@ const TooltipBoxInner = ({
     offset,
     leftOverride,
     topOverride,
-    animate,
     animatedLeft,
     animatedTop,
   ]);
@@ -142,12 +133,21 @@ const TooltipBoxInner = ({
     }
   }, [shouldFlipX]);
 
-  const finalLeft = animate
-    ? (leftOverride ?? animatedLeft)
-    : staticPosition.left;
-  const finalTop = animate ? (topOverride ?? animatedTop) : staticPosition.top;
+  const finalLeft = leftOverride ?? animatedLeft;
+  const finalTop = topOverride ?? animatedTop;
   const isFlipped = flippedOverride ?? shouldFlipX;
   const transformOrigin = isFlipped ? "right top" : "left top";
+
+  const container = containerRef.current;
+  if (!(mounted && container)) {
+    return null;
+  }
+
+  const { createPortal } = require("react-dom") as typeof import("react-dom");
+
+  if (!visible) {
+    return null;
+  }
 
   return createPortal(
     <motion.div
@@ -161,10 +161,10 @@ const TooltipBoxInner = ({
     >
       <motion.div
         animate={{ opacity: 1, scale: 1, x: 0 }}
-        className="min-w-[140px] overflow-hidden rounded-lg bg-chart-tooltip-background text-chart-tooltip-foreground shadow-lg backdrop-blur-md"
+        className="min-w-35 overflow-hidden rounded-lg bg-chart-tooltip-background text-chart-tooltip-foreground shadow-lg ring-1 ring-foreground/10 backdrop-blur-md dark:ring-foreground/15"
         initial={{ opacity: 0, scale: 0.85, x: isFlipped ? 20 : -20 }}
         key={flipKey}
-        style={{ transformOrigin, ...panelStyle }}
+        style={{ transformOrigin }}
         transition={{ damping: 25, stiffness: 300, type: "spring" }}
       >
         {children}
@@ -172,25 +172,6 @@ const TooltipBoxInner = ({
     </motion.div>,
     container
   );
-};
-
-// Inner-only-on-visible so `useSpring` initializes at the cursor's actual x/y
-// instead of (0, 0) on first hover.
-export const TooltipBox = (props: TooltipBoxProps) => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const container = props.containerRef.current;
-  if (!(mounted && container)) {
-    return null;
-  }
-  if (!props.visible) {
-    return null;
-  }
-  return <TooltipBoxInner {...props} container={container} />;
 };
 
 TooltipBox.displayName = "TooltipBox";

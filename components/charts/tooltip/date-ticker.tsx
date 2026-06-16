@@ -1,11 +1,10 @@
+/* eslint-disable react-hooks/refs */
 "use client";
 
 import { motion, useSpring } from "motion/react";
-import { memo, useMemo, useRef } from "react";
+import { useMemo, useRef } from "react";
 
 const TICKER_ITEM_HEIGHT = 24;
-/** Full scroll stacks are skipped above this count — single label + instant updates. */
-const COMPACT_TICKER_THRESHOLD = 60;
 
 export interface DateTickerProps {
   currentIndex: number;
@@ -13,141 +12,116 @@ export interface DateTickerProps {
   visible: boolean;
 }
 
-const DateTickerCompact = memo(
-  ({ currentIndex, labels }: Omit<DateTickerProps, "visible">) => {
-    const label = labels[currentIndex] ?? labels[0] ?? "";
-
-    return (
-      <div className="overflow-hidden rounded-full bg-zinc-900 px-4 py-1 text-white shadow-lg dark:bg-zinc-100 dark:text-zinc-900">
-        <div className="flex h-6 items-center justify-center">
-          <span className="whitespace-nowrap font-medium text-sm">{label}</span>
-        </div>
-      </div>
-    );
-  }
-);
-
-const DateTickerInner = memo(
-  ({ currentIndex, labels }: Omit<DateTickerProps, "visible">) => {
-    // Parse labels into month and day parts
-    const parsedLabels = useMemo(
-      () =>
-        labels.map((label, index) => {
-          const parts = label.split(" ");
-          const month = parts[0] || "";
-          const day = parts[1] || "";
-          return { day, full: label, key: `${label}::${index}`, month };
-        }),
-      [labels]
-    );
-
-    // Month segments: one entry per consecutive run (Jan → Feb → …), keyed by start index
-    const monthSegments = useMemo(() => {
-      const segments: { month: string; key: string; startIndex: number }[] = [];
-
-      for (let index = 0; index < parsedLabels.length; index += 1) {
-        const label = parsedLabels[index];
-        const prev = segments.at(-1);
-        if (!prev || prev.month !== label.month) {
-          segments.push({
-            key: `${label.month}-${index}`,
-            month: label.month,
-            startIndex: index,
-          });
-        }
-      }
-
-      return segments;
-    }, [parsedLabels]);
-
-    // Index into monthSegments for the current data point
-    const currentMonthIndex = useMemo(() => {
-      if (currentIndex < 0 || currentIndex >= parsedLabels.length) {
-        return 0;
-      }
-      for (let i = monthSegments.length - 1; i >= 0; i -= 1) {
-        const segment = monthSegments[i];
-        if (segment && segment.startIndex <= currentIndex) {
-          return i;
-        }
-      }
-      return 0;
-    }, [currentIndex, parsedLabels.length, monthSegments]);
-
-    // Track previous month index
-    const prevMonthIndexRef = useRef(-1);
-
-    // Animated Y offsets
-    const dayY = useSpring(0, { damping: 35, stiffness: 400 });
-    const monthY = useSpring(0, { damping: 35, stiffness: 400 });
-
-    dayY.set(-currentIndex * TICKER_ITEM_HEIGHT);
-
-    if (currentMonthIndex >= 0) {
-      const isFirstRender = prevMonthIndexRef.current === -1;
-      const monthChanged = prevMonthIndexRef.current !== currentMonthIndex;
-      if (isFirstRender || monthChanged) {
-        monthY.set(-currentMonthIndex * TICKER_ITEM_HEIGHT);
-        prevMonthIndexRef.current = currentMonthIndex;
-      }
-    }
-
-    return (
-      <div className="overflow-hidden rounded-full bg-zinc-900 px-4 py-1 text-white shadow-lg dark:bg-zinc-100 dark:text-zinc-900">
-        <div className="relative h-6 overflow-hidden">
-          <div className="flex items-center justify-center gap-1">
-            {/* Month stack */}
-            <div className="relative h-6 overflow-hidden">
-              <motion.div className="flex flex-col" style={{ y: monthY }}>
-                {monthSegments.map((segment) => (
-                  <div
-                    className="flex h-6 shrink-0 items-center justify-center"
-                    key={segment.key}
-                  >
-                    <span className="whitespace-nowrap font-medium text-sm">
-                      {segment.month}
-                    </span>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-
-            {/* Day stack */}
-            <div className="relative h-6 overflow-hidden">
-              <motion.div className="flex flex-col" style={{ y: dayY }}>
-                {parsedLabels.map((label) => (
-                  <div
-                    className="flex h-6 shrink-0 items-center justify-center"
-                    key={label.key}
-                  >
-                    <span className="whitespace-nowrap font-medium text-sm">
-                      {label.day}
-                    </span>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-);
-
 export const DateTicker = ({
   currentIndex,
   labels,
   visible,
 }: DateTickerProps) => {
+  // Parse labels into month and day parts
+  const parsedLabels = useMemo(
+    () =>
+      labels.map((label, index) => {
+        const parts = label.split(" ");
+        const month = parts[0] || "";
+        const day = parts[1] || "";
+        return { day, full: label, key: `${label}::${index}`, month };
+      }),
+    [labels]
+  );
+
+  // Month segments: one entry per consecutive run (Jan → Feb → …), keyed by start index
+  const monthSegments = useMemo(() => {
+    const segments: { month: string; key: string; startIndex: number }[] = [];
+
+    for (const [index, label] of parsedLabels.entries()) {
+      const prev = segments.at(-1);
+      if (!prev || prev.month !== label.month) {
+        segments.push({
+          key: `${label.month}-${index}`,
+          month: label.month,
+          startIndex: index,
+        });
+      }
+    }
+
+    return segments;
+  }, [parsedLabels]);
+
+  // Index into monthSegments for the current data point
+  const currentMonthIndex = useMemo(() => {
+    if (currentIndex < 0 || currentIndex >= parsedLabels.length) {
+      return 0;
+    }
+    for (let i = monthSegments.length - 1; i >= 0; i -= 1) {
+      const segment = monthSegments[i];
+      if (segment && segment.startIndex <= currentIndex) {
+        return i;
+      }
+    }
+    return 0;
+  }, [currentIndex, parsedLabels.length, monthSegments]);
+
+  // Track previous month index
+  const prevMonthIndexRef = useRef(-1);
+
+  // Animated Y offsets
+  const dayY = useSpring(0, { damping: 35, stiffness: 400 });
+  const monthY = useSpring(0, { damping: 35, stiffness: 400 });
+
+  dayY.set(-currentIndex * TICKER_ITEM_HEIGHT);
+
+  if (currentMonthIndex >= 0) {
+    const isFirstRender = prevMonthIndexRef.current === -1;
+    const monthChanged = prevMonthIndexRef.current !== currentMonthIndex;
+    if (isFirstRender || monthChanged) {
+      monthY.set(-currentMonthIndex * TICKER_ITEM_HEIGHT);
+      prevMonthIndexRef.current = currentMonthIndex;
+    }
+  }
+
   if (!visible || labels.length === 0) {
     return null;
   }
 
-  if (labels.length > COMPACT_TICKER_THRESHOLD) {
-    return <DateTickerCompact currentIndex={currentIndex} labels={labels} />;
-  }
+  return (
+    <div className="overflow-hidden rounded-full bg-zinc-900 px-4 py-1 text-white shadow-lg dark:bg-zinc-100 dark:text-zinc-900">
+      <div className="relative h-6 overflow-hidden">
+        <div className="flex items-center justify-center gap-1">
+          {/* Month stack */}
+          <div className="relative h-6 overflow-hidden">
+            <motion.div className="flex flex-col" style={{ y: monthY }}>
+              {monthSegments.map((segment) => (
+                <div
+                  className="flex h-6 shrink-0 items-center justify-center"
+                  key={segment.key}
+                >
+                  <span className="text-sm font-medium whitespace-nowrap">
+                    {segment.month}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
 
-  return <DateTickerInner currentIndex={currentIndex} labels={labels} />;
+          {/* Day stack */}
+          <div className="relative h-6 overflow-hidden">
+            <motion.div className="flex flex-col" style={{ y: dayY }}>
+              {parsedLabels.map((label) => (
+                <div
+                  className="flex h-6 shrink-0 items-center justify-center"
+                  key={label.key}
+                >
+                  <span className="text-sm font-medium whitespace-nowrap">
+                    {label.day}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 DateTicker.displayName = "DateTicker";

@@ -17,11 +17,11 @@ export interface SpringOptions {
   mass?: number;
 }
 
-const DEFAULT_SPRING: SpringOptions = { damping: 20, stiffness: 60 };
+const DEFAULT_SPRING_OPTIONS: SpringOptions = { damping: 20, stiffness: 60 };
 
 export const springOptionsFromTransition = (
   transition?: Transition,
-  fallback: SpringOptions = DEFAULT_SPRING
+  fallback: SpringOptions = DEFAULT_SPRING_OPTIONS
 ): SpringOptions => {
   if (!transition) {
     return fallback;

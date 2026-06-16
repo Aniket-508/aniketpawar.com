@@ -114,6 +114,9 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.19
         version: 0.5.19(tailwindcss@4.1.18)
+      '@types/d3-array':
+        specifier: ^3.2.2
+        version: 3.2.2
       '@types/mdx':
         specifier: ^2.0.13
         version: 2.0.13
@@ -1401,6 +1404,9 @@ packages:
 
   '@types/d3-array@3.0.3':
     resolution: {integrity: sha512-Reoy+pKnvsksN0lQUlcH6dOGjRZ/3WRwXR//m+/8lt1BXeI4xyaUZoqULNjyXXRuh0Mj4LNpkCvhUpQlY3X5xQ==}
+
+  '@types/d3-array@3.2.2':
+    resolution: {integrity: sha512-hOLWVbm7uRza0BYXpIIW5pxfrKe0W+D5lrFiAEYR+pb6w3N2SwSMaJbXdUfSEv+dT4MfHBLtn5js0LAWaO6otw==}
 
   '@types/d3-color@3.1.0':
     resolution: {integrity: sha512-HKuicPHJuvPgCD+np6Se9MQvS6OCbJmOjGvylzMJRlDwUXjKTTXs6Pwgk79O09Vj/ho3u1ofXnhFOaEWWPrlwA==}
@@ -4656,6 +4662,8 @@ snapshots:
       path-browserify: 1.0.1
 
   '@types/d3-array@3.0.3': {}
+
+  '@types/d3-array@3.2.2': {}
 
   '@types/d3-color@3.1.0': {}
 

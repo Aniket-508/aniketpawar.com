@@ -14,6 +14,7 @@ export const useMountProgress = (
 ) => {
   const progress = useMotionValue(0);
   const transitionRef = useRef(enterTransition);
+  // eslint-disable-next-line react-hooks/refs
   transitionRef.current = enterTransition;
 
   // replayKey intentionally retriggers enter when motion settings change
