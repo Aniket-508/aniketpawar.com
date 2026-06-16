@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "aniket-ui",
+  "homepage": "https://aniketpawar.com",
+  "items": [
+    {
+      "name": "link-reveal",
+      "type": "registry:component",
+      "title": "Link Reveal",
+      "description": "Animated link that reveals the website favicon and primary color on hover.",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/components/link-reveal/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/components/link-reveal/server.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/components/link-reveal/link-reveal.tsx",
+          "type": "registry:component",
+          "target": "@/components/link-reveal.tsx"
+        }
+      ],
+      "categories": ["effects"]
+    }
+  ]
+}

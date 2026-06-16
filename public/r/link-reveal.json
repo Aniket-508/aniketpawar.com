@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "link-reveal",
+  "title": "Link Reveal",
+  "description": "Animated link that reveals the website favicon and primary color on hover.",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/components/link-reveal/types.ts",
+      "content": "export interface LinkRevealData {\n  favicon: string | null;\n  primaryColor: string | null;\n}\n",
+      "type": "registry:lib"
+    },
+    {
+      "path": "registry/components/link-reveal/server.ts",
+      "content": "import type { LinkRevealData } from \"./types\";\n\nconst THEME_COLOR_REGEX =\n  /<meta[^>]*name=[\"']theme-color[\"'][^>]*content=[\"']([^\"']+)[\"']/iu;\nconst THEME_COLOR_CONTENT_REGEX =\n  /<meta[^>]*content=[\"']([^\"']+)[\"'][^>]*name=[\"']theme-color[\"']/iu;\n\nconst EMPTY_DATA: LinkRevealData = {\n  favicon: null,\n  primaryColor: null,\n};\n\nconst extractContent = (match: RegExpMatchArray | null): string | null =>\n  match?.at(1) ?? null;\n\nconst getFaviconUrl = (url: string): string => {\n  try {\n    const { hostname } = new URL(url);\n    return `https://www.google.com/s2/favicons?domain=${hostname}&sz=32`;\n  } catch {\n    return \"\";\n  }\n};\n\nexport const fetchLinkRevealData = async (\n  url: string\n): Promise<LinkRevealData> => {\n  try {\n    const controller = new AbortController();\n    const timeoutId = setTimeout(() => controller.abort(), 5000);\n\n    const response = await fetch(url, {\n      headers: { \"User-Agent\": \"Mozilla/5.0 (compatible; LinkReveal/1.0)\" },\n      signal: controller.signal,\n    });\n\n    clearTimeout(timeoutId);\n\n    if (!response.ok) {\n      return { ...EMPTY_DATA, favicon: getFaviconUrl(url) };\n    }\n\n    const html = await response.text();\n    const themeColorMatch =\n      html.match(THEME_COLOR_REGEX) || html.match(THEME_COLOR_CONTENT_REGEX);\n\n    return {\n      favicon: getFaviconUrl(url),\n      primaryColor: extractContent(themeColorMatch),\n    };\n  } catch {\n    return EMPTY_DATA;\n  }\n};\n",
+      "type": "registry:lib"
+    },
+    {
+      "path": "registry/components/link-reveal/link-reveal.tsx",
+      "content": "\"use client\";\n\nimport { motion, useReducedMotion } from \"motion/react\";\nimport { useState, type ReactNode } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport type { LinkRevealData } from \"./types\";\n\nexport type LinkRevealProps = Omit<\n  React.ComponentProps<\"a\">,\n  | \"children\"\n  | \"onDrag\"\n  | \"onDragEnd\"\n  | \"onDragStart\"\n  | \"onAnimationStart\"\n  | \"onAnimationEnd\"\n> &\n  Partial<LinkRevealData> & {\n    children: ReactNode;\n    icon?: ReactNode;\n  };\n\nexport const LinkReveal = ({\n  favicon,\n  primaryColor,\n  icon,\n  className,\n  children,\n  ...props\n}: LinkRevealProps) => {\n  const reducedMotion = useReducedMotion();\n  const [hovered, setHovered] = useState(false);\n  const animate = reducedMotion ? false : hovered;\n\n  return (\n    <motion.a\n      className={cn(\n        \"group/link relative inline-flex items-center font-medium\",\n        \"underline underline-offset-2 !no-underline\",\n        primaryColor &&\n          \"hover:text-[var(--link-reveal-color)]\",\n        className\n      )}\n      style={{\n        \"--link-reveal-color\": primaryColor ?? undefined,\n      } as React.CSSProperties}\n      onHoverStart={() => setHovered(true)}\n      onHoverEnd={() => setHovered(false)}\n      animate={animate ? { x: -4 } : { x: 0 }}\n      transition={{ type: \"spring\", stiffness: 400, damping: 25 }}\n      {...props}\n    >\n      <motion.span\n        aria-hidden\n        className=\"absolute left-0 top-0 bottom-0 my-auto inline-flex size-[1.2em] items-center overflow-hidden rounded-xs\"\n        animate={animate ? { opacity: 1, x: 0 } : { opacity: 0, x: 4 }}\n        transition={{ duration: 0.3, ease: \"easeOut\" }}\n      >\n        {icon\n          ? icon\n          : favicon\n            ? (\n                // biome-ignore lint/performance/noImgElement: registry component, favicon from external source\n                <img\n                  alt=\"\"\n                  className=\"size-full shrink-0 object-contain\"\n                  height={16}\n                  src={favicon}\n                  width={16}\n                />\n              )\n            : null}\n      </motion.span>\n      <motion.span\n        className=\"leading-none\"\n        animate={animate ? { paddingLeft: \"1.4em\" } : { paddingLeft: 0 }}\n        transition={{ duration: 0.3, ease: \"easeOut\" }}\n      >\n        {children}\n      </motion.span>\n    </motion.a>\n  );\n};\n",
+      "type": "registry:component",
+      "target": "@/components/link-reveal.tsx"
+    }
+  ],
+  "categories": ["effects"],
+  "type": "registry:component"
+}
