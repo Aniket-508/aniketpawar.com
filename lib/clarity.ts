@@ -1,6 +1,7 @@
 import Clarity from "@microsoft/clarity";
 import { unstable_cache } from "next/cache";
 
+import { env } from "@/env";
 import type {
   ClarityInsights,
   ClarityMetricResponse,
@@ -231,7 +232,7 @@ export const getClarityInsights = unstable_cache(
       return null;
     }
 
-    const token = process.env.CLARITY_API_TOKEN;
+    const token = env.CLARITY_API_TOKEN;
     if (!token) {
       return null;
     }
