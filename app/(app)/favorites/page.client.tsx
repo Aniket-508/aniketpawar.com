@@ -1,11 +1,16 @@
 "use client";
 
+import { SearchIcon } from "lucide-react";
 import { useState, useMemo } from "react";
 
 import { FavoriteCategoryCombobox } from "@/components/favorites/category-combobox";
 import { FavoritesView } from "@/components/favorites/view";
 import type { GlimpseData } from "@/components/ui/glimpse/types";
-import { Input } from "@/components/ui/input";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
 import { ViewToggle } from "@/components/view-tabs";
 import { FAVORITES } from "@/constants/favorites";
 import type { Variant } from "@/lib/events";
@@ -21,7 +26,7 @@ const FavoritesPageClient = ({
 }: FavoritesPageClientProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  const [variant, setVariant] = useState<Variant>("grid");
+  const [variant, setVariant] = useState<Variant>("list");
 
   const filteredFavorites = useMemo(
     () =>
@@ -44,12 +49,19 @@ const FavoritesPageClient = ({
   return (
     <>
       <div className="flex items-center gap-2">
-        <Input
-          placeholder="Search favorites..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="flex-1"
-        />
+        <InputGroup>
+          <InputGroupInput
+            id="input-group-search"
+            placeholder="Search favorites..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="flex-1"
+          />
+          <InputGroupAddon>
+            <SearchIcon />
+          </InputGroupAddon>
+        </InputGroup>
+
         <FavoriteCategoryCombobox
           value={selectedCategory}
           onChange={setSelectedCategory}

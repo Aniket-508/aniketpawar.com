@@ -6,7 +6,7 @@ import { ROUTES } from "@/constants/routes";
 
 import { FavoritesView } from "./view";
 
-const FAVORITES_LIMIT = 5;
+const FAVORITES_LIMIT = 4;
 
 const FavoritesSection = async () => {
   const favoriteLinks = FAVORITES.slice(0, FAVORITES_LIMIT).map((f) => f.url);
@@ -16,7 +16,6 @@ const FavoritesSection = async () => {
     <Section className="delay-300 flex flex-col gap-4" id="favorites">
       <FavoritesView
         favorites={FAVORITES.slice(0, FAVORITES_LIMIT)}
-        defaultVariant="grid"
         previews={previews}
       />
       <ViewAllButton

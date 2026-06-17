@@ -13,7 +13,7 @@ export const Glimpse = (props: GlimpseProps) => <HoverCard {...props} />;
 
 export type GlimpseContentProps = React.ComponentProps<typeof HoverCardContent>;
 
-export const GlimpseContent = ({ ...props }: GlimpseContentProps) => (
+export const GlimpseContent = (props: GlimpseContentProps) => (
   <HoverCardContent {...props} />
 );
 
