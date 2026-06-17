@@ -33,34 +33,19 @@ const CraftItem = ({
   const isGrid = variant === "grid";
 
   const craftHref = `${ROUTES.CRAFTS}/${slug}`;
+
   const trackClick = () =>
     trackCraftDetailClick(slug, title, showHeader ? "home" : "listing");
 
-  const titleRender = showHeader ? <h3>{title}</h3> : <h2>{title}</h2>;
-
-  const linkedTitleRender = showHeader ? (
-    <h3>
-      <Link
-        href={craftHref}
-        className="hover:underline underline-offset-4 whitespace-nowrap"
-        onClick={trackClick}
-      >
-        {title}
-      </Link>
-    </h3>
-  ) : (
-    <h2>
-      <Link
-        href={craftHref}
-        className="hover:underline underline-offset-4 whitespace-nowrap"
-        onClick={trackClick}
-      >
-        {title}
-      </Link>
-    </h2>
+  const titleLink = (
+    <Link
+      href={craftHref}
+      className="hover:underline underline-offset-4 whitespace-nowrap"
+      onClick={trackClick}
+    >
+      {title}
+    </Link>
   );
-
-  const titleClassName = "font-sans text-base font-normal flex-1";
 
   if (isGrid) {
     return (
@@ -77,7 +62,10 @@ const CraftItem = ({
           className="mb-1"
           type="video"
         />
-        <Title className={titleClassName} render={linkedTitleRender} />
+        <Title
+          className="font-sans text-base font-normal flex-1"
+          render={showHeader ? <h3>{titleLink}</h3> : <h2>{titleLink}</h2>}
+        />
         <p
           className="text-muted-foreground text-sm font-normal max-w-full"
           title={description}
@@ -98,7 +86,10 @@ const CraftItem = ({
         href={craftHref}
         onClick={trackClick}
       >
-        <Title className={titleClassName} render={titleRender} />
+        <Title
+          className="font-sans text-base font-normal flex-1"
+          render={showHeader ? <h3>{title}</h3> : <h2>{title}</h2>}
+        />
         <p
           className="text-muted-foreground text-sm font-normal truncate max-w-[60%]"
           title={description}
