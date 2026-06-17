@@ -1,4 +1,9 @@
-export type SectionId = "crafts" | "experiences" | "projects" | "stack";
+export type SectionId =
+  | "crafts"
+  | "experiences"
+  | "favorites"
+  | "projects"
+  | "stack";
 
 export interface NavItem {
   href: string;

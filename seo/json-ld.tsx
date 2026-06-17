@@ -120,6 +120,12 @@ const experiencesBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
   ...(current ? [current] : []),
 ];
 
+const favoritesBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Favorites", path: ROUTES.FAVORITES },
+  ...(current ? [current] : []),
+];
+
 const stackBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
   HOME_BREADCRUMB,
   { name: "Stack", path: ROUTES.STACK },
@@ -153,6 +159,7 @@ export {
   BreadcrumbJsonLd,
   craftsBreadcrumbs,
   experiencesBreadcrumbs,
+  favoritesBreadcrumbs,
   JsonLdScripts,
   projectsBreadcrumbs,
   stackBreadcrumbs,
