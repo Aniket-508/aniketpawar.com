@@ -75,6 +75,11 @@ const FavoritesView = ({
           viewClassName
         )}
       >
+        {favorites.length === 0 && (
+          <p className="text-muted-foreground py-8 text-center text-sm">
+            No favorites found.
+          </p>
+        )}
         {favorites.map((favorite) => (
           <FavoriteItem
             key={favorite.slug}
