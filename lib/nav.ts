@@ -24,5 +24,12 @@ export const getActiveSection = (pathname: string): SectionId | null => {
     return "stack";
   }
 
+  if (
+    pathname === ROUTES.FAVORITES ||
+    pathname.startsWith(`${ROUTES.FAVORITES}/`)
+  ) {
+    return "favorites";
+  }
+
   return null;
 };
