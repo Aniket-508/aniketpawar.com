@@ -1,13 +1,9 @@
 export type FavoriteCategory =
-  | "Design"
-  | "Development"
   | "People"
   | "Products"
-  | "Media"
-  | "Books"
+  | "Sites"
   | "Fonts"
-  | "Icons"
-  | "Analytics";
+  | "Media";
 
 export interface Favorite {
   slug: string;

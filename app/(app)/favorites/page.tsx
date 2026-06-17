@@ -8,7 +8,7 @@ import { createMetadata } from "@/seo/metadata";
 
 import FavoritesPageClient from "./page.client";
 
-const DESCRIPTION = "Things I love and use regularly.";
+const DESCRIPTION = "Things I keep coming back to.";
 
 export const metadata = createMetadata({
   canonical: ROUTES.FAVORITES,

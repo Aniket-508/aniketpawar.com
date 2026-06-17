@@ -6,7 +6,7 @@ import { ROUTES } from "@/constants/routes";
 
 import { FavoritesView } from "./view";
 
-const FAVORITES_LIMIT = 4;
+const FAVORITES_LIMIT = 7;
 
 const FavoritesSection = async () => {
   const favoriteLinks = FAVORITES.slice(0, FAVORITES_LIMIT).map((f) => f.url);
