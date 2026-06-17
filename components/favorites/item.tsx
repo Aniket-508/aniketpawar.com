@@ -99,7 +99,7 @@ const FavoriteItem = ({
         </p>
       </GlimpseTrigger>
       {preview?.image && (
-        <GlimpseContent side="left" sideOffset={8} className="ring-0 w-80">
+        <GlimpseContent side="left" sideOffset={8} className="ring-0 p-0 w-80">
           <MediaPreview src={preview.image} title={title} />
         </GlimpseContent>
       )}

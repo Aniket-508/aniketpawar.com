@@ -13,11 +13,8 @@ export const Glimpse = (props: GlimpseProps) => <HoverCard {...props} />;
 
 export type GlimpseContentProps = React.ComponentProps<typeof HoverCardContent>;
 
-export const GlimpseContent = ({
-  className,
-  ...props
-}: GlimpseContentProps) => (
-  <HoverCardContent className={cn("p-0", className)} {...props} />
+export const GlimpseContent = ({ ...props }: GlimpseContentProps) => (
+  <HoverCardContent {...props} />
 );
 
 export type GlimpseTriggerProps = React.ComponentProps<typeof HoverCardTrigger>;
@@ -55,7 +52,7 @@ export const GlimpseImage = ({
   <img
     alt=""
     className={cn(
-      "mb-2.5 aspect-120/63 w-full rounded-md border object-cover",
+      "mb-2.5 aspect-[120/63] w-full rounded-md border object-cover",
       className
     )}
     {...props}
