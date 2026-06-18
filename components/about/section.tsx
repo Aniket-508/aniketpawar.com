@@ -14,6 +14,7 @@ import { Callout } from "@/components/ui/callout";
 import { Title } from "@/components/ui/title";
 import { LINK } from "@/constants/links";
 import { getGitHubContributions } from "@/lib/github";
+import { LinkReveal } from "@/registry/components/link-reveal/link-reveal";
 
 const AboutSection = () => {
   const contributions = getGitHubContributions();
@@ -37,20 +38,14 @@ const AboutSection = () => {
         </p>
         <p>
           I run{" "}
-          <AppLink
+          <LinkReveal
             className="inline-flex items-center gap-1 translate-y-[3px]"
             href={LINK.GITHUB_ORG}
+            icon={<Icons.shadcnlabs className="size-4" />}
             target="_blank"
-            eventName="external_link_click"
-            eventProperties={{
-              context: "hero",
-              link_type: "external",
-              title: "shadcn labs",
-              url: LINK.GITHUB_ORG,
-            }}
           >
-            <Icons.shadcnlabs className="size-4" /> Shadcn Labs
-          </AppLink>
+            Shadcn Labs
+          </LinkReveal>
           , an open-source org committed to building technologies that push the
           limits of{" "}
           <AppLink
