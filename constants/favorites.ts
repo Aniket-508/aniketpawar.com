@@ -2,6 +2,13 @@ import type { Favorite } from "@/types/favorites";
 
 export const FAVORITES = [
   {
+    category: "Sites",
+    description: "Please buy me this. I'm literally begging 🙏",
+    slug: "interface-craft",
+    title: "Interface Craft",
+    url: "https://www.interfacecraft.dev",
+  },
+  {
     category: "Products",
     description: "I live here. This is my second address.",
     slug: "opencode",
@@ -30,7 +37,7 @@ export const FAVORITES = [
     url: "https://vercel.com/design/guidelines",
   },
   {
-    category: "Products",
+    category: "Sites",
     description: "The very best in iOS",
     slug: "spotted-in-prod",
     title: "Spotted in Prod",
