@@ -3,7 +3,7 @@ import type { Favorite } from "@/types/favorites";
 export const FAVORITES = [
   {
     category: "Sites",
-    description: "Please buy me this. I'm literally begging 🙏",
+    description: "Gold standard for designing good interfaces.",
     slug: "interface-craft",
     title: "Interface Craft",
     url: "https://www.interfacecraft.dev",
@@ -42,6 +42,13 @@ export const FAVORITES = [
     slug: "spotted-in-prod",
     title: "Spotted in Prod",
     url: "https://www.spottedinprod.com",
+  },
+  {
+    category: "Sites",
+    description: "Dan Abramov's React essays I swear by",
+    slug: "overreacted",
+    title: "Overreacted",
+    url: "https://overreacted.io",
   },
   {
     category: "Fonts",
