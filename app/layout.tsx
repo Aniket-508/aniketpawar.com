@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import "@/styles/globals.css";
 
@@ -65,12 +66,14 @@ export default function RootLayout({
         className={`overscroll-none font-sans flex flex-col min-h-screen pt-20 ${geist.variable} ${geist_mono.variable} ${instrument_serif.variable}`}
       >
         <ThemeProvider>
-          <Analytics projectId={env.NEXT_PUBLIC_CLARITY_PROJECT_ID} />
-          <TooltipProvider>
-            <SoundProvider>
-              <HapticsProvider>{children}</HapticsProvider>
-            </SoundProvider>
-          </TooltipProvider>
+          <NuqsAdapter>
+            <Analytics projectId={env.NEXT_PUBLIC_CLARITY_PROJECT_ID} />
+            <TooltipProvider>
+              <SoundProvider>
+                <HapticsProvider>{children}</HapticsProvider>
+              </SoundProvider>
+            </TooltipProvider>
+          </NuqsAdapter>
         </ThemeProvider>
       </body>
     </html>

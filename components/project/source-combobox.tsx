@@ -8,29 +8,31 @@ import {
   ComboboxTrigger,
 } from "@/components/ui/combobox";
 import { tabsListVariants } from "@/components/ui/tabs";
-import { PROJECT_SOURCES } from "@/constants/projects";
+import { DEFAULT_PROJECT_SOURCE, PROJECT_SOURCES } from "@/constants/projects";
 import { getProjectSourceOption } from "@/lib/projects";
+import { useProjectSourceQueryState } from "@/lib/search-params/hooks";
 import { cn } from "@/lib/utils";
 import type { ProjectSourceOption, ProjectSource } from "@/types/projects";
 
 import { ProjectSourceLabel } from "./source-label";
-
-interface ProjectSourceComboboxProps {
-  value: ProjectSource;
-  onChange: (source: ProjectSource) => void;
-  className?: string;
-}
 
 const isSameSource = (
   item: ProjectSourceOption,
   selected: ProjectSourceOption
 ): boolean => item.value === selected.value;
 
+interface ProjectSourceComboboxProps {
+  queryKey: string;
+  defaultValue?: ProjectSource;
+  className?: string;
+}
+
 const ProjectSourceCombobox = ({
-  value,
-  onChange,
+  queryKey,
+  defaultValue = DEFAULT_PROJECT_SOURCE,
   className,
 }: ProjectSourceComboboxProps) => {
+  const [value, setValue] = useProjectSourceQueryState(queryKey, defaultValue);
   const selected = getProjectSourceOption(value);
 
   return (
@@ -40,7 +42,7 @@ const ProjectSourceCombobox = ({
       value={selected}
       onValueChange={(next) => {
         if (next) {
-          onChange(next.value);
+          void setValue(next.value);
         }
       }}
       isItemEqualToValue={isSameSource}

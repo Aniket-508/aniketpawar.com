@@ -3,6 +3,7 @@ import { Section } from "@/components/layout/section";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
 import { getCrafts } from "@/lib/crafts";
+import { QUERY_KEYS } from "@/lib/search-params/keys";
 import { BreadcrumbJsonLd, craftsBreadcrumbs } from "@/seo/json-ld";
 import { createMetadata } from "@/seo/metadata";
 
@@ -25,7 +26,12 @@ const CraftsPage = () => {
         <p className="text-muted-foreground text-sm">{DESCRIPTION}</p>
       </header>
       <Section className="delay-100 flex flex-col py-2">
-        <CraftsView showHeader={false} defaultVariant="grid" crafts={crafts} />
+        <CraftsView
+          showHeader={false}
+          defaultView="grid"
+          viewQueryKey={QUERY_KEYS.crafts.page.view}
+          crafts={crafts}
+        />
       </Section>
     </>
   );

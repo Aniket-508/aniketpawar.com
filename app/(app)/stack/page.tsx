@@ -3,6 +3,7 @@ import { TechStackView } from "@/components/tech-stack/view";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
 import { TECH_STACK } from "@/constants/tech-stack";
+import { QUERY_KEYS } from "@/lib/search-params/keys";
 import { BreadcrumbJsonLd, stackBreadcrumbs } from "@/seo/json-ld";
 import { createMetadata } from "@/seo/metadata";
 
@@ -23,7 +24,11 @@ const StackPage = () => (
       </p>
     </header>
     <Section className="delay-100 flex flex-col py-2">
-      <TechStackView showHeader={false} items={TECH_STACK} />
+      <TechStackView
+        showHeader={false}
+        viewQueryKey={QUERY_KEYS.stack.page.view}
+        items={TECH_STACK}
+      />
     </Section>
   </>
 );
