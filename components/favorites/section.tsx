@@ -3,6 +3,7 @@ import { prefetchGlimpses } from "@/components/ui/glimpse/server";
 import { ViewAllButton } from "@/components/view-all-button";
 import { FAVORITES } from "@/constants/favorites";
 import { ROUTES } from "@/constants/routes";
+import { QUERY_KEYS } from "@/lib/search-params/keys";
 
 import { FavoritesView } from "./view";
 
@@ -15,6 +16,7 @@ const FavoritesSection = async () => {
   return (
     <Section className="delay-300 flex flex-col gap-4" id="favorites">
       <FavoritesView
+        viewQueryKey={QUERY_KEYS.favorites.section.view}
         favorites={FAVORITES.slice(0, FAVORITES_LIMIT)}
         previews={previews}
       />

@@ -2,6 +2,7 @@ import { Section } from "@/components/layout/section";
 import { ViewAllButton } from "@/components/view-all-button";
 import { ROUTES } from "@/constants/routes";
 import { TECH_STACK } from "@/constants/tech-stack";
+import { QUERY_KEYS } from "@/lib/search-params/keys";
 
 import { TechStackView } from "./view";
 
@@ -13,7 +14,10 @@ const featuredItems = TECH_STACK.filter((item) =>
 
 const TechStackSection = () => (
   <Section id="stack" className="delay-200 flex flex-col gap-4">
-    <TechStackView items={featuredItems} />
+    <TechStackView
+      viewQueryKey={QUERY_KEYS.stack.section.view}
+      items={featuredItems}
+    />
     <ViewAllButton href={ROUTES.STACK} eventName="stack" className="mx-auto" />
   </Section>
 );

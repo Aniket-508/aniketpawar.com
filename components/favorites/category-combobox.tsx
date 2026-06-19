@@ -9,11 +9,14 @@ import {
 } from "@/components/ui/combobox";
 import { tabsListVariants } from "@/components/ui/tabs";
 import { FAVORITE_CATEGORIES } from "@/constants/favorites";
+import { useFavoriteCategoryQueryState } from "@/lib/search-params/hooks";
+import { FAVORITE_CATEGORY_DEFAULT } from "@/lib/search-params/parsers";
+import type { FavoriteFilterCategory } from "@/lib/search-params/parsers";
 import { cn } from "@/lib/utils";
 
 interface FavoriteCategoryOption {
-  value: string;
-  label: string;
+  value: FavoriteFilterCategory;
+  label: FavoriteFilterCategory;
 }
 
 const FAVORITE_CATEGORY_OPTIONS: readonly FavoriteCategoryOption[] =
@@ -22,22 +25,27 @@ const FAVORITE_CATEGORY_OPTIONS: readonly FavoriteCategoryOption[] =
     value: category,
   }));
 
-interface FavoriteCategoryComboboxProps {
-  value: string;
-  onChange: (category: string) => void;
-  className?: string;
-}
-
 const isSameCategory = (
   item: FavoriteCategoryOption,
   selected: FavoriteCategoryOption
 ): boolean => item.value === selected.value;
 
+interface FavoriteCategoryComboboxProps {
+  queryKey: string;
+  defaultValue?: FavoriteFilterCategory;
+  className?: string;
+}
+
 const FavoriteCategoryCombobox = ({
-  value,
-  onChange,
+  queryKey,
+  defaultValue = FAVORITE_CATEGORY_DEFAULT,
   className,
 }: FavoriteCategoryComboboxProps) => {
+  const [value, setValue] = useFavoriteCategoryQueryState(
+    queryKey,
+    defaultValue
+  );
+
   const selected =
     FAVORITE_CATEGORY_OPTIONS.find((option) => option.value === value) ??
     FAVORITE_CATEGORY_OPTIONS[0];
@@ -49,7 +57,7 @@ const FavoriteCategoryCombobox = ({
       value={selected}
       onValueChange={(next) => {
         if (next) {
-          onChange(next.value);
+          void setValue(next.value);
         }
       }}
       isItemEqualToValue={isSameCategory}

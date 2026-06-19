@@ -1,20 +1,27 @@
 "use client";
 
+import { Suspense } from "react";
+
 import { CopyLink } from "@/components/copy-link";
 import type { GlimpseData } from "@/components/ui/glimpse/types";
 import { Title } from "@/components/ui/title";
+import type { Variant } from "@/lib/events";
 import { filterProjectsBySource } from "@/lib/projects";
+import { useProjectsListingFilters } from "@/lib/search-params/hooks";
+import type { ProjectsListingDefaults } from "@/lib/search-params/hooks";
+import type { ProjectFilterQueryKeys } from "@/lib/search-params/keys";
 import { cn } from "@/lib/utils";
-import type { Project } from "@/types/projects";
+import type { Project, ProjectSource } from "@/types/projects";
 
 import { ProjectItem } from "./item";
-import { ProjectsViewProvider, useProjectsView } from "./view-context";
 import { ProjectsViewToolbar } from "./view-toolbar";
 import type { ProjectSourceControl } from "./view-toolbar";
 
 interface ProjectsViewListProps {
   projects: readonly Project[];
   previews: Record<string, GlimpseData>;
+  source: ProjectSource;
+  variant: Variant;
   showHeader?: boolean;
   viewClassName?: string;
   featuredOnly?: boolean;
@@ -24,12 +31,13 @@ interface ProjectsViewListProps {
 const ProjectsViewList = ({
   projects,
   previews,
+  source,
+  variant,
   showHeader = true,
   viewClassName,
   featuredOnly = false,
   limit,
 }: ProjectsViewListProps) => {
-  const { source, variant } = useProjectsView();
   let filteredProjects = filterProjectsBySource(projects, source);
 
   if (featuredOnly) {
@@ -66,12 +74,53 @@ const ProjectsViewList = ({
   );
 };
 
+interface ProjectsViewListUrlProps {
+  queryKeys: ProjectFilterQueryKeys;
+  defaults?: ProjectsListingDefaults;
+  projects: readonly Project[];
+  previews: Record<string, GlimpseData>;
+  showHeader?: boolean;
+  viewClassName?: string;
+  featuredOnly?: boolean;
+  limit?: number;
+}
+
+const ProjectsViewListUrl = ({
+  queryKeys,
+  defaults,
+  projects,
+  previews,
+  showHeader = true,
+  viewClassName,
+  featuredOnly = false,
+  limit,
+}: ProjectsViewListUrlProps) => {
+  const { source, view } = useProjectsListingFilters(queryKeys, defaults);
+
+  return (
+    <ProjectsViewList
+      source={source}
+      variant={view}
+      projects={projects}
+      previews={previews}
+      showHeader={showHeader}
+      viewClassName={viewClassName}
+      featuredOnly={featuredOnly}
+      limit={limit}
+    />
+  );
+};
+
 interface ProjectsViewHeaderProps {
+  queryKeys: ProjectFilterQueryKeys;
+  defaults?: ProjectsListingDefaults;
   headerClassName?: string;
   sourceControl?: ProjectSourceControl;
 }
 
 const ProjectsViewHeader = ({
+  queryKeys,
+  defaults,
   headerClassName,
   sourceControl = "combobox",
 }: ProjectsViewHeaderProps) => (
@@ -89,6 +138,8 @@ const ProjectsViewHeader = ({
       />
     </div>
     <ProjectsViewToolbar
+      queryKeys={queryKeys}
+      defaults={defaults}
       sourceControl={sourceControl}
       className="w-auto shrink-0 justify-end gap-2"
     />
@@ -96,6 +147,8 @@ const ProjectsViewHeader = ({
 );
 
 interface ProjectsViewProps {
+  queryKeys: ProjectFilterQueryKeys;
+  defaults?: ProjectsListingDefaults;
   projects: readonly Project[];
   previews: Record<string, GlimpseData>;
   showHeader?: boolean;
@@ -109,6 +162,8 @@ interface ProjectsViewProps {
 }
 
 const ProjectsView = ({
+  queryKeys,
+  defaults,
   projects,
   previews,
   showHeader = true,
@@ -120,36 +175,46 @@ const ProjectsView = ({
   featuredOnly,
   limit,
 }: ProjectsViewProps) => (
-  <ProjectsViewProvider>
+  <>
     {showHeader && (
-      <ProjectsViewHeader
-        headerClassName={headerClassName}
-        sourceControl={sourceControl}
-      />
+      <Suspense>
+        <ProjectsViewHeader
+          queryKeys={queryKeys}
+          defaults={defaults}
+          headerClassName={headerClassName}
+          sourceControl={sourceControl}
+        />
+      </Suspense>
     )}
     {showToolbar && (
-      <ProjectsViewToolbar
-        sourceControl={sourceControl}
-        className={toolbarClassName}
-      />
+      <Suspense>
+        <ProjectsViewToolbar
+          queryKeys={queryKeys}
+          defaults={defaults}
+          sourceControl={sourceControl}
+          className={toolbarClassName}
+        />
+      </Suspense>
     )}
-    <ProjectsViewList
-      projects={projects}
-      previews={previews}
-      showHeader={showHeader}
-      viewClassName={viewClassName}
-      featuredOnly={featuredOnly}
-      limit={limit}
-    />
-  </ProjectsViewProvider>
+    <Suspense>
+      <ProjectsViewListUrl
+        queryKeys={queryKeys}
+        defaults={defaults}
+        projects={projects}
+        previews={previews}
+        showHeader={showHeader}
+        viewClassName={viewClassName}
+        featuredOnly={featuredOnly}
+        limit={limit}
+      />
+    </Suspense>
+  </>
 );
 
 export {
   ProjectsView,
   ProjectsViewHeader,
   ProjectsViewList,
-  ProjectsViewProvider,
+  ProjectsViewListUrl,
   ProjectsViewToolbar,
 };
-
-export { useProjectsView } from "./view-context";

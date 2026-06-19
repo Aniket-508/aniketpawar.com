@@ -1,36 +1,47 @@
 "use client";
 
 import { ViewToggle } from "@/components/view-tabs";
+import type { ProjectsListingDefaults } from "@/lib/search-params/hooks";
+import type { ProjectFilterQueryKeys } from "@/lib/search-params/keys";
 import { cn } from "@/lib/utils";
 
 import { ProjectSourceCombobox } from "./source-combobox";
 import { ProjectSourceTabs } from "./source-tabs";
-import { useProjectsView } from "./view-context";
 
 type ProjectSourceControl = "combobox" | "tabs";
 
 interface ProjectsViewToolbarProps {
+  queryKeys: ProjectFilterQueryKeys;
+  defaults?: ProjectsListingDefaults;
   sourceControl?: ProjectSourceControl;
   className?: string;
 }
 
 const ProjectsViewToolbar = ({
+  queryKeys,
+  defaults,
   sourceControl = "combobox",
   className,
-}: ProjectsViewToolbarProps) => {
-  const { source, setSource, variant, setVariant } = useProjectsView();
-
-  return (
-    <div className={cn("flex items-center justify-between gap-4", className)}>
-      {sourceControl === "combobox" ? (
-        <ProjectSourceCombobox value={source} onChange={setSource} />
-      ) : (
-        <ProjectSourceTabs value={source} onChange={setSource} />
-      )}
-      <ViewToggle value={variant} onChange={setVariant} section="projects" />
-    </div>
-  );
-};
+}: ProjectsViewToolbarProps) => (
+  <div className={cn("flex items-center justify-between gap-4", className)}>
+    {sourceControl === "combobox" ? (
+      <ProjectSourceCombobox
+        queryKey={queryKeys.source}
+        defaultValue={defaults?.source}
+      />
+    ) : (
+      <ProjectSourceTabs
+        queryKey={queryKeys.source}
+        defaultValue={defaults?.source}
+      />
+    )}
+    <ViewToggle
+      queryKey={queryKeys.view}
+      section="projects"
+      defaultValue={defaults?.view}
+    />
+  </div>
+);
 
 export { ProjectsViewToolbar };
 export type { ProjectSourceControl, ProjectsViewToolbarProps };
