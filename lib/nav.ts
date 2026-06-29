@@ -7,6 +7,13 @@ export const getActiveSection = (pathname: string): SectionId | null => {
   }
 
   if (
+    pathname === ROUTES.CONTACT ||
+    pathname.startsWith(`${ROUTES.CONTACT}/`)
+  ) {
+    return "contact";
+  }
+
+  if (
     pathname === ROUTES.PROJECTS ||
     pathname.startsWith(`${ROUTES.PROJECTS}/`)
   ) {

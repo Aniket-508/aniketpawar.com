@@ -4,8 +4,9 @@ import { Section } from "@/components/layout/section";
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
 import { Title } from "@/components/ui/title";
 import { resolveContacts } from "@/lib/contacts";
+import { cn } from "@/lib/utils";
 
-const ContactSection = async () => {
+const ContactSection = async ({ className }: { className?: string }) => {
   const contacts = resolveContacts();
   const contactUrls = contacts
     .map((contact) => contact.link?.url)
@@ -14,7 +15,10 @@ const ContactSection = async () => {
 
   return (
     <Section
-      className="delay-600 grid grid-cols-1 justify-start gap-2"
+      className={cn(
+        "delay-600 grid grid-cols-1 justify-start gap-2",
+        className
+      )}
       id="socials"
     >
       <span className="group/social flex items-center gap-1">

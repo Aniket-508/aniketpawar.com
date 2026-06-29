@@ -10,14 +10,16 @@ import { cn } from "@/lib/utils";
 
 const allMoreItems = NAV_ITEMS.filter((item) => item.id !== "home");
 
-const craftsExpItems = allMoreItems.filter((item) => item.id !== "projects");
-
-const expItems = allMoreItems.filter(
-  (item) => item.id !== "projects" && item.id !== "crafts"
+const projectsHiddenItems = allMoreItems.filter(
+  (item) => item.id !== "projects"
 );
 
-const extrasItems = allMoreItems.filter((item) =>
-  ["stack", "favorites"].includes(item.id)
+const craftsHiddenItems = projectsHiddenItems.filter(
+  (item) => item.id !== "contact"
+);
+
+const experienceHiddenItems = craftsHiddenItems.filter(
+  (item) => item.id !== "experiences"
 );
 
 const MainNav = () => {
@@ -54,21 +56,21 @@ const MainNav = () => {
         </AppLink>
 
         <AppLink
-          href="/crafts"
-          className={cn(navLinkClass("crafts"), "hidden sm:inline-flex")}
-          eventName="navbar_section_click"
-          eventProperties={{ section: "crafts" }}
-        >
-          crafts
-        </AppLink>
-
-        <AppLink
           href="/experiences"
           className={cn(navLinkClass("experiences"), "hidden md:inline-flex")}
           eventName="navbar_section_click"
           eventProperties={{ section: "experiences" }}
         >
           experience
+        </AppLink>
+
+        <AppLink
+          href="/contact"
+          className={cn(navLinkClass("contact"), "hidden sm:inline-flex")}
+          eventName="navbar_section_click"
+          eventProperties={{ section: "contact" }}
+        >
+          contact
         </AppLink>
 
         <MoreNavMenu
@@ -79,21 +81,21 @@ const MainNav = () => {
         />
 
         <MoreNavMenu
-          items={craftsExpItems}
+          items={projectsHiddenItems}
           groupLabel="extras"
           activeSection={activeSection}
           className="hidden xs:flex sm:hidden"
         />
 
         <MoreNavMenu
-          items={expItems}
+          items={craftsHiddenItems}
           groupLabel="extras"
           activeSection={activeSection}
           className="hidden sm:flex md:hidden"
         />
 
         <MoreNavMenu
-          items={extrasItems}
+          items={experienceHiddenItems}
           groupLabel="extras"
           activeSection={activeSection}
           className="hidden md:flex"

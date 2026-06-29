@@ -1,4 +1,5 @@
 export type SectionId =
+  | "contact"
   | "crafts"
   | "experiences"
   | "favorites"

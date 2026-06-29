@@ -67,6 +67,11 @@ export const NAV_ITEMS: NavItem[] = [
     label: "experience",
   },
   {
+    href: ROUTES.CONTACT,
+    id: "contact",
+    label: "contact",
+  },
+  {
     href: ROUTES.STACK,
     id: "stack",
     label: "stack",

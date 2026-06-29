@@ -1,4 +1,5 @@
 export const ROUTES = {
+  CONTACT: "/contact",
   CRAFTS: "/crafts",
   EXPERIENCES: "/experiences",
   FAVORITES: "/favorites",
