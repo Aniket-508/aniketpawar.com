@@ -106,7 +106,7 @@ const AboutSection = () => {
               nativeButton={false}
               render={
                 <AppLink
-                  href={LINK.EMAIL}
+                  href={`mailto:${LINK.EMAIL}`}
                   target="_blank"
                   eventName="send_email_click"
                 />

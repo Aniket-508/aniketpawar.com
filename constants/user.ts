@@ -12,7 +12,7 @@ export const USER = {
   avatar:
     "https://ik.imagekit.io/2oajjadqkz/profile.jpg?updatedAt=1770631384305",
   company: currentExperience.experienceOrg.name,
-  email: LINK.EMAIL.replace("mailto:", ""),
+  email: LINK.EMAIL,
   firstName: "Aniket",
   jobTitle: currentExperience.experienceTitle,
   lastName: "Pawar",
