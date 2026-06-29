@@ -2,6 +2,10 @@ import { ROUTES } from "@/constants/routes";
 import type { SectionId } from "@/types/nav";
 
 export const getActiveSection = (pathname: string): SectionId | null => {
+  if (pathname === ROUTES.HOME) {
+    return "home";
+  }
+
   if (
     pathname === ROUTES.PROJECTS ||
     pathname.startsWith(`${ROUTES.PROJECTS}/`)

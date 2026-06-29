@@ -5,32 +5,32 @@ import {
   GitHubContributions,
   GitHubContributionsFallback,
 } from "@/components/about/github-contributions";
-import { CopyLink } from "@/components/copy-link";
 import { Icons } from "@/components/icons";
 import { Section } from "@/components/layout/section";
 import { AppLink } from "@/components/ui/app-link";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import { Title } from "@/components/ui/title";
+import { UserAvatar } from "@/components/user-avatar";
 import { LINK } from "@/constants/links";
 import { getGitHubContributions } from "@/lib/github";
 
 const AboutSection = () => {
   const contributions = getGitHubContributions();
+
   return (
     <Section id="about" className="delay-100 space-y-4">
-      <span className="group/about flex items-center gap-1">
-        <Title
-          className="text-xl font-medium italic"
-          render={<h2>{"about me."}</h2>}
-        />
-        <CopyLink
-          title={"About"}
-          className="hidden group-hover/about:inline-flex"
-        />
-      </span>
+      <div className="flex items-center gap-5">
+        <UserAvatar />
+        <div>
+          <Title className="font-sans tracking-tight">Aniket Pawar</Title>
+          <p className="text-muted-foreground mt-1 text-base leading-snug font-normal">
+            Frontend Engineer
+          </p>
+        </div>
+      </div>
+
       <div className="prose text-muted-foreground prose-p:my-2 dark:prose-invert max-w-full text-sm leading-6 font-normal">
-        <p>I&apos;m a frontend engineer based in Mumbai, India.</p>
         <p>
           I care deeply about visual craft and obsess over building products
           that feel fast, polished, and human.
@@ -39,14 +39,14 @@ const AboutSection = () => {
           I run{" "}
           <AppLink
             className="inline-flex items-center gap-1 translate-y-[3px]"
-            href={LINK.GITHUB_ORG}
+            href={LINK.SHADCN_LABS}
             target="_blank"
             eventName="external_link_click"
             eventProperties={{
               context: "hero",
               link_type: "external",
               title: "shadcn labs",
-              url: LINK.GITHUB_ORG,
+              url: LINK.SHADCN_LABS,
             }}
           >
             <Icons.shadcnlabs className="size-4" /> Shadcn Labs

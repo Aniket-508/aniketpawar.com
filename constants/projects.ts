@@ -226,6 +226,22 @@ export const PROJECTS = [
   {
     category: "Open Source",
     date: {
+      month: "June",
+      year: 2026,
+    },
+    description: "Production-ready AI agent recipes, built on Eve and Flue",
+    featured: true,
+    links: {
+      github: "https://github.com/shadcn-labs/agentcn",
+      website: "https://agentcn.vercel.app",
+    },
+    slug: "agentcn",
+    source: "shadcn-labs",
+    title: "agentcn",
+  },
+  {
+    category: "Open Source",
+    date: {
       month: "May",
       year: 2026,
     },

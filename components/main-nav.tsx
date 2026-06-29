@@ -1,72 +1,103 @@
 "use client";
 
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 
+import { MoreNavMenu } from "@/components/more-nav-menu";
 import { AppLink } from "@/components/ui/app-link";
-import { UserAvatar } from "@/components/user-avatar";
-import { ROUTES } from "@/constants/routes";
-import { NAV_ITEMS, SITE } from "@/constants/site";
+import { NAV_ITEMS } from "@/constants/site";
 import { getActiveSection } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
-import { Title } from "./ui/title";
+const allMoreItems = NAV_ITEMS.filter((item) => item.id !== "home");
+
+const craftsExpItems = allMoreItems.filter((item) => item.id !== "projects");
+
+const expItems = allMoreItems.filter(
+  (item) => item.id !== "projects" && item.id !== "crafts"
+);
+
+const extrasItems = allMoreItems.filter((item) =>
+  ["stack", "favorites"].includes(item.id)
+);
 
 const MainNav = () => {
   const pathname = usePathname();
-  const isHome = pathname === ROUTES.HOME;
   const activeSection = getActiveSection(pathname);
 
-  if (isHome) {
-    return (
-      <div className="flex items-center gap-5">
-        <UserAvatar />
-        <div>
-          <Title className="font-sans tracking-tight">Aniket Pawar</Title>
-          <p className="text-muted-foreground mt-1 text-base leading-snug font-normal">
-            Frontend Engineer
-          </p>
-        </div>
-      </div>
+  const navLinkClass = (id: string) =>
+    cn(
+      "text-sm transition-colors",
+      activeSection === id
+        ? "text-foreground"
+        : "text-muted-foreground hover:text-foreground"
     );
-  }
 
   return (
     <div className="flex items-center gap-4">
-      <AppLink
-        href={ROUTES.HOME}
-        aria-label="Home"
-        eventName="navbar_home_click"
-      >
-        <Image
-          src={SITE.AUTHOR.AVATAR}
-          alt="Aniket Pawar"
-          width={36}
-          height={36}
-          className="rounded-full"
-          priority
-        />
-      </AppLink>
+      <nav className="flex items-center gap-4">
+        <AppLink
+          href="/"
+          className={navLinkClass("home")}
+          eventName="navbar_section_click"
+          eventProperties={{ section: "home" }}
+        >
+          home
+        </AppLink>
 
-      <nav className="hidden sm:flex items-center gap-4">
-        {NAV_ITEMS.map(({ href, id, label }) => (
-          <AppLink
-            key={id}
-            href={href}
-            className={cn(
-              "text-sm transition-colors",
-              activeSection === id
-                ? "text-foreground"
-                : "text-muted-foreground hover:text-foreground"
-            )}
-            eventName="navbar_section_click"
-            eventProperties={{
-              section: id === "experiences" ? "experience" : id,
-            }}
-          >
-            {label}
-          </AppLink>
-        ))}
+        <AppLink
+          href="/projects"
+          className={cn(navLinkClass("projects"), "hidden xs:inline-flex")}
+          eventName="navbar_section_click"
+          eventProperties={{ section: "projects" }}
+        >
+          projects
+        </AppLink>
+
+        <AppLink
+          href="/crafts"
+          className={cn(navLinkClass("crafts"), "hidden sm:inline-flex")}
+          eventName="navbar_section_click"
+          eventProperties={{ section: "crafts" }}
+        >
+          crafts
+        </AppLink>
+
+        <AppLink
+          href="/experiences"
+          className={cn(navLinkClass("experiences"), "hidden md:inline-flex")}
+          eventName="navbar_section_click"
+          eventProperties={{ section: "experiences" }}
+        >
+          experience
+        </AppLink>
+
+        <MoreNavMenu
+          items={allMoreItems}
+          groupLabel="extras"
+          activeSection={activeSection}
+          className="xs:hidden"
+        />
+
+        <MoreNavMenu
+          items={craftsExpItems}
+          groupLabel="extras"
+          activeSection={activeSection}
+          className="hidden xs:flex sm:hidden"
+        />
+
+        <MoreNavMenu
+          items={expItems}
+          groupLabel="extras"
+          activeSection={activeSection}
+          className="hidden sm:flex md:hidden"
+        />
+
+        <MoreNavMenu
+          items={extrasItems}
+          groupLabel="extras"
+          activeSection={activeSection}
+          className="hidden md:flex"
+        />
       </nav>
     </div>
   );

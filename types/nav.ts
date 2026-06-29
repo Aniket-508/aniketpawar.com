@@ -2,6 +2,7 @@ export type SectionId =
   | "crafts"
   | "experiences"
   | "favorites"
+  | "home"
   | "projects"
   | "stack";
 
