@@ -9,33 +9,12 @@ import { CopyLink } from "@/components/copy-link";
 import { Section } from "@/components/layout/section";
 import { AppLinkWithPreview } from "@/components/ui/app-link/server";
 import { Callout } from "@/components/ui/callout";
+import { Metric, MetricLabel, MetricValue } from "@/components/ui/metric";
 import { Title } from "@/components/ui/title";
 import { LINK } from "@/constants/links";
 import { getClarityInsights } from "@/lib/insights";
-import { cn } from "@/lib/utils";
 
-const Metric = ({ className, ...props }: React.ComponentProps<"div">) => (
-  <div
-    className={cn(
-      "flex flex-col gap-1 p-3 bg-background rounded-md",
-      className
-    )}
-    {...props}
-  />
-);
-
-const MetricLabel = ({ className, ...props }: React.ComponentProps<"dt">) => (
-  <dt className={cn("text-xs text-muted-foreground", className)} {...props} />
-);
-
-const MetricValue = ({ className, ...props }: React.ComponentProps<"dd">) => (
-  <dd
-    className={cn("text-lg font-semibold tabular-nums", className)}
-    {...props}
-  />
-);
-
-const StatsAnalytics = async () => {
+const AnalyticsSection = async () => {
   const data = await getClarityInsights();
 
   if (!data) {
@@ -48,7 +27,7 @@ const StatsAnalytics = async () => {
         <span className="group/analytics flex items-center gap-1">
           <Title
             className="font-sans text-base font-normal"
-            render={<h2>{"Site Traffic"}</h2>}
+            render={<h2>Site Traffic</h2>}
           />
           <CopyLink
             title="Site Traffic"
@@ -88,21 +67,21 @@ const StatsAnalytics = async () => {
             <Metric>
               <MetricLabel>Unique Visitors</MetricLabel>
               <MetricValue>
-                <AnimatedNumber value={data.summary.uniqueVisitors ?? 0} />
+                <AnimatedNumber value={data.summary.uniqueVisitors} />
               </MetricValue>
             </Metric>
             <Metric>
               <MetricLabel>Sessions</MetricLabel>
               <MetricValue>
-                <AnimatedNumber value={data.summary.totalSessions ?? 0} />
+                <AnimatedNumber value={data.summary.totalSessions} />
               </MetricValue>
             </Metric>
             <Metric>
               <MetricLabel>Pages / Session</MetricLabel>
               <MetricValue>
                 <AnimatedNumber
-                  value={data.summary.pagesPerSession ?? 0}
                   format={{ maximumFractionDigits: 2 }}
+                  value={data.summary.pagesPerSession}
                 />
               </MetricValue>
             </Metric>
@@ -142,4 +121,4 @@ const StatsAnalytics = async () => {
   );
 };
 
-export { StatsAnalytics };
+export { AnalyticsSection };

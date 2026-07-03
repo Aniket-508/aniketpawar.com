@@ -1,5 +1,5 @@
-import { StatsAnalytics } from "@/components/stats/analytics";
-import { StatsTokens } from "@/components/stats/tokens";
+import { AnalyticsSection } from "@/components/stats/analytics-section";
+import { TokensSection } from "@/components/stats/tokens-section";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
 import { BreadcrumbJsonLd } from "@/seo/json-ld";
@@ -22,8 +22,8 @@ const StatsPage = () => (
       <p className="text-muted-foreground text-sm">{DESCRIPTION}</p>
     </header>
 
-    <StatsAnalytics />
-    <StatsTokens />
+    <AnalyticsSection />
+    <TokensSection />
   </>
 );
 

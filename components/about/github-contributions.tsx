@@ -3,7 +3,6 @@
 import { format } from "date-fns";
 import { use } from "react";
 
-import { AnimatedNumber } from "@/components/animated-number";
 import { Spinner } from "@/components/ui/spinner";
 import {
   Tooltip,
@@ -55,7 +54,7 @@ export const GitHubContributions = ({
               </TooltipTrigger>
               <TooltipContent className="font-sans">
                 <p>
-                  <AnimatedNumber value={activity.count} /> contribution
+                  {activity.count} contribution
                   {activity.count > 1 ? "s" : null} on{" "}
                   {format(new Date(activity.date), "dd.MM.yyyy")}
                 </p>
@@ -68,7 +67,7 @@ export const GitHubContributions = ({
           <ContributionGraphTotalCount>
             {({ totalCount, year }) => (
               <div className="text-muted-foreground">
-                <AnimatedNumber value={totalCount} /> contributions in {year}
+                {totalCount.toLocaleString("en")} contributions in {year}
               </div>
             )}
           </ContributionGraphTotalCount>
