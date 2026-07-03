@@ -31,7 +31,7 @@ const ContactSection = async ({ className }: { className?: string }) => {
           className="hidden group-hover/social:inline-flex"
         />
       </span>
-      <Section className="group grid grid-cols-1 justify-start p-0">
+      <Section className="group grid grid-cols-1 sm:grid-cols-2 justify-start p-0">
         {contacts.map((contact, contactIndex) => (
           <ContactItem
             {...contact}

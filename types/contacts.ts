@@ -1,11 +1,14 @@
 export type ContactIconKey =
+  | "bluesky"
+  | "dailydev"
+  | "discord"
   | "github"
   | "linkedin"
-  | "x"
-  | "topmate"
   | "peerlist"
-  | "discord"
-  | "telegram";
+  | "telegram"
+  | "topmate"
+  | "x"
+  | "youtube";
 
 export interface ContactLink {
   display: string;

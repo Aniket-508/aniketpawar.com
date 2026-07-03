@@ -11,6 +11,30 @@ export const CONTACTS = [
     title: "GitHub",
   },
   {
+    icon: "youtube",
+    link: {
+      display: "@aniketpawarbuilds",
+      url: LINK.YOUTUBE,
+    },
+    title: "YouTube",
+  },
+  {
+    icon: "bluesky",
+    link: {
+      display: "@alaymanguy.bsky.social",
+      url: LINK.BLUESKY,
+    },
+    title: "Bluesky",
+  },
+  {
+    icon: "dailydev",
+    link: {
+      display: "@aniket508",
+      url: LINK.DAILYDEV,
+    },
+    title: "daily.dev",
+  },
+  {
     icon: "linkedin",
     link: {
       display: "@aniketpawar508",
