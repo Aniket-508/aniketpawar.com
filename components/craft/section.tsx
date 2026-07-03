@@ -1,4 +1,4 @@
-import { Section } from "@/components/layout/section";
+import { Section } from "@/components/ui/section";
 import { CRAFTS } from "@/constants/crafts";
 
 import { CraftsView } from "./view";

@@ -3,7 +3,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { NavItemGitHub } from "@/components/nav-item-github";
 import { SoundToggle } from "@/components/sound-toggle";
 
-const Navbar = () => (
+const SiteHeader = () => (
   <header className="view-container animate-slide-in slide-in-from-top-10 relative flex items-center justify-between gap-4 px-4 pt-10">
     <MainNav />
 
@@ -15,4 +15,4 @@ const Navbar = () => (
   </header>
 );
 
-export { Navbar };
+export { SiteHeader };

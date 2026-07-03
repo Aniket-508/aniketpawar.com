@@ -1,5 +1,5 @@
 import { CraftsView } from "@/components/craft/view";
-import { Section } from "@/components/layout/section";
+import { Section } from "@/components/ui/section";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
 import { getCrafts } from "@/lib/crafts";

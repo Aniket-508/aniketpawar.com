@@ -1,6 +1,6 @@
-import { Section } from "@/components/layout/section";
 import { ProjectsView } from "@/components/project/view";
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
+import { Section } from "@/components/ui/section";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
 import { collectProjectUrls, getProjects } from "@/lib/projects";

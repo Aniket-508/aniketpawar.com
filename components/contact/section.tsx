@@ -1,7 +1,7 @@
 import { ContactItem } from "@/components/contact/item";
 import { CopyLink } from "@/components/copy-link";
-import { Section } from "@/components/layout/section";
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
+import { Section } from "@/components/ui/section";
 import { Title } from "@/components/ui/title";
 import { resolveContacts } from "@/lib/contacts";
 import { cn } from "@/lib/utils";

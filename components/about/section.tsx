@@ -6,10 +6,10 @@ import {
   GitHubContributionsFallback,
 } from "@/components/about/github-contributions";
 import { Icons } from "@/components/icons";
-import { Section } from "@/components/layout/section";
 import { AppLink } from "@/components/ui/app-link";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
+import { Section } from "@/components/ui/section";
 import { Title } from "@/components/ui/title";
 import { UserAvatar } from "@/components/user-avatar";
 import { LINK } from "@/constants/links";

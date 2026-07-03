@@ -1,5 +1,5 @@
-import { Section } from "@/components/layout/section";
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
+import { Section } from "@/components/ui/section";
 import { EXPERIENCES } from "@/constants/experiences";
 
 import { ExperiencesView } from "./view";

@@ -1,8 +1,8 @@
 import { ContactSection } from "@/components/contact/section";
-import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Kbd } from "@/components/ui/kbd";
+import { Section } from "@/components/ui/section";
 import { Textarea } from "@/components/ui/textarea";
 import { Title } from "@/components/ui/title";
 import { LINK } from "@/constants/links";
