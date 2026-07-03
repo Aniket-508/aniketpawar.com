@@ -1,5 +1,6 @@
 import { CopyLink } from "@/components/copy-link";
 import { Section } from "@/components/layout/section";
+import { AppLinkWithPreview } from "@/components/ui/app-link/server";
 import { Title } from "@/components/ui/title";
 import { ASSETS, LINK } from "@/constants/links";
 
@@ -27,14 +28,14 @@ const StatsTokens = () => (
           className="inline-block size-4 -translate-y-1"
         />{" "}
         through building things with AI coding agents. Synced from{" "}
-        <a
+        <AppLinkWithPreview
+          className="text-sm font-normal"
           href={LINK.TOKSCALE}
-          target="_blank"
           rel="noopener noreferrer"
-          className="underline underline-offset-2 hover:text-foreground"
+          target="_blank"
         >
           Tokscale
-        </a>
+        </AppLinkWithPreview>
         .
       </p>
     </div>

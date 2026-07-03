@@ -7,6 +7,7 @@ import { LineChart } from "@/components/charts/line-chart";
 import { ChartTooltip } from "@/components/charts/tooltip";
 import { CopyLink } from "@/components/copy-link";
 import { Section } from "@/components/layout/section";
+import { AppLinkWithPreview } from "@/components/ui/app-link/server";
 import { Callout } from "@/components/ui/callout";
 import { Title } from "@/components/ui/title";
 import { LINK } from "@/constants/links";
@@ -56,14 +57,14 @@ const StatsAnalytics = async () => {
         </span>
         <p className="text-muted-foreground text-sm">
           How many people visit my website. Synced from{" "}
-          <a
+          <AppLinkWithPreview
+            className="text-sm font-normal"
             href={LINK.CLARITY}
-            target="_blank"
             rel="noopener noreferrer"
-            className="underline underline-offset-2 hover:text-foreground"
+            target="_blank"
           >
             Microsoft Clarity
-          </a>
+          </AppLinkWithPreview>
           .
         </p>
       </div>
