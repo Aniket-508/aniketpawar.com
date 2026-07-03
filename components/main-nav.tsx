@@ -18,9 +18,7 @@ const craftsHiddenItems = projectsHiddenItems.filter(
   (item) => item.id !== "contact"
 );
 
-const experienceHiddenItems = craftsHiddenItems.filter(
-  (item) => item.id !== "experiences"
-);
+const mdMoreItems = craftsHiddenItems.filter((item) => item.id !== "crafts");
 
 const MainNav = () => {
   const pathname = usePathname();
@@ -56,12 +54,12 @@ const MainNav = () => {
         </AppLink>
 
         <AppLink
-          href="/experiences"
-          className={cn(navLinkClass("experiences"), "hidden md:inline-flex")}
+          href="/crafts"
+          className={cn(navLinkClass("crafts"), "hidden md:inline-flex")}
           eventName="navbar_section_click"
-          eventProperties={{ section: "experiences" }}
+          eventProperties={{ section: "crafts" }}
         >
-          experience
+          crafts
         </AppLink>
 
         <AppLink
@@ -75,30 +73,32 @@ const MainNav = () => {
 
         <MoreNavMenu
           items={allMoreItems}
-          groupLabel="extras"
           activeSection={activeSection}
           className="xs:hidden"
         />
 
         <MoreNavMenu
           items={projectsHiddenItems}
-          groupLabel="extras"
           activeSection={activeSection}
           className="hidden xs:flex sm:hidden"
         />
 
         <MoreNavMenu
           items={craftsHiddenItems}
-          groupLabel="extras"
           activeSection={activeSection}
           className="hidden sm:flex md:hidden"
         />
 
         <MoreNavMenu
-          items={experienceHiddenItems}
-          groupLabel="extras"
+          items={mdMoreItems}
           activeSection={activeSection}
-          className="hidden md:flex"
+          className="hidden md:flex lg:hidden"
+        />
+
+        <MoreNavMenu
+          items={mdMoreItems}
+          activeSection={activeSection}
+          className="hidden lg:flex"
         />
       </nav>
     </div>

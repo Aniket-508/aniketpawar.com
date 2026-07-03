@@ -7,10 +7,7 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
@@ -23,17 +20,11 @@ interface NavMenuItem {
 
 interface MoreNavMenuProps {
   items: NavMenuItem[];
-  groupLabel: string;
   activeSection: string | null;
   className?: string;
 }
 
-const MoreNavMenu = ({
-  items,
-  groupLabel,
-  activeSection,
-  className,
-}: MoreNavMenuProps) => {
+const MoreNavMenu = ({ items, activeSection, className }: MoreNavMenuProps) => {
   const regularItems = items.filter(
     (item) => !["stack", "favorites"].includes(item.id)
   );
@@ -75,30 +66,23 @@ const MoreNavMenu = ({
             {item.label}
           </DropdownMenuItem>
         ))}
-        {groupItems.length > 0 && (
-          <>
-            {regularItems.length > 0 && <DropdownMenuSeparator />}
-            <DropdownMenuGroup>
-              <DropdownMenuLabel>{groupLabel}</DropdownMenuLabel>
-              {groupItems.map((item) => (
-                <DropdownMenuItem
-                  key={item.id}
-                  render={
-                    <Link
-                      href={item.href}
-                      className={cn(
-                        activeSection === item.id &&
-                          "bg-accent text-accent-foreground"
-                      )}
-                    />
-                  }
-                >
-                  {item.label}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuGroup>
-          </>
-        )}
+        {groupItems.length > 0 &&
+          groupItems.map((item) => (
+            <DropdownMenuItem
+              key={item.id}
+              render={
+                <Link
+                  href={item.href}
+                  className={cn(
+                    activeSection === item.id &&
+                      "bg-accent text-accent-foreground"
+                  )}
+                />
+              }
+            >
+              {item.label}
+            </DropdownMenuItem>
+          ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );
