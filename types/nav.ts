@@ -3,6 +3,7 @@ export type SectionId =
   | "crafts"
   | "experiences"
   | "favorites"
+  | "guestbook"
   | "home"
   | "projects"
   | "stack";

@@ -3,6 +3,7 @@ export const ROUTES = {
   CRAFTS: "/crafts",
   EXPERIENCES: "/experiences",
   FAVORITES: "/favorites",
+  GUESTBOOK: "/guestbook",
   HOME: "/",
   LLMS: "/llms.txt",
   LLMS_FULL: "/llms-full.txt",
@@ -11,4 +12,5 @@ export const ROUTES = {
   SOCIALS: "/socials",
   STACK: "/stack",
   VCARD: "/vcard",
+  WALL: "/wall",
 } as const;

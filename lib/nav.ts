@@ -42,5 +42,12 @@ export const getActiveSection = (pathname: string): SectionId | null => {
     return "favorites";
   }
 
+  if (
+    pathname === ROUTES.GUESTBOOK ||
+    pathname.startsWith(`${ROUTES.GUESTBOOK}/`)
+  ) {
+    return "guestbook";
+  }
+
   return null;
 };
