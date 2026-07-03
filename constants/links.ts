@@ -20,6 +20,7 @@ export const LINK = {
   SHADCN_LABS: "https://shadcn-labs.com",
   SHADCN_UI: "https://ui.shadcn.com",
   SPONSOR: `https://github.com/sponsors/${GITHUB.user}`,
+  TELEGRAM: "https://t.me/Aniket_508",
   TOPMATE: "https://topmate.io/aniket_pawar",
   TWITTER: "https://x.com/alaymanguy",
   X: "https://x.com/alaymanguy",

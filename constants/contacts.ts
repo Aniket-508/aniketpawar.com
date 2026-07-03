@@ -50,4 +50,12 @@ export const CONTACTS = [
     },
     title: "Discord",
   },
+  {
+    icon: "telegram",
+    link: {
+      display: "@Aniket_508",
+      url: LINK.TELEGRAM,
+    },
+    title: "Telegram",
+  },
 ] as const satisfies readonly Contact[];

@@ -11,6 +11,7 @@ const CONTACT_ICONS: Record<
   github: Icons.github,
   linkedin: Icons.linkedin,
   peerlist: Icons.peerlist,
+  telegram: Icons.telegram,
   topmate: Icons.topmate,
   x: Icons.x,
 };

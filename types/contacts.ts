@@ -4,7 +4,8 @@ export type ContactIconKey =
   | "x"
   | "topmate"
   | "peerlist"
-  | "discord";
+  | "discord"
+  | "telegram";
 
 export interface ContactLink {
   display: string;
