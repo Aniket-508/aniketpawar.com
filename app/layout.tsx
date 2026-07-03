@@ -3,11 +3,14 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 
 import "@/styles/globals.css";
 
+import { Toaster } from "sonner";
+
 import { Analytics } from "@/components/analytics";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { META_THEME_COLORS } from "@/constants/site";
 import { env } from "@/env";
 import { HapticsProvider } from "@/providers/haptics-provider";
+import { QueryProvider } from "@/providers/query-provider";
 import { SoundProvider } from "@/providers/sound-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { JsonLdScripts } from "@/seo/json-ld";
@@ -65,12 +68,17 @@ export default function RootLayout({
         className={`overscroll-none font-sans flex flex-col min-h-screen ${geist.variable} ${geist_mono.variable} ${instrument_serif.variable}`}
       >
         <ThemeProvider>
-          <Analytics projectId={env.NEXT_PUBLIC_CLARITY_PROJECT_ID} />
-          <TooltipProvider>
-            <SoundProvider>
-              <HapticsProvider>{children}</HapticsProvider>
-            </SoundProvider>
-          </TooltipProvider>
+          <QueryProvider>
+            <Analytics projectId={env.NEXT_PUBLIC_CLARITY_PROJECT_ID} />
+            <TooltipProvider>
+              <SoundProvider>
+                <HapticsProvider>
+                  {children}
+                  <Toaster richColors />
+                </HapticsProvider>
+              </SoundProvider>
+            </TooltipProvider>
+          </QueryProvider>
         </ThemeProvider>
       </body>
     </html>
