@@ -34,22 +34,22 @@ const ViewToggle = ({ value, onChange, section }: ViewToggleProps) => (
       <Tooltip disabled={value === "list"}>
         <TooltipTrigger
           render={
-            <TabsTrigger value="list" aria-label="List view" className="px-1" />
+            <TabsTrigger value="list" aria-label="List" className="px-1" />
           }
         >
           <TextAlignJustifyIcon />
         </TooltipTrigger>
-        <TooltipContent sideOffset={8}>List view</TooltipContent>
+        <TooltipContent sideOffset={8}>List</TooltipContent>
       </Tooltip>
       <Tooltip disabled={value === "grid"}>
         <TooltipTrigger
           render={
-            <TabsTrigger value="grid" aria-label="Grid view" className="px-1" />
+            <TabsTrigger value="grid" aria-label="Showcase" className="px-1" />
           }
         >
           <LayoutGridIcon />
         </TooltipTrigger>
-        <TooltipContent sideOffset={8}>Grid view</TooltipContent>
+        <TooltipContent sideOffset={8}>Showcase</TooltipContent>
       </Tooltip>
     </TabsList>
   </Tabs>
