@@ -1,38 +1,20 @@
 import { format } from "date-fns";
 
+import { AnimatedNumber } from "@/components/animated-number";
 import { Grid } from "@/components/charts/grid";
 import { Line } from "@/components/charts/line";
 import { LineChart } from "@/components/charts/line-chart";
 import { ChartTooltip } from "@/components/charts/tooltip";
 import { CopyLink } from "@/components/copy-link";
 import { Section } from "@/components/layout/section";
+import { AppLinkWithPreview } from "@/components/ui/app-link/server";
 import { Callout } from "@/components/ui/callout";
+import { Metric, MetricLabel, MetricValue } from "@/components/ui/metric";
 import { Title } from "@/components/ui/title";
+import { LINK } from "@/constants/links";
 import { getClarityInsights } from "@/lib/insights";
-import { cn } from "@/lib/utils";
 
-const Metric = ({ className, ...props }: React.ComponentProps<"div">) => (
-  <div
-    className={cn(
-      "flex flex-col gap-1 p-3 bg-background rounded-md",
-      className
-    )}
-    {...props}
-  />
-);
-
-const MetricLabel = ({ className, ...props }: React.ComponentProps<"dt">) => (
-  <dt className={cn("text-xs text-muted-foreground", className)} {...props} />
-);
-
-const MetricValue = ({ className, ...props }: React.ComponentProps<"dd">) => (
-  <dd
-    className={cn("text-lg font-semibold tabular-nums", className)}
-    {...props}
-  />
-);
-
-const InsightsSection = async () => {
+const AnalyticsSection = async () => {
   const data = await getClarityInsights();
 
   if (!data) {
@@ -40,19 +22,33 @@ const InsightsSection = async () => {
   }
 
   return (
-    <Section id="insights" className="delay-300 space-y-4">
-      <span className="group/insights flex items-center gap-1">
-        <Title
-          className="text-xl font-medium italic"
-          render={<h2>{"insights."}</h2>}
-        />
-        <CopyLink
-          title="Insights"
-          className="hidden group-hover/insights:inline-flex"
-        />
-      </span>
+    <Section id="analytics" className="delay-100 space-y-4 py-4">
+      <div className="space-y-1.5">
+        <span className="group/analytics flex items-center gap-1">
+          <Title
+            className="font-sans text-base font-normal"
+            render={<h2>Site Traffic</h2>}
+          />
+          <CopyLink
+            title="Site Traffic"
+            className="opacity-0 transition-opacity group-hover/analytics:opacity-100"
+          />
+        </span>
+        <p className="text-muted-foreground text-sm">
+          How many people visit my website. Synced from{" "}
+          <AppLinkWithPreview
+            className="text-sm font-normal"
+            href={LINK.CLARITY}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Microsoft Clarity
+          </AppLinkWithPreview>
+          .
+        </p>
+      </div>
 
-      <div className="space-y-2 py-4">
+      <div className="space-y-2">
         <div className="flex items-center justify-between text-sm text-muted-foreground">
           <span>
             Last visit from{" "}
@@ -71,18 +67,23 @@ const InsightsSection = async () => {
             <Metric>
               <MetricLabel>Unique Visitors</MetricLabel>
               <MetricValue>
-                {(data.summary.uniqueVisitors ?? 0).toLocaleString()}
+                <AnimatedNumber value={data.summary.uniqueVisitors} />
               </MetricValue>
             </Metric>
             <Metric>
               <MetricLabel>Sessions</MetricLabel>
               <MetricValue>
-                {(data.summary.totalSessions ?? 0).toLocaleString()}
+                <AnimatedNumber value={data.summary.totalSessions} />
               </MetricValue>
             </Metric>
             <Metric>
               <MetricLabel>Pages / Session</MetricLabel>
-              <MetricValue>{data.summary.pagesPerSession ?? 0}</MetricValue>
+              <MetricValue>
+                <AnimatedNumber
+                  format={{ maximumFractionDigits: 2 }}
+                  value={data.summary.pagesPerSession}
+                />
+              </MetricValue>
             </Metric>
           </dl>
 
@@ -120,4 +121,4 @@ const InsightsSection = async () => {
   );
 };
 
-export { InsightsSection };
+export { AnalyticsSection };

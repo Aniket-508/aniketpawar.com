@@ -46,7 +46,7 @@ const AppLink = ({
 
   const linkClassName = cn(
     external &&
-      "after:bg-primary hover:text-primary active:text-primary relative flex flex-row items-center justify-start gap-0.5 text-base font-medium transition-all after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-0 after:transition-all after:duration-300 hover:gap-1 hover:after:w-full",
+      "after:bg-primary hover:text-primary active:text-primary relative inline-flex items-center gap-0.5 text-base font-medium transition-all after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-0 after:transition-all after:duration-300 hover:gap-1 hover:after:w-full",
     className
   );
 

@@ -1,13 +1,14 @@
 import type { Craft } from "@/types/crafts";
 
+import { ASSETS } from "./links";
+
 export const CRAFTS = [
   {
     category: "Motion",
     description:
       "Enter/exit animations using Motion for CRUD operations in a dialog.",
     links: {
-      preview:
-        "https://yffrvzi8zwbljfuj.public.blob.vercel-storage.com/portfolio-website/crud_dialog_animation.mp4",
+      preview: ASSETS.CRUD_DIALOG_ANIMATION,
     },
     slug: "crud-dialog",
     title: "CRUD Dialog",
@@ -17,8 +18,7 @@ export const CRAFTS = [
     description:
       "Envelope opening animation using CSS animations for founder's letter.",
     links: {
-      preview:
-        "https://yffrvzi8zwbljfuj.public.blob.vercel-storage.com/portfolio-website/founder_letter_animation.mp4",
+      preview: ASSETS.FOUNDER_LETTER_ANIMATION,
     },
     slug: "founders-letter",
     title: "Founder's Letter",
