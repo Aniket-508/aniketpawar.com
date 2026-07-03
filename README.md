@@ -1,4 +1,9 @@
-# [aniketpawar.com](https://aniket-pawar.vercel.app) · [![GitHub License](https://img.shields.io/github/license/Aniket-508/aniketpawar.com?label=License)](https://github.com/Aniket-508/aniketpawar.com/blob/main/LICENSE) ![GitHub Repo Views](https://gitviews.com/repo/Aniket-508/aniketpawar.com.svg?style=flat&label-color=%23555&color=%23f59e0b)
+# [aniketpawar.com](https://aniket-pawar.vercel.app)
+
+<p>
+  <a href="https://github.com/Aniket-508/aniketpawar.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/github/Aniket-508/aniketpawar.com/license.svg?variant=outline&amp;font=geist" /><img alt="license" src="https://shieldcn.dev/github/Aniket-508/aniketpawar.com/license.svg?variant=outline&amp;mode=light&amp;font=geist" /></picture></a>
+  <a href="https://github.com/Aniket-508/aniketpawar.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/views/repo/Aniket-508/aniketpawar.com.svg?base=240&amp;variant=outline&amp;font=geist" /><img alt="repo views" src="https://shieldcn.dev/views/repo/Aniket-508/aniketpawar.com.svg?base=240&amp;variant=outline&amp;mode=light&amp;font=geist" /></picture></a>
+</p>
 
 A personal portfolio website showcasing my work as a Frontend Engineer.
 

@@ -37,7 +37,7 @@ const NavItemGitHub = async () => {
           <Icons.github />
         </Button>
       </TooltipTrigger>
-      <TooltipContent>
+      <TooltipContent side="bottom">
         {new Intl.NumberFormat("en-US").format(stargazerCount)} stars
       </TooltipContent>
     </Tooltip>

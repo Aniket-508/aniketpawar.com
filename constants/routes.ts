@@ -1,6 +1,8 @@
 export const ROUTES = {
+  CONTACT: "/contact",
   CRAFTS: "/crafts",
   EXPERIENCES: "/experiences",
+  FAVORITES: "/favorites",
   HOME: "/",
   LLMS: "/llms.txt",
   LLMS_FULL: "/llms-full.txt",
@@ -8,5 +10,6 @@ export const ROUTES = {
   RESUME: "/resume.pdf",
   SOCIALS: "/socials",
   STACK: "/stack",
+  STATS: "/stats",
   VCARD: "/vcard",
 } as const;

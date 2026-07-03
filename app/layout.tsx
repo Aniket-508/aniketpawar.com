@@ -62,7 +62,7 @@ export default function RootLayout({
         <meta name="theme-color" content={META_THEME_COLORS.light} />
       </head>
       <body
-        className={`overscroll-none font-sans flex flex-col min-h-screen pt-20 ${geist.variable} ${geist_mono.variable} ${instrument_serif.variable}`}
+        className={`overscroll-none font-sans flex flex-col min-h-screen ${geist.variable} ${geist_mono.variable} ${instrument_serif.variable}`}
       >
         <ThemeProvider>
           <Analytics projectId={env.NEXT_PUBLIC_CLARITY_PROJECT_ID} />

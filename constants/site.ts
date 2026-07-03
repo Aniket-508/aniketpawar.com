@@ -47,9 +47,9 @@ export const UTM_PARAMS = {
 
 export const NAV_ITEMS: NavItem[] = [
   {
-    href: ROUTES.STACK,
-    id: "stack",
-    label: "stack",
+    href: ROUTES.HOME,
+    id: "home",
+    label: "home",
   },
   {
     href: ROUTES.PROJECTS,
@@ -65,5 +65,25 @@ export const NAV_ITEMS: NavItem[] = [
     href: ROUTES.EXPERIENCES,
     id: "experiences",
     label: "experience",
+  },
+  {
+    href: ROUTES.CONTACT,
+    id: "contact",
+    label: "contact",
+  },
+  {
+    href: ROUTES.STACK,
+    id: "stack",
+    label: "stack",
+  },
+  {
+    href: ROUTES.FAVORITES,
+    id: "favorites",
+    label: "favorites",
+  },
+  {
+    href: ROUTES.STATS,
+    id: "stats",
+    label: "stats",
   },
 ];

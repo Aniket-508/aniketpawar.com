@@ -7,6 +7,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --breakpoint-xxs: 20rem;
+  --breakpoint-xs: 24rem;
   --font-heading: var(--font-instrument-serif);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
@@ -176,5 +178,5 @@
 }
 
 @utility animate-slide-in {
-  @apply animate-in fade-in slide-in-from-bottom-5 blur-in-md fill-mode-both duration-[600ms];
+  @apply animate-in fade-in slide-in-from-bottom-5 blur-in-md fill-mode-both duration-600;
 }

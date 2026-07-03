@@ -102,6 +102,12 @@ const normalizeBreadcrumbPath = (path: string): string => {
 
 const HOME_BREADCRUMB: BreadcrumbItem = { name: "Home", path: ROUTES.HOME };
 
+const contactBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Contact", path: ROUTES.CONTACT },
+  ...(current ? [current] : []),
+];
+
 const projectsBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
   HOME_BREADCRUMB,
   { name: "Projects", path: ROUTES.PROJECTS },
@@ -117,6 +123,12 @@ const craftsBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
 const experiencesBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
   HOME_BREADCRUMB,
   { name: "Experience", path: ROUTES.EXPERIENCES },
+  ...(current ? [current] : []),
+];
+
+const favoritesBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Favorites", path: ROUTES.FAVORITES },
   ...(current ? [current] : []),
 ];
 
@@ -151,8 +163,10 @@ const JsonLdScripts = () => (
 
 export {
   BreadcrumbJsonLd,
+  contactBreadcrumbs,
   craftsBreadcrumbs,
   experiencesBreadcrumbs,
+  favoritesBreadcrumbs,
   JsonLdScripts,
   projectsBreadcrumbs,
   stackBreadcrumbs,

@@ -2,6 +2,17 @@ import { ROUTES } from "@/constants/routes";
 import type { SectionId } from "@/types/nav";
 
 export const getActiveSection = (pathname: string): SectionId | null => {
+  if (pathname === ROUTES.HOME) {
+    return "home";
+  }
+
+  if (
+    pathname === ROUTES.CONTACT ||
+    pathname.startsWith(`${ROUTES.CONTACT}/`)
+  ) {
+    return "contact";
+  }
+
   if (
     pathname === ROUTES.PROJECTS ||
     pathname.startsWith(`${ROUTES.PROJECTS}/`)
@@ -22,6 +33,17 @@ export const getActiveSection = (pathname: string): SectionId | null => {
 
   if (pathname === ROUTES.STACK || pathname.startsWith(`${ROUTES.STACK}/`)) {
     return "stack";
+  }
+
+  if (
+    pathname === ROUTES.FAVORITES ||
+    pathname.startsWith(`${ROUTES.FAVORITES}/`)
+  ) {
+    return "favorites";
+  }
+
+  if (pathname === ROUTES.STATS || pathname.startsWith(`${ROUTES.STATS}/`)) {
+    return "stats";
   }
 
   return null;
