@@ -1,4 +1,7 @@
 export const ROUTES = {
+  BLOCKS: "/blocks",
+  BLOG: "/blog",
+  COMPONENTS: "/components",
   CONTACT: "/contact",
   CRAFTS: "/crafts",
   EXPERIENCES: "/experiences",
@@ -8,7 +11,7 @@ export const ROUTES = {
   LLMS_FULL: "/llms-full.txt",
   PROJECTS: "/projects",
   RESUME: "/resume.pdf",
-  SOCIALS: "/socials",
+  SPONSORS: "/sponsors",
   STACK: "/stack",
   STATS: "/stats",
   VCARD: "/vcard",
