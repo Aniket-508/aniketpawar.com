@@ -11,9 +11,6 @@ import { formatCompactNumber, formatUsd } from "@/lib/format";
 import { getAgentLogoUrl, getModelLogoUrl } from "@/lib/models";
 import type { TokscaleUsageEntry } from "@/types/tokscale";
 
-const TOKENS_COLOR = "var(--chart-line-primary)";
-const COST_COLOR = "var(--chart-line-secondary)";
-
 export interface TokensChartPoint {
   date: string;
   tokens: number;
@@ -100,8 +97,16 @@ export const TokensChart = ({ data }: { data: TokensChartPoint[] }) => (
     xDataKey="date"
   >
     <Grid horizontal strokeDasharray="3,3" />
-    <Line dataKey="tokensPct" stroke={TOKENS_COLOR} strokeWidth={2} />
-    <Line dataKey="costPct" stroke={COST_COLOR} strokeWidth={2} />
+    <Line
+      dataKey="tokensPct"
+      stroke="var(--chart-line-primary)"
+      strokeWidth={2}
+    />
+    <Line
+      dataKey="costPct"
+      stroke="var(--chart-line-secondary)"
+      strokeWidth={2}
+    />
     <ChartTooltip content={renderTokensTooltip} />
   </LineChart>
 );
