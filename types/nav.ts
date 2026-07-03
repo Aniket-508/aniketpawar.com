@@ -5,7 +5,8 @@ export type SectionId =
   | "favorites"
   | "home"
   | "projects"
-  | "stack";
+  | "stack"
+  | "stats";
 
 export interface NavItem {
   href: string;

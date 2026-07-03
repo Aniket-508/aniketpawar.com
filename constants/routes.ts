@@ -10,5 +10,6 @@ export const ROUTES = {
   RESUME: "/resume.pdf",
   SOCIALS: "/socials",
   STACK: "/stack",
+  STATS: "/stats",
   VCARD: "/vcard",
 } as const;

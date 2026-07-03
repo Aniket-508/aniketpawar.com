@@ -81,4 +81,9 @@ export const NAV_ITEMS: NavItem[] = [
     id: "favorites",
     label: "favorites",
   },
+  {
+    href: ROUTES.STATS,
+    id: "stats",
+    label: "stats",
+  },
 ];
