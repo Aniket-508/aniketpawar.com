@@ -14,5 +14,6 @@ export const ROUTES = {
   SPONSORS: "/sponsors",
   STACK: "/stack",
   STATS: "/stats",
+  TESTIMONIALS: "/testimonials",
   VCARD: "/vcard",
 } as const;
