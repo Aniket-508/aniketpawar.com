@@ -1,4 +1,4 @@
-import type { NavItem } from "@/types/nav";
+import type { NavGroupId, NavItem } from "@/types/nav";
 
 import { ROUTES } from "./routes";
 import { getBaseUrl } from "./url";
@@ -45,6 +45,12 @@ export const UTM_PARAMS = {
   utm_source: new URL(baseUrl).hostname,
 };
 
+export const NAV_GROUP_LABELS: Record<NavGroupId, string> = {
+  extras: "extras",
+  ui: "ui",
+  work: "work",
+};
+
 export const NAV_ITEMS: NavItem[] = [
   {
     href: ROUTES.HOME,
@@ -53,9 +59,9 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     group: "work",
-    href: ROUTES.STACK,
-    id: "stack",
-    label: "stack",
+    href: ROUTES.USES,
+    id: "uses",
+    label: "uses",
   },
   {
     group: "work",
@@ -74,6 +80,12 @@ export const NAV_ITEMS: NavItem[] = [
     href: ROUTES.EXPERIENCES,
     id: "experiences",
     label: "experience",
+  },
+  {
+    group: "work",
+    href: ROUTES.TESTIMONIALS,
+    id: "testimonials",
+    label: "testimonials",
   },
   // {
   //   group: "work",
@@ -105,12 +117,23 @@ export const NAV_ITEMS: NavItem[] = [
     id: "stats",
     label: "stats",
   },
-  // {
-  //   group: "extras",
-  //   href: ROUTES.SPONSORS,
-  //   id: "sponsor",
-  //   label: "sponsor",
-  // },
+  {
+    group: "extras",
+    href: ROUTES.COLOPHON,
+    id: "colophon",
+    label: "colophon",
+  },
+  {
+    group: "extras",
+    href: ROUTES.SPONSORS,
+    id: "sponsor",
+    label: "sponsors",
+  },
+  {
+    href: ROUTES.WRITING,
+    id: "writing",
+    label: "writing",
+  },
   {
     href: ROUTES.CONTACT,
     id: "contact",

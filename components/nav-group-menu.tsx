@@ -9,22 +9,29 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { getNavDropdownSections } from "@/lib/nav";
+import {
+  getNavDropdownSections,
+  getNavGroupLabel,
+  isNavGroupActive,
+} from "@/lib/nav";
 import { cn } from "@/lib/utils";
-import type { NavItem, SectionId } from "@/types/nav";
+import type { NavGroupId, NavItem, SectionId } from "@/types/nav";
 
-interface MoreNavMenuProps {
+interface NavGroupMenuProps {
   activeSection: SectionId | null;
   className?: string;
+  group: NavGroupId;
   items: NavItem[];
 }
 
-const MoreNavMenu = ({ activeSection, className, items }: MoreNavMenuProps) => {
+const NavGroupMenu = ({
+  activeSection,
+  className,
+  group,
+  items,
+}: NavGroupMenuProps) => {
   const sections = getNavDropdownSections(items);
-
-  if (sections.length === 0) {
-    return null;
-  }
+  const isActive = isNavGroupActive(items, activeSection);
 
   return (
     <DropdownMenu>
@@ -34,23 +41,25 @@ const MoreNavMenu = ({ activeSection, className, items }: MoreNavMenuProps) => {
             variant="ghost"
             size="sm"
             className={cn(
-              "font-normal text-sm text-muted-foreground hover:text-foreground",
+              "font-normal text-sm hover:text-foreground",
+              isActive ? "text-foreground" : "text-muted-foreground",
               className
             )}
           />
         }
       >
-        more
+        {getNavGroupLabel(group)}
         <ChevronDownIcon className="ml-1 size-3" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <NavDropdownSections
           activeSection={activeSection}
           sections={sections}
+          showGroupLabels={false}
         />
       </DropdownMenuContent>
     </DropdownMenu>
   );
 };
 
-export { MoreNavMenu };
+export { NavGroupMenu };

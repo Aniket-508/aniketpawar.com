@@ -132,9 +132,35 @@ const favoritesBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
   ...(current ? [current] : []),
 ];
 
-const stackBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+const sponsorsBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
   HOME_BREADCRUMB,
-  { name: "Stack", path: ROUTES.STACK },
+  { name: "Sponsors", path: ROUTES.SPONSORS },
+  ...(current ? [current] : []),
+];
+
+const writingBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Writing", path: ROUTES.WRITING },
+  ...(current ? [current] : []),
+];
+
+const colophonBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Colophon", path: ROUTES.COLOPHON },
+  ...(current ? [current] : []),
+];
+
+const testimonialsBreadcrumbs = (
+  current?: BreadcrumbItem
+): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Testimonials", path: ROUTES.TESTIMONIALS },
+  ...(current ? [current] : []),
+];
+
+const usesBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Uses", path: ROUTES.USES },
   ...(current ? [current] : []),
 ];
 
@@ -163,13 +189,17 @@ const JsonLdScripts = () => (
 
 export {
   BreadcrumbJsonLd,
+  colophonBreadcrumbs,
   contactBreadcrumbs,
   craftsBreadcrumbs,
   experiencesBreadcrumbs,
   favoritesBreadcrumbs,
   JsonLdScripts,
   projectsBreadcrumbs,
-  stackBreadcrumbs,
+  sponsorsBreadcrumbs,
+  testimonialsBreadcrumbs,
+  usesBreadcrumbs,
+  writingBreadcrumbs,
   WebsiteJsonLd,
   OrganizationJsonLd,
   FAQJsonLd,

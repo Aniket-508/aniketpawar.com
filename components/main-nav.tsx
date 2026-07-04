@@ -3,22 +3,23 @@
 import { usePathname } from "next/navigation";
 
 import { MoreNavMenu } from "@/components/more-nav-menu";
+import { NavGroupMenu } from "@/components/nav-group-menu";
 import { AppLink } from "@/components/ui/app-link";
 import { NAV_ITEMS } from "@/constants/site";
-import { getActiveSection } from "@/lib/nav";
+import {
+  getActiveSection,
+  getHomeNavItem,
+  getNavGroupsInOrder,
+  getStandaloneNavItems,
+} from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
-const allMoreItems = NAV_ITEMS.filter((item) => item.id !== "home");
-
-const projectsHiddenItems = allMoreItems.filter(
-  (item) => item.id !== "projects"
+const homeItem = getHomeNavItem();
+const standaloneItems = getStandaloneNavItems(NAV_ITEMS).filter(
+  (item) => item.id !== "home"
 );
-
-const craftsHiddenItems = projectsHiddenItems.filter(
-  (item) => item.id !== "contact"
-);
-
-const mdMoreItems = craftsHiddenItems.filter((item) => item.id !== "crafts");
+const navGroups = getNavGroupsInOrder(NAV_ITEMS);
+const moreItems = NAV_ITEMS.filter((item) => item.id !== "home");
 
 const MainNav = () => {
   const pathname = usePathname();
@@ -33,75 +34,44 @@ const MainNav = () => {
     );
 
   return (
-    <div className="flex items-center gap-4">
-      <nav className="flex items-center gap-4">
+    <nav className="flex items-center [&_a:first-child]:mr-4">
+      <AppLink
+        href={homeItem.href}
+        className={navLinkClass(homeItem.id)}
+        eventName="navbar_section_click"
+        eventProperties={{ section: homeItem.id }}
+      >
+        {homeItem.label}
+      </AppLink>
+
+      {navGroups.map(({ group, items }) => (
+        <NavGroupMenu
+          key={group}
+          group={group}
+          items={items}
+          activeSection={activeSection}
+          className="hidden sm:flex"
+        />
+      ))}
+
+      {standaloneItems.map((item) => (
         <AppLink
-          href="/"
-          className={navLinkClass("home")}
+          key={item.id}
+          href={item.href}
+          className={cn(navLinkClass(item.id), "hidden sm:inline-flex")}
           eventName="navbar_section_click"
-          eventProperties={{ section: "home" }}
+          eventProperties={{ section: item.id }}
         >
-          home
+          {item.label}
         </AppLink>
+      ))}
 
-        <AppLink
-          href="/projects"
-          className={cn(navLinkClass("projects"), "hidden xs:inline-flex")}
-          eventName="navbar_section_click"
-          eventProperties={{ section: "projects" }}
-        >
-          projects
-        </AppLink>
-
-        <AppLink
-          href="/crafts"
-          className={cn(navLinkClass("crafts"), "hidden md:inline-flex")}
-          eventName="navbar_section_click"
-          eventProperties={{ section: "crafts" }}
-        >
-          crafts
-        </AppLink>
-
-        <AppLink
-          href="/contact"
-          className={cn(navLinkClass("contact"), "hidden sm:inline-flex")}
-          eventName="navbar_section_click"
-          eventProperties={{ section: "contact" }}
-        >
-          contact
-        </AppLink>
-
-        <MoreNavMenu
-          items={allMoreItems}
-          activeSection={activeSection}
-          className="xs:hidden"
-        />
-
-        <MoreNavMenu
-          items={projectsHiddenItems}
-          activeSection={activeSection}
-          className="hidden xs:flex sm:hidden"
-        />
-
-        <MoreNavMenu
-          items={craftsHiddenItems}
-          activeSection={activeSection}
-          className="hidden sm:flex md:hidden"
-        />
-
-        <MoreNavMenu
-          items={mdMoreItems}
-          activeSection={activeSection}
-          className="hidden md:flex lg:hidden"
-        />
-
-        <MoreNavMenu
-          items={mdMoreItems}
-          activeSection={activeSection}
-          className="hidden lg:flex"
-        />
-      </nav>
-    </div>
+      <MoreNavMenu
+        items={moreItems}
+        activeSection={activeSection}
+        className="sm:hidden"
+      />
+    </nav>
   );
 };
 

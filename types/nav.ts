@@ -1,6 +1,7 @@
 export type SectionId =
   | "blocks"
   | "blog"
+  | "colophon"
   | "components"
   | "contact"
   | "crafts"
@@ -9,10 +10,12 @@ export type SectionId =
   | "home"
   | "projects"
   | "sponsor"
-  | "stack"
-  | "stats";
+  | "stats"
+  | "testimonials"
+  | "uses"
+  | "writing";
 
-export type NavGroupId = "ui" | "extras" | "work";
+export type NavGroupId = "extras" | "ui" | "work";
 
 export interface NavItem {
   group?: NavGroupId;
@@ -20,3 +23,7 @@ export interface NavItem {
   id: SectionId;
   label: string;
 }
+
+export type NavDropdownSection =
+  | { item: NavItem; type: "item" }
+  | { group: NavGroupId; items: NavItem[]; type: "group" };
