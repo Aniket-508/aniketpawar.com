@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 
-import { TechStack } from "@/components/tech-stack/stack";
 import { AppLink } from "@/components/ui/app-link";
 import type { GlimpseData } from "@/components/ui/glimpse/types";
 import { Title } from "@/components/ui/title";
@@ -104,7 +103,18 @@ const ExperienceItem = ({
           ))}
         </ul>
       ) : null}
-      {experienceTech?.length ? <TechStack items={experienceTech} /> : null}
+      {experienceTech?.length ? (
+        <div className="flex flex-wrap gap-1">
+          {experienceTech.map((tech) => (
+            <span
+              key={tech}
+              className="bg-secondary text-secondary-foreground rounded-md px-2 py-0.5 text-xs"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 };
