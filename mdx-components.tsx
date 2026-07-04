@@ -1,4 +1,4 @@
-import { TechStack } from "@/components/tech-stack/stack";
+import { TechStack } from "@/components/uses/tech-stack";
 
 export const mdxComponents = {
   TechStack,

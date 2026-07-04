@@ -3,7 +3,7 @@ import { ContactSection } from "@/components/contact/section";
 import { CraftSection } from "@/components/craft/section";
 import { ExperienceSection } from "@/components/experience/section";
 import { ProjectSection } from "@/components/project/section";
-import { TechStackSection } from "@/components/tech-stack/section";
+import { SoftwareSection } from "@/components/uses/software-section";
 import { ROUTES } from "@/constants/routes";
 import { BreadcrumbJsonLd } from "@/seo/json-ld";
 
@@ -11,7 +11,7 @@ const MainView = () => (
   <>
     <BreadcrumbJsonLd items={[{ name: "Home", path: ROUTES.HOME }]} />
     <AboutSection />
-    <TechStackSection />
+    <SoftwareSection />
     <ProjectSection />
     <CraftSection />
     <ExperienceSection />
