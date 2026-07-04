@@ -17,6 +17,8 @@ export const env = createEnv({
   server: {
     CLARITY_API_TOKEN: z.string().optional(),
     GITHUB_CONTRIBUTIONS_API_URL: z.url().optional(),
+    GITHUB_TOKEN: z.string().optional(),
+    GITHUB_TOKEN: z.string().optional(),
   },
   shared: {
     NODE_ENV: z.enum(["development", "production", "test"]),
