@@ -1,4 +1,4 @@
-import { getLastUpdated } from "@/lib/github";
+import { getLastUpdated } from "@/lib/github/contributions";
 
 const SiteFooter = () => (
   <footer className="mt-auto animate-slide-in delay-700 view-container px-4">

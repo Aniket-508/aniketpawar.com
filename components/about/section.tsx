@@ -13,7 +13,7 @@ import { Section } from "@/components/ui/section";
 import { Title } from "@/components/ui/title";
 import { UserAvatar } from "@/components/user-avatar";
 import { LINK } from "@/constants/links";
-import { getGitHubContributions } from "@/lib/github";
+import { getGitHubContributions } from "@/lib/github/contributions";
 
 const AboutSection = () => {
   const contributions = getGitHubContributions();
