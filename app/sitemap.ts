@@ -61,10 +61,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: absoluteUrl(ROUTES.STACK),
     },
     {
-      changeFrequency: "weekly",
+      changeFrequency: "monthly",
       lastModified: new Date(),
       priority: 0.9,
       url: absoluteUrl(ROUTES.STATS),
+    },
+    {
+      changeFrequency: "monthly",
+      lastModified: new Date(),
+      priority: 0.7,
+      url: absoluteUrl(ROUTES.COLOPHON),
     },
     ...projectEntries,
     ...craftEntries,

@@ -1,6 +1,7 @@
 export const ROUTES = {
   BLOCKS: "/blocks",
   BLOG: "/blog",
+  COLOPHON: "/colophon",
   COMPONENTS: "/components",
   CONTACT: "/contact",
   CRAFTS: "/crafts",
