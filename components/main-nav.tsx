@@ -34,10 +34,10 @@ const MainNav = () => {
     );
 
   return (
-    <nav className="flex items-center gap-1.5 [&_a:first-child]:mr-4">
+    <nav className="flex items-center">
       <AppLink
         href={homeItem.href}
-        className={navLinkClass(homeItem.id)}
+        className={cn(navLinkClass(homeItem.id), "pr-2.5")}
         eventName="navbar_section_click"
         eventProperties={{ section: homeItem.id }}
       >
@@ -58,7 +58,7 @@ const MainNav = () => {
         <AppLink
           key={item.id}
           href={item.href}
-          className={cn(navLinkClass(item.id), "hidden sm:inline-flex")}
+          className={cn(navLinkClass(item.id), "hidden sm:inline-flex px-2.5")}
           eventName="navbar_section_click"
           eventProperties={{ section: item.id }}
         >
