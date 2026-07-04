@@ -34,7 +34,7 @@ const MainNav = () => {
     );
 
   return (
-    <nav className="flex items-center [&_a:first-child]:mr-4">
+    <nav className="flex items-center gap-1.5 [&_a:first-child]:mr-4">
       <AppLink
         href={homeItem.href}
         className={navLinkClass(homeItem.id)}
