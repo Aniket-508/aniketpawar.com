@@ -4,6 +4,7 @@ import { defineConfig } from "fuma-content/config";
 import remarkGfm from "remark-gfm";
 import remarkHeadingId from "remark-heading-id";
 import { z } from "zod";
+import { remarkReadingTime } from "./lib/content/reading-time";
 
 const slugFrontmatter = z.object({
   slug: z.string(),
@@ -44,6 +45,27 @@ const experiences = mdxCollection({
   },
 });
 
+const writing = mdxCollection({
+  dir: "content/writing",
+  frontmatter: slugFrontmatter,
+  options: (environment) =>
+    Promise.resolve({
+      rehypePlugins: [[rehypeShiki, { theme: "github-dark" }]],
+      remarkPlugins:
+        environment === "bundler"
+          ? [
+              remarkGfm,
+              [remarkHeadingId, { defaults: true }],
+              remarkReadingTime,
+            ]
+          : null,
+    }),
+  postprocess: {
+    mdast: true,
+    valueToExport: ["readingTime"],
+  },
+});
+
 export default defineConfig({
-  collections: { crafts, experiences, projects },
+  collections: { crafts, experiences, projects, writing },
 });

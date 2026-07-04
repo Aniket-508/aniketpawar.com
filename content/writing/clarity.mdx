@@ -1,0 +1,45 @@
+---
+slug: clarity
+---
+
+## The problem with ambiguity
+
+Most codebases don't fail because of bad algorithms. They fail because people can't understand them. A function named `processData` that handles three unrelated concerns is a clarity problem, not an engineering one.
+
+Clarity is the discipline of making your intent obvious. It applies to code, documentation, commit messages, pull request descriptions, and the way you structure a conversation. When you write something and someone else has to ask "what did you mean?" — that's a clarity failure.
+
+## Writing as thinking
+
+Writing is not a way to record what you already think. It is the act of thinking itself. When you sit down to write a technical document and realize you don't fully understand the topic, that's not a writing problem — it's a thinking problem that writing just exposed.
+
+This is why writing matters so much in engineering. A well-written RFC forces you to confront the gaps in your design. A clear incident report forces you to understand the root cause, not just the symptom. A thoughtful README forces you to consider the experience of someone seeing your project for the first time.
+
+## Principles of clear writing
+
+**Lead with context.** Don't make the reader guess why they're reading something. Start with the situation, then move to the problem, then the solution. Inverted pyramids work because people are busy.
+
+**Use concrete language.** "The system processes data quickly" is vague. "The pipeline handles 10,000 events per second with p99 latency under 50ms" is clear. Specifics build trust. Vagueness destroys it.
+
+**Cut ruthlessly.** Every word that doesn't earn its place is a tax on the reader's attention. Short sentences are almost always better than long ones. Simple words are almost always better than complex ones.
+
+**Structure before prose.** Before writing paragraphs, outline your ideas. A numbered list of key points is more useful than three pages of unstructured text. If you can't outline it, you don't understand it yet.
+
+## Clarity in code
+
+The same principles apply to code. Variable names should tell you what something is, not how it works. Functions should do one thing. Comments should explain why, not what.
+
+```typescript
+// Bad
+const d = new Date().getTime() - c.getTime();
+
+// Good
+const elapsedMs = Date.now() - createdAt.getTime();
+```
+
+The second version costs ten more characters and saves ten minutes of someone else's time. That's a trade worth making every single time.
+
+## The compounding effect
+
+Clear writing compounds. Every document you write well becomes a reference that saves someone else time. Every pull request description you take seriously becomes context that helps a reviewer give better feedback. Every README you polish becomes the difference between someone using your project or closing the tab.
+
+Clarity is not about being simple. It's about being understood. And in a field where miscommunication is the most expensive kind of failure, clarity is the highest-leverage skill you can develop.

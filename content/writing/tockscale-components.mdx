@@ -1,0 +1,82 @@
+---
+slug: tockscale-components
+---
+
+## The scaling problem
+
+Design systems break at the extremes. A button that looks perfect on a 1440px desktop screen falls apart on a 320px phone or a high-density tablet. The usual fix is to write separate styles for each breakpoint — a maintenance nightmare that doubles or triples your CSS surface area.
+
+Tokscale Components solves this differently. Instead of media-query-driven variants, every component is built on a token-scale architecture where sizing, spacing, and typography are derived from a single responsive scale that adapts fluidly across all viewports and density configurations.
+
+## How token scaling works
+
+The core idea is simple: define your design tokens as functions of viewport and density, not as static values.
+
+```typescript
+const tokenScale = createTokenScale({
+  base: 16,        // base font size in px
+  ratio: 1.25,     // modular scale ratio
+  minViewport: 320,
+  maxViewport: 1440,
+});
+```
+
+At 320px, the scale produces compact values. At 1440px, it produces generous ones. In between, it interpolates smoothly — no media queries, no breakpoint jumps.
+
+## Component architecture
+
+Every Tokscale component follows three rules:
+
+**Tokens over hardcodes.** No pixel values in component styles. Every dimension references the token scale. This means a single component definition works at every size.
+
+**Props for intent, tokens for execution.** You pass `size="sm"` or `size="lg"`, and the component maps that to the correct token values for the current viewport. The component never knows what "320px" means — it only knows about its own scale.
+
+**Composable primitives.** Every component is built from smaller primitives that share the same token system. A `Card` contains `CardBody`, `CardHeader`, `CardFooter`. A `Stack` contains `StackItem`. This composability means you can assemble complex layouts without ever breaking the scale.
+
+## Building a responsive button
+
+Here's what a Tokscale button looks like internally:
+
+```tsx
+const Button = ({ size = "md", variant = "primary", ...props }) => {
+  const tokens = useTokenScale();
+  const sizeTokens = tokens.button[size];
+
+  return (
+    <button
+      style={{
+        padding: sizeTokens.padding,
+        fontSize: sizeTokens.fontSize,
+        borderRadius: sizeTokens.radius,
+      }}
+      {...props}
+    />
+  );
+};
+```
+
+The `useTokenScale()` hook provides the current token values. The button doesn't care about viewport width — it just reads from the scale. When the viewport changes, the tokens change, and the button adapts automatically.
+
+## The density layer
+
+Token scaling handles viewport-to-viewport responsiveness. Density handles the second dimension: how much space does the user want things to take?
+
+Some users prefer compact layouts with more information visible. Others prefer spacious layouts with more breathing room. Tokscale exposes a density context that shifts the entire scale without changing its structure.
+
+```tsx
+<DensityProvider density="compact">
+  <App /> {/* Everything uses tighter spacing and smaller text */}
+</DensityProvider>
+```
+
+This is not a zoom control. It's a preference layer that respects the user's choice about how they want to consume your interface.
+
+## Why this matters
+
+Design systems that only work at one size aren't design systems. They're templates. A real system has to work at every size, at every density, for every user. Token scaling makes that possible without doubling your CSS or writing dozens of media queries.
+
+The goal is not to eliminate breakpoints entirely. Some layout decisions — like switching from a sidebar to a bottom sheet — genuinely require different structures. But sizing, spacing, and typography should never need breakpoint-specific overrides. That's what token scaling gives you.
+
+## Getting started
+
+Start small. Take your existing component library and replace every hard-coded spacing and font-size value with a token reference. You'll find that most of your responsive CSS becomes unnecessary. The scale does the work, and your components become simpler, smaller, and more consistent across every device.

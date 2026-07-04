@@ -6,6 +6,7 @@ import { getCraftSlugs } from "@/lib/crafts";
 import { getExperienceSlugs } from "@/lib/experiences";
 import { getProjectSlugs } from "@/lib/projects";
 import { absoluteUrl } from "@/lib/utils";
+import { getWritingSlugs } from "@/lib/writings";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const projectEntries = getProjectSlugs().map((slug) => ({
@@ -27,6 +28,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     priority: 0.7,
     url: absoluteUrl(`${ROUTES.EXPERIENCES}/${slug}`),
+  }));
+
+  const writingEntries = getWritingSlugs().map((slug) => ({
+    changeFrequency: "monthly" as const,
+    lastModified: new Date(),
+    priority: 0.7,
+    url: absoluteUrl(`${ROUTES.WRITING}/${slug}`),
   }));
 
   return [
@@ -58,7 +66,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       lastModified: new Date(),
       priority: 0.9,
-      url: absoluteUrl(ROUTES.STACK),
+      url: absoluteUrl(ROUTES.USES),
     },
     {
       changeFrequency: "weekly",
@@ -66,8 +74,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
       url: absoluteUrl(ROUTES.STATS),
     },
+    {
+      changeFrequency: "monthly",
+      lastModified: new Date(),
+      priority: 0.9,
+      url: absoluteUrl(ROUTES.WRITING),
+    },
+    {
+      changeFrequency: "monthly",
+      lastModified: new Date(),
+      priority: 0.7,
+      url: absoluteUrl(ROUTES.COLOPHON),
+    },
+    {
+      changeFrequency: "monthly",
+      lastModified: new Date(),
+      priority: 0.7,
+      url: absoluteUrl(ROUTES.SPONSORS),
+    },
+    {
+      changeFrequency: "monthly",
+      lastModified: new Date(),
+      priority: 0.8,
+      url: absoluteUrl(ROUTES.TESTIMONIALS),
+    },
     ...projectEntries,
     ...craftEntries,
     ...experienceEntries,
+    ...writingEntries,
   ];
 }
