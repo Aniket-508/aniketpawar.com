@@ -3,23 +3,19 @@
 import { usePathname } from "next/navigation";
 
 import { MoreNavMenu } from "@/components/more-nav-menu";
-import { NavGroupMenu } from "@/components/nav-group-menu";
-import { AppLink } from "@/components/ui/app-link";
-import { NAV_ITEMS } from "@/constants/site";
 import {
-  getActiveSection,
-  getHomeNavItem,
-  getNavGroupsInOrder,
-  getStandaloneNavItems,
-} from "@/lib/nav";
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { NAV_GROUPS, NAV_STANDALONE } from "@/constants/site";
+import { getActiveSection, getHomeNavItem, isNavGroupActive } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
 const homeItem = getHomeNavItem();
-const standaloneItems = getStandaloneNavItems(NAV_ITEMS).filter(
-  (item) => item.id !== "home"
-);
-const navGroups = getNavGroupsInOrder(NAV_ITEMS);
-const moreItems = NAV_ITEMS.filter((item) => item.id !== "home");
 
 const MainNav = () => {
   const pathname = usePathname();
@@ -35,42 +31,58 @@ const MainNav = () => {
 
   return (
     <nav className="flex items-center">
-      <AppLink
-        href={homeItem.href}
-        className={cn(navLinkClass(homeItem.id), "pr-2.5")}
-        eventName="navbar_section_click"
-        eventProperties={{ section: homeItem.id }}
-      >
-        {homeItem.label}
-      </AppLink>
+      <NavigationMenu className="hidden sm:flex">
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              href={homeItem.href}
+              className={cn(navLinkClass(homeItem.id), "px-2.5")}
+            >
+              {homeItem.label}
+            </NavigationMenuLink>
+          </NavigationMenuItem>
 
-      {navGroups.map(({ group, items }) => (
-        <NavGroupMenu
-          key={group}
-          group={group}
-          items={items}
-          activeSection={activeSection}
-          className="hidden sm:flex"
-        />
-      ))}
+          {NAV_GROUPS.map((group) => (
+            <NavigationMenuItem key={group.id}>
+              <NavigationMenuTrigger
+                className={cn(
+                  navLinkClass(group.id),
+                  isNavGroupActive(group.items, activeSection) &&
+                    "data-open:text-foreground"
+                )}
+              >
+                {group.label}
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="flex flex-col gap-1 p-2">
+                  {group.items.map((item) => (
+                    <NavigationMenuLink
+                      key={item.id}
+                      href={item.href}
+                      className={cn(navLinkClass(item.id), "w-48")}
+                    >
+                      {item.label}
+                    </NavigationMenuLink>
+                  ))}
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          ))}
 
-      {standaloneItems.map((item) => (
-        <AppLink
-          key={item.id}
-          href={item.href}
-          className={cn(navLinkClass(item.id), "hidden sm:inline-flex px-2.5")}
-          eventName="navbar_section_click"
-          eventProperties={{ section: item.id }}
-        >
-          {item.label}
-        </AppLink>
-      ))}
+          {NAV_STANDALONE.filter((item) => item.id !== "home").map((item) => (
+            <NavigationMenuItem key={item.id}>
+              <NavigationMenuLink
+                href={item.href}
+                className={cn(navLinkClass(item.id), "px-2.5")}
+              >
+                {item.label}
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          ))}
+        </NavigationMenuList>
+      </NavigationMenu>
 
-      <MoreNavMenu
-        items={moreItems}
-        activeSection={activeSection}
-        className="sm:hidden"
-      />
+      <MoreNavMenu activeSection={activeSection} className="sm:hidden" />
     </nav>
   );
 };

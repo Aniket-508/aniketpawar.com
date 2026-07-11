@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Fragment } from "react";
 
 import {
   DropdownMenuGroup,
@@ -9,14 +8,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-import { getNavGroupLabel } from "@/lib/nav";
 import { cn } from "@/lib/utils";
-import type { NavDropdownSection, NavItem, SectionId } from "@/types/nav";
+import type { NavGroup, NavItem, SectionId } from "@/types/nav";
 
 interface NavDropdownSectionsProps {
   activeSection: SectionId | null;
-  sections: NavDropdownSection[];
-  showGroupLabels?: boolean;
+  groups: NavGroup[];
+  standaloneItems: NavItem[];
 }
 
 const NavDropdownLink = ({
@@ -43,32 +41,30 @@ const NavDropdownLink = ({
 
 const NavDropdownSections = ({
   activeSection,
-  sections,
-  showGroupLabels = true,
+  groups,
+  standaloneItems,
 }: NavDropdownSectionsProps) => (
   <>
-    {sections.map((section, index) => (
-      <Fragment key={section.type === "item" ? section.item.id : section.group}>
-        {index > 0 ? <DropdownMenuSeparator /> : null}
-        {section.type === "item" ? (
-          <NavDropdownLink activeSection={activeSection} item={section.item} />
-        ) : (
-          <DropdownMenuGroup>
-            {showGroupLabels ? (
-              <DropdownMenuLabel>
-                {getNavGroupLabel(section.group)}
-              </DropdownMenuLabel>
-            ) : null}
-            {section.items.map((item) => (
-              <NavDropdownLink
-                key={item.id}
-                activeSection={activeSection}
-                item={item}
-              />
-            ))}
-          </DropdownMenuGroup>
-        )}
-      </Fragment>
+    {standaloneItems.map((item, index) => (
+      <div key={item.id}>
+        {index > 0 || groups.length > 0 ? <DropdownMenuSeparator /> : null}
+        <NavDropdownLink activeSection={activeSection} item={item} />
+      </div>
+    ))}
+    {groups.map((group) => (
+      <div key={group.id}>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>{group.label}</DropdownMenuLabel>
+          {group.items.map((item) => (
+            <NavDropdownLink
+              key={item.id}
+              activeSection={activeSection}
+              item={item}
+            />
+          ))}
+        </DropdownMenuGroup>
+      </div>
     ))}
   </>
 );

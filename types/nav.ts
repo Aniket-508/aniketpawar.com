@@ -18,12 +18,13 @@ export type SectionId =
 export type NavGroupId = "extras" | "ui" | "work";
 
 export interface NavItem {
-  group?: NavGroupId;
   href: string;
   id: SectionId;
   label: string;
 }
 
-export type NavDropdownSection =
-  | { item: NavItem; type: "item" }
-  | { group: NavGroupId; items: NavItem[]; type: "group" };
+export interface NavGroup {
+  id: NavGroupId;
+  label: string;
+  items: NavItem[];
+}

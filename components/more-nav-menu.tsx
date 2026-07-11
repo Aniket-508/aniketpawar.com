@@ -9,20 +9,19 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { getNavDropdownSections } from "@/lib/nav";
+import { NAV_GROUPS, NAV_STANDALONE } from "@/constants/site";
 import { cn } from "@/lib/utils";
-import type { NavItem, SectionId } from "@/types/nav";
+import type { SectionId } from "@/types/nav";
 
 interface MoreNavMenuProps {
   activeSection: SectionId | null;
   className?: string;
-  items: NavItem[];
 }
 
-const MoreNavMenu = ({ activeSection, className, items }: MoreNavMenuProps) => {
-  const sections = getNavDropdownSections(items);
+const MoreNavMenu = ({ activeSection, className }: MoreNavMenuProps) => {
+  const standaloneItems = NAV_STANDALONE.filter((item) => item.id !== "home");
 
-  if (sections.length === 0) {
+  if (standaloneItems.length === 0 && NAV_GROUPS.length === 0) {
     return null;
   }
 
@@ -46,7 +45,8 @@ const MoreNavMenu = ({ activeSection, className, items }: MoreNavMenuProps) => {
       <DropdownMenuContent>
         <NavDropdownSections
           activeSection={activeSection}
-          sections={sections}
+          groups={NAV_GROUPS}
+          standaloneItems={standaloneItems}
         />
       </DropdownMenuContent>
     </DropdownMenu>
