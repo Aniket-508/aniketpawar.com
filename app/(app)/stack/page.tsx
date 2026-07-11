@@ -1,5 +1,5 @@
-import { Section } from "@/components/layout/section";
 import { TechStackView } from "@/components/tech-stack/view";
+import { Section } from "@/components/ui/section";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
 import { TECH_STACK } from "@/constants/tech-stack";

@@ -7,36 +7,38 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { LINK } from "@/constants/links";
-import { getStargazerCount } from "@/lib/github";
+import { getStargazerCount } from "@/lib/github/stargazers";
 
 const NavItemGitHub = async () => {
   const stargazerCount = await getStargazerCount();
 
   return (
     <Tooltip>
-      <TooltipTrigger>
-        <Button
-          size="icon-sm"
-          variant="ghost"
-          nativeButton={false}
-          render={
-            <AppLink
-              href={LINK.GITHUB_REPO}
-              target="_blank"
-              rel="noreferrer"
-              eventName="external_link_click"
-              eventProperties={{
-                context: "github_link",
-                link_type: "github",
-                title: "site repo",
-                url: LINK.GITHUB_REPO,
-              }}
-            />
-          }
-        >
-          <Icons.github />
-        </Button>
-      </TooltipTrigger>
+      <TooltipTrigger
+        render={
+          <Button
+            size="icon-sm"
+            variant="ghost"
+            nativeButton={false}
+            render={
+              <AppLink
+                href={LINK.GITHUB_REPO}
+                target="_blank"
+                rel="noreferrer"
+                eventName="external_link_click"
+                eventProperties={{
+                  context: "github_link",
+                  link_type: "github",
+                  title: "site repo",
+                  url: LINK.GITHUB_REPO,
+                }}
+              />
+            }
+          >
+            <Icons.github />
+          </Button>
+        }
+      />
       <TooltipContent side="bottom">
         {new Intl.NumberFormat("en-US").format(stargazerCount)} stars
       </TooltipContent>

@@ -2,13 +2,13 @@ import { format } from "date-fns";
 
 import { AnimatedNumber } from "@/components/animated-number";
 import { CopyLink } from "@/components/copy-link";
-import { Section } from "@/components/layout/section";
 import { ProviderLogo } from "@/components/stats/provider-logo";
 import { TokensChart } from "@/components/stats/tokens-chart";
 import type { TokensChartPoint } from "@/components/stats/tokens-chart";
 import { AppLinkWithPreview } from "@/components/ui/app-link/server";
 import { Callout } from "@/components/ui/callout";
 import { Metric, MetricLabel, MetricValue } from "@/components/ui/metric";
+import { Section } from "@/components/ui/section";
 import { Title } from "@/components/ui/title";
 import { ASSETS, LINK } from "@/constants/links";
 import {

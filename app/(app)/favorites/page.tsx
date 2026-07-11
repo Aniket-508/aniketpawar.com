@@ -1,5 +1,5 @@
-import { Section } from "@/components/layout/section";
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
+import { Section } from "@/components/ui/section";
 import { Title } from "@/components/ui/title";
 import { FAVORITES } from "@/constants/favorites";
 import { ROUTES } from "@/constants/routes";

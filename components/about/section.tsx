@@ -6,15 +6,14 @@ import {
   GitHubContributionsFallback,
 } from "@/components/about/github-contributions";
 import { Icons } from "@/components/icons";
-import { Section } from "@/components/layout/section";
 import { AppLink } from "@/components/ui/app-link";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
+import { Section } from "@/components/ui/section";
 import { Title } from "@/components/ui/title";
 import { UserAvatar } from "@/components/user-avatar";
 import { LINK } from "@/constants/links";
-import { getGitHubContributions } from "@/lib/github";
-import { LinkReveal } from "@/registry/components/link-reveal/link-reveal";
+import { getGitHubContributions } from "@/lib/github/contributions";
 
 const AboutSection = () => {
   const contributions = getGitHubContributions();
@@ -38,7 +37,7 @@ const AboutSection = () => {
         </p>
         <p>
           I run{" "}
-          <LinkReveal
+          <AppLink
             className="inline-flex items-center gap-1 translate-y-[3px]"
             href={LINK.SHADCN_LABS}
             target="_blank"
@@ -50,8 +49,8 @@ const AboutSection = () => {
               url: LINK.SHADCN_LABS,
             }}
           >
-            Shadcn Labs
-          </LinkReveal>
+            <Icons.shadcnlabs className="size-4" /> Shadcn Labs
+          </AppLink>
           , an open-source org committed to building technologies that push the
           limits of{" "}
           <AppLink
