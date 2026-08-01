@@ -7,12 +7,16 @@ const CONTACT_ICONS: Record<
   ContactIconKey,
   (props: IconProps) => React.JSX.Element
 > = {
+  bluesky: Icons.bluesky,
+  dailydev: Icons.dailydev,
   discord: Icons.discord,
   github: Icons.github,
   linkedin: Icons.linkedin,
   peerlist: Icons.peerlist,
+  telegram: Icons.telegram,
   topmate: Icons.topmate,
   x: Icons.x,
+  youtube: Icons.youtube,
 };
 
 export type ResolvedContact = Omit<Contact, "icon"> & {

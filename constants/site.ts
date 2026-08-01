@@ -13,9 +13,9 @@ export const SITE = {
     TWITTER: "@alaymanguy",
   },
   DESCRIPTION: {
-    LONG: "Software Engineer & Product Builder crafting high-fidelity digital products that bridge design and tech. Explore my work and let's build something impactful today.",
+    LONG: "Frontend engineer based in Mumbai, India. I care deeply about visual craft and obsess over building products that feel fast, polished, and human. I run Shadcn Labs, an open-source org pushing the limits of the shadcn/ui ecosystem.",
     SHORT:
-      "Crafting high-fidelity, design-led digital products with technical precision.",
+      "Frontend engineer obsessed with visual craft and building fast, polished, human-centric products.",
   },
   KEYWORDS: [
     "Aniket Pawar",
@@ -45,23 +45,73 @@ export const UTM_PARAMS = {
 
 export const NAV_ITEMS: NavItem[] = [
   {
+    href: ROUTES.HOME,
+    id: "home",
+    label: "home",
+  },
+  {
+    group: "work",
     href: ROUTES.STACK,
     id: "stack",
     label: "stack",
   },
   {
+    group: "work",
     href: ROUTES.PROJECTS,
     id: "projects",
     label: "projects",
   },
   {
+    group: "work",
     href: ROUTES.CRAFTS,
     id: "crafts",
     label: "crafts",
   },
   {
+    group: "work",
     href: ROUTES.EXPERIENCES,
     id: "experiences",
     label: "experience",
+  },
+  // {
+  //   group: "work",
+  //   href: ROUTES.BLOG,
+  //   id: "blog",
+  //   label: "blog",
+  // },
+  // {
+  //   group: "ui",
+  //   href: ROUTES.COMPONENTS,
+  //   id: "components",
+  //   label: "components",
+  // },
+  // {
+  //   group: "ui",
+  //   href: ROUTES.BLOCKS,
+  //   id: "blocks",
+  //   label: "blocks",
+  // },
+  {
+    group: "extras",
+    href: ROUTES.FAVORITES,
+    id: "favorites",
+    label: "favorites",
+  },
+  {
+    group: "extras",
+    href: ROUTES.STATS,
+    id: "stats",
+    label: "stats",
+  },
+  // {
+  //   group: "extras",
+  //   href: ROUTES.SPONSORS,
+  //   id: "sponsor",
+  //   label: "sponsor",
+  // },
+  {
+    href: ROUTES.CONTACT,
+    id: "contact",
+    label: "contact",
   },
 ];

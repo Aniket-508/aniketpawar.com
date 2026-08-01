@@ -1,4 +1,4 @@
-import { Section } from "@/components/layout/section";
+import { Section } from "@/components/ui/section";
 import { ViewAllButton } from "@/components/view-all-button";
 import { ROUTES } from "@/constants/routes";
 import { TECH_STACK } from "@/constants/tech-stack";

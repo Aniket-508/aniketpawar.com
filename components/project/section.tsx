@@ -1,5 +1,5 @@
-import { Section } from "@/components/layout/section";
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
+import { Section } from "@/components/ui/section";
 import { ViewAllButton } from "@/components/view-all-button";
 import { HOME_FEATURED_PROJECT_COUNT } from "@/constants/projects";
 import { ROUTES } from "@/constants/routes";

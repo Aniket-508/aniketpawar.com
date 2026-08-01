@@ -5,6 +5,7 @@ import { unstable_cache } from "next/cache";
 
 import type { Activity } from "@/components/about/contribution-graph";
 import { GITHUB } from "@/constants/links";
+import { env } from "@/env";
 
 interface GitHubContributionsResponse {
   contributions: Activity[];
@@ -13,40 +14,12 @@ interface GitHubContributionsResponse {
 export const getGitHubContributions = unstable_cache(
   async () => {
     const res = await fetch(
-      `${process.env.GITHUB_CONTRIBUTIONS_API_URL || `https://github-contributions-api.jogruber.de`}/v4/${GITHUB.user}?y=last`
+      `${env.GITHUB_CONTRIBUTIONS_API_URL || `https://github-contributions-api.jogruber.de`}/v4/${GITHUB.user}?y=last`
     );
     const data = (await res.json()) as GitHubContributionsResponse;
     return data.contributions;
   },
   ["github-contributions"],
-  // Cache for 1 day (86400 seconds)
-  { revalidate: 86_400 }
-);
-
-export const getStargazerCount = unstable_cache(
-  async () => {
-    try {
-      const response = await fetch(
-        `https://api.github.com/repos/${GITHUB.user}/${GITHUB.repo}`,
-        {
-          headers: {
-            Accept: "application/vnd.github+json",
-            "X-GitHub-Api-Version": "2022-11-28",
-          },
-        }
-      );
-
-      if (!response.ok) {
-        return 0;
-      }
-
-      const json = (await response.json()) as { stargazers_count?: number };
-      return Number(json?.stargazers_count) || 0;
-    } catch {
-      return 0;
-    }
-  },
-  ["github-stargazer-count"],
   { revalidate: 86_400 }
 );
 
