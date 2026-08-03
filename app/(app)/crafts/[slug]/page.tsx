@@ -32,6 +32,7 @@ export const generateMetadata = async ({
 
   return createMetadata({
     canonical: `${ROUTES.CRAFTS}/${craft.slug}`,
+    category: "Craft",
     description: craft.description,
     title: craft.title,
   });

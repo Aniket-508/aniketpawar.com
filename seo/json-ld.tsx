@@ -2,6 +2,7 @@ import { LINK } from "@/constants/links";
 import { ROUTES } from "@/constants/routes";
 import { SITE } from "@/constants/site";
 import { absoluteUrl } from "@/lib/utils";
+import { getOgImageUrl } from "@/seo/metadata";
 
 const JsonLdScript = ({ data }: { data: Record<string, unknown> }) => (
   <script
@@ -41,7 +42,7 @@ const OrganizationJsonLd = () => {
       name: SITE.AUTHOR.NAME,
       url: SITE.URL,
     },
-    logo: SITE.OG_IMAGE,
+    logo: getOgImageUrl(),
     name: SITE.NAME,
     sameAs: [LINK.GITHUB, LINK.TWITTER],
     url: SITE.URL,
