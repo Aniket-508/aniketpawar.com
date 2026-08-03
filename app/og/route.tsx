@@ -12,46 +12,52 @@ const getGeistBold = async (request: Request) => {
   return res.arrayBuffer();
 };
 
+const getLogoSvg = async (request: Request) => {
+  const res = await fetch(new URL("/favicon.svg", request.url));
+  const svgText = await res.text();
+  const base64 = btoa(svgText);
+  return `data:image/svg+xml;base64,${base64}`;
+};
+
 export const GET = async (request: Request) => {
   const { searchParams } = new URL(request.url);
   const title = searchParams.get("title") ?? SITE.NAME;
   const description = searchParams.get("description") ?? SITE.DESCRIPTION.SHORT;
+  const category = searchParams.get("category") ?? undefined;
 
   try {
-    const [geistRegular, geistBold] = await Promise.all([
+    const [geistRegular, geistBold, logoDataUri] = await Promise.all([
       getGeistRegular(request),
       getGeistBold(request),
+      getLogoSvg(request),
     ]);
 
     return new ImageResponse(
-      <div tw="flex flex-col h-full w-full bg-white p-[60px] relative overflow-hidden">
-        <div tw="flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <span tw="text-[#f5f5f5] text-[200px] font-bold tracking-[-8px] leading-none whitespace-nowrap">
-            {SITE.NAME.toLowerCase()}
-          </span>
-        </div>
-
-        <div tw="flex flex-col gap-[24px]">
+      <div
+        tw="flex flex-col h-full w-full bg-[#fafafa] p-[60px] relative overflow-hidden"
+        style={{ fontFamily: "Geist" }}
+      >
+        {/* Top row: logo + optional pill */}
+        <div tw="flex items-start justify-between w-full">
           {/* oxlint-disable-next-line next/no-img-element */}
-          <img
-            src={SITE.AUTHOR.AVATAR}
-            alt={SITE.NAME}
-            tw="w-20 h-20 rounded-full"
-          />
+          <img src={logoDataUri} alt="logo" tw="w-[60px] h-[60px]" />
 
-          <div tw="flex flex-col gap-[12px]">
-            <span tw="text-black text-[48px] font-bold tracking-[-1.5px] leading-[1.1]">
-              {title}
-            </span>
-            <span tw="text-[#666666] text-[24px] tracking-[-0.3px] leading-[1.4]">
-              {description}
-            </span>
-          </div>
+          {category && (
+            <div tw="flex items-center justify-center rounded-full bg-black/5 px-8 py-3">
+              <span tw="text-[28px] font-medium tracking-[-0.3px] text-neutral-500">
+                {category}
+              </span>
+            </div>
+          )}
         </div>
 
-        <div tw="flex mt-auto">
-          <span tw="text-[#999999] text-[18px] tracking-[0.5px]">
-            ( {new URL(SITE.URL).hostname} )
+        {/* Title + description at bottom */}
+        <div tw="flex flex-1 flex-col justify-end">
+          <span tw="text-[56px] font-bold tracking-[-2px] leading-[1.05] text-neutral-950 mb-4">
+            {title}
+          </span>
+          <span tw="text-[28px] tracking-[-0.3px] leading-[1.4] text-neutral-500">
+            {description}
           </span>
         </div>
       </div>,

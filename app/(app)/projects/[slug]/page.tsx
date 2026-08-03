@@ -38,6 +38,7 @@ export const generateMetadata = async ({
 
   return createMetadata({
     canonical: `${ROUTES.PROJECTS}/${project.slug}`,
+    category: "Project",
     description: project.description,
     title: project.title,
   });

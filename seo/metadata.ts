@@ -10,16 +10,24 @@ interface CreateMetadataOptions {
   canonical?: string;
   ogTitle?: string;
   ogDescription?: string;
+  category?: string;
   noIndex?: boolean;
 }
 
-const getOgImageUrl = (title?: string, description?: string): string => {
+const getOgImageUrl = (
+  title?: string,
+  description?: string,
+  category?: string
+): string => {
   const params = new URLSearchParams();
   if (title) {
     params.set("title", title);
   }
   if (description) {
     params.set("description", description);
+  }
+  if (category) {
+    params.set("category", category);
   }
   const queryString = params.toString();
   return `${SITE.URL}/og${queryString ? `?${queryString}` : ""}`;
@@ -32,12 +40,13 @@ const createMetadata = (options: CreateMetadataOptions = {}): Metadata => {
     canonical,
     ogTitle,
     ogDescription,
+    category,
     noIndex = false,
   } = options;
 
   const ogTitleText = ogTitle || title || SITE.NAME;
   const ogDescriptionText = ogDescription || description;
-  const ogImage = getOgImageUrl(ogTitleText, ogDescriptionText);
+  const ogImage = getOgImageUrl(ogTitleText, ogDescriptionText, category);
 
   return {
     ...(title && { title }),
