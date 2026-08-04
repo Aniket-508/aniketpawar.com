@@ -2,23 +2,30 @@
 
 import { usePathname } from "next/navigation";
 
-import { MoreNavMenu } from "@/components/more-nav-menu";
-import { AppLink } from "@/components/ui/app-link";
-import { NAV_ITEMS } from "@/constants/site";
-import { getActiveSection } from "@/lib/nav";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { ROUTES } from "@/constants/routes";
+import { NAV_GROUPS } from "@/constants/site";
+import { getActiveSection, getHomeNavItem, isNavGroupActive } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
-const allMoreItems = NAV_ITEMS.filter((item) => item.id !== "home");
-
-const projectsHiddenItems = allMoreItems.filter(
-  (item) => item.id !== "projects"
-);
-
-const craftsHiddenItems = projectsHiddenItems.filter(
-  (item) => item.id !== "contact"
-);
-
-const mdMoreItems = craftsHiddenItems.filter((item) => item.id !== "crafts");
+const homeItem = getHomeNavItem();
+const workGroup = NAV_GROUPS.find((g) => g.id === "work") ?? {
+  id: "work" as const,
+  items: [],
+  label: "work",
+};
+const extrasGroup = NAV_GROUPS.find((g) => g.id === "extras") ?? {
+  id: "extras" as const,
+  items: [],
+  label: "extras",
+};
 
 const MainNav = () => {
   const pathname = usePathname();
@@ -33,73 +40,114 @@ const MainNav = () => {
     );
 
   return (
-    <div className="flex items-center gap-4">
-      <nav className="flex items-center gap-4">
-        <AppLink
-          href="/"
-          className={navLinkClass("home")}
-          eventName="navbar_section_click"
-          eventProperties={{ section: "home" }}
-        >
-          home
-        </AppLink>
+    <div className="flex items-center">
+      <nav className="flex items-center">
+        <NavigationMenu>
+          <NavigationMenuList>
+            {/* Home — always visible */}
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                href={homeItem.href}
+                className={cn(navLinkClass(homeItem.id), "-ml-2.5")}
+              >
+                {homeItem.label}
+              </NavigationMenuLink>
+            </NavigationMenuItem>
 
-        <AppLink
-          href="/projects"
-          className={cn(navLinkClass("projects"), "hidden xs:inline-flex")}
-          eventName="navbar_section_click"
-          eventProperties={{ section: "projects" }}
-        >
-          projects
-        </AppLink>
+            {/* Work — trigger on sm+, link on mobile */}
+            <NavigationMenuItem>
+              <NavigationMenuTrigger
+                className={cn(
+                  navLinkClass(workGroup.id),
+                  isNavGroupActive(workGroup.items, activeSection) &&
+                    "data-open:text-foreground"
+                )}
+              >
+                {workGroup.label}
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="flex flex-col p-1">
+                  {workGroup.items.map((item) => (
+                    <NavigationMenuLink
+                      key={item.id}
+                      href={item.href}
+                      className={cn(navLinkClass(item.id), "w-48")}
+                    >
+                      {item.label}
+                    </NavigationMenuLink>
+                  ))}
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
 
-        <AppLink
-          href="/crafts"
-          className={cn(navLinkClass("crafts"), "hidden md:inline-flex")}
-          eventName="navbar_section_click"
-          eventProperties={{ section: "crafts" }}
-        >
-          crafts
-        </AppLink>
+            {/* Extras — trigger on sm+, inside more on mobile/tablet */}
+            <NavigationMenuItem>
+              <NavigationMenuTrigger
+                className={cn(
+                  navLinkClass(extrasGroup.id),
+                  "hidden sm:inline-flex",
+                  isNavGroupActive(extrasGroup.items, activeSection) &&
+                    "data-open:text-foreground"
+                )}
+              >
+                {extrasGroup.label}
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="flex flex-col p-1">
+                  {extrasGroup.items.map((item) => (
+                    <NavigationMenuLink
+                      key={item.id}
+                      href={item.href}
+                      className={cn(navLinkClass(item.id), "w-48")}
+                    >
+                      {item.label}
+                    </NavigationMenuLink>
+                  ))}
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
 
-        <AppLink
-          href="/contact"
-          className={cn(navLinkClass("contact"), "hidden sm:inline-flex")}
-          eventName="navbar_section_click"
-          eventProperties={{ section: "contact" }}
-        >
-          contact
-        </AppLink>
+            {/* Contact — visible on sm+ */}
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                href={ROUTES.CONTACT}
+                className={cn(navLinkClass("contact"), "hidden sm:inline-flex")}
+              >
+                contact
+              </NavigationMenuLink>
+            </NavigationMenuItem>
 
-        <MoreNavMenu
-          items={allMoreItems}
-          activeSection={activeSection}
-          className="xs:hidden"
-        />
-
-        <MoreNavMenu
-          items={projectsHiddenItems}
-          activeSection={activeSection}
-          className="hidden xs:flex sm:hidden"
-        />
-
-        <MoreNavMenu
-          items={craftsHiddenItems}
-          activeSection={activeSection}
-          className="hidden sm:flex md:hidden"
-        />
-
-        <MoreNavMenu
-          items={mdMoreItems}
-          activeSection={activeSection}
-          className="hidden md:flex lg:hidden"
-        />
-
-        <MoreNavMenu
-          items={mdMoreItems}
-          activeSection={activeSection}
-          className="hidden lg:flex"
-        />
+            {/* More — visible below sm, contains extras/writing/contact */}
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className="text-sm text-muted-foreground transition-colors hover:text-foreground sm:hidden">
+                more
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="flex flex-col p-1">
+                  <span className="px-1.5 py-1 text-xs font-medium text-muted-foreground">
+                    {extrasGroup.label}
+                  </span>
+                  {extrasGroup.items.map((item) => (
+                    <NavigationMenuLink
+                      key={item.id}
+                      href={item.href}
+                      className={cn(navLinkClass(item.id), "w-48")}
+                    >
+                      {item.label}
+                    </NavigationMenuLink>
+                  ))}
+                  <div className="-mx-1 my-1 h-px bg-border" />
+                  <NavigationMenuLink
+                    href={ROUTES.CONTACT}
+                    className={cn(navLinkClass("contact"), "w-48")}
+                  >
+                    contact
+                  </NavigationMenuLink>
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
       </nav>
     </div>
   );

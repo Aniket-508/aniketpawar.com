@@ -1,4 +1,4 @@
-import type { NavItem } from "@/types/nav";
+import type { NavGroup, NavItem } from "@/types/nav";
 
 import { ROUTES } from "./routes";
 import { getBaseUrl } from "./url";
@@ -43,75 +43,60 @@ export const UTM_PARAMS = {
   utm_source: new URL(baseUrl).hostname,
 };
 
-export const NAV_ITEMS: NavItem[] = [
+export const NAV_STANDALONE: NavItem[] = [
   {
     href: ROUTES.HOME,
     id: "home",
     label: "home",
   },
   {
-    group: "work",
-    href: ROUTES.STACK,
-    id: "stack",
-    label: "stack",
-  },
-  {
-    group: "work",
-    href: ROUTES.PROJECTS,
-    id: "projects",
-    label: "projects",
-  },
-  {
-    group: "work",
-    href: ROUTES.CRAFTS,
-    id: "crafts",
-    label: "crafts",
-  },
-  {
-    group: "work",
-    href: ROUTES.EXPERIENCES,
-    id: "experiences",
-    label: "experience",
-  },
-  // {
-  //   group: "work",
-  //   href: ROUTES.BLOG,
-  //   id: "blog",
-  //   label: "blog",
-  // },
-  // {
-  //   group: "ui",
-  //   href: ROUTES.COMPONENTS,
-  //   id: "components",
-  //   label: "components",
-  // },
-  // {
-  //   group: "ui",
-  //   href: ROUTES.BLOCKS,
-  //   id: "blocks",
-  //   label: "blocks",
-  // },
-  {
-    group: "extras",
-    href: ROUTES.FAVORITES,
-    id: "favorites",
-    label: "favorites",
-  },
-  {
-    group: "extras",
-    href: ROUTES.STATS,
-    id: "stats",
-    label: "stats",
-  },
-  // {
-  //   group: "extras",
-  //   href: ROUTES.SPONSORS,
-  //   id: "sponsor",
-  //   label: "sponsor",
-  // },
-  {
     href: ROUTES.CONTACT,
     id: "contact",
     label: "contact",
+  },
+];
+
+export const NAV_GROUPS: NavGroup[] = [
+  {
+    id: "work",
+    items: [
+      {
+        href: ROUTES.STACK,
+        id: "stack",
+        label: "stack",
+      },
+      {
+        href: ROUTES.PROJECTS,
+        id: "projects",
+        label: "projects",
+      },
+      {
+        href: ROUTES.CRAFTS,
+        id: "crafts",
+        label: "crafts",
+      },
+      {
+        href: ROUTES.EXPERIENCES,
+        id: "experiences",
+        label: "experience",
+      },
+    ],
+    label: "work",
+  },
+  {
+    id: "extras",
+    items: [
+      {
+        href: ROUTES.STATS,
+        id: "stats",
+        label: "stats",
+      },
+      {
+        href: ROUTES.FAVORITES,
+        id: "favorites",
+        label: "favorites",
+      },
+    ],
+    label: "extras",
   },
 ];
