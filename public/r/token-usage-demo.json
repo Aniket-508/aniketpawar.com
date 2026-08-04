@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "token-usage-demo",
+  "title": "Token Usage Demo",
+  "description": "Demo example for Token Usage component.",
+  "dependencies": ["date-fns"],
+  "files": [
+    {
+      "path": "registry/examples/token-usage-demo.tsx",
+      "content": "import { TokenUsage } from \"@/registry/components/token-usage/token-usage\";\nimport type { TokscaleInsights } from \"@/types/tokscale\";\n\nconst mockTokenData: TokscaleInsights = {\n  biggestDay: { cost: 12.5, date: \"2025-01-24\", tokens: 450000 },\n  endDate: \"2025-01-25\",\n  models: [\n    { cost: 25.5, model: \"claude-3.5-sonnet\", percentage: 60, tokens: 850000 },\n    { cost: 12.3, model: \"gpt-4o\", percentage: 30, tokens: 420000 },\n    { cost: 4.7, model: \"claude-3-haiku\", percentage: 10, tokens: 180000 },\n  ],\n  series: [\n    {\n      agents: [],\n      cost: 5.2,\n      date: \"2025-01-20\",\n      models: [\n        { cost: 3.1, name: \"claude-3.5-sonnet\", tokens: 120000 },\n        { cost: 2.1, name: \"gpt-4o\", tokens: 85000 },\n      ],\n      tokens: 205000,\n    },\n    {\n      agents: [],\n      cost: 7.8,\n      date: \"2025-01-21\",\n      models: [\n        { cost: 4.5, name: \"claude-3.5-sonnet\", tokens: 180000 },\n        { cost: 3.3, name: \"gpt-4o\", tokens: 130000 },\n      ],\n      tokens: 310000,\n    },\n    {\n      agents: [],\n      cost: 6.1,\n      date: \"2025-01-22\",\n      models: [\n        { cost: 3.8, name: \"claude-3.5-sonnet\", tokens: 150000 },\n        { cost: 2.3, name: \"gpt-4o\", tokens: 95000 },\n      ],\n      tokens: 245000,\n    },\n    {\n      agents: [],\n      cost: 9.2,\n      date: \"2025-01-23\",\n      models: [\n        { cost: 5.5, name: \"claude-3.5-sonnet\", tokens: 220000 },\n        { cost: 3.7, name: \"gpt-4o\", tokens: 148000 },\n      ],\n      tokens: 368000,\n    },\n    {\n      agents: [],\n      cost: 12.5,\n      date: \"2025-01-24\",\n      models: [\n        { cost: 7.2, name: \"claude-3.5-sonnet\", tokens: 290000 },\n        { cost: 5.3, name: \"gpt-4o\", tokens: 210000 },\n      ],\n      tokens: 500000,\n    },\n    {\n      agents: [],\n      cost: 8.4,\n      date: \"2025-01-25\",\n      models: [\n        { cost: 5.0, name: \"claude-3.5-sonnet\", tokens: 200000 },\n        { cost: 3.4, name: \"gpt-4o\", tokens: 135000 },\n      ],\n      tokens: 335000,\n    },\n  ],\n  startDate: \"2025-01-20\",\n  stats: {\n    activeDays: 6,\n    cacheReadTokens: 0,\n    cacheWriteTokens: 0,\n    inputTokens: 950000,\n    outputTokens: 708000,\n    reasoningTokens: 0,\n    sessionCount: 42,\n    totalCost: 49.3,\n    totalTokens: 1658000,\n  },\n};\n\nconst TokenUsageDemo = () => {\n  return <TokenUsage data={mockTokenData} />;\n};\n\nexport { TokenUsageDemo };\n",
+      "type": "registry:example"
+    }
+  ],
+  "categories": ["examples"],
+  "type": "registry:example"
+}

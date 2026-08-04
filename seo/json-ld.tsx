@@ -159,6 +159,12 @@ const testimonialsBreadcrumbs = (
   ...(current ? [current] : []),
 ];
 
+const uiBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "UI", path: ROUTES.UI },
+  ...(current ? [current] : []),
+];
+
 const usesBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
   HOME_BREADCRUMB,
   { name: "Uses", path: ROUTES.USES },
@@ -206,6 +212,7 @@ export {
   sponsorsBreadcrumbs,
   stackBreadcrumbs,
   testimonialsBreadcrumbs,
+  uiBreadcrumbs,
   usesBreadcrumbs,
   writingBreadcrumbs,
   WebsiteJsonLd,

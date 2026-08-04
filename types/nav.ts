@@ -6,7 +6,8 @@ export type SectionId =
   | "home"
   | "projects"
   | "stack"
-  | "stats";
+  | "stats"
+  | "ui";
 
 export type NavGroupId = "extras" | "work";
 
