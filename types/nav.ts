@@ -1,21 +1,14 @@
 export type SectionId =
-  | "blocks"
-  | "blog"
-  | "colophon"
-  | "components"
   | "contact"
   | "crafts"
   | "experiences"
   | "favorites"
   | "home"
   | "projects"
-  | "sponsor"
-  | "stats"
-  | "testimonials"
-  | "uses"
-  | "writing";
+  | "stack"
+  | "stats";
 
-export type NavGroupId = "extras" | "ui" | "work";
+export type NavGroupId = "extras" | "work";
 
 export interface NavItem {
   href: string;

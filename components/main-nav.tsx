@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 
-import { MoreNavMenu } from "@/components/more-nav-menu";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,11 +10,22 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { NAV_GROUPS, NAV_STANDALONE } from "@/constants/site";
+import { ROUTES } from "@/constants/routes";
+import { NAV_GROUPS } from "@/constants/site";
 import { getActiveSection, getHomeNavItem, isNavGroupActive } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
 const homeItem = getHomeNavItem();
+const workGroup = NAV_GROUPS.find((g) => g.id === "work") ?? {
+  id: "work" as const,
+  items: [],
+  label: "work",
+};
+const extrasGroup = NAV_GROUPS.find((g) => g.id === "extras") ?? {
+  id: "extras" as const,
+  items: [],
+  label: "extras",
+};
 
 const MainNav = () => {
   const pathname = usePathname();
@@ -30,32 +40,34 @@ const MainNav = () => {
     );
 
   return (
-    <nav className="flex items-center">
-      <NavigationMenu className="hidden sm:flex">
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              href={homeItem.href}
-              className={cn(navLinkClass(homeItem.id), "px-2.5")}
-            >
-              {homeItem.label}
-            </NavigationMenuLink>
-          </NavigationMenuItem>
+    <div className="flex items-center">
+      <nav className="flex items-center">
+        <NavigationMenu>
+          <NavigationMenuList>
+            {/* Home — always visible */}
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                href={homeItem.href}
+                className={cn(navLinkClass(homeItem.id), "-ml-2.5")}
+              >
+                {homeItem.label}
+              </NavigationMenuLink>
+            </NavigationMenuItem>
 
-          {NAV_GROUPS.map((group) => (
-            <NavigationMenuItem key={group.id}>
+            {/* Work — trigger on sm+, link on mobile */}
+            <NavigationMenuItem>
               <NavigationMenuTrigger
                 className={cn(
-                  navLinkClass(group.id),
-                  isNavGroupActive(group.items, activeSection) &&
+                  navLinkClass(workGroup.id),
+                  isNavGroupActive(workGroup.items, activeSection) &&
                     "data-open:text-foreground"
                 )}
               >
-                {group.label}
+                {workGroup.label}
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="flex flex-col gap-1 p-2">
-                  {group.items.map((item) => (
+                <div className="flex flex-col p-1">
+                  {workGroup.items.map((item) => (
                     <NavigationMenuLink
                       key={item.id}
                       href={item.href}
@@ -67,23 +79,77 @@ const MainNav = () => {
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>
-          ))}
 
-          {NAV_STANDALONE.filter((item) => item.id !== "home").map((item) => (
-            <NavigationMenuItem key={item.id}>
-              <NavigationMenuLink
-                href={item.href}
-                className={cn(navLinkClass(item.id), "px-2.5")}
+            {/* Extras — trigger on sm+, inside more on mobile/tablet */}
+            <NavigationMenuItem>
+              <NavigationMenuTrigger
+                className={cn(
+                  navLinkClass(extrasGroup.id),
+                  "hidden sm:inline-flex",
+                  isNavGroupActive(extrasGroup.items, activeSection) &&
+                    "data-open:text-foreground"
+                )}
               >
-                {item.label}
+                {extrasGroup.label}
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="flex flex-col p-1">
+                  {extrasGroup.items.map((item) => (
+                    <NavigationMenuLink
+                      key={item.id}
+                      href={item.href}
+                      className={cn(navLinkClass(item.id), "w-48")}
+                    >
+                      {item.label}
+                    </NavigationMenuLink>
+                  ))}
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+
+            {/* Contact — visible on sm+ */}
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                href={ROUTES.CONTACT}
+                className={cn(navLinkClass("contact"), "hidden sm:inline-flex")}
+              >
+                contact
               </NavigationMenuLink>
             </NavigationMenuItem>
-          ))}
-        </NavigationMenuList>
-      </NavigationMenu>
 
-      <MoreNavMenu activeSection={activeSection} className="sm:hidden" />
-    </nav>
+            {/* More — visible below sm, contains extras/writing/contact */}
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className="text-sm text-muted-foreground transition-colors hover:text-foreground sm:hidden">
+                more
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="flex flex-col p-1">
+                  <span className="px-1.5 py-1 text-xs font-medium text-muted-foreground">
+                    {extrasGroup.label}
+                  </span>
+                  {extrasGroup.items.map((item) => (
+                    <NavigationMenuLink
+                      key={item.id}
+                      href={item.href}
+                      className={cn(navLinkClass(item.id), "w-48")}
+                    >
+                      {item.label}
+                    </NavigationMenuLink>
+                  ))}
+                  <div className="-mx-1 my-1 h-px bg-border" />
+                  <NavigationMenuLink
+                    href={ROUTES.CONTACT}
+                    className={cn(navLinkClass("contact"), "w-48")}
+                  >
+                    contact
+                  </NavigationMenuLink>
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      </nav>
+    </div>
   );
 };
 

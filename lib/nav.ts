@@ -7,13 +7,9 @@ const SECTION_ROUTES: { id: SectionId; route: string }[] = [
   { id: "projects", route: ROUTES.PROJECTS },
   { id: "crafts", route: ROUTES.CRAFTS },
   { id: "experiences", route: ROUTES.EXPERIENCES },
-  { id: "uses", route: ROUTES.USES },
+  { id: "stack", route: ROUTES.STACK },
   { id: "favorites", route: ROUTES.FAVORITES },
   { id: "stats", route: ROUTES.STATS },
-  { id: "colophon", route: ROUTES.COLOPHON },
-  { id: "sponsor", route: ROUTES.SPONSORS },
-  { id: "testimonials", route: ROUTES.TESTIMONIALS },
-  { id: "writing", route: ROUTES.WRITING },
 ];
 
 export const isNavGroupActive = (

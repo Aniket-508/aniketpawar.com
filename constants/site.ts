@@ -50,11 +50,6 @@ export const NAV_STANDALONE: NavItem[] = [
     label: "home",
   },
   {
-    href: ROUTES.WRITING,
-    id: "writing",
-    label: "writing",
-  },
-  {
     href: ROUTES.CONTACT,
     id: "contact",
     label: "contact",
@@ -66,9 +61,9 @@ export const NAV_GROUPS: NavGroup[] = [
     id: "work",
     items: [
       {
-        href: ROUTES.USES,
-        id: "uses",
-        label: "uses",
+        href: ROUTES.STACK,
+        id: "stack",
+        label: "stack",
       },
       {
         href: ROUTES.PROJECTS,
@@ -85,35 +80,9 @@ export const NAV_GROUPS: NavGroup[] = [
         id: "experiences",
         label: "experience",
       },
-      {
-        href: ROUTES.TESTIMONIALS,
-        id: "testimonials",
-        label: "testimonials",
-      },
-      // {
-      //   href: ROUTES.BLOG,
-      //   id: "blog",
-      //   label: "blog",
-      // },
     ],
     label: "work",
   },
-  // {
-  //   id: "ui",
-  //   label: "ui",
-  //   items: [
-  //     {
-  //       href: ROUTES.COMPONENTS,
-  //       id: "components",
-  //       label: "components",
-  //     },
-  //     {
-  //       href: ROUTES.BLOCKS,
-  //       id: "blocks",
-  //       label: "blocks",
-  //     },
-  //   ],
-  // },
   {
     id: "extras",
     items: [
@@ -126,16 +95,6 @@ export const NAV_GROUPS: NavGroup[] = [
         href: ROUTES.STATS,
         id: "stats",
         label: "stats",
-      },
-      {
-        href: ROUTES.COLOPHON,
-        id: "colophon",
-        label: "colophon",
-      },
-      {
-        href: ROUTES.SPONSORS,
-        id: "sponsor",
-        label: "sponsors",
       },
     ],
     label: "extras",
