@@ -104,11 +104,7 @@ const ExperienceItem = ({
           ))}
         </ul>
       ) : null}
-      {experienceTech?.length ? (
-        <div className="flex flex-wrap gap-1">
-          {experienceTech?.length ? <TechStack items={experienceTech} /> : null}
-        </div>
-      ) : null}
+      {experienceTech?.length ? <TechStack items={experienceTech} /> : null}
     </div>
   );
 };
