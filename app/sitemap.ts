@@ -58,7 +58,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       lastModified: new Date(),
       priority: 0.9,
-      url: absoluteUrl(ROUTES.USES),
+      url: absoluteUrl(ROUTES.STACK),
     },
     {
       changeFrequency: "weekly",

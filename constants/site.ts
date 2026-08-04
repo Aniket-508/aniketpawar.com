@@ -87,14 +87,14 @@ export const NAV_GROUPS: NavGroup[] = [
     id: "extras",
     items: [
       {
-        href: ROUTES.FAVORITES,
-        id: "favorites",
-        label: "favorites",
-      },
-      {
         href: ROUTES.STATS,
         id: "stats",
         label: "stats",
+      },
+      {
+        href: ROUTES.FAVORITES,
+        id: "favorites",
+        label: "favorites",
       },
     ],
     label: "extras",
