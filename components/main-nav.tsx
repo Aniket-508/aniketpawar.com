@@ -66,12 +66,12 @@ const MainNav = () => {
                 {workGroup.label}
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="flex flex-col p-1">
+                <div className="flex flex-col p-1 w-fit">
                   {workGroup.items.map((item) => (
                     <NavigationMenuLink
                       key={item.id}
                       href={item.href}
-                      className={cn(navLinkClass(item.id), "w-48")}
+                      className={cn(navLinkClass(item.id))}
                     >
                       {item.label}
                     </NavigationMenuLink>
@@ -93,12 +93,12 @@ const MainNav = () => {
                 {extrasGroup.label}
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="flex flex-col p-1">
+                <div className="flex flex-col p-1 w-fit">
                   {extrasGroup.items.map((item) => (
                     <NavigationMenuLink
                       key={item.id}
                       href={item.href}
-                      className={cn(navLinkClass(item.id), "w-48")}
+                      className={cn(navLinkClass(item.id))}
                     >
                       {item.label}
                     </NavigationMenuLink>
@@ -123,7 +123,7 @@ const MainNav = () => {
                 more
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="flex flex-col p-1">
+                <div className="flex flex-col p-1 w-fit">
                   <span className="px-1.5 py-1 text-xs font-medium text-muted-foreground">
                     {extrasGroup.label}
                   </span>
@@ -131,7 +131,7 @@ const MainNav = () => {
                     <NavigationMenuLink
                       key={item.id}
                       href={item.href}
-                      className={cn(navLinkClass(item.id), "w-48")}
+                      className={cn(navLinkClass(item.id))}
                     >
                       {item.label}
                     </NavigationMenuLink>
@@ -139,7 +139,7 @@ const MainNav = () => {
                   <div className="-mx-1 my-1 h-px bg-border" />
                   <NavigationMenuLink
                     href={ROUTES.CONTACT}
-                    className={cn(navLinkClass("contact"), "w-48")}
+                    className={cn(navLinkClass("contact"))}
                   >
                     contact
                   </NavigationMenuLink>
