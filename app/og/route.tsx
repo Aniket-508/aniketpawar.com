@@ -34,7 +34,7 @@ export const GET = async (request: Request) => {
 
     return new ImageResponse(
       <div
-        tw="flex flex-col h-full w-full bg-[#fafafa] p-[60px] relative overflow-hidden"
+        tw="flex flex-col h-full w-full bg-white p-[60px] relative overflow-hidden"
         style={{ fontFamily: "Geist" }}
       >
         {/* Top row: logo + optional pill */}
