@@ -1,7 +1,14 @@
 import { Icons } from "@/components/icons";
-import type { TechStackItem } from "@/types/tech-stack";
 
-export const TECH_STACK: TechStackItem[] = [
+export interface SoftwareItem {
+  categories: string[];
+  href: string;
+  icon: React.ReactNode;
+  key: string;
+  title: string;
+}
+
+export const SOFTWARE_ITEMS: SoftwareItem[] = [
   {
     categories: ["Languages"],
     href: "https://www.typescriptlang.org",

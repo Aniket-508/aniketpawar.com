@@ -39,4 +39,6 @@ export const ASSETS = {
   CRUD_DIALOG_ANIMATION: `${STORAGE_URL}/crud_dialog_animation.mp4`,
   FIRE: `${STORAGE_URL}/fogonovo.gif`,
   FOUNDER_LETTER_ANIMATION: `${STORAGE_URL}/founder_letter_animation.mp4`,
+  MACBOOK_AIR: `${STORAGE_URL}/macbook_air.webp`,
+  SAMSUNG_MONITOR: `${STORAGE_URL}/samsung_monitor.avif`,
 };
