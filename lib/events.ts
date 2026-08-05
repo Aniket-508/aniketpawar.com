@@ -43,7 +43,8 @@ export type Section =
   | "crafts"
   | "experience"
   | "stack"
-  | "favorites";
+  | "favorites"
+  | "hardware";
 export type Variant = "list" | "grid";
 
 export const trackEvent = (input: Event): void => {

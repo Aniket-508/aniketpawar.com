@@ -62,12 +62,10 @@ const FavoriteItem = ({
             className="mb-2 aspect-1200/630"
           />
         )}
-        <div className="flex items-center justify-between gap-4">
-          <Title
-            className="font-sans text-base font-normal"
-            render={showHeader ? <h3>{title}</h3> : <h2>{title}</h2>}
-          />
-        </div>
+        <Title
+          className="font-sans text-base font-normal"
+          render={showHeader ? <h3>{title}</h3> : <h2>{title}</h2>}
+        />
         <p className="text-muted-foreground text-sm font-normal">
           {description}
         </p>
