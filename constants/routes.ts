@@ -13,7 +13,9 @@ export const ROUTES = {
   PROJECTS: "/projects",
   RESUME: "/resume.pdf",
   SPONSORS: "/sponsors",
-  STACK: "/stack",
   STATS: "/stats",
+  TESTIMONIALS: "/testimonials",
+  USES: "/uses",
   VCARD: "/vcard",
+  WRITING: "/writing",
 } as const;

@@ -37,6 +37,7 @@ export const generateMetadata = async ({
 
   return createMetadata({
     canonical: `${ROUTES.EXPERIENCES}/${experience.slug}`,
+    category: "Experience",
     description: experience.orgDescription,
     title: getExperienceHeading(experience),
   });
