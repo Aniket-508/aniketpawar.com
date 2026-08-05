@@ -20,14 +20,22 @@ const CopyButton = ({ text, variant }: CopyButtonProps) => {
   };
 
   const getIcon = () => {
-    if (copied) {return <CheckIcon />;}
-    if (variant === "command") {return <TerminalIcon />;}
+    if (copied) {
+      return <CheckIcon />;
+    }
+    if (variant === "command") {
+      return <TerminalIcon />;
+    }
     return <SparklesIcon />;
   };
 
   const getLabel = () => {
-    if (copied) {return "Copied!";}
-    if (variant === "command") {return "Command";}
+    if (copied) {
+      return "Copied!";
+    }
+    if (variant === "command") {
+      return "Command";
+    }
     return "Prompt";
   };
 
