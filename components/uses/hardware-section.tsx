@@ -89,7 +89,7 @@ const HardwareRow = ({
         className="flex w-full min-w-0 cursor-pointer items-center justify-between gap-2 py-4 transition-[border-color,opacity] duration-50 hover:opacity-100 group-hover:opacity-30"
       >
         <Title
-          className="font-sans text-base font-normal flex-1"
+          className="font-sans text-base font-normal shrink-0"
           render={<p>{title}</p>}
         />
         <p
