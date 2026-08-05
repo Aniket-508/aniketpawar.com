@@ -10,6 +10,15 @@ const nextConfig = {
       },
     ],
   },
+  redirects() {
+    return [
+      {
+        destination: "/uses",
+        permanent: true,
+        source: "/stack",
+      },
+    ];
+  },
 };
 
 const withContent = await createContent();
