@@ -4,6 +4,7 @@ import { defineConfig } from "fuma-content/config";
 import remarkGfm from "remark-gfm";
 import remarkHeadingId from "remark-heading-id";
 import { z } from "zod";
+
 import { remarkReadingTime } from "./lib/content/reading-time";
 
 const slugFrontmatter = z.object({
