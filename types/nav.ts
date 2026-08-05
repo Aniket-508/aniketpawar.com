@@ -5,8 +5,8 @@ export type SectionId =
   | "favorites"
   | "home"
   | "projects"
-  | "stack"
-  | "stats";
+  | "stats"
+  | "uses";
 
 export type NavGroupId = "extras" | "work";
 
