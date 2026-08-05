@@ -61,9 +61,9 @@ export const NAV_GROUPS: NavGroup[] = [
     id: "work",
     items: [
       {
-        href: ROUTES.STACK,
-        id: "stack",
-        label: "stack",
+        href: ROUTES.USES,
+        id: "uses",
+        label: "uses",
       },
       {
         href: ROUTES.PROJECTS,

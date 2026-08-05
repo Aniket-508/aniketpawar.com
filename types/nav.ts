@@ -5,7 +5,7 @@ export type SectionId =
   | "favorites"
   | "home"
   | "projects"
-  | "stack"
+  | "uses"
   | "stats"
   | "ui";
 

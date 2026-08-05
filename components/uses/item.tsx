@@ -7,9 +7,9 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import type { SoftwareItem } from "@/constants/software";
 import type { Variant } from "@/lib/events";
 import { cn } from "@/lib/utils";
-import type { TechStackItem } from "@/types/tech-stack";
 
 interface TechStackItemProps extends Omit<
   React.ComponentProps<"div">,
@@ -17,7 +17,7 @@ interface TechStackItemProps extends Omit<
 > {
   index: number;
   category: string;
-  items: TechStackItem[];
+  items: SoftwareItem[];
   variant?: Variant;
 }
 
