@@ -1,50 +1,39 @@
 import { ROUTES } from "@/constants/routes";
-import type { SectionId } from "@/types/nav";
+import { NAV_STANDALONE } from "@/constants/site";
+import type { NavItem, SectionId } from "@/types/nav";
+
+const SECTION_ROUTES: { id: SectionId; route: string }[] = [
+  { id: "contact", route: ROUTES.CONTACT },
+  { id: "projects", route: ROUTES.PROJECTS },
+  { id: "crafts", route: ROUTES.CRAFTS },
+  { id: "experiences", route: ROUTES.EXPERIENCES },
+  { id: "stack", route: ROUTES.STACK },
+  { id: "favorites", route: ROUTES.FAVORITES },
+  { id: "stats", route: ROUTES.STATS },
+];
+
+export const isNavGroupActive = (
+  items: NavItem[],
+  activeSection: SectionId | null
+): boolean => items.some((item) => item.id === activeSection);
 
 export const getActiveSection = (pathname: string): SectionId | null => {
   if (pathname === ROUTES.HOME) {
     return "home";
   }
 
-  if (
-    pathname === ROUTES.CONTACT ||
-    pathname.startsWith(`${ROUTES.CONTACT}/`)
-  ) {
-    return "contact";
-  }
-
-  if (
-    pathname === ROUTES.PROJECTS ||
-    pathname.startsWith(`${ROUTES.PROJECTS}/`)
-  ) {
-    return "projects";
-  }
-
-  if (pathname === ROUTES.CRAFTS || pathname.startsWith(`${ROUTES.CRAFTS}/`)) {
-    return "crafts";
-  }
-
-  if (
-    pathname === ROUTES.EXPERIENCES ||
-    pathname.startsWith(`${ROUTES.EXPERIENCES}/`)
-  ) {
-    return "experiences";
-  }
-
-  if (pathname === ROUTES.STACK || pathname.startsWith(`${ROUTES.STACK}/`)) {
-    return "stack";
-  }
-
-  if (
-    pathname === ROUTES.FAVORITES ||
-    pathname.startsWith(`${ROUTES.FAVORITES}/`)
-  ) {
-    return "favorites";
-  }
-
-  if (pathname === ROUTES.STATS || pathname.startsWith(`${ROUTES.STATS}/`)) {
-    return "stats";
+  for (const { id, route } of SECTION_ROUTES) {
+    if (pathname === route || pathname.startsWith(`${route}/`)) {
+      return id;
+    }
   }
 
   return null;
 };
+
+export const getHomeNavItem = (): NavItem =>
+  NAV_STANDALONE.find((item) => item.id === "home") ?? {
+    href: ROUTES.HOME,
+    id: "home",
+    label: "home",
+  };

@@ -10,8 +10,28 @@ interface CreateMetadataOptions {
   canonical?: string;
   ogTitle?: string;
   ogDescription?: string;
+  category?: string;
   noIndex?: boolean;
 }
+
+const getOgImageUrl = (
+  title?: string,
+  description?: string,
+  category?: string
+): string => {
+  const params = new URLSearchParams();
+  if (title) {
+    params.set("title", title);
+  }
+  if (description) {
+    params.set("description", description);
+  }
+  if (category) {
+    params.set("category", category);
+  }
+  const queryString = params.toString();
+  return `${SITE.URL}/og${queryString ? `?${queryString}` : ""}`;
+};
 
 const createMetadata = (options: CreateMetadataOptions = {}): Metadata => {
   const {
@@ -20,8 +40,13 @@ const createMetadata = (options: CreateMetadataOptions = {}): Metadata => {
     canonical,
     ogTitle,
     ogDescription,
+    category,
     noIndex = false,
   } = options;
+
+  const ogTitleText = ogTitle || title || SITE.NAME;
+  const ogDescriptionText = ogDescription || description;
+  const ogImage = getOgImageUrl(ogTitleText, ogDescriptionText, category);
 
   return {
     ...(title && { title }),
@@ -32,14 +57,31 @@ const createMetadata = (options: CreateMetadataOptions = {}): Metadata => {
       },
     }),
     openGraph: {
-      description: ogDescription || description,
-      title: ogTitle || title || SITE.NAME,
+      description: ogDescriptionText,
+      images: [
+        {
+          alt: ogTitleText,
+          height: 630,
+          url: ogImage,
+          width: 1200,
+        },
+      ],
+      title: ogTitleText,
       type: "website",
       url: canonical ? absoluteUrl(`${canonical}`) : SITE.URL,
     },
     twitter: {
-      description: ogDescription || description,
-      title: ogTitle || title || SITE.NAME,
+      card: "summary_large_image",
+      description: ogDescriptionText,
+      images: [
+        {
+          alt: ogTitleText,
+          height: 630,
+          url: ogImage,
+          width: 1200,
+        },
+      ],
+      title: ogTitleText,
     },
     ...(noIndex && {
       robots: {
@@ -89,9 +131,9 @@ const baseMetadata: Metadata = {
     description: SITE.DESCRIPTION.SHORT,
     images: [
       {
-        alt: `${SITE.NAME}`,
+        alt: SITE.NAME,
         height: 630,
-        url: SITE.OG_IMAGE,
+        url: getOgImageUrl(),
         width: 1200,
       },
     ],
@@ -103,7 +145,7 @@ const baseMetadata: Metadata = {
   },
   publisher: SITE.AUTHOR.NAME,
   title: {
-    default: `${SITE.NAME}`,
+    default: SITE.NAME,
     template: `%s | ${SITE.NAME}`,
   },
   twitter: {
@@ -112,15 +154,15 @@ const baseMetadata: Metadata = {
     description: SITE.DESCRIPTION.SHORT,
     images: [
       {
-        alt: `${SITE.NAME}`,
+        alt: SITE.NAME,
         height: 630,
-        url: SITE.OG_IMAGE,
+        url: getOgImageUrl(),
         width: 1200,
       },
     ],
     site: SITE.AUTHOR.TWITTER,
-    title: `${SITE.NAME}`,
+    title: SITE.NAME,
   },
 };
 
-export { baseMetadata, createMetadata };
+export { baseMetadata, createMetadata, getOgImageUrl };

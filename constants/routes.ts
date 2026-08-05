@@ -1,6 +1,7 @@
 export const ROUTES = {
   BLOCKS: "/blocks",
   BLOG: "/blog",
+  COLOPHON: "/colophon",
   COMPONENTS: "/components",
   CONTACT: "/contact",
   CRAFTS: "/crafts",
@@ -14,5 +15,8 @@ export const ROUTES = {
   SPONSORS: "/sponsors",
   STACK: "/stack",
   STATS: "/stats",
+  TESTIMONIALS: "/testimonials",
+  USES: "/uses",
   VCARD: "/vcard",
+  WRITING: "/writing",
 } as const;
