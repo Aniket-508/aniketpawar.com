@@ -5,13 +5,12 @@ import {
   GitHubContributions,
   GitHubContributionsFallback,
 } from "@/components/about/github-contributions";
+import { IntroProfile } from "@/components/about/intro-profile";
 import { Icons } from "@/components/icons";
 import { AppLink } from "@/components/ui/app-link";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import { Section } from "@/components/ui/section";
-import { Title } from "@/components/ui/title";
-import { UserAvatar } from "@/components/user-avatar";
 import { LINK } from "@/constants/links";
 import { getGitHubContributions } from "@/lib/github/contributions";
 
@@ -19,16 +18,8 @@ const AboutSection = () => {
   const contributions = getGitHubContributions();
 
   return (
-    <Section id="about" className="delay-100 space-y-4">
-      <div className="flex items-center gap-5">
-        <UserAvatar />
-        <div>
-          <Title className="font-sans tracking-tight">Aniket Pawar</Title>
-          <p className="text-muted-foreground mt-1 text-base leading-snug font-normal">
-            Frontend Engineer
-          </p>
-        </div>
-      </div>
+    <Section id="about" className="animate-none space-y-4">
+      <IntroProfile />
 
       <div className="prose text-muted-foreground prose-p:my-2 dark:prose-invert max-w-full text-sm leading-6 font-normal">
         <p>
@@ -38,7 +29,7 @@ const AboutSection = () => {
         <p>
           I run{" "}
           <AppLink
-            className="inline-flex items-center gap-1 translate-y-[3px]"
+            className="inline-flex items-center gap-1 translate-y-0.75"
             href={LINK.SHADCN_LABS}
             target="_blank"
             eventName="external_link_click"
@@ -79,7 +70,7 @@ const AboutSection = () => {
             <AppLink
               href={LINK.RESUME}
               target="_blank"
-              className="text-muted-foreground text-sm font-medium inline-flex min-w-[69px]"
+              className="text-muted-foreground text-sm font-medium inline-flex min-w-17.25"
               external
               eventName="resume_click"
               eventProperties={{ location: "work_together" }}
