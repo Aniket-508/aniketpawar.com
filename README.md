@@ -65,8 +65,8 @@ If you have any questions or feedback, feel free to reach out:
 
 <a href="https://www.star-history.com/?repos=Aniket-508%2Faniketpawar.com&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=Aniket-508/aniketpawar.com&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=Aniket-508/aniketpawar.com&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=Aniket-508/aniketpawar.com&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=Aniket-508/aniketpawar.com&type=date&theme=dark&legend=top-left&sealed_token=kJ0VtVp_sm4qtY58zPEMbQ-6S3YeaPtkEL7W020bRyJbcYPccXmD1knTAgZchmx7n8fRe6tH3ODUkEo8N_5F9ajOj1zu8Bc6Jt9a7KNN4yj8Me5TLnGjhYkl0CcJLxOY8CO8zL4lnWQ6123Eb8sNJ5Zho_TaGftxa_4tDPrZBZ2qs8my9ltIlqNWl69S" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=Aniket-508/aniketpawar.com&type=date&legend=top-left&sealed_token=kJ0VtVp_sm4qtY58zPEMbQ-6S3YeaPtkEL7W020bRyJbcYPccXmD1knTAgZchmx7n8fRe6tH3ODUkEo8N_5F9ajOj1zu8Bc6Jt9a7KNN4yj8Me5TLnGjhYkl0CcJLxOY8CO8zL4lnWQ6123Eb8sNJ5Zho_TaGftxa_4tDPrZBZ2qs8my9ltIlqNWl69S" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=Aniket-508/aniketpawar.com&type=date&legend=top-left&sealed_token=kJ0VtVp_sm4qtY58zPEMbQ-6S3YeaPtkEL7W020bRyJbcYPccXmD1knTAgZchmx7n8fRe6tH3ODUkEo8N_5F9ajOj1zu8Bc6Jt9a7KNN4yj8Me5TLnGjhYkl0CcJLxOY8CO8zL4lnWQ6123Eb8sNJ5Zho_TaGftxa_4tDPrZBZ2qs8my9ltIlqNWl69S" />
  </picture>
 </a>
