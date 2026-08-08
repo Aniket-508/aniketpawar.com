@@ -65,32 +65,44 @@ const roleTransition = {
 type IntroPhase = "greetings" | "identity" | "profile";
 
 interface ProfileHeaderProps {
-  shouldReduceMotion: boolean;
+  shouldAnimateDetails: boolean;
 }
 
-const ProfileHeader = ({ shouldReduceMotion }: ProfileHeaderProps) => (
-  <div className="relative z-100 flex items-center gap-5">
+type IntroMode = "pending" | "play" | "skip";
+
+interface IntroProfileProps {
+  mode: IntroMode;
+}
+
+const ProfileHeader = ({ shouldAnimateDetails }: ProfileHeaderProps) => (
+  <div className="relative z-2 flex items-center gap-5">
     <div>
       <UserAvatar
-        layoutId={PROFILE_AVATAR_LAYOUT_ID}
-        layoutTransition={profileLayoutTransition}
+        layoutId={shouldAnimateDetails ? PROFILE_AVATAR_LAYOUT_ID : undefined}
+        layoutTransition={
+          shouldAnimateDetails ? profileLayoutTransition : undefined
+        }
       />
     </div>
     <div>
       <Title className="font-sans tracking-tight whitespace-nowrap">
         <motion.span
-          layoutId={PROFILE_NAME_LAYOUT_ID}
+          layoutId={shouldAnimateDetails ? PROFILE_NAME_LAYOUT_ID : undefined}
           className="inline-block"
-          transition={{ layout: profileLayoutTransition }}
+          transition={
+            shouldAnimateDetails
+              ? { layout: profileLayoutTransition }
+              : undefined
+          }
         >
           Aniket
         </motion.span>{" "}
         <motion.span
           className="inline-block"
           initial={
-            shouldReduceMotion
-              ? false
-              : { opacity: 0, transform: "translate3d(0, 2px, 0)" }
+            shouldAnimateDetails
+              ? { opacity: 0, transform: "translate3d(0, 2px, 0)" }
+              : false
           }
           animate={{ opacity: 1, transform: "translate3d(0, 0, 0)" }}
           transition={detailTransition}
@@ -100,9 +112,9 @@ const ProfileHeader = ({ shouldReduceMotion }: ProfileHeaderProps) => (
       </Title>
       <motion.p
         initial={
-          shouldReduceMotion
-            ? false
-            : { opacity: 0, transform: "translate3d(0, 4px, 0)" }
+          shouldAnimateDetails
+            ? { opacity: 0, transform: "translate3d(0, 4px, 0)" }
+            : false
         }
         animate={{ opacity: 1, transform: "translate3d(0, 0, 0)" }}
         transition={roleTransition}
@@ -114,18 +126,20 @@ const ProfileHeader = ({ shouldReduceMotion }: ProfileHeaderProps) => (
   </div>
 );
 
-const IntroProfile = () => {
+const IntroProfile = ({ mode }: IntroProfileProps) => {
   const shouldReduceMotion = useReducedMotion();
   const [phase, setPhase] = useState<IntroPhase>("greetings");
   const [greetingIndex, setGreetingIndex] = useState(0);
   const [isIntroComplete, setIsIntroComplete] = useState(false);
-  const visiblePhase = shouldReduceMotion ? "profile" : phase;
-  const shouldLockScroll = !(shouldReduceMotion || isIntroComplete);
+  const shouldPlayIntro = mode === "play" && !shouldReduceMotion;
+  const visiblePhase = shouldPlayIntro ? phase : "profile";
+  const shouldLockScroll =
+    mode === "pending" || (shouldPlayIntro && !isIntroComplete);
 
   useLockBodyScroll(shouldLockScroll);
 
   useEffect(() => {
-    if (shouldReduceMotion) {
+    if (!shouldPlayIntro) {
       return;
     }
 
@@ -150,13 +164,21 @@ const IntroProfile = () => {
         window.clearTimeout(timer);
       }
     };
-  }, [shouldReduceMotion]);
+  }, [shouldPlayIntro]);
 
   return (
     <MotionConfig reducedMotion="user">
       <LayoutGroup id="home-profile-intro">
         <div>
-          {visiblePhase === "profile" ? null : (
+          {mode === "pending" ? (
+            <div
+              data-intro-pending=""
+              aria-hidden="true"
+              className="bg-background pointer-events-auto fixed -inset-1 z-3 touch-none"
+            />
+          ) : null}
+
+          {shouldPlayIntro && visiblePhase !== "profile" ? (
             <Image
               src={SITE.AUTHOR.AVATAR}
               alt=""
@@ -166,38 +188,40 @@ const IntroProfile = () => {
               className="pointer-events-none fixed size-px opacity-0"
               priority
             />
-          )}
+          ) : null}
 
-          <AnimatePresence
-            initial={false}
-            onExitComplete={() => setIsIntroComplete(true)}
-          >
-            {visiblePhase === "profile" ? null : (
-              <motion.div
-                key="intro-backdrop"
-                data-intro-backdrop=""
-                aria-hidden="true"
-                className="bg-background pointer-events-auto fixed -inset-1 z-80 touch-none will-change-transform"
-                exit={{ transform: "translate3d(0, -100%, 0)" }}
-                transition={curtainTransition}
-              />
-            )}
-          </AnimatePresence>
+          {mode === "play" ? (
+            <AnimatePresence
+              initial={false}
+              onExitComplete={() => setIsIntroComplete(true)}
+            >
+              {visiblePhase === "profile" ? null : (
+                <motion.div
+                  key="intro-backdrop"
+                  data-intro-backdrop=""
+                  aria-hidden="true"
+                  className="bg-background pointer-events-auto fixed -inset-1 z-1 touch-none will-change-transform"
+                  exit={{ transform: "translate3d(0, -100%, 0)" }}
+                  transition={curtainTransition}
+                />
+              )}
+            </AnimatePresence>
+          ) : null}
 
-          {visiblePhase === "greetings" ? (
+          {shouldPlayIntro && visiblePhase === "greetings" ? (
             <p
               aria-hidden="true"
-              className="text-foreground pointer-events-none fixed inset-0 z-90 flex items-center justify-center gap-1.5 text-2xl leading-snug font-semibold tracking-tight"
+              className="text-foreground pointer-events-none fixed inset-0 z-2 flex items-center justify-center gap-1.5 text-2xl leading-snug font-semibold tracking-tight"
             >
               <span className="size-1.5 rounded-full bg-current" />
               <span>{GREETINGS[greetingIndex]}</span>
             </p>
           ) : null}
 
-          {visiblePhase === "identity" ? (
+          {shouldPlayIntro && visiblePhase === "identity" ? (
             <div
               aria-hidden="true"
-              className="text-foreground pointer-events-none fixed inset-0 z-90 flex items-center justify-center gap-2 text-2xl leading-snug tracking-tight"
+              className="text-foreground pointer-events-none fixed inset-0 z-2 flex items-center justify-center gap-2 text-2xl leading-snug tracking-tight"
             >
               <span className="font-medium">I’m</span>
               <UserAvatar
@@ -216,7 +240,7 @@ const IntroProfile = () => {
           ) : null}
 
           {visiblePhase === "profile" ? (
-            <ProfileHeader shouldReduceMotion={Boolean(shouldReduceMotion)} />
+            <ProfileHeader shouldAnimateDetails={shouldPlayIntro} />
           ) : null}
         </div>
       </LayoutGroup>
@@ -225,3 +249,4 @@ const IntroProfile = () => {
 };
 
 export { IntroProfile };
+export type { IntroMode };

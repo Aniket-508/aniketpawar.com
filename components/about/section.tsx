@@ -5,12 +5,11 @@ import {
   GitHubContributions,
   GitHubContributionsFallback,
 } from "@/components/about/github-contributions";
-import { IntroProfile } from "@/components/about/intro-profile";
+import { IntroSection } from "@/components/about/intro-section";
 import { Icons } from "@/components/icons";
 import { AppLink } from "@/components/ui/app-link";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
-import { Section } from "@/components/ui/section";
 import { LINK } from "@/constants/links";
 import { getGitHubContributions } from "@/lib/github/contributions";
 
@@ -18,9 +17,7 @@ const AboutSection = () => {
   const contributions = getGitHubContributions();
 
   return (
-    <Section id="about" className="animate-none space-y-4">
-      <IntroProfile />
-
+    <IntroSection>
       <div className="prose text-muted-foreground prose-p:my-2 dark:prose-invert max-w-full text-sm leading-6 font-normal">
         <p>
           I care deeply about visual craft and obsess over building products
@@ -109,7 +106,7 @@ const AboutSection = () => {
           </div>
         </div>
       </Callout>
-    </Section>
+    </IntroSection>
   );
 };
 
