@@ -7,7 +7,7 @@ export interface HardwareItem {
 
 export const HARDWARE_ITEMS: HardwareItem[] = [
   {
-    description: "Silver, 16GB RAM, 256GB SSD",
+    description: "Silver, 8/256 GB",
     href: "https://www.apple.com/macbook-air/",
     key: "macbook-air-m3",
     title: "MacBook Air M3",
