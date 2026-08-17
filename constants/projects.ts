@@ -158,7 +158,7 @@ export const PROJECTS = [
   {
     category: "Open Source",
     date: {
-      month: "January",
+      month: "March",
       year: 2026,
     },
     description:
@@ -175,7 +175,7 @@ export const PROJECTS = [
   {
     category: "Open Source",
     date: {
-      month: "February",
+      month: "March",
       year: 2026,
     },
     description:
@@ -192,7 +192,7 @@ export const PROJECTS = [
   {
     category: "Open Source",
     date: {
-      month: "March",
+      month: "April",
       year: 2026,
     },
     description:
@@ -209,7 +209,7 @@ export const PROJECTS = [
   {
     category: "Open Source",
     date: {
-      month: "April",
+      month: "May",
       year: 2026,
     },
     description:
@@ -242,7 +242,7 @@ export const PROJECTS = [
   {
     category: "Open Source",
     date: {
-      month: "May",
+      month: "July",
       year: 2026,
     },
     description:
@@ -258,17 +258,17 @@ export const PROJECTS = [
   {
     category: "Open Source",
     date: {
-      month: "June",
+      month: "August",
       year: 2026,
     },
     description:
-      "Ready-to-use, customizable presentation components for React, built on reveal.js.",
+      "PDF components for React, built on Takumi and Forme.",
     links: {
-      github: "https://github.com/shadcn-labs/slidecn",
-      website: "https://slidecn.vercel.app",
+      github: "https://github.com/shadcn-labs/pdfcn",
+      website: "https://pdfcn.vercel.app",
     },
-    slug: "slidecn",
+    slug: "pdfcn",
     source: "shadcn-labs",
-    title: "slidecn",
+    title: "pdfcn",
   },
 ] satisfies readonly Project[];
