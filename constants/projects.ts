@@ -261,8 +261,7 @@ export const PROJECTS = [
       month: "August",
       year: 2026,
     },
-    description:
-      "PDF components for React, built on Takumi and Forme.",
+    description: "PDF components for React, built on Takumi and Forme.",
     links: {
       github: "https://github.com/shadcn-labs/pdfcn",
       website: "https://pdfcn.vercel.app",
