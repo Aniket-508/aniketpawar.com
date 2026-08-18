@@ -7,6 +7,77 @@
 import * as React from "react";
 
 export const Index: Record<string, any> = {
+  "clarity-analytics": {
+    categories: ["analytics"],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/components/shared/animated-number");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "clarity-analytics";
+      return { default: mod.default || mod[exportName] };
+    }),
+    description:
+      "Microsoft Clarity analytics integration for tracking user behavior and session recordings.",
+    files: [
+      { path: "registry/types/clarity.ts", type: "registry:lib" },
+      { path: "registry/lib/format.ts", type: "registry:lib" },
+      {
+        path: "registry/components/shared/animated-number.tsx",
+        target: "@/components/animated-number.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "registry/components/shared/callout.tsx",
+        target: "@/components/ui/callout.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "registry/components/shared/metric.tsx",
+        target: "@/components/ui/metric.tsx",
+        type: "registry:component",
+      },
+      { path: "components/charts/chart-context.tsx", type: "registry:lib" },
+      { path: "components/charts/chart-defs.ts", type: "registry:lib" },
+      { path: "components/charts/chart-reveal-clip.tsx", type: "registry:lib" },
+      { path: "components/charts/animation.ts", type: "registry:lib" },
+      {
+        path: "components/charts/use-chart-interaction.ts",
+        type: "registry:lib",
+      },
+      {
+        path: "components/charts/time-series-chart-shell.tsx",
+        type: "registry:lib",
+      },
+      { path: "components/charts/grid.tsx", type: "registry:lib" },
+      { path: "components/charts/line.tsx", type: "registry:lib" },
+      { path: "components/charts/line-chart.tsx", type: "registry:lib" },
+      { path: "components/charts/tooltip/index.ts", type: "registry:lib" },
+      {
+        path: "registry/components/clarity-analytics/clarity-analytics.tsx",
+        target: "@/components/clarity-analytics.tsx",
+        type: "registry:component",
+      },
+    ],
+    meta: null,
+    name: "clarity-analytics",
+    type: "registry:component",
+  },
+  "clarity-analytics-demo": {
+    categories: ["examples"],
+    component: undefined,
+    description: "Demo example for Clarity Analytics component.",
+    files: [
+      {
+        path: "registry/examples/clarity-analytics-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: null,
+    name: "clarity-analytics-demo",
+    type: "registry:example",
+  },
   "link-reveal": {
     categories: ["effects"],
     component: React.lazy(async () => {
@@ -38,5 +109,97 @@ export const Index: Record<string, any> = {
     meta: null,
     name: "link-reveal",
     type: "registry:component",
+  },
+  "link-reveal-demo": {
+    categories: ["examples"],
+    component: undefined,
+    description: "Demo example for Link Reveal component.",
+    files: [
+      {
+        path: "registry/examples/link-reveal-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: null,
+    name: "link-reveal-demo",
+    type: "registry:example",
+  },
+  "token-usage": {
+    categories: ["analytics"],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/components/shared/animated-number");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "token-usage";
+      return { default: mod.default || mod[exportName] };
+    }),
+    description:
+      "Display AI token usage statistics including input/output tokens and cost tracking.",
+    files: [
+      { path: "registry/types/tokscale.ts", type: "registry:lib" },
+      { path: "registry/lib/format.ts", type: "registry:lib" },
+      { path: "registry/lib/models.ts", type: "registry:lib" },
+      {
+        path: "registry/components/shared/animated-number.tsx",
+        target: "@/components/animated-number.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "registry/components/shared/callout.tsx",
+        target: "@/components/ui/callout.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "registry/components/shared/metric.tsx",
+        target: "@/components/ui/metric.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "registry/components/shared/provider-logo.tsx",
+        target: "@/components/stats/provider-logo.tsx",
+        type: "registry:component",
+      },
+      { path: "components/charts/chart-context.tsx", type: "registry:lib" },
+      { path: "components/charts/chart-defs.ts", type: "registry:lib" },
+      { path: "components/charts/chart-reveal-clip.tsx", type: "registry:lib" },
+      { path: "components/charts/animation.ts", type: "registry:lib" },
+      {
+        path: "components/charts/use-chart-interaction.ts",
+        type: "registry:lib",
+      },
+      {
+        path: "components/charts/time-series-chart-shell.tsx",
+        type: "registry:lib",
+      },
+      { path: "components/charts/grid.tsx", type: "registry:lib" },
+      { path: "components/charts/line.tsx", type: "registry:lib" },
+      { path: "components/charts/line-chart.tsx", type: "registry:lib" },
+      { path: "components/charts/tooltip/index.ts", type: "registry:lib" },
+      { path: "components/stats/tokens-chart.tsx", type: "registry:lib" },
+      {
+        path: "registry/components/token-usage/token-usage.tsx",
+        target: "@/components/token-usage.tsx",
+        type: "registry:component",
+      },
+    ],
+    meta: null,
+    name: "token-usage",
+    type: "registry:component",
+  },
+  "token-usage-demo": {
+    categories: ["examples"],
+    component: undefined,
+    description: "Demo example for Token Usage component.",
+    files: [
+      {
+        path: "registry/examples/token-usage-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    meta: null,
+    name: "token-usage-demo",
+    type: "registry:example",
   },
 };
