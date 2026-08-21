@@ -1,3 +1,4 @@
+import { PageContent } from "@/components/page-content";
 import { ProjectsView } from "@/components/project/view";
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
 import { Section } from "@/components/ui/section";
@@ -22,19 +23,21 @@ const ProjectsPage = async () => {
   return (
     <>
       <BreadcrumbJsonLd items={projectsBreadcrumbs()} />
-      <header className="animate-slide-in space-y-2 px-4 py-6">
-        <Title className="text-xl font-medium italic">{"projects."}</Title>
-        <p className="text-muted-foreground text-sm">{DESCRIPTION}</p>
-      </header>
-      <Section className="delay-100 flex flex-col gap-4 py-2">
-        <ProjectsView
-          showHeader={false}
-          showToolbar={true}
-          sourceControl="tabs"
-          projects={projects}
-          previews={previews}
-        />
-      </Section>
+      <PageContent>
+        <header className="animate-slide-in space-y-2 px-4 py-6">
+          <Title className="text-xl font-medium italic">{"projects."}</Title>
+          <p className="text-muted-foreground text-sm">{DESCRIPTION}</p>
+        </header>
+        <Section className="delay-100 flex flex-col gap-4 py-2">
+          <ProjectsView
+            showHeader={false}
+            showToolbar={true}
+            sourceControl="tabs"
+            projects={projects}
+            previews={previews}
+          />
+        </Section>
+      </PageContent>
     </>
   );
 };

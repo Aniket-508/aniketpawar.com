@@ -7,6 +7,7 @@ import { Analytics } from "@/components/analytics";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { META_THEME_COLORS } from "@/constants/site";
 import { env } from "@/env";
+import { GridModeProvider } from "@/providers/grid-mode-provider";
 import { HapticsProvider } from "@/providers/haptics-provider";
 import { SoundProvider } from "@/providers/sound-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
@@ -68,7 +69,9 @@ export default function RootLayout({
           <Analytics projectId={env.NEXT_PUBLIC_CLARITY_PROJECT_ID} />
           <TooltipProvider>
             <SoundProvider>
-              <HapticsProvider>{children}</HapticsProvider>
+              <HapticsProvider>
+                <GridModeProvider>{children}</GridModeProvider>
+              </HapticsProvider>
             </SoundProvider>
           </TooltipProvider>
         </ThemeProvider>
