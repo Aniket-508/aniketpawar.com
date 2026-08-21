@@ -1,4 +1,5 @@
 import { ExperiencesView } from "@/components/experience/view";
+import { PageContent } from "@/components/page-content";
 import { Section } from "@/components/ui/section";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
@@ -20,14 +21,16 @@ const ExperiencesPage = () => {
   return (
     <>
       <BreadcrumbJsonLd items={experiencesBreadcrumbs()} />
-      <div className="animate-slide-in space-y-2 px-4 pt-6 pb-2">
-        <Title className="text-xl font-medium italic">{"experience."}</Title>
+      <PageContent>
+        <div className="animate-slide-in space-y-2 px-4 pt-6 pb-2">
+          <Title className="text-xl font-medium italic">{"experience."}</Title>
 
-        <p className="text-muted-foreground text-sm">{DESCRIPTION}</p>
-      </div>
-      <Section className="delay-100 flex flex-col py-2">
-        <ExperiencesView showHeader={false} experiences={experiences} />
-      </Section>
+          <p className="text-muted-foreground text-sm">{DESCRIPTION}</p>
+        </div>
+        <Section className="delay-100 flex flex-col py-2">
+          <ExperiencesView showHeader={false} experiences={experiences} />
+        </Section>
+      </PageContent>
     </>
   );
 };

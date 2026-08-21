@@ -18,8 +18,8 @@ export const LayoutGrid = () => {
       )}
     >
       <div className="relative h-full w-full max-w-screen-sm">
-        <div className="absolute inset-y-0 left-0 w-px border-l border-dashed border-border" />
-        <div className="absolute inset-y-0 right-0 w-px border-r border-dashed border-border" />
+        <div className="absolute inset-y-0 left-0 w-px border-l border-border" />
+        <div className="absolute inset-y-0 right-0 w-px border-r border-border" />
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import { PageContent } from "@/components/page-content";
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
 import { Section } from "@/components/ui/section";
 import { Title } from "@/components/ui/title";
@@ -23,13 +24,15 @@ const FavoritesPage = async () => {
   return (
     <>
       <BreadcrumbJsonLd items={favoritesBreadcrumbs()} />
-      <header className="animate-slide-in space-y-2 px-4 py-6">
-        <Title className="text-xl font-medium italic">{"favorites."}</Title>
-        <p className="text-muted-foreground text-sm">{DESCRIPTION}</p>
-      </header>
-      <Section className="delay-100 flex flex-col gap-4 py-2">
-        <FavoritesPageClient previews={previews} />
-      </Section>
+      <PageContent>
+        <header className="animate-slide-in space-y-2 px-4 py-6">
+          <Title className="text-xl font-medium italic">{"favorites."}</Title>
+          <p className="text-muted-foreground text-sm">{DESCRIPTION}</p>
+        </header>
+        <Section className="delay-100 flex flex-col gap-4 py-2">
+          <FavoritesPageClient previews={previews} />
+        </Section>
+      </PageContent>
     </>
   );
 };
