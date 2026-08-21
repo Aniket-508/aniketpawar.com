@@ -12,7 +12,7 @@ export const GridModeProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [enabled, setEnabled] = useState(false);
+  const [enabled, setEnabled] = useState(true);
 
   const toggleGridMode = useCallback(() => setEnabled((prev) => !prev), []);
 
