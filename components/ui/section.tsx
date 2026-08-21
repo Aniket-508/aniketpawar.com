@@ -10,8 +10,7 @@ const Section = ({ className, ...attr }: React.ComponentProps<"section">) => {
     <section
       className={cn(
         "animate-slide-in px-4 py-6",
-        enabled &&
-          "outline outline-dashed outline-border/50 outline-offset-[-1px]",
+        enabled && "border-y border-dashed border-border",
         className
       )}
       {...attr}
