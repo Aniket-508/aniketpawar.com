@@ -57,6 +57,7 @@
     "shiki": "^4.1.0",
     "tailwind-merge": "^3.4.0",
     "tw-animate-css": "^1.4.0",
+    "vaul": "^1.1.2",
     "vcard-creator": "^1.0.0",
     "web-haptics": "^0.0.6",
     "zod": "^4.4.3"

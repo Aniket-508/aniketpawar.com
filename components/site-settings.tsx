@@ -7,21 +7,21 @@ import { GridModeSwitcher } from "@/components/grid-mode-switcher";
 import { ModeSwitcher } from "@/components/mode-switcher";
 import { SoundSwitcher } from "@/components/sound-switcher";
 import { Button } from "@/components/ui/button";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 import { Kbd } from "@/components/ui/kbd";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 import { useGridModeToggle } from "@/hooks/use-grid-mode-toggle";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useSoundToggle } from "@/hooks/use-sound-toggle";
@@ -75,21 +75,21 @@ export const SiteSettings = () => {
   return (
     <>
       {isMobile ? (
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger render={trigger} />
-          <SheetContent side="bottom" hideClose>
-            <SheetHeader>
-              <SheetTitle>Settings</SheetTitle>
-              <SheetDescription>Manage site preferences</SheetDescription>
-            </SheetHeader>
+        <Drawer open={isOpen} onOpenChange={setIsOpen}>
+          <DrawerTrigger asChild>{trigger}</DrawerTrigger>
+          <DrawerContent>
+            <DrawerHeader>
+              <DrawerTitle>Settings</DrawerTitle>
+              <DrawerDescription>Manage site preferences</DrawerDescription>
+            </DrawerHeader>
             <div className="px-4 pb-4">{content}</div>
             <div className="p-4 pt-0">
-              <SheetClose render={<Button className="w-full" />}>
-                Done
-              </SheetClose>
+              <DrawerClose asChild>
+                <Button className="w-full">Done</Button>
+              </DrawerClose>
             </div>
-          </SheetContent>
-        </Sheet>
+          </DrawerContent>
+        </Drawer>
       ) : (
         <Popover open={isOpen} onOpenChange={setIsOpen}>
           <PopoverTrigger render={trigger} />
