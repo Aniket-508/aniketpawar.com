@@ -23,6 +23,33 @@ export const getGitHubContributions = unstable_cache(
   { revalidate: 86_400 }
 );
 
+export const getStargazerCount = unstable_cache(
+  async () => {
+    try {
+      const response = await fetch(
+        `https://api.github.com/repos/${GITHUB.user}/${GITHUB.repo}`,
+        {
+          headers: {
+            Accept: "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        return 0;
+      }
+
+      const json = (await response.json()) as { stargazers_count?: number };
+      return Number(json?.stargazers_count) || 0;
+    } catch {
+      return 0;
+    }
+  },
+  ["github-stargazer-count"],
+  { revalidate: 86_400 }
+);
+
 export const getLastUpdated = (): string => {
   try {
     const date = execSync("git log -1 --format=%cd", {

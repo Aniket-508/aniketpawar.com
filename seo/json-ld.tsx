@@ -36,15 +36,35 @@ const WebsiteJsonLd = () => {
 const OrganizationJsonLd = () => {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "Person",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "IN",
+      addressLocality: "Mumbai",
+      addressRegion: "Maharashtra",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "personal",
+      email: LINK.EMAIL,
+      url: `${SITE.URL}/contact`,
+    },
+    description: SITE.DESCRIPTION.LONG,
     founder: {
       "@type": "Person",
       name: SITE.AUTHOR.NAME,
       url: SITE.URL,
     },
+    jobTitle: "Frontend Engineer",
     logo: getOgImageUrl(),
     name: SITE.NAME,
-    sameAs: [LINK.GITHUB, LINK.TWITTER],
+    sameAs: [
+      LINK.GITHUB,
+      LINK.TWITTER,
+      LINK.LINKEDIN,
+      LINK.YOUTUBE,
+      LINK.BLUESKY,
+    ],
     url: SITE.URL,
   };
 
