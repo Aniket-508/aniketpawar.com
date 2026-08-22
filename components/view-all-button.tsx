@@ -3,17 +3,20 @@ import { ArrowUpRightIcon } from "lucide-react";
 import { AppLink } from "@/components/ui/app-link";
 import { Button } from "@/components/ui/button";
 import type { Section } from "@/lib/events";
+import { cn } from "@/lib/utils";
 
 export const ViewAllButton = ({
   href,
   eventName,
+  className,
 }: {
   href: string;
   eventName: Section;
+  className?: string;
 }) => (
   <Button
     variant="secondary"
-    className="group col-span-2"
+    className={cn("group", className)}
     nativeButton={false}
     render={
       <AppLink

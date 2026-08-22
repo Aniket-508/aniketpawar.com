@@ -2,6 +2,7 @@ import { LINK } from "@/constants/links";
 import { ROUTES } from "@/constants/routes";
 import { SITE } from "@/constants/site";
 import { absoluteUrl } from "@/lib/utils";
+import { getOgImageUrl } from "@/seo/metadata";
 
 const JsonLdScript = ({ data }: { data: Record<string, unknown> }) => (
   <script
@@ -35,15 +36,35 @@ const WebsiteJsonLd = () => {
 const OrganizationJsonLd = () => {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "Person",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "IN",
+      addressLocality: "Mumbai",
+      addressRegion: "Maharashtra",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "personal",
+      email: LINK.EMAIL,
+      url: `${SITE.URL}/contact`,
+    },
+    description: SITE.DESCRIPTION.LONG,
     founder: {
       "@type": "Person",
       name: SITE.AUTHOR.NAME,
       url: SITE.URL,
     },
-    logo: SITE.OG_IMAGE,
+    jobTitle: "Frontend Engineer",
+    logo: getOgImageUrl(),
     name: SITE.NAME,
-    sameAs: [LINK.GITHUB, LINK.TWITTER],
+    sameAs: [
+      LINK.GITHUB,
+      LINK.TWITTER,
+      LINK.LINKEDIN,
+      LINK.YOUTUBE,
+      LINK.BLUESKY,
+    ],
     url: SITE.URL,
   };
 
@@ -102,6 +123,12 @@ const normalizeBreadcrumbPath = (path: string): string => {
 
 const HOME_BREADCRUMB: BreadcrumbItem = { name: "Home", path: ROUTES.HOME };
 
+const contactBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Contact", path: ROUTES.CONTACT },
+  ...(current ? [current] : []),
+];
+
 const projectsBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
   HOME_BREADCRUMB,
   { name: "Projects", path: ROUTES.PROJECTS },
@@ -117,6 +144,44 @@ const craftsBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
 const experiencesBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
   HOME_BREADCRUMB,
   { name: "Experience", path: ROUTES.EXPERIENCES },
+  ...(current ? [current] : []),
+];
+
+const favoritesBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Favorites", path: ROUTES.FAVORITES },
+  ...(current ? [current] : []),
+];
+
+const sponsorsBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Sponsors", path: ROUTES.SPONSORS },
+  ...(current ? [current] : []),
+];
+
+const writingBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Writing", path: ROUTES.WRITING },
+  ...(current ? [current] : []),
+];
+
+const colophonBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Colophon", path: ROUTES.COLOPHON },
+  ...(current ? [current] : []),
+];
+
+const testimonialsBreadcrumbs = (
+  current?: BreadcrumbItem
+): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Testimonials", path: ROUTES.TESTIMONIALS },
+  ...(current ? [current] : []),
+];
+
+const usesBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+  HOME_BREADCRUMB,
+  { name: "Uses", path: ROUTES.USES },
   ...(current ? [current] : []),
 ];
 
@@ -145,10 +210,17 @@ const JsonLdScripts = () => (
 
 export {
   BreadcrumbJsonLd,
+  colophonBreadcrumbs,
+  contactBreadcrumbs,
   craftsBreadcrumbs,
   experiencesBreadcrumbs,
+  favoritesBreadcrumbs,
   JsonLdScripts,
   projectsBreadcrumbs,
+  sponsorsBreadcrumbs,
+  testimonialsBreadcrumbs,
+  usesBreadcrumbs,
+  writingBreadcrumbs,
   WebsiteJsonLd,
   OrganizationJsonLd,
   FAQJsonLd,

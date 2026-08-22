@@ -1,28 +1,21 @@
-export const FALLBACK_SITE_ORIGIN = "https://www.aniketpawar.com" as const;
+import type { NavGroup, NavItem } from "@/types/nav";
 
-const getBaseUrl = () => {
-  if (process.env.NODE_ENV !== "production") {
-    return "http://localhost:3000";
-  }
-  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
-    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
-  }
-  return process.env.SITE_URL ?? FALLBACK_SITE_ORIGIN;
-};
+import { ROUTES } from "./routes";
+import { getBaseUrl } from "./url";
+import { NAME, USER } from "./user";
 
 const baseUrl = getBaseUrl();
 
 export const SITE = {
   AUTHOR: {
-    AVATAR:
-      "https://ik.imagekit.io/2oajjadqkz/profile.jpg?updatedAt=1770631384305",
-    NAME: "Aniket Pawar",
+    AVATAR: USER.avatar,
+    NAME,
     TWITTER: "@alaymanguy",
   },
   DESCRIPTION: {
-    LONG: "Software Engineer & Product Builder crafting high-fidelity digital products that bridge design and tech. Explore my work and let's build something impactful today.",
+    LONG: "Frontend engineer based in Mumbai, India. I care deeply about visual craft and obsess over building products that feel fast, polished, and human. I run Shadcn Labs, an open-source org pushing the limits of the shadcn/ui ecosystem.",
     SHORT:
-      "Crafting high-fidelity, design-led digital products with technical precision.",
+      "Frontend engineer obsessed with visual craft and building fast, polished, human-centric products.",
   },
   KEYWORDS: [
     "Aniket Pawar",
@@ -37,9 +30,7 @@ export const SITE = {
     "Web Development",
     "Portfolio",
   ],
-  NAME: "Aniket Pawar",
-  OG_IMAGE:
-    "https://ik.imagekit.io/2oajjadqkz/portfolio-image.png?updatedAt=1708090929752",
+  NAME,
   URL: baseUrl,
 } as const;
 
@@ -51,3 +42,61 @@ export const META_THEME_COLORS = {
 export const UTM_PARAMS = {
   utm_source: new URL(baseUrl).hostname,
 };
+
+export const NAV_STANDALONE: NavItem[] = [
+  {
+    href: ROUTES.HOME,
+    id: "home",
+    label: "home",
+  },
+  {
+    href: ROUTES.CONTACT,
+    id: "contact",
+    label: "contact",
+  },
+];
+
+export const NAV_GROUPS: NavGroup[] = [
+  {
+    id: "work",
+    items: [
+      {
+        href: ROUTES.USES,
+        id: "uses",
+        label: "uses",
+      },
+      {
+        href: ROUTES.PROJECTS,
+        id: "projects",
+        label: "projects",
+      },
+      {
+        href: ROUTES.CRAFTS,
+        id: "crafts",
+        label: "crafts",
+      },
+      {
+        href: ROUTES.EXPERIENCES,
+        id: "experiences",
+        label: "experience",
+      },
+    ],
+    label: "work",
+  },
+  {
+    id: "extras",
+    items: [
+      {
+        href: ROUTES.STATS,
+        id: "stats",
+        label: "stats",
+      },
+      {
+        href: ROUTES.FAVORITES,
+        id: "favorites",
+        label: "favorites",
+      },
+    ],
+    label: "extras",
+  },
+];

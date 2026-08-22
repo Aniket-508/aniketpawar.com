@@ -5,18 +5,18 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 import { hover, tap } from "@/audio/core";
+import { MediaPreview } from "@/components/media-preview";
 import type { GlimpseContentProps } from "@/components/ui/glimpse";
 import {
   Glimpse,
   GlimpseContent,
-  GlimpseDescription,
-  GlimpseImage,
-  GlimpseTitle,
   GlimpseTrigger,
 } from "@/components/ui/glimpse";
 import type { GlimpseData } from "@/components/ui/glimpse/types";
+import { UTM_PARAMS } from "@/constants/site";
 import { trackEvent } from "@/lib/events";
 import type { EventName } from "@/lib/events";
+import { addQueryParams } from "@/lib/url";
 import { cn } from "@/lib/utils";
 
 interface AppLinkProps extends React.ComponentProps<typeof Link> {
@@ -46,7 +46,7 @@ const AppLink = ({
 
   const linkClassName = cn(
     external &&
-      "after:bg-primary hover:text-primary active:text-primary relative flex flex-row items-center justify-start gap-0.5 text-base font-medium transition-all after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-0 after:transition-all after:duration-300 hover:gap-1 hover:after:w-full",
+      "after:bg-primary hover:text-primary active:text-primary relative inline-flex items-center gap-0.5 text-base font-medium transition-all after:absolute after:-bottom-0.5 after:left-0 after:h-[1.5px] after:w-0 after:transition-all after:duration-300 hover:gap-1 hover:after:w-full",
     className
   );
 
@@ -78,7 +78,7 @@ const AppLink = ({
       <Glimpse>
         <GlimpseTrigger
           className={linkClassName}
-          href={hrefString}
+          href={addQueryParams(hrefString, UTM_PARAMS)}
           onPointerEnter={handlePointerEnter}
           onPointerDown={handlePointerDown}
           {...props}
@@ -86,11 +86,9 @@ const AppLink = ({
           <span>{children}</span>
           <ArrowUpRight className="h-4 w-4" />
         </GlimpseTrigger>
-        {preview?.title && (
-          <GlimpseContent side={previewSide} className="z-99 w-80">
-            <GlimpseImage src={preview.image ?? undefined} />
-            <GlimpseTitle>{preview.title}</GlimpseTitle>
-            <GlimpseDescription>{preview.description}</GlimpseDescription>
+        {preview?.image && (
+          <GlimpseContent side={previewSide} className="ring-0 p-0 w-80">
+            <MediaPreview src={preview.image} title={preview.title ?? ""} />
           </GlimpseContent>
         )}
       </Glimpse>

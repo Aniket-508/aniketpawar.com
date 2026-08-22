@@ -1,7 +1,21 @@
-import { HOME_FEATURED_PROJECT_COUNT, PROJECTS } from "@/constants/projects";
-import type { Project } from "@/types/projects";
+import {
+  HOME_FEATURED_PROJECT_COUNT,
+  PROJECTS,
+  PROJECT_SOURCES,
+} from "@/constants/projects";
+import type {
+  Project,
+  ProjectSource,
+  ProjectSourceOption,
+} from "@/types/projects";
 
 export const getProjects = (): readonly Project[] => PROJECTS;
+
+export const filterProjectsBySource = (
+  projects: readonly Project[],
+  source: ProjectSource
+): readonly Project[] =>
+  projects.filter((project) => project.source === source);
 
 export const getFeaturedProjects = (
   limit = HOME_FEATURED_PROJECT_COUNT
@@ -31,3 +45,9 @@ export const collectProjectUrls = (
 
   return urls;
 };
+
+export const getProjectSourceOption = (
+  source: ProjectSource
+): ProjectSourceOption =>
+  PROJECT_SOURCES.find((option) => option.value === source) ??
+  PROJECT_SOURCES[0];

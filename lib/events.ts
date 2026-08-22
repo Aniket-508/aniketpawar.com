@@ -15,6 +15,7 @@ const eventNames = [
   "project_detail_click",
   "resume_click",
   "schedule_meet_click",
+  "send_email_click",
   "section_anchor_click",
   "sound_toggle",
   "tech_link_click",
@@ -37,7 +38,13 @@ const eventSchema = z.object({
 
 export type Event = z.infer<typeof eventSchema>;
 export type EventName = Event["name"];
-export type Section = "projects" | "crafts" | "experience";
+export type Section =
+  | "projects"
+  | "crafts"
+  | "experience"
+  | "stack"
+  | "favorites"
+  | "hardware";
 export type Variant = "list" | "grid";
 
 export const trackEvent = (input: Event): void => {

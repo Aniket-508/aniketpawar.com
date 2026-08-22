@@ -1,30 +1,35 @@
 "use client";
 
+import type { Transition } from "motion/react";
 import { motion } from "motion/react";
 import Image from "next/image";
 
 import { SITE } from "@/constants/site";
 
-export const UserAvatar = () => (
+interface UserAvatarProps {
+  layoutId?: string;
+  layoutTransition?: Transition;
+  size?: number;
+}
+
+export const UserAvatar = ({
+  layoutId,
+  layoutTransition,
+  size = 60,
+}: UserAvatarProps) => (
   <motion.div
     className="relative h-fit w-fit shrink-0"
-    whileHover={{ scale: 1.1 }}
-    transition={{ damping: 10, stiffness: 400, type: "spring" }}
+    layoutId={layoutId}
+    style={{ height: size, width: size }}
+    transition={{ layout: layoutTransition }}
   >
     <Image
       src={SITE.AUTHOR.AVATAR}
-      alt="aniket-profile"
-      width={60}
-      height={60}
-      className="rounded-full transition-all hover:grayscale"
+      alt="Portrait of Aniket Pawar"
+      width={size}
+      height={size}
+      className="size-full rounded-full object-cover"
       priority
     />
-    <motion.div
-      className="bg-background absolute bottom-0 left-12 cursor-default rounded-full px-1 py-0.5 text-sm shadow select-none"
-      whileHover={{ scale: 1.1 }}
-      transition={{ damping: 10, stiffness: 400, type: "spring" }}
-    >
-      {"🐢"}
-    </motion.div>
   </motion.div>
 );

@@ -1,3 +1,16 @@
+import type { ComponentType, SVGProps } from "react";
+
+export type ProjectSource = "personal" | "shadcn-labs";
+
+export type SourceIcon = ComponentType<SVGProps<SVGSVGElement>>;
+
+export interface ProjectSourceOption {
+  value: ProjectSource;
+  label: string;
+  icon?: SourceIcon;
+  image?: string;
+}
+
 export type ProjectCategory =
   | "Open Source"
   | "Tool"
@@ -21,6 +34,7 @@ export interface Project {
   title: string;
   description: string;
   category: ProjectCategory;
+  source: ProjectSource;
   date: ProjectDate;
   featured?: boolean;
   links: ProjectLinks;

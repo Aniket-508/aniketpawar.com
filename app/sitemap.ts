@@ -40,6 +40,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       lastModified: new Date(),
       priority: 0.9,
+      url: absoluteUrl(ROUTES.ABOUT),
+    },
+    {
+      changeFrequency: "monthly",
+      lastModified: new Date(),
+      priority: 0.9,
       url: absoluteUrl(ROUTES.PROJECTS),
     },
     {
@@ -53,6 +59,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       priority: 0.9,
       url: absoluteUrl(ROUTES.EXPERIENCES),
+    },
+    {
+      changeFrequency: "monthly",
+      lastModified: new Date(),
+      priority: 0.9,
+      url: absoluteUrl(ROUTES.USES),
+    },
+    {
+      changeFrequency: "weekly",
+      lastModified: new Date(),
+      priority: 0.9,
+      url: absoluteUrl(ROUTES.STATS),
     },
     ...projectEntries,
     ...craftEntries,

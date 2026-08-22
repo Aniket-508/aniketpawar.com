@@ -1,15 +1,17 @@
-import { Section } from "@/components/layout/section";
-import { ProjectsView } from "@/components/projects-view";
+import { ProjectsView } from "@/components/project/view";
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
+import { Section } from "@/components/ui/section";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
 import { collectProjectUrls, getProjects } from "@/lib/projects";
 import { BreadcrumbJsonLd, projectsBreadcrumbs } from "@/seo/json-ld";
 import { createMetadata } from "@/seo/metadata";
 
+const DESCRIPTION = "Tools, APIs, and products I have built or maintain.";
+
 export const metadata = createMetadata({
   canonical: ROUTES.PROJECTS,
-  description: "Selected work — open source tools, APIs, and products.",
+  description: DESCRIPTION,
   title: "Projects",
 });
 
@@ -20,16 +22,15 @@ const ProjectsPage = async () => {
   return (
     <>
       <BreadcrumbJsonLd items={projectsBreadcrumbs()} />
-      <header className="animate-slide-in space-y-2 px-4 pt-6 pb-2">
+      <header className="animate-slide-in space-y-2 px-4 py-6">
         <Title className="text-xl font-medium italic">{"projects."}</Title>
-        <p className="text-muted-foreground text-sm">
-          Tools, APIs, and products I have built or maintain.
-        </p>
+        <p className="text-muted-foreground text-sm">{DESCRIPTION}</p>
       </header>
-      <Section className="delay-100 flex flex-col py-2">
+      <Section className="delay-100 flex flex-col gap-4 py-2">
         <ProjectsView
           showHeader={false}
-          defaultVariant="grid"
+          showToolbar={true}
+          sourceControl="tabs"
           projects={projects}
           previews={previews}
         />

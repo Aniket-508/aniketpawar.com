@@ -18,7 +18,7 @@ const MediaPreview = ({
   <div className={cn("w-full rounded-md border p-1", className)}>
     <AspectRatio
       ratio={type === "video" ? 16 / 9 : 1200 / 630}
-      className="relative w-full overflow-hidden rounded-sm border border-border select-none"
+      className="relative w-full overflow-hidden rounded-sm border select-none"
     >
       <Skeleton className="absolute inset-0 rounded-xs" />
       {type === "video" && (

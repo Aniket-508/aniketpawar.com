@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ContentTOC } from "@/components/content-toc";
+import { TrackedExperienceLinks } from "@/components/experience/tracked-links";
 import { MdxBody } from "@/components/mdx-body";
-import { TrackedExperienceLinks } from "@/components/tracked-external-links";
 import { Badge } from "@/components/ui/badge";
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
@@ -37,6 +37,7 @@ export const generateMetadata = async ({
 
   return createMetadata({
     canonical: `${ROUTES.EXPERIENCES}/${experience.slug}`,
+    category: "Experience",
     description: experience.orgDescription,
     title: getExperienceHeading(experience),
   });
