@@ -1,6 +1,50 @@
 import type { Experience } from "@/types/experiences";
 
+export const HOMEPAGE_EXPERIENCE_COUNT = 3 as const;
+
 export const EXPERIENCES = [
+  {
+    category: "SportsTech",
+    experienceDescription: [
+      "Rebuilt the marketing website from scratch with mobile-first responsiveness in close collaboration with designers, introducing micro-interactions and motion design, <u>improving Lighthouse score to 90+</u> and strengthening SEO using PayloadCMS for content management.",
+      "Designed and implemented the mobile experience for the bet tracker page, <u>significantly improving usability and interaction flow</u> for mobile users.",
+      "Led evaluation and end-to-end delivery of native mobile apps using Capacitor by restructuring the codebase for web/mobile separation and handling App Store and Play Store releases, <u>overcoming iOS Safari PWA notification limitations</u>.",
+      "Made the codebase AI-ready by defining AGENTS.md and DESIGN.md workflows, and establishing a scalable engineering system through CI automation (linting, type-checking, builds), enforced code quality standards, and developer experience improvements including formatting, PR templates, and conventional commits.",
+      "Partnered with an external product studio to ship a <u>V2 POD dashboard</u> spanning alerts, tracker, and wire modules, <u>improving overall product UX</u> across multiple workflows.",
+    ],
+    experienceLinks: {
+      linkedin: "https://www.linkedin.com/company/pod-software/",
+      website: "https://www.pinnacleoddsdropper.com/",
+      x: "https://x.com/PODTerminal",
+    },
+    experienceOrg: {
+      link: "https://www.pinnacleoddsdropper.com/",
+      name: "POD",
+      websiteDisplayName: "pinnacleoddsdropper.com",
+    },
+    experienceStatus: {
+      endAt: "Aug, 2026",
+      startAt: "Jun, 2025",
+    },
+    experienceTech: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Payload CMS",
+      "Prisma",
+      "tRPC",
+      "Clerk",
+      "Zustand",
+      "Capacitor",
+      "Markdown",
+    ],
+    experienceTitle: "Senior Software Engineer",
+    orgDescription:
+      "POD (Pinnacle Odds Dropper) is a sports betting platform that delivers real-time odds, bet tracking, and market insights to bettors.",
+    slug: "pod",
+  },
   {
     category: "FinTech",
     experienceDescription: [

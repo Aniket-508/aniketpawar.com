@@ -20,11 +20,9 @@ const ProjectSection = async () => {
         featuredOnly
         limit={HOME_FEATURED_PROJECT_COUNT}
       />
-      <ViewAllButton
-        href={ROUTES.PROJECTS}
-        eventName="projects"
-        className="mx-auto"
-      />
+      <div className="flex items-center justify-center">
+        <ViewAllButton href={ROUTES.PROJECTS} eventName="projects" />
+      </div>
     </Section>
   );
 };
