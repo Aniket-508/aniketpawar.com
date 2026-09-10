@@ -16,8 +16,9 @@ export const USER = {
   firstName: "Aniket",
   jobTitle: currentExperience.experienceTitle,
   lastName: "Pawar",
+  roles: ["Frontend Engineer", "Design Engineer", "Product Engineer"],
   username: "aniket-pawar",
   website: getBaseUrl(),
-} as const;
+};
 
 export const NAME = `${USER.firstName} ${USER.lastName}`;

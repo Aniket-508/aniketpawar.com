@@ -14,6 +14,7 @@ import { FlipRoles } from "@/components/about/flip-roles";
 import { Title } from "@/components/ui/title";
 import { UserAvatar } from "@/components/user-avatar";
 import { SITE } from "@/constants/site";
+import { USER } from "@/constants/user";
 import { useLockBodyScroll } from "@/hooks/use-lock-body-scroll";
 
 const GREETINGS = [
@@ -111,7 +112,7 @@ const ProfileHeader = ({ shouldAnimateDetails }: ProfileHeaderProps) => (
           Pawar
         </motion.span>
       </Title>
-      <motion.p
+      <motion.div
         initial={
           shouldAnimateDetails
             ? { opacity: 0, transform: "translate3d(0, 4px, 0)" }
@@ -120,8 +121,8 @@ const ProfileHeader = ({ shouldAnimateDetails }: ProfileHeaderProps) => (
         animate={{ opacity: 1, transform: "translate3d(0, 0, 0)" }}
         transition={roleTransition}
       >
-        <FlipRoles />
-      </motion.p>
+        <FlipRoles>{USER.roles}</FlipRoles>
+      </motion.div>
     </div>
   </div>
 );
