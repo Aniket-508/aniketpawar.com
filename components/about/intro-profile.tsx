@@ -10,6 +10,7 @@ import {
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+import { FlipRoles } from "@/components/about/flip-roles";
 import { Title } from "@/components/ui/title";
 import { UserAvatar } from "@/components/user-avatar";
 import { SITE } from "@/constants/site";
@@ -118,9 +119,8 @@ const ProfileHeader = ({ shouldAnimateDetails }: ProfileHeaderProps) => (
         }
         animate={{ opacity: 1, transform: "translate3d(0, 0, 0)" }}
         transition={roleTransition}
-        className="text-muted-foreground mt-1 text-base leading-snug font-normal"
       >
-        Frontend Engineer
+        <FlipRoles />
       </motion.p>
     </div>
   </div>

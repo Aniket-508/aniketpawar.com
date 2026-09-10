@@ -24,7 +24,7 @@ export const EXPERIENCES = [
     },
     experienceStatus: {
       endAt: "Aug, 2026",
-      startAt: "Jun, 2025",
+      startAt: "May, 2025",
     },
     experienceTech: [
       "Next.js",
