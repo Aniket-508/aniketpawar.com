@@ -14,30 +14,66 @@ import { ROUTES } from "@/constants/routes";
 import { NAV_GROUPS } from "@/constants/site";
 import { getActiveSection, getHomeNavItem, isNavGroupActive } from "@/lib/nav";
 import { cn } from "@/lib/utils";
+import type { NavGroup, NavGroupId, SectionId } from "@/types/nav";
 
 const homeItem = getHomeNavItem();
-const workGroup = NAV_GROUPS.find((g) => g.id === "work") ?? {
-  id: "work" as const,
-  items: [],
-  label: "work",
-};
-const extrasGroup = NAV_GROUPS.find((g) => g.id === "extras") ?? {
-  id: "extras" as const,
-  items: [],
-  label: "extras",
-};
+
+const findGroup = (id: NavGroupId, label: string): NavGroup =>
+  NAV_GROUPS.find((group) => group.id === id) ?? { id, items: [], label };
+
+const workGroup = findGroup("work", "work");
+const uiGroup = findGroup("ui", "ui");
+const extrasGroup = findGroup("extras", "extras");
+
+const navLinkClass = (id: string, activeSection: SectionId | null) =>
+  cn(
+    "text-sm transition-colors",
+    activeSection === id
+      ? "text-foreground"
+      : "text-muted-foreground hover:text-foreground"
+  );
+
+interface NavGroupMenuProps {
+  group: NavGroup;
+  activeSection: SectionId | null;
+  triggerClassName?: string;
+}
+
+const NavGroupMenu = ({
+  activeSection,
+  group,
+  triggerClassName,
+}: NavGroupMenuProps) => (
+  <NavigationMenuItem>
+    <NavigationMenuTrigger
+      className={cn(
+        navLinkClass(group.id, activeSection),
+        triggerClassName,
+        isNavGroupActive(group.items, activeSection) &&
+          "data-open:text-foreground"
+      )}
+    >
+      {group.label}
+    </NavigationMenuTrigger>
+    <NavigationMenuContent>
+      <div className="flex flex-col p-1 w-fit">
+        {group.items.map((item) => (
+          <NavigationMenuLink
+            className={navLinkClass(item.id, activeSection)}
+            href={item.href}
+            key={item.id}
+          >
+            {item.label}
+          </NavigationMenuLink>
+        ))}
+      </div>
+    </NavigationMenuContent>
+  </NavigationMenuItem>
+);
 
 const MainNav = () => {
   const pathname = usePathname();
   const activeSection = getActiveSection(pathname);
-
-  const navLinkClass = (id: string) =>
-    cn(
-      "text-sm transition-colors",
-      activeSection === id
-        ? "text-foreground"
-        : "text-muted-foreground hover:text-foreground"
-    );
 
   return (
     <div className="flex items-center">
@@ -47,87 +83,43 @@ const MainNav = () => {
             {/* Home — always visible */}
             <NavigationMenuItem>
               <NavigationMenuLink
+                className={cn(
+                  navLinkClass(homeItem.id, activeSection),
+                  "-ml-2.5"
+                )}
                 href={homeItem.href}
-                className={cn(navLinkClass(homeItem.id), "-ml-2.5")}
               >
                 {homeItem.label}
               </NavigationMenuLink>
             </NavigationMenuItem>
 
             {/* Work — trigger on sm+, link on mobile */}
-            <NavigationMenuItem>
-              <NavigationMenuTrigger
-                className={cn(
-                  navLinkClass(workGroup.id),
-                  isNavGroupActive(workGroup.items, activeSection) &&
-                    "data-open:text-foreground"
-                )}
-              >
-                {workGroup.label}
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <div className="flex flex-col p-1 w-fit">
-                  {workGroup.items.map((item) => (
-                    <NavigationMenuLink
-                      key={item.id}
-                      href={item.href}
-                      className={cn(navLinkClass(item.id))}
-                    >
-                      {item.label}
-                    </NavigationMenuLink>
-                  ))}
-                </div>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
+            <NavGroupMenu activeSection={activeSection} group={workGroup} />
 
-            {/* UI — standalone link */}
-            {/* <NavigationMenuItem>
-              <NavigationMenuLink
-                href={ROUTES.UI}
-                className={cn(navLinkClass("ui"))}
-              >
-                ui
-              </NavigationMenuLink>
-            </NavigationMenuItem> */}
+            {/* UI — registry components and blocks */}
+            <NavGroupMenu activeSection={activeSection} group={uiGroup} />
 
             {/* Extras — trigger on sm+, inside more on mobile/tablet */}
-            <NavigationMenuItem>
-              <NavigationMenuTrigger
-                className={cn(
-                  navLinkClass(extrasGroup.id),
-                  "hidden sm:inline-flex",
-                  isNavGroupActive(extrasGroup.items, activeSection) &&
-                    "data-open:text-foreground"
-                )}
-              >
-                {extrasGroup.label}
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <div className="flex flex-col p-1 w-fit">
-                  {extrasGroup.items.map((item) => (
-                    <NavigationMenuLink
-                      key={item.id}
-                      href={item.href}
-                      className={cn(navLinkClass(item.id))}
-                    >
-                      {item.label}
-                    </NavigationMenuLink>
-                  ))}
-                </div>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
+            <NavGroupMenu
+              activeSection={activeSection}
+              group={extrasGroup}
+              triggerClassName="hidden sm:inline-flex"
+            />
 
             {/* Contact — visible on sm+ */}
             <NavigationMenuItem>
               <NavigationMenuLink
+                className={cn(
+                  navLinkClass("contact", activeSection),
+                  "hidden sm:inline-flex"
+                )}
                 href={ROUTES.CONTACT}
-                className={cn(navLinkClass("contact"), "hidden sm:inline-flex")}
               >
                 contact
               </NavigationMenuLink>
             </NavigationMenuItem>
 
-            {/* More — visible below sm, contains extras/writing/contact */}
+            {/* More — visible below sm, contains extras/contact */}
             <NavigationMenuItem>
               <NavigationMenuTrigger className="text-sm text-muted-foreground transition-colors hover:text-foreground sm:hidden">
                 more
@@ -139,17 +131,17 @@ const MainNav = () => {
                   </span>
                   {extrasGroup.items.map((item) => (
                     <NavigationMenuLink
-                      key={item.id}
+                      className={navLinkClass(item.id, activeSection)}
                       href={item.href}
-                      className={cn(navLinkClass(item.id))}
+                      key={item.id}
                     >
                       {item.label}
                     </NavigationMenuLink>
                   ))}
                   <div className="-mx-1 my-1 h-px bg-border" />
                   <NavigationMenuLink
+                    className={navLinkClass("contact", activeSection)}
                     href={ROUTES.CONTACT}
-                    className={cn(navLinkClass("contact"))}
                   >
                     contact
                   </NavigationMenuLink>

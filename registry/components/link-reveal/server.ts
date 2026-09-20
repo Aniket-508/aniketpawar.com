@@ -1,4 +1,4 @@
-import type { LinkRevealData } from "./types";
+import type { LinkRevealData } from "@/types/link-reveal";
 
 const THEME_COLOR_REGEX =
   /<meta[^>]*name=["']theme-color["'][^>]*content=["']([^"']+)["']/iu;

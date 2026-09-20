@@ -15,7 +15,6 @@ export const ROUTES = {
   SPONSORS: "/sponsors",
   STATS: "/stats",
   TESTIMONIALS: "/testimonials",
-  UI: "/ui",
   USES: "/uses",
   VCARD: "/vcard",
   WRITING: "/writing",

@@ -5,6 +5,7 @@ import { SITE } from "@/constants/site";
 import { getCraftSlugs } from "@/lib/crafts";
 import { getExperienceSlugs } from "@/lib/experiences";
 import { getProjectSlugs } from "@/lib/projects";
+import { getRegistryEntrySlugs, REGISTRY_KINDS } from "@/lib/registry-items";
 import { absoluteUrl } from "@/lib/utils";
 import { getWritingSlugs } from "@/lib/writings";
 
@@ -47,6 +48,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     routeEntry(ROUTES.EXPERIENCES, PRIORITY.INDEX),
     routeEntry(ROUTES.WRITING, PRIORITY.INDEX),
     routeEntry(ROUTES.USES, PRIORITY.INDEX),
+    routeEntry(ROUTES.COMPONENTS, PRIORITY.INDEX),
+    routeEntry(ROUTES.BLOCKS, PRIORITY.INDEX),
 
     routeEntry(ROUTES.TESTIMONIALS, PRIORITY.PRIMARY),
 
@@ -61,5 +64,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       PRIORITY.SECONDARY
     ),
     ...collectionEntries(ROUTES.WRITING, getWritingSlugs(), PRIORITY.SECONDARY),
+    ...collectionEntries(
+      REGISTRY_KINDS.component.route,
+      getRegistryEntrySlugs("component"),
+      PRIORITY.PRIMARY
+    ),
+    ...collectionEntries(
+      REGISTRY_KINDS.block.route,
+      getRegistryEntrySlugs("block"),
+      PRIORITY.PRIMARY
+    ),
   ];
 }

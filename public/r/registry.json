@@ -1,102 +1,312 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "aniket-ui",
   "homepage": "https://aniketpawar.com",
   "items": [
     {
-      "name": "link-reveal",
-      "type": "registry:component",
-      "title": "Link Reveal",
+      "categories": [
+        "effects"
+      ],
       "description": "Animated link that reveals the website favicon and primary color on hover.",
-      "dependencies": ["motion"],
       "files": [
         {
-          "path": "registry/components/link-reveal/types.ts",
-          "type": "registry:lib"
+          "path": "registry/components/link-reveal/link-reveal.tsx",
+          "target": "@/components/link-reveal.tsx",
+          "type": "registry:component"
         },
         {
           "path": "registry/components/link-reveal/server.ts",
+          "target": "@/lib/link-reveal.ts",
           "type": "registry:lib"
         },
         {
-          "path": "registry/components/link-reveal/link-reveal.tsx",
-          "type": "registry:component",
-          "target": "@/components/link-reveal.tsx"
+          "path": "types/link-reveal.ts",
+          "target": "@/types/link-reveal.ts",
+          "type": "registry:lib"
         }
       ],
-      "categories": ["effects"]
+      "name": "link-reveal",
+      "title": "Link Reveal",
+      "type": "registry:component",
+      "dependencies": [
+        "motion"
+      ]
     },
     {
-      "name": "clarity-analytics",
-      "type": "registry:component",
-      "title": "Clarity Analytics",
+      "categories": [
+        "analytics"
+      ],
       "description": "Microsoft Clarity analytics integration for tracking user behavior and session recordings.",
-      "dependencies": ["date-fns"],
       "files": [
         {
-          "path": "registry/components/clarity-analytics/clarity-analytics.tsx",
-          "type": "registry:component",
-          "target": "@/components/clarity-analytics.tsx"
+          "path": "components/animated-number.tsx",
+          "target": "@/components/animated-number.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/animation.ts",
+          "target": "@/components/charts/animation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "components/charts/chart-context.tsx",
+          "target": "@/components/charts/chart-context.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/chart-defs.ts",
+          "target": "@/components/charts/chart-defs.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "components/charts/chart-reveal-clip.tsx",
+          "target": "@/components/charts/chart-reveal-clip.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/grid.tsx",
+          "target": "@/components/charts/grid.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/line-chart.tsx",
+          "target": "@/components/charts/line-chart.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/line.tsx",
+          "target": "@/components/charts/line.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/time-series-chart-shell.tsx",
+          "target": "@/components/charts/time-series-chart-shell.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/tooltip/chart-tooltip.tsx",
+          "target": "@/components/charts/tooltip/chart-tooltip.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/tooltip/date-ticker.tsx",
+          "target": "@/components/charts/tooltip/date-ticker.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/tooltip/index.ts",
+          "target": "@/components/charts/tooltip/index.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "components/charts/tooltip/tooltip-box.tsx",
+          "target": "@/components/charts/tooltip/tooltip-box.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/tooltip/tooltip-content.tsx",
+          "target": "@/components/charts/tooltip/tooltip-content.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/tooltip/tooltip-dot.tsx",
+          "target": "@/components/charts/tooltip/tooltip-dot.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/tooltip/tooltip-indicator.tsx",
+          "target": "@/components/charts/tooltip/tooltip-indicator.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/use-chart-interaction.ts",
+          "target": "@/components/charts/use-chart-interaction.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "components/ui/callout.tsx",
+          "target": "@/components/ui/callout.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/metric.tsx",
+          "target": "@/components/ui/metric.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/blocks/clarity-analytics/clarity-analytics.tsx",
+          "target": "@/components/clarity-analytics.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "types/clarity.ts",
+          "target": "@/types/clarity.ts",
+          "type": "registry:lib"
         }
       ],
-      "categories": ["analytics"]
+      "name": "clarity-analytics",
+      "title": "Clarity Analytics",
+      "type": "registry:block",
+      "dependencies": [
+        "@number-flow/react",
+        "@visx/curve",
+        "@visx/event",
+        "@visx/grid",
+        "@visx/responsive",
+        "@visx/scale",
+        "@visx/shape",
+        "d3-array",
+        "date-fns",
+        "motion"
+      ]
     },
     {
-      "name": "token-usage",
-      "type": "registry:component",
-      "title": "Token Usage",
+      "categories": [
+        "analytics"
+      ],
       "description": "Display AI token usage statistics including input/output tokens and cost tracking.",
-      "dependencies": ["date-fns"],
       "files": [
         {
-          "path": "registry/components/token-usage/token-usage.tsx",
-          "type": "registry:component",
-          "target": "@/components/token-usage.tsx"
-        }
-      ],
-      "categories": ["analytics"]
-    },
-    {
-      "name": "link-reveal-demo",
-      "type": "registry:example",
-      "title": "Link Reveal Demo",
-      "description": "Demo example for Link Reveal component.",
-      "dependencies": ["motion"],
-      "files": [
+          "path": "components/animated-number.tsx",
+          "target": "@/components/animated-number.tsx",
+          "type": "registry:component"
+        },
         {
-          "path": "registry/examples/link-reveal-demo.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": ["examples"]
-    },
-    {
-      "name": "clarity-analytics-demo",
-      "type": "registry:example",
-      "title": "Clarity Analytics Demo",
-      "description": "Demo example for Clarity Analytics component.",
-      "dependencies": ["date-fns"],
-      "files": [
+          "path": "components/charts/animation.ts",
+          "target": "@/components/charts/animation.ts",
+          "type": "registry:lib"
+        },
         {
-          "path": "registry/examples/clarity-analytics-demo.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "categories": ["examples"]
-    },
-    {
-      "name": "token-usage-demo",
-      "type": "registry:example",
-      "title": "Token Usage Demo",
-      "description": "Demo example for Token Usage component.",
-      "dependencies": ["date-fns"],
-      "files": [
+          "path": "components/charts/chart-context.tsx",
+          "target": "@/components/charts/chart-context.tsx",
+          "type": "registry:component"
+        },
         {
-          "path": "registry/examples/token-usage-demo.tsx",
-          "type": "registry:example"
+          "path": "components/charts/chart-defs.ts",
+          "target": "@/components/charts/chart-defs.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "components/charts/chart-reveal-clip.tsx",
+          "target": "@/components/charts/chart-reveal-clip.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/grid.tsx",
+          "target": "@/components/charts/grid.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/line-chart.tsx",
+          "target": "@/components/charts/line-chart.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/line.tsx",
+          "target": "@/components/charts/line.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/time-series-chart-shell.tsx",
+          "target": "@/components/charts/time-series-chart-shell.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/tooltip/chart-tooltip.tsx",
+          "target": "@/components/charts/tooltip/chart-tooltip.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/tooltip/date-ticker.tsx",
+          "target": "@/components/charts/tooltip/date-ticker.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/tooltip/index.ts",
+          "target": "@/components/charts/tooltip/index.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "components/charts/tooltip/tooltip-box.tsx",
+          "target": "@/components/charts/tooltip/tooltip-box.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/tooltip/tooltip-content.tsx",
+          "target": "@/components/charts/tooltip/tooltip-content.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/tooltip/tooltip-dot.tsx",
+          "target": "@/components/charts/tooltip/tooltip-dot.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/tooltip/tooltip-indicator.tsx",
+          "target": "@/components/charts/tooltip/tooltip-indicator.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/charts/use-chart-interaction.ts",
+          "target": "@/components/charts/use-chart-interaction.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "components/stats/provider-logo.tsx",
+          "target": "@/components/stats/provider-logo.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/stats/tokens-chart.tsx",
+          "target": "@/components/stats/tokens-chart.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/ui/callout.tsx",
+          "target": "@/components/ui/callout.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/metric.tsx",
+          "target": "@/components/ui/metric.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "lib/format.ts",
+          "target": "@/lib/format.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/models.ts",
+          "target": "@/lib/models.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/blocks/token-usage/token-usage.tsx",
+          "target": "@/components/token-usage.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "types/tokscale.ts",
+          "target": "@/types/tokscale.ts",
+          "type": "registry:lib"
         }
       ],
-      "categories": ["examples"]
+      "name": "token-usage",
+      "title": "Token Usage",
+      "type": "registry:block",
+      "dependencies": [
+        "@number-flow/react",
+        "@visx/curve",
+        "@visx/event",
+        "@visx/grid",
+        "@visx/responsive",
+        "@visx/scale",
+        "@visx/shape",
+        "d3-array",
+        "date-fns",
+        "motion"
+      ]
     }
-  ]
+  ],
+  "name": "aniket-ui"
 }

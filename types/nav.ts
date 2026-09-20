@@ -1,4 +1,6 @@
 export type SectionId =
+  | "blocks"
+  | "components"
   | "contact"
   | "crafts"
   | "experiences"
@@ -6,10 +8,9 @@ export type SectionId =
   | "home"
   | "projects"
   | "uses"
-  | "stats"
-  | "ui";
+  | "stats";
 
-export type NavGroupId = "extras" | "work";
+export type NavGroupId = "extras" | "ui" | "work";
 
 export interface NavItem {
   href: string;

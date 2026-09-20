@@ -1,6 +1,8 @@
 import { LINK } from "@/constants/links";
 import { ROUTES } from "@/constants/routes";
 import { SITE } from "@/constants/site";
+import type { RegistryKind } from "@/lib/registry-items";
+import { REGISTRY_KINDS } from "@/lib/registry-items";
 import { absoluteUrl } from "@/lib/utils";
 import { getOgImageUrl } from "@/seo/metadata";
 
@@ -159,9 +161,12 @@ const testimonialsBreadcrumbs = (
   ...(current ? [current] : []),
 ];
 
-const uiBreadcrumbs = (current?: BreadcrumbItem): BreadcrumbItem[] => [
+const registryBreadcrumbs = (
+  kind: RegistryKind,
+  current?: BreadcrumbItem
+): BreadcrumbItem[] => [
   HOME_BREADCRUMB,
-  { name: "UI", path: ROUTES.UI },
+  { name: REGISTRY_KINDS[kind].label, path: REGISTRY_KINDS[kind].route },
   ...(current ? [current] : []),
 ];
 
@@ -203,9 +208,9 @@ export {
   favoritesBreadcrumbs,
   JsonLdScripts,
   projectsBreadcrumbs,
+  registryBreadcrumbs,
   sponsorsBreadcrumbs,
   testimonialsBreadcrumbs,
-  uiBreadcrumbs,
   usesBreadcrumbs,
   writingBreadcrumbs,
   WebsiteJsonLd,

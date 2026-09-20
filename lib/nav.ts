@@ -10,6 +10,8 @@ const SECTION_ROUTES: { id: SectionId; route: string }[] = [
   { id: "favorites", route: ROUTES.FAVORITES },
   { id: "stats", route: ROUTES.STATS },
   { id: "uses", route: ROUTES.USES },
+  { id: "components", route: ROUTES.COMPONENTS },
+  { id: "blocks", route: ROUTES.BLOCKS },
 ];
 
 export const isNavGroupActive = (

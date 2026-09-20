@@ -1,4 +1,4 @@
-import { TokenUsage } from "@/registry/components/token-usage/token-usage";
+import { TokenUsage } from "@/registry/blocks/token-usage/token-usage";
 import type { TokscaleInsights } from "@/types/tokscale";
 
 const mockTokenData: TokscaleInsights = {

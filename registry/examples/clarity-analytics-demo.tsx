@@ -1,4 +1,4 @@
-import { ClarityAnalytics } from "@/registry/components/clarity-analytics/clarity-analytics";
+import { ClarityAnalytics } from "@/registry/blocks/clarity-analytics/clarity-analytics";
 import type { ClarityInsights } from "@/types/clarity";
 
 const mockClarityData: ClarityInsights = {

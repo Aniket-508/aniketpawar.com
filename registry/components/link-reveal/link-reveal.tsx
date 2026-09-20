@@ -5,8 +5,7 @@ import { useState } from "react";
 import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
-
-import type { LinkRevealData } from "./types";
+import type { LinkRevealData } from "@/types/link-reveal";
 
 export type LinkRevealProps = Omit<
   React.ComponentProps<"a">,
