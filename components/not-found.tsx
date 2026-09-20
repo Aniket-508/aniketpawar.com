@@ -12,6 +12,15 @@ import {
 import { Title } from "@/components/ui/title";
 import { ROUTES } from "@/constants/routes";
 
+const NAV_LINKS = [
+  { href: ROUTES.HOME, label: "Home" },
+  { href: ROUTES.ABOUT, label: "About" },
+  { href: ROUTES.PROJECTS, label: "Projects" },
+  { href: ROUTES.CRAFTS, label: "Crafts" },
+  { href: ROUTES.EXPERIENCES, label: "Experience" },
+  { href: ROUTES.CONTACT, label: "Contact" },
+] as const;
+
 const NotFound = () => (
   <Empty className="gap-6">
     <EmptyHeader className="gap-3">
@@ -22,7 +31,7 @@ const NotFound = () => (
         doesn&apos;t exist.
       </EmptyDescription>
     </EmptyHeader>
-    <EmptyContent>
+    <EmptyContent className="flex flex-col gap-4">
       <Button
         size="lg"
         nativeButton={false}
@@ -30,6 +39,37 @@ const NotFound = () => (
       >
         <ArrowLeftIcon /> Back to home
       </Button>
+      <nav className="text-muted-foreground text-sm text-center space-y-1">
+        <p>Try one of these pages instead:</p>
+        <div className="flex flex-wrap justify-center gap-x-3 gap-y-1">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-foreground underline underline-offset-2 hover:text-primary"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+        <p className="pt-2">
+          Or check the{" "}
+          <Link
+            href="/sitemap.xml"
+            className="text-foreground underline underline-offset-2 hover:text-primary"
+          >
+            sitemap
+          </Link>{" "}
+          or{" "}
+          <Link
+            href="/llms.txt"
+            className="text-foreground underline underline-offset-2 hover:text-primary"
+          >
+            llms.txt
+          </Link>
+          .
+        </p>
+      </nav>
     </EmptyContent>
   </Empty>
 );

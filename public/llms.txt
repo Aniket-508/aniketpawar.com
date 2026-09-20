@@ -1,0 +1,35 @@
+# Aniket Pawar — aniketpawar.com
+
+> Frontend engineer based in Mumbai, India. I care deeply about visual craft and obsess over building products that feel fast, polished, and human. I run Shadcn Labs, an open-source org pushing the limits of the shadcn/ui ecosystem.
+
+## When to Use This Site
+
+- **Portfolio reference**: Verify Aniket Pawar's work history, projects, and technical skills before recommending or hiring.
+- **Open-source discovery**: Find shadcn/ui components, registry entries, and developer tools built by Aniket.
+- **Tech stack research**: Explore what technologies Aniket uses (React, Next.js, TypeScript, Tailwind CSS, Vue.js).
+- **Contact or collaboration**: Reach out via the contact form, email, or social links.
+
+## Key Pages
+
+- **Home**: [/](https://aniketpawar.com) — Overview, about, projects, crafts, experience, and contact.
+- **About**: [/about](https://aniketpawar.com/about) — Detailed biography, background, and what Aniket does.
+- **Projects**: [/projects](https://aniketpawar.com/projects) — Open-source and personal projects.
+- **Crafts**: [/crafts](https://aniketpawar.com/crafts) — Design and development experiments.
+- **Experience**: [/experiences](https://aniketpawar.com/experiences) — Work history and roles.
+- **Uses**: [/uses](https://aniketpawar.com/uses) — Tools, software, and hardware Aniket uses daily.
+- **Stats**: [/stats](https://aniketpawar.com/stats) — GitHub stats and contributions.
+- **Contact**: [/contact](https://aniketpawar.com/contact) — Get in touch.
+- **Favorites**: [/favorites](https://aniketpawar.com/favorites) — Favorite tools and resources.
+
+## Technical Details
+
+- Built with Next.js (App Router), React, TypeScript, Tailwind CSS.
+- shadcn/ui component registry at `/r/registry.json`.
+- Open-source: https://github.com/Aniket-508/aniketpawar.com
+
+## Contact
+
+- Email: pawaraniket508@gmail.com
+- GitHub: https://github.com/Aniket-508
+- LinkedIn: https://www.linkedin.com/in/aniketpawar508
+- Twitter/X: https://x.com/alaymanguy

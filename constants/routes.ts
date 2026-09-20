@@ -1,4 +1,5 @@
 export const ROUTES = {
+  ABOUT: "/about",
   BLOCKS: "/blocks",
   BLOG: "/blog",
   COLOPHON: "/colophon",
@@ -10,6 +11,7 @@ export const ROUTES = {
   HOME: "/",
   LLMS: "/llms.txt",
   LLMS_FULL: "/llms-full.txt",
+  LLMS_MDX: "/llms.mdx",
   PROJECTS: "/projects",
   RESUME: "/resume.pdf",
   SPONSORS: "/sponsors",

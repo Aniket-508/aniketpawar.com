@@ -2,6 +2,19 @@ import { createContent } from "fuma-content/next";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  headers() {
+    return [
+      {
+        headers: [
+          {
+            key: "Vary",
+            value: "Accept, Accept-Encoding",
+          },
+        ],
+        source: "/(.*)",
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
