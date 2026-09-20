@@ -25,6 +25,78 @@
         }
       ],
       "categories": ["effects"]
+    },
+    {
+      "name": "clarity-analytics",
+      "type": "registry:component",
+      "title": "Clarity Analytics",
+      "description": "Microsoft Clarity analytics integration for tracking user behavior and session recordings.",
+      "dependencies": ["date-fns"],
+      "files": [
+        {
+          "path": "registry/components/clarity-analytics/clarity-analytics.tsx",
+          "type": "registry:component",
+          "target": "@/components/clarity-analytics.tsx"
+        }
+      ],
+      "categories": ["analytics"]
+    },
+    {
+      "name": "token-usage",
+      "type": "registry:component",
+      "title": "Token Usage",
+      "description": "Display AI token usage statistics including input/output tokens and cost tracking.",
+      "dependencies": ["date-fns"],
+      "files": [
+        {
+          "path": "registry/components/token-usage/token-usage.tsx",
+          "type": "registry:component",
+          "target": "@/components/token-usage.tsx"
+        }
+      ],
+      "categories": ["analytics"]
+    },
+    {
+      "name": "link-reveal-demo",
+      "type": "registry:example",
+      "title": "Link Reveal Demo",
+      "description": "Demo example for Link Reveal component.",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/examples/link-reveal-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": ["examples"]
+    },
+    {
+      "name": "clarity-analytics-demo",
+      "type": "registry:example",
+      "title": "Clarity Analytics Demo",
+      "description": "Demo example for Clarity Analytics component.",
+      "dependencies": ["date-fns"],
+      "files": [
+        {
+          "path": "registry/examples/clarity-analytics-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": ["examples"]
+    },
+    {
+      "name": "token-usage-demo",
+      "type": "registry:example",
+      "title": "Token Usage Demo",
+      "description": "Demo example for Token Usage component.",
+      "dependencies": ["date-fns"],
+      "files": [
+        {
+          "path": "registry/examples/token-usage-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "categories": ["examples"]
     }
   ]
 }
