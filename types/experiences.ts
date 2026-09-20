@@ -1,4 +1,4 @@
-export type ExperienceCategory = "FinTech" | "HRTech";
+export type ExperienceCategory = "FinTech" | "HRTech" | "SportsTech";
 
 export interface ExperienceOrg {
   name: string;

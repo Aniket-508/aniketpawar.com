@@ -6,7 +6,9 @@ import { CraftsView } from "./view";
 const CraftSection = () => (
   <Section className="delay-400 flex flex-col gap-4" id="crafts">
     <CraftsView crafts={CRAFTS} />
-    {/* <ViewAllButton href={ROUTES.CRAFTS} eventName="crafts" className="mx-auto" /> */}
+    {/* <div className="flex items-center justify-center">
+      <ViewAllButton href={ROUTES.CRAFTS} eventName="crafts" />
+    </div> */}
   </Section>
 );
 

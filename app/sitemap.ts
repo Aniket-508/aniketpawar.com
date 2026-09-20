@@ -69,6 +69,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       changeFrequency: "monthly",
       lastModified: new Date(),
+      priority: 0.8,
+      url: absoluteUrl(ROUTES.TESTIMONIALS),
+    },
+    {
+      changeFrequency: "monthly",
+      lastModified: new Date(),
       priority: 0.7,
       url: absoluteUrl(ROUTES.COLOPHON),
     },
