@@ -81,14 +81,14 @@ const MainNav = () => {
             </NavigationMenuItem>
 
             {/* UI — standalone link */}
-            <NavigationMenuItem>
+            {/* <NavigationMenuItem>
               <NavigationMenuLink
                 href={ROUTES.UI}
                 className={cn(navLinkClass("ui"))}
               >
                 ui
               </NavigationMenuLink>
-            </NavigationMenuItem>
+            </NavigationMenuItem> */}
 
             {/* Extras — trigger on sm+, inside more on mobile/tablet */}
             <NavigationMenuItem>
