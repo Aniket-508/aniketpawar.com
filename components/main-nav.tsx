@@ -22,7 +22,7 @@ const findGroup = (id: NavGroupId, label: string): NavGroup =>
   NAV_GROUPS.find((group) => group.id === id) ?? { id, items: [], label };
 
 const workGroup = findGroup("work", "work");
-const uiGroup = findGroup("ui", "ui");
+// const uiGroup = findGroup("ui", "ui");
 const extrasGroup = findGroup("extras", "extras");
 
 const navLinkClass = (id: string, activeSection: SectionId | null) =>
@@ -97,7 +97,7 @@ const MainNav = () => {
             <NavGroupMenu activeSection={activeSection} group={workGroup} />
 
             {/* UI — registry components and blocks */}
-            <NavGroupMenu activeSection={activeSection} group={uiGroup} />
+            {/* <NavGroupMenu activeSection={activeSection} group={uiGroup} /> */}
 
             {/* Extras — trigger on sm+, inside more on mobile/tablet */}
             <NavGroupMenu
