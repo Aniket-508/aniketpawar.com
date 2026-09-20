@@ -29,7 +29,7 @@ export const LINK = {
   TWITTER: "https://x.com/alaymanguy",
   X: "https://x.com/alaymanguy",
   X_SHADCN_LABS: "https://x.com/shadcnlabs",
-  YOUTUBE: "https://youtube.com/@aniketpawarbuilds",
+  YOUTUBE: "https://youtube.com/@alaymanguy",
 } as const;
 
 const STORAGE_URL =

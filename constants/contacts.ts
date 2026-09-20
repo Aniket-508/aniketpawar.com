@@ -13,7 +13,7 @@ export const CONTACTS = [
   {
     icon: "youtube",
     link: {
-      display: "@aniketpawarbuilds",
+      display: "@alaymanguy",
       url: LINK.YOUTUBE,
     },
     title: "YouTube",
