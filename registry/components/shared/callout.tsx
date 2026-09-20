@@ -1,8 +1,6 @@
-import { clsx } from "clsx";
-import type { ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { cn } from "cn";
 
-export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
+export { cn };
 
 const Callout = ({ className, ...attr }: React.ComponentProps<"div">) => (
   <div
