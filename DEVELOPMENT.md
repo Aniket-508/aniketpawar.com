@@ -70,6 +70,21 @@ pnpm build
 pnpm typecheck
 ```
 
+## Project browsing
+
+- The homepage's **View all** link carries the selected project source to
+  `/projects?source=personal` or `/projects?source=shadcn-labs`. The listing opens
+  the matching tab and displays every project in that source; missing or unknown
+  source values default to Personal.
+- The shared List/Showcase switcher uses the native View Transition API to animate
+  item positions and text between layouts. Project names, descriptions, and each
+  Website/GitHub label-to-icon pair have independent transition targets; preview
+  images enter and exit separately. Only list items are captured; the page and
+  switcher stay interactive so rapid clicks interrupt the current animation.
+  Reduced-motion preferences and browsers without the API use immediate updates.
+- The shared **Slow mode** switch changes animation duration from 350 ms to
+  2 seconds in projects, crafts, favorites, hardware, and software views.
+
 ## Commands
 
 | Command          | Description                  |

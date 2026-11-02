@@ -3,9 +3,11 @@
 import { CopyLink } from "@/components/copy-link";
 import type { GlimpseData } from "@/components/ui/glimpse/types";
 import { Title } from "@/components/ui/title";
+import { ViewAllButton } from "@/components/view-all-button";
+import { ROUTES } from "@/constants/routes";
 import { filterProjectsBySource } from "@/lib/projects";
 import { cn } from "@/lib/utils";
-import type { Project } from "@/types/projects";
+import type { Project, ProjectSource } from "@/types/projects";
 
 import { ProjectItem } from "./item";
 import { ProjectsViewProvider, useProjectsView } from "./view-context";
@@ -43,7 +45,7 @@ const ProjectsViewList = ({
   return (
     <div
       className={cn(
-        "group grid grid-cols-1",
+        "view-transition-list group grid grid-cols-1",
         variant === "grid" &&
           "sm:grid-cols-2 sm:[&>*:nth-child(2n+1)]:pr-4 sm:[&>*:nth-child(2n+2)]:pl-4 [&>*:nth-child(2n+1)]:pb-4 [&>*:nth-child(2n+2)]:pb-4",
         variant === "list" && "divide-y divide-border",
@@ -76,7 +78,10 @@ const ProjectsViewHeader = ({
   sourceControl = "combobox",
 }: ProjectsViewHeaderProps) => (
   <div
-    className={cn("flex items-center justify-between gap-4", headerClassName)}
+    className={cn(
+      "flex flex-wrap items-center justify-between gap-4",
+      headerClassName
+    )}
   >
     <div className="group/projects flex flex-1 items-center gap-1">
       <Title
@@ -90,10 +95,23 @@ const ProjectsViewHeader = ({
     </div>
     <ProjectsViewToolbar
       sourceControl={sourceControl}
-      className="w-auto shrink-0 justify-end gap-2"
+      className="w-auto max-w-full justify-end gap-2"
     />
   </div>
 );
+
+const ProjectsViewAll = () => {
+  const { source } = useProjectsView();
+
+  return (
+    <div className="flex items-center justify-center">
+      <ViewAllButton
+        href={`${ROUTES.PROJECTS}?source=${source}`}
+        eventName="projects"
+      />
+    </div>
+  );
+};
 
 interface ProjectsViewProps {
   projects: readonly Project[];
@@ -106,6 +124,8 @@ interface ProjectsViewProps {
   viewClassName?: string;
   featuredOnly?: boolean;
   limit?: number;
+  defaultSource?: ProjectSource;
+  showViewAll?: boolean;
 }
 
 const ProjectsView = ({
@@ -119,8 +139,10 @@ const ProjectsView = ({
   sourceControl = "combobox",
   featuredOnly,
   limit,
+  defaultSource,
+  showViewAll = false,
 }: ProjectsViewProps) => (
-  <ProjectsViewProvider>
+  <ProjectsViewProvider key={defaultSource} defaultSource={defaultSource}>
     {showHeader && (
       <ProjectsViewHeader
         headerClassName={headerClassName}
@@ -141,6 +163,7 @@ const ProjectsView = ({
       featuredOnly={featuredOnly}
       limit={limit}
     />
+    {showViewAll && <ProjectsViewAll />}
   </ProjectsViewProvider>
 );
 

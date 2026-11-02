@@ -48,7 +48,7 @@ const SoftwareSection = () => {
 
       <div
         className={cn(
-          "group relative",
+          "view-transition-list group relative",
           variant === "list" &&
             "divide-y divide-border [--badge-height:--spacing(6)] [--col-left-width:--spacing(40)]"
         )}

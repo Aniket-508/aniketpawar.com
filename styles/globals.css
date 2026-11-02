@@ -180,3 +180,39 @@
 @utility animate-slide-in {
   @apply animate-in fade-in slide-in-from-bottom-5 blur-in-md fill-mode-both duration-600;
 }
+
+html {
+  view-transition-name: none;
+}
+
+.view-transition-list > *,
+.view-transition-list
+  :is(h2, h3, p, .project-link-transition, .project-image-transition) {
+  view-transition-name: match-element;
+  view-transition-class: view-item;
+}
+
+html:active-view-transition-type(view-mode) {
+  &::view-transition {
+    pointer-events: none;
+  }
+
+  &::view-transition-group(.view-item) {
+    animation-duration: 350ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+html:active-view-transition-type(slow-view-mode) {
+  &::view-transition-group(.view-item) {
+    animation-duration: 2s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .view-transition-list > *,
+  .view-transition-list
+    :is(h2, h3, p, .project-link-transition, .project-image-transition) {
+    view-transition-name: none;
+  }
+}

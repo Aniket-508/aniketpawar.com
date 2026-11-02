@@ -51,55 +51,59 @@ const ProjectLink = ({
 
   if (isGrid) {
     return (
-      <Tooltip>
-        <TooltipTrigger
-          render={
-            <Button
-              variant="ghost"
-              size="icon-sm"
-              className="text-muted-foreground"
-              nativeButton={false}
-              render={
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={label}
-                  onClick={handleClick}
-                />
-              }
-            />
-          }
-        >
-          {icon}
-        </TooltipTrigger>
-        <TooltipContent>{label}</TooltipContent>
-      </Tooltip>
+      <span className="project-link-transition inline-flex">
+        <Tooltip>
+          <TooltipTrigger
+            render={
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                className="text-muted-foreground"
+                nativeButton={false}
+                render={
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={label}
+                    onClick={handleClick}
+                  />
+                }
+              />
+            }
+          >
+            {icon}
+          </TooltipTrigger>
+          <TooltipContent>{label}</TooltipContent>
+        </Tooltip>
+      </span>
     );
   }
 
   return (
-    <AppLink
-      className={cn(
-        "text-muted-foreground min-w-[60px] text-xs font-normal",
-        listClassName
-      )}
-      href={href}
-      target="_blank"
-      external
-      previewSide="bottom"
-      preview={preview}
-      eventName="external_link_click"
-      eventProperties={{
-        context: "project_item",
-        link_type: label.toLowerCase(),
-        slug,
-        title,
-        url: href,
-      }}
-    >
-      {label}
-    </AppLink>
+    <span className="project-link-transition inline-flex">
+      <AppLink
+        className={cn(
+          "text-muted-foreground min-w-[60px] text-xs font-normal",
+          listClassName
+        )}
+        href={href}
+        target="_blank"
+        external
+        previewSide="bottom"
+        preview={preview}
+        eventName="external_link_click"
+        eventProperties={{
+          context: "project_item",
+          link_type: label.toLowerCase(),
+          slug,
+          title,
+          url: href,
+        }}
+      >
+        {label}
+      </AppLink>
+    </span>
   );
 };
 
@@ -150,7 +154,7 @@ const ProjectItem = ({
         <MediaPreview
           src={image}
           title={title}
-          className="mb-2 aspect-1200/630"
+          className="project-image-transition mb-2 aspect-1200/630"
         />
       )}
       <div className="flex items-center justify-between gap-4">

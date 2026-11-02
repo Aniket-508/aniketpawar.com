@@ -54,7 +54,7 @@ const CraftsView = ({
 
       <div
         className={cn(
-          "group grid grid-cols-1",
+          "view-transition-list group grid grid-cols-1",
           variant === "list" && "divide-y divide-border",
           viewClassName
         )}

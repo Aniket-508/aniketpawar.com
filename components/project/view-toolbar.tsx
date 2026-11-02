@@ -21,7 +21,12 @@ const ProjectsViewToolbar = ({
   const { source, setSource, variant, setVariant } = useProjectsView();
 
   return (
-    <div className={cn("flex items-center justify-between gap-4", className)}>
+    <div
+      className={cn(
+        "flex flex-wrap items-center justify-between gap-4",
+        className
+      )}
+    >
       {sourceControl === "combobox" ? (
         <ProjectSourceCombobox value={source} onChange={setSource} />
       ) : (

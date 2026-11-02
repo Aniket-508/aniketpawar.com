@@ -1,8 +1,6 @@
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
 import { Section } from "@/components/ui/section";
-import { ViewAllButton } from "@/components/view-all-button";
 import { HOME_FEATURED_PROJECT_COUNT } from "@/constants/projects";
-import { ROUTES } from "@/constants/routes";
 import { collectProjectUrls, getProjects } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 
@@ -19,10 +17,8 @@ const ProjectSection = async () => {
         previews={previews}
         featuredOnly
         limit={HOME_FEATURED_PROJECT_COUNT}
+        showViewAll
       />
-      <div className="flex items-center justify-center">
-        <ViewAllButton href={ROUTES.PROJECTS} eventName="projects" />
-      </div>
     </Section>
   );
 };

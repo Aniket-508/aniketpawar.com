@@ -2,6 +2,7 @@ import { ProjectsView } from "@/components/project/view";
 import { prefetchGlimpses } from "@/components/ui/glimpse/server";
 import { Section } from "@/components/ui/section";
 import { Title } from "@/components/ui/title";
+import { DEFAULT_PROJECT_SOURCE, PROJECT_SOURCES } from "@/constants/projects";
 import { ROUTES } from "@/constants/routes";
 import { collectProjectUrls, getProjects } from "@/lib/projects";
 import { BreadcrumbJsonLd, projectsBreadcrumbs } from "@/seo/json-ld";
@@ -15,7 +16,15 @@ export const metadata = createMetadata({
   title: "Projects",
 });
 
-const ProjectsPage = async () => {
+const ProjectsPage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ source?: string | string[] }>;
+}) => {
+  const { source } = await searchParams;
+  const defaultSource =
+    PROJECT_SOURCES.find((option) => option.value === source)?.value ??
+    DEFAULT_PROJECT_SOURCE;
   const projects = getProjects();
   const previews = await prefetchGlimpses(collectProjectUrls(projects));
 
@@ -33,6 +42,7 @@ const ProjectsPage = async () => {
           sourceControl="tabs"
           projects={projects}
           previews={previews}
+          defaultSource={defaultSource}
         />
       </Section>
     </>
