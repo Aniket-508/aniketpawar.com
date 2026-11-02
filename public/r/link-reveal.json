@@ -3,9 +3,7 @@
   "name": "link-reveal",
   "title": "Link Reveal",
   "description": "Animated link that reveals the website favicon and primary color on hover.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/components/link-reveal/link-reveal.tsx",
@@ -26,8 +24,6 @@
       "target": "@/types/link-reveal.ts"
     }
   ],
-  "categories": [
-    "effects"
-  ],
+  "categories": ["effects"],
   "type": "registry:component"
 }

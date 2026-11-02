@@ -143,8 +143,6 @@
       "target": "@/types/clarity.ts"
     }
   ],
-  "categories": [
-    "analytics"
-  ],
+  "categories": ["analytics"],
   "type": "registry:block"
 }

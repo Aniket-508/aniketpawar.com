@@ -3,9 +3,7 @@
   "homepage": "https://aniketpawar.com",
   "items": [
     {
-      "categories": [
-        "effects"
-      ],
+      "categories": ["effects"],
       "description": "Animated link that reveals the website favicon and primary color on hover.",
       "files": [
         {
@@ -27,14 +25,10 @@
       "name": "link-reveal",
       "title": "Link Reveal",
       "type": "registry:component",
-      "dependencies": [
-        "motion"
-      ]
+      "dependencies": ["motion"]
     },
     {
-      "categories": [
-        "analytics"
-      ],
+      "categories": ["analytics"],
       "description": "Microsoft Clarity analytics integration for tracking user behavior and session recordings.",
       "files": [
         {
@@ -160,9 +154,7 @@
       ]
     },
     {
-      "categories": [
-        "analytics"
-      ],
+      "categories": ["analytics"],
       "description": "Display AI token usage statistics including input/output tokens and cost tracking.",
       "files": [
         {

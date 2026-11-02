@@ -167,8 +167,6 @@
       "target": "@/types/tokscale.ts"
     }
   ],
-  "categories": [
-    "analytics"
-  ],
+  "categories": ["analytics"],
   "type": "registry:block"
 }

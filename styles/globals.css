@@ -203,12 +203,6 @@ html:active-view-transition-type(view-mode) {
   }
 }
 
-html:active-view-transition-type(slow-view-mode) {
-  &::view-transition-group(.view-item) {
-    animation-duration: 2s;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .view-transition-list > *,
   .view-transition-list
